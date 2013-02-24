@@ -1,3 +1,19 @@
+# cmpitg's Emacs config
+
+## Requirements
+
+zenity (GTK+ GUI dialog, used for file choosing)
+
+## Description
+
+Differences from default Emacs:
+
+* [ErgoEmacs](http://ergoemacs.org/) keybindings, with `<Super>` key as the modifier.
+
+* Making extensive use of mouse and `<Super>` key.
+
+* "When in doubt, leave it out".  Use only what I need.
+
 ## TODOs
 
 Refactor this document into simple use cases/tasks.

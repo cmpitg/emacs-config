@@ -16,11 +16,6 @@
 (load-file "~/.emacs_cmpitg/custom-functions.el")
 ($open-file-other-window "~/.emacs_cmpitg/custom-functions.el")
 
-(defun $load-custom-emacs24 (&rest filenames)
-  "Load customization file"
-  (dolist (file filenames)
-    (load (format "%s%s" "~/.elisp/emacs24/" file))))
-
 ($load-custom-el "emacs-environment.el"
                  "keymap-common.el"
                  "aliases.el"
@@ -144,7 +139,7 @@
 (ibus-define-common-key ?\C-/ nil)
 ;; Change cursor color depending on IBus status
 (setq ibus-cursor-color '("red" "blue" "limegreen"))
-(setq ibus-agent-file-name "~/src/elisp/ibus-el/ibus.el/ibus-el-agent")
+(setq ibus-agent-file-name "~/.emacs.d/ibus.el/ibus-el-agent")
 
 ;; 
 ;; Markdown-mode

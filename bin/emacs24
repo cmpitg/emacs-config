@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# /mnt/Workspace/Projects/src/repo/emacs-git/src/emacs -Q --load ~/.emacs24 $@
+/usr/bin/emacs24 -Q --load ~/.emacs24 $@

@@ -1,0 +1,209 @@
+;; -*- mode: emacs-lisp -*-
+
+;;
+;; Workspace
+;;
+
+(find-file "~/.emacs_default")
+
+;; Global constants
+
+(setq *elpa-package-dir* "~/.emacs.d/elpa/"
+      *custom-els-dir*   "~/.emacs_cmpitg/")
+
+;; cmpitg's specific configuration
+
+(load-file "~/.emacs_cmpitg/custom-functions.el")
+($open-file-other-window "~/.emacs_cmpitg/custom-functions.el")
+
+(defun $load-custom-emacs24 (&rest filenames)
+  "Load customization file"
+  (dolist (file filenames)
+    (load (format "%s%s" "~/.elisp/emacs24/" file))))
+
+($load-custom-el "emacs-environment.el"
+                 "keymap-common.el"
+                 "aliases.el"
+                 )
+
+;;
+;; Package manager
+;;
+
+(require 'package)
+
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+;; Add all the load path
+
+(mapc #'(lambda (dir)
+          (add-to-list 'load-path (format "%s%s" *elpa-package-dir* dir)))
+      (directory-files *elpa-package-dir* nil ".*"))
+
+;;
+;; Redo mode
+;;
+
+(require 'redo+)
+
+;;
+;; Smooth scrolling
+;;
+
+(require 'smooth-scrolling)
+
+;;
+;; Autocomplete
+;;
+
+(require 'auto-complete)
+
+;;
+;; Auto pairing brackets
+;;
+
+(require 'autopair)
+(add-hook 'find-file-hook (lambda () (autopair-mode 1)))
+(add-hook 'lisp-mode-hook (lambda () (autopair-mode nil)))
+
+(require 'paredit)
+
+(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'lisp-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+
+;;; Use with ElDoc
+(require 'eldoc)
+(eldoc-add-command
+ 'paredit-backward-delete
+ 'paredit-close-round)
+
+;;; Use with SLIME REPL
+(add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
+
+;; Stop SLIME's REPL from grabbing DEL,
+;; which is annoying when backspacing over a '('
+(defun override-slime-repl-bindings-with-paredit ()
+  (define-key slime-repl-mode-map
+    (read-kbd-macro paredit-backward-delete-key) nil))
+
+(add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
+
+;;; Use with eletric RET
+;; If RETURN is pressed when the cursor is before a closing paren, the
+;; following code will add an extra newline. The extra newlines are
+;; re-gathered by paredit-close-round, which ParEdit binds to “)” by
+;; default
+
+;;; cmpitg's
+(defvar electrify-return-match
+  "[\]\)]"
+  "If this regexp matches the text after the cursor, do an \"electric\"
+  return.")
+
+;; (defvar electrify-return-match
+;;   "[\]}\)\"]"
+;;   "If this regexp matches the text after the cursor, do an \"electric\"
+;;   return.")
+
+(defun electrify-return-if-match (arg)
+  "If the text after the cursor matches `electrify-return-match'
+  then open and indent an empty line between the cursor and the
+  text.  Move the cursor to the new line."
+  (interactive "P")
+  (let ((case-fold-search nil))
+    (if (looking-at electrify-return-match)
+        (save-excursion (newline-and-indent)))
+    (newline arg)
+    (indent-according-to-mode)))
+
+;; Using local-set-key in a mode-hook is a better idea.
+(global-set-key (kbd "RET") 'electrify-return-if-match)
+
+;;
+;; Speedbar in the same frame
+;;
+(require 'sr-speedbar)
+
+;; 
+;; ibus-mode
+;; 
+;; ibus-mode
+;;;; IBusMode
+(load-file "~/.emacs.d/ibus.el/ibus-dev.el")
+(require 'ibus)
+(add-hook 'after-init-hook 'ibus-mode-on)
+;; Use C-SPC for Set Mark command
+(ibus-define-common-key ?\C-\s nil)
+;; Use C-/ for Undo command
+(ibus-define-common-key ?\C-/ nil)
+;; Change cursor color depending on IBus status
+(setq ibus-cursor-color '("red" "blue" "limegreen"))
+(setq ibus-agent-file-name "~/src/elisp/ibus-el/ibus.el/ibus-el-agent")
+
+;; 
+;; Markdown-mode
+;; 
+
+(require 'markdown-mode)
+(require 'markdown-mode+)
+($auto-load-mode '("\\.md$" "\\.markdown$") 'markdown-mode)
+
+;;
+;; Haskell mode
+;;
+
+(require 'haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+
+;;
+;; Yaml mode
+;; 
+
+(require 'yaml-mode)
+($auto-load-mode '("\\.yml$") 'yaml-mode)
+
+(add-hook 'yaml-mode-hook
+          '(lambda ()
+             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+;;
+;; Evil (Vim) mode
+;;
+
+;; http://dnquark.com/blog/2012/02/emacs-evil-ecumenicalism/
+
+;; Manual
+;; ($add-load-path "~/.emacs.d/evil")
+(require 'evil)
+(require 'evil-nerd-commenter)
+(require 'evil-paredit)
+(require 'evil-leader)
+(evil-paredit-mode)
+(setq evil-leader/leader "," evil-leader/in-all-states t)
+(evil-leader/set-key
+  "cc" 'evilnc-comment-or-uncomment-lines
+  "ci" 'evilnc-comment-or-uncomment-to-the-line)
+(evil-mode 1)
+
+;; 
+;; Enable to ability to show trailing whitespace
+;; 
+
+(require 'whitespace)
+
+;;
+;; Saving hooks
+;;
+
+;; Make shebang-ed files executable
+
+(add-hook 'after-save-hook '$make-executable)

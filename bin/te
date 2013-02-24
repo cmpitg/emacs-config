@@ -1,0 +1,19 @@
+#!/bin/sh
+
+/home/cmpitg/bin/emacs_cmpitg $*
+
+# EMACS_SERVER_RUNNING=""
+# [ -e "/tmp/emacs1000/e24" ] && EMACS_SERVER_RUNNING=1 || EMACS_SERVER_RUNNING=0
+
+# if [ "$EMACS_SERVER_RUNNING" -eq "1" ] ; then
+#     # echo "Running"
+#     echo "emacsclient-emacs-24 -s /tmp/emacs1000/e24 -c $@ >/dev/null 2>&1 & disown"
+#     emacsclient-emacs-24 -s /tmp/emacs1000/e24 -c $@ >/dev/null 2>&1 & disown
+# else
+#     # echo "Not running"
+#     echo "emacs24 --eval '(server-start)' $@ >/dev/null 2>&1 & disown"
+#     emacs24 --debug-init --eval '(server-start)' $@ >/dev/null 2>&1 & disown
+#     #emacs --daemon $@
+#     #emacsclient -c $@ >/dev/null 2>&1 & disown
+# fi
+# # emacsclient -c >/dev/null 2>&1 "$@" & disown

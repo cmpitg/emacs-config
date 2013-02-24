@@ -1,0 +1,15 @@
+BZR merge-modified list format 1
+file_id: changelog-20100528124832-jfp2c1lutnndivv7-3
+hash: 940202989a2131c33d8e9df4cf8a0e95925f2e54
+
+file_id: ibusagent.py-20100505121751-0aiso0gxysytdn4m-2
+hash: c9c9043568df4831e63af2adf3857303762e59b0
+
+file_id: ibus.el-20100505121751-0aiso0gxysytdn4m-1
+hash: 88e51a7ae032caebbc068b287ad43fadebb66ffb
+
+file_id: changelog-20100526164239-awvlxlnml74do3xi-2
+hash: c5357c208e3776db770598bc3365b7e0360bdedf
+
+file_id: makedist.sh-20100526164239-awvlxlnml74do3xi-4
+hash: ae79f4ba64b053506a8836935e938a1c49b7672e

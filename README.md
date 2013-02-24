@@ -14,6 +14,8 @@ Differences from default Emacs:
 
 * "When in doubt, leave it out".  Use only what I need.
 
+* Opening file with a GUI dialog (provided by Zenity, defined in `.emacs_cmpitg/custom-functions.el`)
+
 ## TODOs
 
 Refactor this document into simple use cases/tasks.

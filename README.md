@@ -2,7 +2,9 @@
 
 ## Requirements
 
-zenity (GTK+ GUI dialog, used for file choosing)
+* Emacs 24
+
+* zenity (GTK+ GUI dialog, used for file choosing)
 
 ## Description
 
@@ -32,7 +34,7 @@ Refactor this document into simple use cases/tasks.
 
 * `s-v` to go to package manager's package list (`package-list-packages`)
 
-* `s-\\` to toggle `ibus-mode` (`ibus-mode`), then `C-M-S-SPC` to toggle Ibus (`$toggle-ibus`)
+* `s-\` to toggle `ibus-mode` (`ibus-mode`), then `C-M-S-SPC` to toggle Ibus (`$toggle-ibus`)
 
 * `<C-down-mouse-1>` to show buffer menu (`mouse-buffer-menu`)
 

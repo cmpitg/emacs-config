@@ -24,6 +24,6 @@ cp_with_symlinks_contents_cmd \
 
 cp_cmd \
     $THIS_FILE \
-    $HOME/bin/emacs24 \
+    $HOME/bin/emacs_cmpitg \
     $HOME/bin/te \
     $DEST/bin/

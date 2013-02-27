@@ -20,6 +20,7 @@ cp_with_symlinks_contents_cmd \
 
 cp_with_symlinks_contents_cmd \
     $HOME/.emacs.d/ibus.el \
+    $HOME/.emacs.d/picolisp-mode \
     $DEST/.emacs.d/
 
 cp_cmd \

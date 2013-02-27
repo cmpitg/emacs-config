@@ -104,7 +104,7 @@
 
 (global-set-key [C-mouse-2] 'split-window-vertically)
 (global-set-key [M-mouse-2] 'split-window-horizontally)
-(global-set-key [S-mouse-2] 'delete-window)
+(global-set-key [S-mouse-2] 'delete-other-windows)
 
 ;;
 ;; Misc

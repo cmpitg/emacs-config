@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# chmod +x !ls -lahF ~/bin/emacs_cmpitg
+
+emacs24 -Q --load ~/.emacs_default --debug-init $@

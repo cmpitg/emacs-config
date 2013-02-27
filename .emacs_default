@@ -128,11 +128,11 @@
 ;; 
 ;; ibus-mode
 ;; 
-;; ibus-mode
-;;;; IBusMode
+
 (load-file "~/.emacs.d/ibus.el/ibus-dev.el")
+
 (require 'ibus)
-(add-hook 'after-init-hook 'ibus-mode-on)
+
 ;; Use C-SPC for Set Mark command
 (ibus-define-common-key ?\C-\s nil)
 ;; Use C-/ for Undo command
@@ -159,16 +159,39 @@
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
+;; 
+;; PicoLisp mode
+;; 
+
+($add-load-path "~/.emacs.d/picolisp-mode")
+
+(require 'picolisp)
+(setq picolisp-program-name "~/opt/picolisp/bin/plmod")
+($auto-load-mode "\\.l$" 'picolisp-mode)
+(add-hook 'picolisp-mode-hook
+          (lambda ()
+            (paredit-mode +1)
+            (tsm-mode)
+            (define-key picolisp-mode-map (kbd "RET") 'newline-and-indent)
+            (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete) ) )
+
 ;;
 ;; Yaml mode
 ;; 
 
 (require 'yaml-mode)
-($auto-load-mode '("\\.yml$") 'yaml-mode)
+($auto-load-mode "\\.yml$" 'yaml-mode)
 
 (add-hook 'yaml-mode-hook
           '(lambda ()
              (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+;; 
+;; Ruby mode
+;; 
+
+(require 'ruby-mode)
+($auto-load-mode "\\.rake$" 'ruby-mode)
 
 ;;
 ;; Evil (Vim) mode

@@ -17,7 +17,7 @@
   "Storing documentation strings.")
 
 (defvar *tim-emacs-lisp-keywords*   '("$defalias"))
-(defvar *tim-emacs-lisp-functions*  '("$autoload-mode"))
+(defvar *tim-emacs-lisp-functions*  '("$auto-load-mode"))
 
 ;;;
 ;;; Functions
@@ -479,9 +479,15 @@ we might have in the frame."
     (evil-local-mode)))
 
 (defun $auto-load-mode (filetypes mode)
-  "Autoload mode for a list of filetypes"
-  (dolist (filetype filetypes)
-    (add-to-list 'auto-mode-alist (cons filetype mode))))
+  "Autoload mode for filetype regex or a list of filetypes.
+Example:
+    ($auto-load-mode \"\\\\.rake$\" 'ruby-mode)
+    ($auto-load-mode '(\"\\\\.md$\" \"\\\\.markdown$\") 'markdown-mode)"
+  
+  (if (stringp filetypes)
+      (add-to-list 'auto-mode-alist (cons filetypes mode))
+    (dolist (filetype filetypes)
+      (add-to-list 'auto-mode-alist (cons filetype mode)))))
 
 (defun $goto-snippets-folder ()
   "Go to personal snippets folder"
@@ -741,12 +747,6 @@ new snippet\")"
 
 ($defalias '$save-file 'save-buffer
   "Save current buffer")
-
-;;;
-;;; Autoload
-;;;
-
-($autoload-mode "Rakefile" 'ruby-mode)
 
 ;;;
 ;;; Settings

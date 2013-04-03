@@ -381,7 +381,7 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
 (defun $clipboard<-pwd ()
   "Copy current directory to clipboard"
   (interactive)
-  ($clipboard<- (shell-command-to-string "pwd")))
+  ($clipboard<- ($current-dir)))
 
 (defun $noweb-code-chunk-add-mode (mode-name)
   "Add mode to a code chunk"
@@ -589,12 +589,12 @@ Example:
 
 (defun $current-dir ()
   "Current directory"
-  ($string-but-last (shell-command-to-string "pwd")))
+  (file-name-directory (or load-file-name buffer-file-name)))
 
 (defun $build-open-file-cmd-string ()
   "Build a string used to execute an open-file dialog"
   (concat "zenity --file-selection --filename "
-          (shell-command-to-string "pwd")
+          ($current-dir)
           " 2>/dev/null"))
 
 (defun $open-file-gui ()

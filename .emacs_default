@@ -22,6 +22,12 @@
                  )
 
 ;;
+;; Start Emacs server
+;;
+
+($server-start)
+
+;;
 ;; Package manager
 ;;
 

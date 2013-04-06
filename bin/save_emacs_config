@@ -27,4 +27,5 @@ cp_cmd \
     $THIS_FILE \
     $HOME/bin/emacs_cmpitg \
     $HOME/bin/te \
+    $HOME/bin/filebrowser-emacs.py \
     $DEST/bin/

@@ -55,9 +55,10 @@
 
 (defun $server-start (&rest dir)
   "Start an Emacs server in a specific socket directory"
-  (setq server-socket-dir (if dir
-                              (format "/tmp/%s" dir)
-                            "/tmp/emacs-te/"))
+  ;; (setq server-socket-dir (if dir
+  ;;                             (format "/tmp/%s" dir)
+  ;;                           "/tmp/emacs-te/"))
+  (if dir (setq server-socket-dir dir))
   (server-start))
 
 (defun $add-load-path (path)

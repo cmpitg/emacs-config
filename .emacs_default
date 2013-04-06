@@ -63,6 +63,7 @@
 ;;
 
 (require 'auto-complete)
+(auto-complete-mode 1)
 
 ;;
 ;; Auto pairing brackets
@@ -74,9 +75,9 @@
 
 (require 'paredit)
 
-(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode +1)))
-(add-hook 'lisp-mode-hook (lambda () (paredit-mode +1)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode t)))
+(add-hook 'lisp-mode-hook (lambda () (paredit-mode t)))
+(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode t)))
 
 ;;; Use with ElDoc
 (require 'eldoc)
@@ -216,7 +217,7 @@
 (evil-leader/set-key
   "cc" 'evilnc-comment-or-uncomment-lines
   "ci" 'evilnc-comment-or-uncomment-to-the-line)
-(evil-mode 1)
+;; (evil-mode 1)
 
 ;; 
 ;; Enable to ability to show trailing whitespace

@@ -6,6 +6,8 @@
 
 * zenity (GTK+ GUI dialog, used for file choosing)
 
+* PySide for Python 3 (`python3-pyside` package in a Debian-based systems)
+
 ## Description
 
 Differences from default Emacs:

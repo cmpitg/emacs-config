@@ -4,17 +4,17 @@
 ;; Workspace
 ;;
 
-(find-file "~/.emacs_default")
+(find-file "~/emacs-config/init.el")
 
 ;; Global constants
 
 (setq *elpa-package-dir* "~/.emacs.d/elpa/"
-      *custom-els-dir*   "~/.emacs_cmpitg/")
+      *custom-els-dir*   "~/emacs-config/emacs-cmpitg-config/")
 
 ;; cmpitg's specific configuration
 
-(load-file "~/.emacs_cmpitg/custom-functions.el")
-($open-file-other-window "~/.emacs_cmpitg/custom-functions.el")
+(load-file "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
+($open-file-other-window "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
 
 ($load-custom-el "emacs-environment.el"
                  "keymap-common.el"
@@ -136,7 +136,7 @@
 ;; ibus-mode
 ;; 
 
-(load-file "~/.emacs.d/ibus.el/ibus-dev.el")
+(load-file "~/emacs-config/emacs-local-packages/ibus.el/ibus-dev.el")
 
 (require 'ibus)
 
@@ -146,7 +146,7 @@
 (ibus-define-common-key ?\C-/ nil)
 ;; Change cursor color depending on IBus status
 (setq ibus-cursor-color '("red" "blue" "limegreen"))
-(setq ibus-agent-file-name "~/.emacs.d/ibus.el/ibus-el-agent")
+(setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus.el/ibus-el-agent")
 
 ;; 
 ;; Markdown-mode
@@ -170,7 +170,7 @@
 ;; PicoLisp mode
 ;; 
 
-($add-load-path "~/.emacs.d/picolisp-mode")
+($add-load-path "~/emacs-config/emacs-local-packages/picolisp-mode")
 
 (require 'picolisp)
 (setq picolisp-program-name "~/opt/picolisp/bin/plmod")
@@ -207,7 +207,6 @@
 ;; http://dnquark.com/blog/2012/02/emacs-evil-ecumenicalism/
 
 ;; Manual
-;; ($add-load-path "~/.emacs.d/evil")
 (require 'evil)
 (require 'evil-nerd-commenter)
 (require 'evil-paredit)

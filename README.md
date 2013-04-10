@@ -8,6 +8,25 @@
 
 * PySide for Python 3 (`python3-pyside` package in a Debian-based systems)
 
+## Installation
+
+(TODO)
+
+    ```sh
+    cd ~
+    git clone git://github.com/CMPITG/emacs-config.git
+    mkdir -p ~/bin/
+    echo "export PATH=$HOME/bin:$PATH" >> /etc/.bashrc
+    # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
+    # echo "export PATH=$HOME/bin:$PATH" >> /etc/.zshrc
+    cp -Rv ~/emacs-config/bin/* ~/bin/
+    chmod +x ~/bin/te
+    ```
+
+## Running
+
+Run the `te` command (TODO).
+
 ## Description
 
 Differences from default Emacs:

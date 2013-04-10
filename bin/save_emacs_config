@@ -7,22 +7,6 @@ THIS_FILE="$0"
 alias cp_with_symlinks_contents_cmd="rsync -avLz"
 alias cp_cmd="rsync -avz"
 
-mkdir -p $DEST/.emacs.d/
-
-cp_with_symlinks_contents_cmd \
-    /mnt/home/cmpitg/Documents/How_I_Use_Emacs.md \
-    $DEST/README.md
-
-cp_with_symlinks_contents_cmd \
-    $HOME/.emacs_default \
-    $HOME/.emacs_cmpitg \
-    $DEST
-
-cp_with_symlinks_contents_cmd \
-    $HOME/.emacs.d/ibus.el \
-    $HOME/.emacs.d/picolisp-mode \
-    $DEST/.emacs.d/
-
 cp_cmd \
     $THIS_FILE \
     $HOME/bin/emacs_cmpitg \

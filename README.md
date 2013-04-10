@@ -21,6 +21,16 @@
     # echo "export PATH=$HOME/bin:$PATH" >> /etc/.zshrc
     cp -Rv ~/emacs-config/bin/* ~/bin/
     chmod +x ~/bin/te
+    # TODO: Desktop file
+    ```
+
+## Update
+
+(TODO)
+
+    ```sh
+    cd ~/emacs-config/
+    git pull
     ```
 
 ## Running
@@ -37,7 +47,7 @@ Differences from default Emacs:
 
 * "When in doubt, leave it out".  Use only what I need.
 
-* Opening file with a GUI dialog (provided by Zenity, defined in `.emacs_cmpitg/custom-functions.el`)
+* Opening file with a GUI dialog (provided by Zenity, defined in `~/emacs-config/emacs-cmpitg-config//custom-functions.el`)
 
 ## TODOs
 

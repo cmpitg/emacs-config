@@ -5,6 +5,6 @@
 if [ "$EMACS_SERVER_RUNNING" -eq "1" ] ; then
     emacsclient -c $* >/dev/null 2>&1 &disown 2>/dev/null
 else
-    /home/cmpitg/bin/emacs_cmpitg $* >/dev/null 2>&1 &disown 2>/dev/null
+    emacs -Q --load ~/emacs-config/init.el --debug-init $* >/dev/null 2>&1 &disown 2>/dev/null
 fi
 

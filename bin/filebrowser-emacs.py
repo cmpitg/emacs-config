@@ -9,6 +9,11 @@
 #   - <Ctrl L> to jump to path entry
 #   - <Ctrl F> to jump to filter entry
 #
+# * Right-click context menu:
+#   - Copy full path
+#   - Copy file name
+#   - Delete file
+#
 # * File filter (Done)
 #
 # * Expand path (Done)

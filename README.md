@@ -20,7 +20,7 @@
     # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
     # echo "export PATH=$HOME/bin:$PATH" >> /etc/.zshrc
     cp -Rv ~/emacs-config/bin/* ~/bin/
-    chmod +x ~/bin/te
+    chmod +x ~/bin/te ~/bin/filebrowser-emacs.py
     # TODO: Desktop file
     ```
 

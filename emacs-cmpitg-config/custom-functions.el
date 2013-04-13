@@ -34,6 +34,12 @@
   (dolist (file filenames)
     (load-file ($custom-els-path file))))
 
+(defun $install-packages (&rest packages)
+  "Install a list of package if not installed"
+  (dolist (package-name packages)
+    (unless ($package-installed? package-name)
+      (package-install package-name))))
+
 (defun $current-path ()
   "Get full path of the current file"
   (interactive)

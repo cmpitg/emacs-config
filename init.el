@@ -9,7 +9,24 @@
 ;; Global constants
 
 (setq *elpa-package-dir* "~/.emacs.d/elpa/"
-      *custom-els-dir*   "~/emacs-config/emacs-cmpitg-config/")
+      *custom-els-dir*   "~/emacs-config/emacs-cmpitg-config/"
+      *package-list*     '(redo+
+                           smooth-scrolling
+                           auto-complete
+                           whitespace
+                           ruby-mode
+                           yaml-mode
+                           picolisp
+                           haskell-mode
+                           markdown-mode
+                           markdown-mode+
+                           paredit
+                           autopair
+                           auto-complete
+                           evil
+                           evil-nerd-commenter
+                           evil-leader
+                           evil-paredit))
 
 
 ;; cmpitg's specific configuration
@@ -40,6 +57,8 @@
              '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/"))
+
+(package-initialize)
 
 ;; Add all the load path
 

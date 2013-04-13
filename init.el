@@ -11,6 +11,7 @@
 (setq *elpa-package-dir* "~/.emacs.d/elpa/"
       *custom-els-dir*   "~/emacs-config/emacs-cmpitg-config/")
 
+
 ;; cmpitg's specific configuration
 
 (load-file "~/emacs-config/emacs-cmpitg-config/custom-functions.el")

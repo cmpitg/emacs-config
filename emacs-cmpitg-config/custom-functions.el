@@ -23,12 +23,10 @@
 ;;; Functions
 ;;;
 
-(setq *custom-els* "~/.elisp/custom-els/")
-
 (defun $custom-els-path (suffix)
   "Return the path of the custom elisp configuration"
   (unless ($is-var-defined? '*custom-els-dir*)
-    (setq *custom-els-dir* "~/.emacs.d/"))
+    (setq *custom-els-dir* "~/emacs-cmpitg/emacs-cmpitg-config/"))
   (concat *custom-els-dir* suffix))
 
 (defun $load-custom-el (&rest filenames)

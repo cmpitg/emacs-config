@@ -16,8 +16,8 @@
 (defvar *$doc-strings* (make-hash-table)
   "Storing documentation strings.")
 
-(defvar *tim-emacs-lisp-keywords*   '("$defalias"))
-(defvar *tim-emacs-lisp-functions*  '("$auto-load-mode"))
+(defvar *$emacs-lisp-keywords*   '("$defalias"))
+(defvar *$emacs-lisp-functions*  '("$auto-load-mode"))
 
 ;;;
 ;;; Functions
@@ -764,8 +764,8 @@ new snippet\")"
 
 (font-lock-add-keywords 'emacs-lisp-mode
   (list (cons (eval-when-compile
-                (regexp-opt *tim-emacs-lisp-keywords* 'words))
+                (regexp-opt *$emacs-lisp-keywords* 'words))
               font-lock-keyword-face)
         (cons (eval-when-compile
-                (regexp-opt *tim-emacs-lisp-functions* 'words))
+                (regexp-opt *$emacs-lisp-functions* 'words))
               font-lock-function-name-face)))

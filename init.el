@@ -59,6 +59,7 @@
              '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (package-initialize)
+(apply #'$install-packages *package-list*)
 
 ;; Add all the load path
 

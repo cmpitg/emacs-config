@@ -59,6 +59,11 @@
              '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 (package-initialize)
+
+;; Fetch the list of available packages
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
 (apply #'$install-packages *package-list*)
 
 ;; Add all the load path

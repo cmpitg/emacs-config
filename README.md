@@ -8,6 +8,8 @@
 
 * PySide for Python 3 (`python3-pyside` package in a Debian-based systems)
 
+* Python-Xlib is required for `ibus-mode` to work
+
 ## Installation
 
 (TODO)

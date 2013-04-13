@@ -16,7 +16,6 @@
                            whitespace
                            ruby-mode
                            yaml-mode
-                           picolisp
                            haskell-mode
                            markdown-mode
                            markdown-mode+
@@ -76,7 +75,7 @@
 ;; Redo mode
 ;;
 
-(require 'redo+)
+(require 'redo+ nil 'error)
 
 ;;
 ;; Smooth scrolling

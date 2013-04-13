@@ -754,6 +754,9 @@ new snippet\")"
 ($defalias '$save-file 'save-buffer
   "Save current buffer")
 
+($defalias '$package-installed? 'package-installed-p
+  "Determine if a package is installed")
+
 ;;;
 ;;; Settings
 ;;;

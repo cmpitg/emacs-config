@@ -16,25 +16,29 @@
 (defvar *$doc-strings* (make-hash-table)
   "Storing documentation strings.")
 
-(defvar *tim-emacs-lisp-keywords*   '("$defalias"))
-(defvar *tim-emacs-lisp-functions*  '("$auto-load-mode"))
+(defvar *$emacs-lisp-keywords*   '("$defalias"))
+(defvar *$emacs-lisp-functions*  '("$auto-load-mode"))
 
 ;;;
 ;;; Functions
 ;;;
 
-(setq *custom-els* "~/.elisp/custom-els/")
-
 (defun $custom-els-path (suffix)
   "Return the path of the custom elisp configuration"
   (unless ($is-var-defined? '*custom-els-dir*)
-    (setq *custom-els-dir* "~/.emacs.d/"))
+    (setq *custom-els-dir* "~/emacs-cmpitg/emacs-cmpitg-config/"))
   (concat *custom-els-dir* suffix))
 
 (defun $load-custom-el (&rest filenames)
   "Load customization file"
   (dolist (file filenames)
     (load-file ($custom-els-path file))))
+
+(defun $install-packages (&rest packages)
+  "Install a list of package if not installed"
+  (dolist (package-name packages)
+    (unless ($package-installed? package-name)
+      (package-install package-name))))
 
 (defun $current-path ()
   "Get full path of the current file"
@@ -756,6 +760,9 @@ new snippet\")"
 ($defalias '$save-file 'save-buffer
   "Save current buffer")
 
+($defalias '$package-installed? 'package-installed-p
+  "Determine if a package is installed")
+
 ;;;
 ;;; Settings
 ;;;
@@ -766,8 +773,8 @@ new snippet\")"
 
 (font-lock-add-keywords 'emacs-lisp-mode
   (list (cons (eval-when-compile
-                (regexp-opt *tim-emacs-lisp-keywords* 'words))
+                (regexp-opt *$emacs-lisp-keywords* 'words))
               font-lock-keyword-face)
         (cons (eval-when-compile
-                (regexp-opt *tim-emacs-lisp-functions* 'words))
+                (regexp-opt *$emacs-lisp-functions* 'words))
               font-lock-function-name-face)))

@@ -1,19 +1,37 @@
 ;; -*- mode: emacs-lisp -*-
 
-;;
-;; Workspace
-;;
-
-(find-file "~/emacs-config/init.el")
-
 ;; Global constants
 
 (setq *elpa-package-dir* "~/.emacs.d/elpa/"
-      *custom-els-dir*   "~/emacs-config/emacs-cmpitg-config/")
+      *custom-els-dir*   "~/emacs-config/emacs-cmpitg-config/"
+      *package-list*     '(redo+
+                           smooth-scrolling
+                           auto-complete
+                           whitespace
+                           ruby-mode
+                           yaml-mode
+                           haskell-mode
+                           markdown-mode
+                           markdown-mode+
+                           sr-speedbar
+                           paredit
+                           autopair
+                           auto-complete
+                           evil
+                           evil-nerd-commenter
+                           evil-leader
+                           evil-paredit))
+
 
 ;; cmpitg's specific configuration
 
 (load-file "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
+
+;;
+;; Workspace
+;;
+
+($open-file "~/emacs-config/init.el")
 ($open-file-other-window "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
 
 ($load-custom-el "emacs-environment.el"
@@ -40,6 +58,14 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/"))
 
+(package-initialize)
+
+;; Fetch the list of available packages
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(apply #'$install-packages *package-list*)
+
 ;; Add all the load path
 
 (mapc #'(lambda (dir)
@@ -50,7 +76,7 @@
 ;; Redo mode
 ;;
 
-(require 'redo+)
+;; (require 'redo+ nil 'error)
 
 ;;
 ;; Smooth scrolling

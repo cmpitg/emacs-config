@@ -13,6 +13,7 @@
                            haskell-mode
                            markdown-mode
                            markdown-mode+
+                           sr-speedbar
                            paredit
                            autopair
                            auto-complete
@@ -75,7 +76,7 @@
 ;; Redo mode
 ;;
 
-(require 'redo+ nil 'error)
+;; (require 'redo+ nil 'error)
 
 ;;
 ;; Smooth scrolling

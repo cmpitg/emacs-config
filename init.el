@@ -1,11 +1,5 @@
 ;; -*- mode: emacs-lisp -*-
 
-;;
-;; Workspace
-;;
-
-(find-file "~/emacs-config/init.el")
-
 ;; Global constants
 
 (setq *elpa-package-dir* "~/.emacs.d/elpa/"
@@ -31,6 +25,12 @@
 ;; cmpitg's specific configuration
 
 (load-file "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
+
+;;
+;; Workspace
+;;
+
+($open-file "~/emacs-config/init.el")
 ($open-file-other-window "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
 
 ($load-custom-el "emacs-environment.el"

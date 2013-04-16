@@ -4,9 +4,9 @@
 ;; * Remove package
 ;; * Simple way to add menu
 ;; * Bookmark -> add to menu:
-;;   - ~/.emacs_default
-;;   - ~/.emacs_cmpitg/
-;;   - ~/.emacs_cmpitg/keymap-common.el
+;;   - ~/emacs-config
+;;   - ~/emacs-config/init.el
+;;   - ~/emacs-config/emacs-cmpitg-config/keymap-common.el
 ;;
 
 ;;;

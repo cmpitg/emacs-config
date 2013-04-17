@@ -7,6 +7,9 @@
 ;;   - ~/emacs-config
 ;;   - ~/emacs-config/init.el
 ;;   - ~/emacs-config/emacs-cmpitg-config/keymap-common.el
+;; * File browser:
+;;   - Right-click context menu
+;;   - GUI path selection
 ;;
 
 ;;;

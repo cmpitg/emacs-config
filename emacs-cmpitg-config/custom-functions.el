@@ -10,6 +10,7 @@
 ;; * File browser:
 ;;   - Right-click context menu
 ;;   - GUI path selection
+;;   - Auto-complete path
 ;;
 
 ;;;

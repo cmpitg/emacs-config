@@ -20,6 +20,7 @@
 #   - <Ctrl F> to jump to filter entry (Done)
 #
 # * Right-click context menu:
+#   - Go to dir
 #   - Copy full path (Done)
 #   - Copy file name (Done)
 #   - Delete file (Done)

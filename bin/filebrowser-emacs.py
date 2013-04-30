@@ -624,6 +624,25 @@ class MyTreeView(QTreeView):
             item = self.selectedItems()[0]
             os.system('emacsclient --eval \'(find-file "{0}")\''.format(item))
 
+    def copyFullPath(self):
+        items = self.selectedItems()
+        if len(items) == 1:
+            QApplication.clipboard().setText(items[0])
+
+    def contextMenuEvent(self, event):
+        """Activated when right-clicking."""
+
+        if len(self.selectedItems()) == 0:
+            return
+        menu = QMenu(self)
+
+        copyFullPathAction = QAction("&Copy full path", self)
+        copyFullPathAction.triggered.connect(self.copyFullPath)
+
+        menu.addAction(copyFullPathAction)
+
+        menu.exec_(event.globalPos())
+
 
 class MainWindow(QWidget):
 

@@ -16,15 +16,14 @@ This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is pa
 
 ## Installation
 
-(TODO)
 
     ```sh
     cd ~
     git clone git://github.com/CMPITG/emacs-config.git
     mkdir -p ~/bin/
-    echo "export PATH=$HOME/bin:$PATH" >> /etc/.bashrc
+    echo "export PATH=$HOME/bin:$PATH" >> ~/.bashrc
     # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
-    # echo "export PATH=$HOME/bin:$PATH" >> /etc/.zshrc
+    # echo "export PATH=$HOME/bin:$PATH" >> ~/.zshrc
     cp -Rv ~/emacs-config/bin/* ~/bin/
     chmod +x ~/bin/te ~/bin/filebrowser-emacs.py
     # TODO: Desktop file
@@ -39,11 +38,20 @@ This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is pa
     git pull
     ```
 
+## Uninstallation
+
+Just remove the `~/emacs-config` directory and your `~/emacs-custom.el` if necessary:
+
+    ```sh
+    rm -rf ~/emacs-config
+    rm ~/emacs-custom.el
+    ```
+
 ## Running
 
-Run the `te` command (TODO).
+Run the `te` command.  All other customization must go into your `~/emacs-custom.el` file.
 
-## Description
+## Detailed Description
 
 Differences from default Emacs:
 

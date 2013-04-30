@@ -633,7 +633,7 @@ class MyTreeView(QTreeView):
     def copyFileName(self):
         items = self.selectedItems()
         if len(items) == 1:
-            QApplication.clipboard().setText(items[0])
+            QApplication.clipboard().setText(getFileName(items[0]))
 
     def deleteFile(self):
         items = self.selectedItems()
@@ -755,6 +755,10 @@ class MainWindow(QWidget):
 
 def expandPath(path):
     return os.path.abspath(os.path.expanduser(path))
+
+
+def getFileName(path):
+    return re.split(r"/[^/]+", path[::-1], 1)[0][::-1]
 
 
 app = QApplication(sys.argv)

@@ -767,6 +767,9 @@ new snippet\")"
 ($defalias '$package-installed? 'package-installed-p
   "Determine if a package is installed")
 
+($defalias '$file-exists? 'file-exists-p
+  "Determine if a file exists")
+
 ;;;
 ;;; Settings
 ;;;

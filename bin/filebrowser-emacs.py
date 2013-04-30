@@ -638,7 +638,9 @@ class MyTreeView(QTreeView):
     def deleteFile(self):
         items = self.selectedItems()
         if len(items) == 1:
-            QApplication.clipboard().setText(items[0])
+            path = items[0]
+            print(showDeleteFileConfirmDialog(path))
+            # QApplication.clipboard().setText(items[0])
 
     def createContextMenu(self):
         menu = QMenu(self)
@@ -763,6 +765,16 @@ def reverse(aStr):
 
 def getFileName(path):
     return reverse(re.split(r"/[^/]+", reverse(path), 1)[0])
+
+
+def showDeleteFileConfirmDialog(path):
+    msgbox = QMessageBox()
+    msgbox.setText("You are about to delete a file!")
+    msgbox.setInformativeText("Are you sure you want to remove\n{0}\nfrom your system?".format(path))
+    msgbox.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+    msgbox.setDefaultButton(QMessageBox.No)
+    msgbox.setIcon(QMessageBox.Critical)
+    return [True, False][msgbox.exec_() == QMessageBox.No]
 
 
 app = QApplication(sys.argv)

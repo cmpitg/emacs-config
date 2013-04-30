@@ -9,6 +9,9 @@
 #   - Setting QPushButton with pixmap
 #   - Using action
 #   - Using shortcut
+#   - Setting the application icon
+#
+# * Setting the application icon
 #
 # * Shortcut:
 #   - <Ctrl L> to jump to path entry (Done)
@@ -38,7 +41,7 @@ ROOT_PATH = "~/Desktop/"
 
 
 def getOpenDirIcon():
-    return [
+    return QIcon(QPixmap([
         "32 32 471 2",
         "   c None",
         ".  c #8CA7FE",
@@ -543,7 +546,7 @@ def getOpenDirIcon():
         "                        X#Y#Z#`# $_ .$+$                        ",
         "                            @$#$$$%$&$                          ",
         "                                *$=$-$                          "
-    ]
+    ]))
 
 
 class MyTreeView(QTreeView):
@@ -664,7 +667,7 @@ class MainWindow(QWidget):
         box = QHBoxLayout()
 
         button = QToolButton()
-        action = QAction(QIcon(QPixmap(getOpenDirIcon())), "Browse (Ctrl+O)", None)
+        action = QAction(getOpenDirIcon(), "Browse (Ctrl+O)", None)
         action.setShortcut(QKeySequence("Ctrl+O"))
         action.triggered.connect(self.browseDir)
         button.setDefaultAction(action)

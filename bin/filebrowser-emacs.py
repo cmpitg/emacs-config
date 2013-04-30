@@ -556,6 +556,7 @@ class MyTreeView(QTreeView):
         super(MyTreeView, self).__init__()
 
         self.createModel()
+        self.createContextMenu()
 
         for idx in range(1, 4):
             self.hideColumn(idx)
@@ -629,11 +630,7 @@ class MyTreeView(QTreeView):
         if len(items) == 1:
             QApplication.clipboard().setText(items[0])
 
-    def contextMenuEvent(self, event):
-        """Activated when right-clicking."""
-
-        if len(self.selectedItems()) == 0:
-            return
+    def createContextMenu(self):
         menu = QMenu(self)
 
         copyFullPathAction = QAction("&Copy full path", self)
@@ -641,7 +638,16 @@ class MyTreeView(QTreeView):
 
         menu.addAction(copyFullPathAction)
 
-        menu.exec_(event.globalPos())
+        self.menu = menu
+
+    def showContextMenu(self, event):
+        self.menu.exec_(event.globalPos())
+
+    def contextMenuEvent(self, event):
+        """Activated when right-clicking."""
+
+        if len(self.selectedItems()) != 0:
+            self.showContextMenu(event)
 
 
 class MainWindow(QWidget):

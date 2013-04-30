@@ -757,8 +757,12 @@ def expandPath(path):
     return os.path.abspath(os.path.expanduser(path))
 
 
+def reverse(aStr):
+    return aStr[::-1]
+
+
 def getFileName(path):
-    return re.split(r"/[^/]+", path[::-1], 1)[0][::-1]
+    return reverse(re.split(r"/[^/]+", reverse(path), 1)[0])
 
 
 app = QApplication(sys.argv)

@@ -12,6 +12,8 @@
 #   - Setting the application icon
 #   - How to construct context menu
 #
+# * Last visited dir @ `$HOME/emacs-config/filebrowser-lastdir.txt`
+#
 # * Setting the application icon (Done)
 #
 # * Shortcuts:

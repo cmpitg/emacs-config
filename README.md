@@ -16,18 +16,35 @@ This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is pa
 
 ## Installation
 
+* First, clone the repository to your `$HOME`:
 
     ```sh
     cd ~
     git clone git://github.com/CMPITG/emacs-config.git
+    ```
+
+* Make sure you have a local `bin` directory for executable files.  You can skip this step if you've already had:
+
+    ```sh
     mkdir -p ~/bin/
     echo "export PATH=$HOME/bin:$PATH" >> ~/.bashrc
     # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
     # echo "export PATH=$HOME/bin:$PATH" >> ~/.zshrc
-    cp -Rv ~/emacs-config/bin/* ~/bin/
-    chmod +x ~/bin/te ~/bin/filebrowser-emacs.py
-    # TODO: Desktop file
     ```
+* Now, symlinks all the executables to your `$HOME/bin`:
+
+    ```sh
+    ln -s ~/emacs-config/bin/filebrowser-emacs.py ~/bin/
+    ln -s ~/emacs-config/bin/te ~/bin/
+    ```
+
+* Make your own customization file if necessary, edit and have fun:
+
+    ```sh
+    touch ~/emacs-config
+    ```
+    
+(TODO) Desktop file
 
 ## Update
 
@@ -49,7 +66,7 @@ Just remove the `~/emacs-config` directory and your `~/emacs-custom.el` if neces
 
 ## Running
 
-Run the `te` command.  All other customization must go into your `~/emacs-custom.el` file.
+Run the `te` (or `~/bin/te`) command.  All other customization must go into your `~/emacs-custom.el` file.
 
 ## Detailed Description
 

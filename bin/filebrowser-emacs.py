@@ -630,13 +630,31 @@ class MyTreeView(QTreeView):
         if len(items) == 1:
             QApplication.clipboard().setText(items[0])
 
+    def copyFileName(self):
+        items = self.selectedItems()
+        if len(items) == 1:
+            QApplication.clipboard().setText(items[0])
+
+    def deleteFile(self):
+        items = self.selectedItems()
+        if len(items) == 1:
+            QApplication.clipboard().setText(items[0])
+
     def createContextMenu(self):
         menu = QMenu(self)
 
         copyFullPathAction = QAction("&Copy full path", self)
         copyFullPathAction.triggered.connect(self.copyFullPath)
 
+        copyFileNameAction = QAction("Copy &file name", self)
+        copyFileNameAction.triggered.connect(self.copyFileName)
+
+        deleteFileAction = QAction("&Delete file", self)
+        deleteFileAction.triggered.connect(self.deleteFile)
+
         menu.addAction(copyFullPathAction)
+        menu.addAction(copyFileNameAction)
+        menu.addAction(deleteFileAction)
 
         self.menu = menu
 

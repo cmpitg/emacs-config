@@ -22,7 +22,7 @@
 # * Right-click context menu:
 #   - Copy full path (Done)
 #   - Copy file name (Done)
-#   - Delete file
+#   - Delete file (Done)
 #
 # * File filter (Done)
 #

@@ -10,6 +10,7 @@
 #   - Using action
 #   - Using shortcut
 #   - Setting the application icon
+#   - How to construct context menu
 #
 # * Setting the application icon (Done)
 #

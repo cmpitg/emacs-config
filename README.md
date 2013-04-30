@@ -51,6 +51,32 @@ Differences from default Emacs:
 
 * Opening file with a GUI dialog (provided by Zenity, defined in `~/emacs-config/emacs-cmpitg-config//custom-functions.el`)
 
+### File Browser
+
+The file browser is written in `PySide` (Python wrapper for Qt framework).  Source code is the file browser is distributed under the terms of the GNU General Public License version 3.0.
+
+#### Requirements
+
+* Emacs 24+
+
+* Emacs is running under server mode with default socket path.  This could be achieved by using the `init.el` config or simply evaluating `(server-start)` in your Emacs.
+
+#### All features:
+
+* Files and directories are displayed as a tree:
+  - Double click an item it in your Emacs server
+  - Right click an item to open the context menu:
+    + Browse the current item if it's a directory
+    + Copy full path
+    + Copy file/directory name
+    + Delete file/directory from your drive
+
+* Current visited path is displayed in the first text box called the *pathbar*.  Supported format includes `~` and shell variables (such as `$HOME`, `$SOMEDIR`).  Shortcut to go directly to the *pathbar*: `Ctrl+L`.
+
+* User could modify directly the *pathbar* or click on the left-top browse button to visit a directory.  Shortcut to open directory browser dialog: `Ctrl+O`.
+
+* The displayed files/directories could be filter by name with the regular expression in the second text box (called *filterbar*).  Shortcut to go directly to the *filterbar*: `Ctrl-F`.
+
 ## TODOs
 
 Refactor this document into simple use cases/tasks.

@@ -11,9 +11,9 @@
 #   - Using shortcut
 #   - Setting the application icon
 #
-# * Setting the application icon
+# * Setting the application icon (Done)
 #
-# * Shortcut:
+# * Shortcuts:
 #   - <Ctrl L> to jump to path entry (Done)
 #   - <Ctrl O> to browse directory graphically (Done)
 #   - <Ctrl F> to jump to filter entry (Done)
@@ -634,6 +634,7 @@ class MainWindow(QWidget):
         self.setWindowTitle("File Browser for Emacs Server")
 
         self.createChildren()
+        self.setWindowIcon(getOpenDirIcon())
         self.show()
 
     def createChildren(self):

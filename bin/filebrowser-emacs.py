@@ -12,7 +12,8 @@
 #
 # * Shortcut:
 #   - <Ctrl L> to jump to path entry (Done)
-#   - <Ctrl F> to jump to filter entry
+#   - <Ctrl O> to browse directory graphically (Done)
+#   - <Ctrl F> to jump to filter entry (Done)
 #
 # * Right-click context menu:
 #   - Copy full path
@@ -654,19 +655,24 @@ class MainWindow(QWidget):
         fil = QLineEdit()
         fil.setText("*")
 
+        focusShortcut = QShortcut(QKeySequence("Ctrl+F"), fil)
+        focusShortcut.activated.connect(fil.setFocus)
+
         self.filterEntry = fil
 
     def createPathEntry(self):
         box = QHBoxLayout()
 
         button = QToolButton()
-        action = QAction(QIcon(QPixmap(getOpenDirIcon())), "Browse (Ctrl+L)", None)
-        action.setShortcut(QKeySequence("Ctrl+L"))
+        action = QAction(QIcon(QPixmap(getOpenDirIcon())), "Browse (Ctrl+O)", None)
+        action.setShortcut(QKeySequence("Ctrl+O"))
         action.triggered.connect(self.browseDir)
         button.setDefaultAction(action)
 
         pathEntry = QLineEdit()
         pathEntry.setText(ROOT_PATH)
+        focusShortcut = QShortcut(QKeySequence("Ctrl+L"), pathEntry)
+        focusShortcut.activated.connect(pathEntry.setFocus)
 
         box.addWidget(button)
         box.addWidget(pathEntry)
@@ -692,7 +698,8 @@ class MainWindow(QWidget):
         path = QFileDialog.getExistingDirectory(None,
                                                 "Open Directory",
                                                 self.getCurrentPath())
-        self.setPath(path)
+        if path != "":
+            self.setPath(path)
 
     def setPath(self, path):
         self.pathEntry.setText(path)

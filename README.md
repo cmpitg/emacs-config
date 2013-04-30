@@ -41,7 +41,7 @@ This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is pa
 * Make your own customization file if necessary, edit and have fun:
 
     ```sh
-    touch ~/emacs-config
+    touch ~/emacs-custom.el
     ```
     
 (TODO) Desktop file

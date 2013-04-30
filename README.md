@@ -1,5 +1,9 @@
 # cmpitg's Emacs config
 
+## Introduction
+
+This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is packaged so it could be automagically installed in any new system which runs Emacs 24+.  The best and most recommended way to use is via the installation method mentioned below.  You could use this configuration in parallel with any Emacs configuration (such as [Emacs Prelude](https://github.com/bbatsov/prelude)) as long as other configurations don't mess up with the `~/emacs-config` directory.
+
 ## Requirements
 
 * Emacs 24

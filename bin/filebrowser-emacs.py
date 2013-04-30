@@ -639,8 +639,8 @@ class MyTreeView(QTreeView):
         items = self.selectedItems()
         if len(items) == 1:
             path = items[0]
-            print(showDeleteFileConfirmDialog(path))
-            # QApplication.clipboard().setText(items[0])
+            if showDeleteFileConfirmDialog(path):
+                self.model.remove(self.model.index(path))
 
     def createContextMenu(self):
         menu = QMenu(self)

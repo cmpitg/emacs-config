@@ -27,13 +27,6 @@
 
 (load-file "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
 
-;;
-;; Workspace
-;;
-
-($open-file "~/emacs-config/init.el")
-($open-file-other-window "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
-
 ($load-custom-el "emacs-environment.el"
                  "keymap-common.el"
                  "aliases.el"
@@ -257,3 +250,10 @@
 ;; Make shebang-ed files executable
 
 (add-hook 'after-save-hook '$make-executable)
+
+;;
+;; All user-defined customization goes here
+;;
+
+(if ($file-exists? "~/emacs-custom.el")
+    (load "~/emacs-custom.el"))

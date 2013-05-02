@@ -41,7 +41,8 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 
 
-ROOT_PATH = "~/Desktop/"
+DEFAULT_ROOT_PATH = "~/"
+CONFIG_FILE = "~/emacs-config/filebrowser-lastdir.txt"
 
 
 def getOpenDirIcon():
@@ -569,9 +570,10 @@ class MyTreeView(QTreeView):
         model = QFileSystemModel()
         self.model = model
         self.setModel(model)
-        self.setPath(DEFAULT_ROOT_PATH)
+        self.setPath(getRootPath())
 
     def setPath(self, path):
+        print(">> Path -> ", path)
         path = expandPath(path)
 
         if not os.path.isdir(path):
@@ -723,7 +725,7 @@ class MainWindow(QWidget):
         button.setDefaultAction(action)
 
         pathEntry = QLineEdit()
-        pathEntry.setText(DEFAULT_ROOT_PATH)
+        pathEntry.setText(getRootPath())
         focusShortcut = QShortcut(QKeySequence("Ctrl+L"), pathEntry)
         focusShortcut.activated.connect(pathEntry.setFocus)
 
@@ -772,6 +774,22 @@ def reverse(aStr):
 
 def getFileName(path):
     return reverse(re.split(r"/[^/]+", reverse(path), 1)[0])
+
+
+def getRootPath():
+    configFile = expandPath(CONFIG_FILE)
+
+    if pathExists(configFile):
+        rootPath = ""
+        with open(configFile, "r") as f:
+            rootPath = f.readline()
+
+        if rootPath[-1] == "\n":
+            rootPath = rootPath[:-1]
+
+        return [expandPath(DEFAULT_ROOT_PATH), rootPath][pathExists(rootPath)]
+
+    return expandPath(DEFAULT_ROOT_PATH)
 
 
 def showDeleteFileConfirmDialog(path):

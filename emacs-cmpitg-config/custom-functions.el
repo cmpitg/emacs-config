@@ -749,7 +749,7 @@ new snippet\")"
 ($defalias '$eval 'eval
   "Eval an expression")
 
-($defalias '$mark-eedefun 'mark-defun
+($defalias '$mark-defun 'mark-defun
   "mark-defun")
 
 ($defalias '$eval-selection 'eval-region

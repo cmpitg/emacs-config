@@ -598,7 +598,8 @@ Example:
 
 (defun $current-dir ()
   "Current directory"
-  (file-name-directory (or load-file-name buffer-file-name)))
+  (or (file-name-directory (or load-file-name buffer-file-name ""))
+      "~"))
 
 (defun $build-open-file-cmd-string ()
   "Build a string used to execute an open-file dialog"

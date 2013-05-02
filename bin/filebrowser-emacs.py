@@ -578,7 +578,7 @@ class MyTreeView(QTreeView):
     def setPath(self, path):
         path = expandPath(path)
 
-        if not os.path.isdir(path):
+        if not isDir(path):
             return
 
         self.current_path = path
@@ -649,8 +649,17 @@ class MyTreeView(QTreeView):
             if showDeleteFileConfirmDialog(path):
                 self.model.remove(self.model.index(path))
 
+    def gotoDir(self):
+        items = self.selectedItems()
+        if len(items) == 1:
+            path = items[0]
+            setPath(path)
+
     def createContextMenu(self):
         menu = QMenu(self)
+
+        gotoDirAction = QAction("&Go to dir", self)
+        gotoDirAction.triggered.connect(self.gotoDir)
 
         copyFullPathAction = QAction("&Copy full path", self)
         copyFullPathAction.triggered.connect(self.copyFullPath)
@@ -661,6 +670,7 @@ class MyTreeView(QTreeView):
         deleteFileAction = QAction("&Delete file", self)
         deleteFileAction.triggered.connect(self.deleteFile)
 
+        menu.addAction(gotoDirAction)
         menu.addAction(copyFullPathAction)
         menu.addAction(copyFileNameAction)
         menu.addAction(deleteFileAction)
@@ -801,6 +811,14 @@ def getRootPath():
         return [expandPath(DEFAULT_ROOT_PATH), rootPath][pathExists(rootPath)]
 
     return expandPath(DEFAULT_ROOT_PATH)
+
+
+def isDir(path):
+    return os.path.isdir(expandPath(path))
+
+
+def setPath(path):
+    mainWin.setPath(path)
 
 
 def showDeleteFileConfirmDialog(path):

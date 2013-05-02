@@ -758,6 +758,10 @@ class MainWindow(QWidget):
         self.pathEntry.setText(path)
 
 
+def pathExists(path):
+    return os.path.exists(path)
+
+
 def expandPath(path):
     return os.path.abspath(os.path.expanduser(path))
 

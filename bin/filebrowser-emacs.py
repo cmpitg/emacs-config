@@ -14,6 +14,8 @@
 #
 # * Last visited dir @ `$HOME/emacs-config/filebrowser-lastdir.txt`
 #
+# * Autocomplete path
+#
 # * Setting the application icon (Done)
 #
 # * Shortcuts:
@@ -573,7 +575,6 @@ class MyTreeView(QTreeView):
         self.setPath(getRootPath())
 
     def setPath(self, path):
-        print(">> Path -> ", path)
         path = expandPath(path)
 
         if not os.path.isdir(path):
@@ -758,6 +759,15 @@ class MainWindow(QWidget):
 
     def setPath(self, path):
         self.pathEntry.setText(path)
+
+    def getPath(self):
+        return self.pathEntry.text()
+
+    def closeEvent(self, event):
+        """Before closing, save the current path into the config file"""
+        with open(expandPath(CONFIG_FILE), "w") as f:
+            f.write(self.getPath())
+        event.accept()
 
 
 def pathExists(path):

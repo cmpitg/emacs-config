@@ -17,6 +17,12 @@
 #
 # * Autocomplete path
 #
+# * Up button
+#
+# * Back button
+#
+# * Expand/collapse all button
+#
 # * Setting the application icon (Done)
 #
 # * Shortcuts:

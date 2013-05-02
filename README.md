@@ -6,6 +6,8 @@ This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is pa
 
 ## Requirements
 
+* A \*nix system, I *don't and probably never will* support Window$
+
 * Emacs 24
 
 * zenity (GTK+ GUI dialog, used for file choosing)
@@ -78,7 +80,9 @@ Differences from default Emacs:
 
 * "When in doubt, leave it out".  Use only what I need.
 
-* Opening file with a GUI dialog (provided by Zenity, defined in `~/emacs-config/emacs-cmpitg-config//custom-functions.el`)
+* Opening file with a GUI dialog (provided by Zenity, defined in `~/emacs-config/emacs-cmpitg-config/custom-functions.el`).
+
+* Maintainable.
 
 ### File Browser
 

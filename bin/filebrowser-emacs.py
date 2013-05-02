@@ -569,7 +569,7 @@ class MyTreeView(QTreeView):
         model = QFileSystemModel()
         self.model = model
         self.setModel(model)
-        self.setPath(ROOT_PATH)
+        self.setPath(DEFAULT_ROOT_PATH)
 
     def setPath(self, path):
         path = expandPath(path)
@@ -723,7 +723,7 @@ class MainWindow(QWidget):
         button.setDefaultAction(action)
 
         pathEntry = QLineEdit()
-        pathEntry.setText(ROOT_PATH)
+        pathEntry.setText(DEFAULT_ROOT_PATH)
         focusShortcut = QShortcut(QKeySequence("Ctrl+L"), pathEntry)
         focusShortcut.activated.connect(pathEntry.setFocus)
 

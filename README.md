@@ -1,6 +1,12 @@
 # cmpitg's Emacs config
 
+## Introduction
+
+This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is packaged so it could be automagically installed in any new system which runs Emacs 24+.  The best and most recommended way to use is via the installation method mentioned below.  You could use this configuration in parallel with any Emacs configuration (such as [Emacs Prelude](https://github.com/bbatsov/prelude)) as long as other configurations don't mess up with the `~/emacs-config` directory.
+
 ## Requirements
+
+* A \*nix system, I *don't and probably never will* support Window$
 
 * Emacs 24
 
@@ -12,19 +18,35 @@
 
 ## Installation
 
-(TODO)
+* First, clone the repository to your `$HOME`:
 
     ```sh
     cd ~
     git clone git://github.com/CMPITG/emacs-config.git
-    mkdir -p ~/bin/
-    echo "export PATH=$HOME/bin:$PATH" >> /etc/.bashrc
-    # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
-    # echo "export PATH=$HOME/bin:$PATH" >> /etc/.zshrc
-    cp -Rv ~/emacs-config/bin/* ~/bin/
-    chmod +x ~/bin/te ~/bin/filebrowser-emacs.py
-    # TODO: Desktop file
     ```
+
+* Make sure you have a local `bin` directory for executable files.  You can skip this step if you've already had:
+
+    ```sh
+    mkdir -p ~/bin/
+    echo "export PATH=$HOME/bin:$PATH" >> ~/.bashrc
+    # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
+    # echo "export PATH=$HOME/bin:$PATH" >> ~/.zshrc
+    ```
+* Now, symlinks all the executables to your `$HOME/bin`:
+
+    ```sh
+    ln -s ~/emacs-config/bin/filebrowser-emacs.py ~/bin/
+    ln -s ~/emacs-config/bin/te ~/bin/
+    ```
+
+* Make your own customization file if necessary, edit and have fun:
+
+    ```sh
+    touch ~/emacs-custom.el
+    ```
+    
+(TODO) Desktop file
 
 ## Update
 
@@ -35,11 +57,20 @@
     git pull
     ```
 
+## Uninstallation
+
+Just remove the `~/emacs-config` directory and your `~/emacs-custom.el` if necessary:
+
+    ```sh
+    rm -rf ~/emacs-config
+    rm ~/emacs-custom.el
+    ```
+
 ## Running
 
-Run the `te` command (TODO).
+Run the `te` (or `~/bin/te`) command.  All other customization must go into your `~/emacs-custom.el` file.
 
-## Description
+## Detailed Description
 
 Differences from default Emacs:
 
@@ -49,7 +80,35 @@ Differences from default Emacs:
 
 * "When in doubt, leave it out".  Use only what I need.
 
-* Opening file with a GUI dialog (provided by Zenity, defined in `~/emacs-config/emacs-cmpitg-config//custom-functions.el`)
+* Opening file with a GUI dialog (provided by Zenity, defined in `~/emacs-config/emacs-cmpitg-config/custom-functions.el`).
+
+* Maintainable.
+
+### File Browser
+
+The file browser is written in `PySide` (Python wrapper for Qt framework).  Source code is the file browser is distributed under the terms of the GNU General Public License version 3.0.
+
+#### Requirements
+
+* Emacs 24+
+
+* Emacs is running under server mode with default socket path.  This could be achieved by using the `init.el` config or simply evaluating `(server-start)` in your Emacs.
+
+#### All features:
+
+* Files and directories are displayed as a tree:
+  - Double click an item it in your Emacs server
+  - Right click an item to open the context menu:
+    + Browse the current item if it's a directory
+    + Copy full path
+    + Copy file/directory name
+    + Delete file/directory from your drive
+
+* Current visited path is displayed in the first text box called the *pathbar*.  Supported format includes `~` and shell variables (such as `$HOME`, `$SOMEDIR`).  Shortcut to go directly to the *pathbar*: `Ctrl+L`.
+
+* User could modify directly the *pathbar* or click on the left-top browse button to visit a directory.  Shortcut to open directory browser dialog: `Ctrl+O`.
+
+* The displayed files/directories could be filter by name with the regular expression in the second text box (called *filterbar*).  Shortcut to go directly to the *filterbar*: `Ctrl-F`.
 
 ## TODOs
 

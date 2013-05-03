@@ -4,9 +4,13 @@
 ;; * Remove package
 ;; * Simple way to add menu
 ;; * Bookmark -> add to menu:
-;;   - ~/.emacs_default
-;;   - ~/.emacs_cmpitg/
-;;   - ~/.emacs_cmpitg/keymap-common.el
+;;   - ~/emacs-config
+;;   - ~/emacs-config/init.el
+;;   - ~/emacs-config/emacs-cmpitg-config/keymap-common.el
+;; * File browser:
+;;   - Right-click context menu
+;;   - GUI path selection
+;;   - Auto-complete path
 ;;
 
 ;;;
@@ -594,7 +598,8 @@ Example:
 
 (defun $current-dir ()
   "Current directory"
-  (file-name-directory (or load-file-name buffer-file-name)))
+  (or (file-name-directory (or load-file-name buffer-file-name ""))
+      "~"))
 
 (defun $build-open-file-cmd-string ()
   "Build a string used to execute an open-file dialog"
@@ -745,7 +750,7 @@ new snippet\")"
 ($defalias '$eval 'eval
   "Eval an expression")
 
-($defalias '$mark-eedefun 'mark-defun
+($defalias '$mark-defun 'mark-defun
   "mark-defun")
 
 ($defalias '$eval-selection 'eval-region
@@ -762,6 +767,9 @@ new snippet\")"
 
 ($defalias '$package-installed? 'package-installed-p
   "Determine if a package is installed")
+
+($defalias '$file-exists? 'file-exists-p
+  "Determine if a file exists")
 
 ;;;
 ;;; Settings

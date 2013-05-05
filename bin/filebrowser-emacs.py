@@ -32,6 +32,7 @@
 #
 # * Right-click context menu:
 #   - Go to dir
+#   - New dir
 #   - Copy full path (Done)
 #   - Copy file name (Done)
 #   - Delete file (Done)

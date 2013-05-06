@@ -198,15 +198,14 @@ cyclic order."
        (put this-command 'state "all lower")))))
 
 (defun $fix-hard-wrapped-region (begin end)
-  "Fix hard-wrapped paragraphs"
+  "Fix hard-wrapped paragraphs."
   (interactive "r")
   (shell-command-on-region begin end "fmt -w 2500" nil t))
 
 (defun $is-var-defined? (symbol)
-  "Check if the variable corresponding to the symbol is defined"
+  "Check if the variable corresponding to the symbol is defined."
   (boundp symbol))
 
-;;; Delete current file
 (defun delete-current-file ()
   "Delete the file associated with the current buffer.
 Delete the current buffer too."

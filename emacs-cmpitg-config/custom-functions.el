@@ -145,8 +145,8 @@ increase the opacity"
       (progn (ecb-deactivate)
              (setf *is-ecb-running?* nil))))
 
-;; Put the mode-line to the top of the window
 (defun $put-mode-line-to-top ()
+  "Put the mode-line to the top of the window"
   (setq header-line-format mode-line-format mode-line-format nil))
 
 ;; Vi-like open line

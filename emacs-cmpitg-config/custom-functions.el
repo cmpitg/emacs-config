@@ -25,7 +25,7 @@
 ;;;
 
 (defun $custom-els-path (suffix)
-  "Return the path of the custom elisp configuration"
+  "Return the path of the custom Emacs Lisp configuration"
   (unless ($is-var-defined? '*custom-els-dir*)
     (setq *custom-els-dir* "~/emacs-cmpitg/emacs-cmpitg-config/"))
   (concat *custom-els-dir* suffix))
@@ -59,10 +59,8 @@
   (previous-line))
 
 (defun $server-start (&rest dir)
-  "Start an Emacs server in a specific socket directory"
-  ;; (setq server-socket-dir (if dir
-  ;;                             (format "/tmp/%s" dir)
-  ;;                           "/tmp/emacs-te/"))
+  "Start an Emacs server in a specific socket directory.  If no
+directory is specified, the default dir /tmp/emacs1000/ is used"
   (if dir (setq server-socket-dir dir))
   (server-start))
 

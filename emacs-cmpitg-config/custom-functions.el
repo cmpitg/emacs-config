@@ -118,26 +118,26 @@ directory is specified, the default dir /tmp/emacs1000/ is used"
 
 (defun $modify-opacity (&optional dec)
   "Modify the opacity of emacs frame; if DEC is t,
-increase the opacity."
+increase the opacity"
   (let* ((alpha-or-nil (frame-parameter nil 'alpha))
          (old-alpha (if alpha-or-nil alpha-or-nil 100))
          (new-alpha (if dec (- old-alpha 10) (+ old-alpha 10))))
     (when (and (>= new-alpha frame-alpha-lower-limit) (<= new-alpha 100))
       (modify-frame-parameters nil (list (cons 'alpha new-alpha))))))
 
-(setq is-ibus-on? nil)
+(setq *is-ibus-on?* nil)
 (defun $toggle-ibus ()
-  "Toggle ibus."
+  "Toggle ibus"
   (interactive)
-  (if (null is-ibus-on?)
+  (if (null *is-ibus-on?*)
       (progn (ibus-enable)
-             (setf is-ibus-on? t))
+             (setf *is-ibus-on?* t))
       (progn (ibus-disable)
-             (setf is-ibus-on? nil))))
+             (setf *is-ibus-on?* nil))))
 
 (setq is-ecb-running? nil)
 (defun $toggle-ecb ()
-  "Toggle ECB."
+  "Toggle ECB"
   (interactive)
   (if (null is-ecb-running?)
       (progn (ecb-activate)

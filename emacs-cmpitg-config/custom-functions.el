@@ -80,8 +80,7 @@ directory is specified, the default dir /tmp/emacs1000/ is used"
               (> pos 0)) (setf stop t)))))
 
 (defun $move-to-compilation-buffer ()
-  "Move to *compilation* buffer, if it doesn't exist yet, stand
-still."
+  "Move to *compilation* buffer if it exists"
   (interactive)
   (if (find "*compilation*" (mapcar #'buffer-name (buffer-list))
             :test #'equal)

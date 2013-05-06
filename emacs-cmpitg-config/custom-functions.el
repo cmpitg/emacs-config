@@ -27,30 +27,30 @@
 ;;;
 
 (defun $custom-els-path (suffix)
-  "Return the path of the custom Emacs Lisp configuration"
+  "Return the path of the custom Emacs Lisp configuration."
   (unless ($is-var-defined? '*custom-els-dir*)
     (setq *custom-els-dir* "~/emacs-cmpitg/emacs-cmpitg-config/"))
   (concat *custom-els-dir* suffix))
 
 (defun $load-custom-el (&rest filenames)
-  "Load customization file"
+  "Load customization file."
   (dolist (file filenames)
     (load-file ($custom-els-path file))))
 
 (defun $install-packages (&rest packages)
-  "Install a list of package if not installed"
+  "Install a list of package if not installed."
   (dolist (package-name packages)
     (unless ($package-installed? package-name)
       (package-install package-name))))
 
 (defun $current-path ()
-  "Get full path of the current file"
+  "Get full path of the current file."
   (interactive)
   (if buffer-file-name buffer-file-name
     ""))
 
 (defun $duplicate-line ()
-  "Duplicate current line"
+  "Duplicate current line."
   (interactive)
   (beginning-of-line)
   (kill-line)
@@ -62,16 +62,16 @@
 
 (defun $server-start (&rest dir)
   "Start an Emacs server in a specific socket directory.  If no
-directory is specified, the default dir /tmp/emacs1000/ is used"
+directory is specified, the default dir /tmp/emacs1000/ is used."
   (if dir (setq server-socket-dir dir))
   (server-start))
 
 (defun $add-load-path (path)
-  "Add path to load-path"
+  "Add path to load-path."
   (add-to-list 'load-path path))
 
 (defun $next-buffer ()
-  "Move to the next non-special buffer, unless it's *scratch*"
+  "Move to the next non-special buffer, unless it's *scratch*."
   (interactive)
   (let* ((name "") (pos nil) (stop nil))
     (while (null stop)
@@ -82,14 +82,14 @@ directory is specified, the default dir /tmp/emacs1000/ is used"
               (> pos 0)) (setf stop t)))))
 
 (defun $move-to-compilation-buffer ()
-  "Move to *compilation* buffer if it exists"
+  "Move to *compilation* buffer if it exists."
   (interactive)
   (if (find "*compilation*" (mapcar #'buffer-name (buffer-list))
             :test #'equal)
       (switch-to-buffer "*compilation*")))
 
 (defun $previous-buffer ()
-  "Move to the previous non-special buffer, unless it's *scratch*"
+  "Move to the previous non-special buffer, unless it's *scratch*."
   (interactive)
   (let* ((name "") (pos nil) (stop nil))
     (while (null stop)
@@ -118,7 +118,7 @@ directory is specified, the default dir /tmp/emacs1000/ is used"
 
 (defun $modify-opacity (&optional dec)
   "Modify the opacity of emacs frame; if DEC is t,
-increase the opacity"
+increase the opacity."
   (let* ((alpha-or-nil (frame-parameter nil 'alpha))
          (old-alpha (if alpha-or-nil alpha-or-nil 100))
          (new-alpha (if dec (- old-alpha 10) (+ old-alpha 10))))
@@ -127,7 +127,7 @@ increase the opacity"
 
 (setq *is-ibus-on?* nil)
 (defun $toggle-ibus ()
-  "Toggle ibus"
+  "Toggle ibus."
   (interactive)
   (if (null *is-ibus-on?*)
       (progn (ibus-enable)
@@ -137,7 +137,7 @@ increase the opacity"
 
 (setq *is-ecb-running?* nil)
 (defun $toggle-ecb ()
-  "Toggle ECB"
+  "Toggle ECB."
   (interactive)
   (if (null *is-ecb-running?*)
       (progn (ecb-activate)
@@ -146,18 +146,18 @@ increase the opacity"
              (setf *is-ecb-running?* nil))))
 
 (defun $put-mode-line-to-top ()
-  "Put the mode-line to the top of the window"
+  "Put the mode-line to the top of the window."
   (setq header-line-format mode-line-format mode-line-format nil))
 
 (defun $open-line (arg)
-  "Open line and move to the next line"
+  "Open line and move to the next line."
   (interactive "p")
   (end-of-line)
   (open-line arg)
   (next-line 1))
 
 (defun $open-line-before (arg)
-  "Open line and move to the previous line"
+  "Open line and move to the previous line."
   (interactive "p")
   (beginning-of-line)
   (open-line arg))
@@ -165,7 +165,7 @@ increase the opacity"
 (defun $toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
 Toggles from 3 cases: UPPER CASE, lower case, Title Case, in that
-cyclic order"
+cyclic order."
   (interactive)
   (let (pos1 pos2 (deactivate-mark nil) (case-fold-search nil))
     (if (and transient-mark-mode mark-active)

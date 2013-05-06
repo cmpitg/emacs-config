@@ -206,7 +206,7 @@ cyclic order."
   "Check if the variable corresponding to the symbol is defined."
   (boundp symbol))
 
-(defun delete-current-file ()
+(defun $delete-current-file ()
   "Delete the file associated with the current buffer.
 Delete the current buffer too."
   (interactive)
@@ -217,9 +217,9 @@ Delete the current buffer too."
       (delete-file currentFile)
       (message (concat "Deleted file: " currentFile)) ) ) )
 
-(defun open-current-file-as-admin ()
-  "Open the current buffer as unix root.
-This command works on unixes only."
+(defun $open-current-file-as-admin ()
+  "Open the current buffer as *nix root.
+This command works on `sudo` *nixes only."
   (interactive)
   (when buffer-file-name
     (find-alternate-file
@@ -718,10 +718,6 @@ new snippet\")"
 
 ($defalias '$save-macro 'save-macro
   "Save current cached macro")
-
-($defalias '$open-current-file-as-admin 'open-current-file-as-admin "")
-
-($defalias '$delete-current-file 'delete-current-file "")
 
 ($defalias '$put-mode-line-to-top 'tim-put-mode-line-to-top "")
 

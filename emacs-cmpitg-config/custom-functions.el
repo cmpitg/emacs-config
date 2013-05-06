@@ -292,9 +292,10 @@ This command works on `sudo` *nixes only."
   (and (string-match ".*\.ls$" ($current-file-full-path))
        (compile (concat "livescript -c -d " ($current-file-full-path)))))
 
-(defun unicode-symbol (name)
-  "Translate a symbolic name for a Unicode character -- e.g., LEFT-ARROW
- or GREATER-THAN into an actual Unicode character code. "
+(defun $unicode-symbol (name)
+  "Translate a symbolic name for a Unicode character -- e.g.,
+ LEFT-ARROW or GREATER-THAN into an actual Unicode character
+ code. "
   (decode-char 'ucs (case name
                       (left-arrow 8592)
                       (up-arrow 8593)
@@ -329,7 +330,7 @@ This command works on `sudo` *nixes only."
                       (gamma #X03B3)
                       (delta #X03B4))))
 
-(defun substitute-pattern-with-unicode (pattern symbol)
+(defun $substitute-pattern-with-unicode (pattern symbol)
   "Add a font lock hook to replace the matched part of PATTERN
 with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
   (font-lock-add-keywords
@@ -339,7 +340,7 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
                                     'decompose-region)
                     nil))))))
 
-(defun substitute-patterns-with-unicode (patterns)
+(defun $substitute-patterns-with-unicode (patterns)
   "Call SUBSTITUTE-PATTERN-WITH-UNICODE repeatedly."
   (mapcar #'(lambda (x)
               (substitute-pattern-with-unicode (car x)

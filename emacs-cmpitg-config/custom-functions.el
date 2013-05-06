@@ -256,7 +256,7 @@ This command works on `sudo` *nixes only."
   )
 
 (defun $make-executable ()
-  "Chmod +x a file"
+  "Chmod +x current file."
   (interactive)
   (and
    (save-excursion

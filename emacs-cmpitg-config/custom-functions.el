@@ -135,15 +135,15 @@ increase the opacity"
       (progn (ibus-disable)
              (setf *is-ibus-on?* nil))))
 
-(setq is-ecb-running? nil)
+(setq *is-ecb-running?* nil)
 (defun $toggle-ecb ()
   "Toggle ECB"
   (interactive)
-  (if (null is-ecb-running?)
+  (if (null *is-ecb-running?*)
       (progn (ecb-activate)
-             (setf is-ecb-running? t))
+             (setf *is-ecb-running?* t))
       (progn (ecb-deactivate)
-             (setf is-ecb-running? nil))))
+             (setf *is-ecb-running?* nil))))
 
 ;; Put the mode-line to the top of the window
 (defun $put-mode-line-to-top ()

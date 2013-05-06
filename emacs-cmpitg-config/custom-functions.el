@@ -13,6 +13,13 @@
 ;;
 
 ;;;
+;;; Customization
+;;;
+
+;; Exuberant ctags tags generating
+(setq *ctags-path* "/usr/bin/ctags")
+
+;;;
 ;;; Definitions
 ;;;
 
@@ -225,10 +232,6 @@ This command works on `sudo` *nixes only."
     (find-alternate-file
      (concat "/sudo:root@localhost:"
              buffer-file-name))))
-
-;; Exuberant ctags tags generating
-;; (setq *ctags-path* "/usr/bin/ctags")
-(setq *ctags-path* "/home/cmpitg/bin/create-ctags")
 
 (defun create-tags (dir-name)
   "Create tags file using exuberant ctags."

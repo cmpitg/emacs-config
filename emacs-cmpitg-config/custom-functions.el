@@ -272,7 +272,7 @@ This command works on `sudo` *nixes only."
     (concat "Saved as script: " buffer-file-name))))
 
 (defun $compile-haml ()
-  "Compile haml file to html file"
+  "Compile HAML file to HTML file."
   (interactive)
   (and (string-match ".*\.haml$" ($current-file-full-path))
        (let ((output-file (replace-regexp-in-string "\.haml$" ".html"
@@ -281,13 +281,13 @@ This command works on `sudo` *nixes only."
                           "\"" output-file "\"")))))
 
 (defun $compile-coffee ()
-  "Compile CoffeeScript to JavaScript"
+  "Compile CoffeeScript to JavaScript."
   (interactive)
   (and (string-match ".*\.coffee$" ($current-file-full-path))
        (compile (concat "coffee -c " ($current-file-full-path)))))
 
 (defun $compile-livescript ()
-  "Compile LiveScript to JavaScript"
+  "Compile LiveScript to JavaScript."
   (interactive)
   (and (string-match ".*\.ls$" ($current-file-full-path))
        (compile (concat "livescript -c -d " ($current-file-full-path)))))

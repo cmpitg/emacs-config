@@ -149,26 +149,23 @@ increase the opacity"
   "Put the mode-line to the top of the window"
   (setq header-line-format mode-line-format mode-line-format nil))
 
-;; Vi-like open line
 (defun $open-line (arg)
-  "Open line and move to the next line."
+  "Open line and move to the next line"
   (interactive "p")
   (end-of-line)
   (open-line arg)
   (next-line 1))
 
-;; Vi-like open line before
 (defun $open-line-before (arg)
-  "Open line and move to the previous line."
+  "Open line and move to the previous line"
   (interactive "p")
   (beginning-of-line)
   (open-line arg))
 
-;; Toggle case fix
 (defun $toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
-Toggles from 3 cases: UPPER CASE, lower case, Title Case,
-in that cyclic order."
+Toggles from 3 cases: UPPER CASE, lower case, Title Case, in that
+cyclic order"
   (interactive)
   (let (pos1 pos2 (deactivate-mark nil) (case-fold-search nil))
     (if (and transient-mark-mode mark-active)

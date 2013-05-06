@@ -8,6 +8,8 @@
 ;;   - ~/emacs-config/init.el
 ;;   - ~/emacs-config/emacs-cmpitg-config/keymap-common.el
 ;; * Make all the config files packages
+;; * Default compile command for filetype
+;; * Hide compilation buffer
 ;;
 
 ;;;

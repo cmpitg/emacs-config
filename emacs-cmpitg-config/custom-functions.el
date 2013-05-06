@@ -227,16 +227,16 @@ This command works on `sudo` *nixes only."
              buffer-file-name))))
 
 ;; Exuberant ctags tags generating
-;; (setq path-to-ctags "/usr/bin/ctags")
-(setq path-to-ctags "/home/cmpitg/bin/create-ctags")
+;; (setq *ctags-path* "/usr/bin/ctags")
+(setq *ctags-path* "/home/cmpitg/bin/create-ctags")
 
 (defun create-tags (dir-name)
   "Create tags file using exuberant ctags."
   (interactive "DDirectory: ")
   (shell-command
-   ;; (format "%s -f %s/TAGS -e -R %s *.c *.h *.cpp *.hpp *.java *.php *.js *.pas" path-to-ctags
+   ;; (format "%s -f %s/TAGS -e -R %s *.c *.h *.cpp *.hpp *.java *.php *.js *.pas" *ctags-path*
    ;;         dir-name (directory-file-name dir-name))
-   (format "%s %s -e" path-to-ctags dir-name)))
+   (format "%s %s -e" *ctags-path* dir-name)))
 
 (defun $save-macro (name)
   "Take a name as argument and save the last defined macro."

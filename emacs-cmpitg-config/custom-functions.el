@@ -197,8 +197,8 @@ cyclic order."
        (downcase-region pos1 pos2)
        (put this-command 'state "all lower")))))
 
-;; Fixed hard-wrapped paragraphs
-(defun fix-hard-wrapped-region (begin end)
+(defun $fix-hard-wrapped-region (begin end)
+  "Fix hard-wrapped paragraphs"
   (interactive "r")
   (shell-command-on-region begin end "fmt -w 2500" nil t))
 

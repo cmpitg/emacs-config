@@ -233,7 +233,7 @@ This command works on `sudo` *nixes only."
      (concat "/sudo:root@localhost:"
              buffer-file-name))))
 
-(defun create-tags (dir-name)
+(defun $create-tags (dir-name)
   "Create tags file using exuberant ctags."
   (interactive "DDirectory: ")
   (shell-command
@@ -291,8 +291,6 @@ This command works on `sudo` *nixes only."
   (interactive)
   (and (string-match ".*\.ls$" ($current-file-full-path))
        (compile (concat "livescript -c -d " ($current-file-full-path)))))
-
-(switch-to-buffer "*scratch*")
 
 (defun unicode-symbol (name)
   "Translate a symbolic name for a Unicode character -- e.g., LEFT-ARROW

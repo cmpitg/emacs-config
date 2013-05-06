@@ -99,7 +99,6 @@ directory is specified, the default dir /tmp/emacs1000/ is used"
       (if (or (null pos)
               (> pos 0)) (setf stop t)))))
 
-;; Function to change default window height and width
 (defun $set-frame-size-according-to-resolution ()
   "Set frame size based on current resolution"
   (interactive)
@@ -117,7 +116,6 @@ directory is specified, the default dir /tmp/emacs1000/ is used"
                      (cons 'height (/ (- (x-display-pixel-height) 100)
                                       (frame-char-height)))))))
 
-;; Function to change opacity of emacs window
 (defun $modify-opacity (&optional dec)
   "Modify the opacity of emacs frame; if DEC is t,
 increase the opacity."

@@ -21,8 +21,8 @@
 
 ;; Exuberant ctags tags generating
 (setq *ctags-path* "/usr/bin/ctags"
-      *snippet-dir* "~/.elisp/mysnippets"
-      *license-dir* "~/Docs/Licenses/"
+      *snippet-dir* "~/emacs-config/snippets"
+      *license-dir* "~/emacs-config/license-list/"
       *me* "Duong H. Nguyen <cmpitg AT gmailDOTcom>"
       )
 

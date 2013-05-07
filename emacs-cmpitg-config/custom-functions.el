@@ -529,101 +529,101 @@ Example:
   (shell))
 
 (defun $man-this ()
-  "man this word"
+  "`man` this word."
   (interactive)
   (manual-entry (current-word)))
 
 (defun $switch-to-scratch ()
-  "Switch to the *scratch* buffer"
+  "Switch to the *scratch* buffer."
   (interactive)
   (switch-to-buffer "*scratch*"))
 
 (defun $selection-start ()
-  "Return the position of the start of the current selection"
+  "Return the position of the start of the current selection."
   (region-beginning))
 
 (defun $selection-end ()
-  "Return the position of the end of the current selection"
+  "Return the position of the end of the current selection."
   (region-end))
 
 (defun $is-selecting? ()
-  "Determine if a selection is being held"
+  "Determine if a selection is being held."
   (region-active-p))
 
 (defun $current-selection ()
-  "Return the current selected text"
+  "Return the current selected text."
   (if ($is-selecting?)
       (buffer-substring ($selection-start)
                         ($selection-end))
       ""))
 
 (defun $get-selection ()
-  "Return the current selected text"
+  "Return the current selected text."
   ($current-selection))
 
 (defun $delete-selected-text ()
-  "Delete the selected text, do nothing if none text is selected"
+  "Delete the selected text, do nothing if none text is selected."
   (if ($is-selecting?)
       (delete-region ($selection-start) ($selection-end))))
 
 (defun $eval-string (str)
-  "Eval a string"
+  "Eval a string."
   (interactive)
   ($eval (read str)))
 
 (defun $string-empty? (str)
-  "Determine if a string is empty"
+  "Determine if a string is empty."
   (= 0 (length str)))
 
 (defun $string-but-last (str)
-  "Return a string with its last character removed"
+  "Return a string with its last character removed."
   (if ($string-empty? str) ""
     (substring str 0 -1)))
 
 (defun $current-dir ()
-  "Current directory"
+  "Current directory."
   (or (file-name-directory (or load-file-name buffer-file-name ""))
       "~"))
 
 (defun $build-open-file-cmd-string ()
-  "Build a string used to execute an open-file dialog"
+  "Build a string used to execute an open-file dialog."
   (concat "zenity --file-selection --filename "
           ($current-dir)
           " 2>/dev/null"))
 
 (defun $open-file-gui ()
-  "Open a file using Zenity"
+  "Open a file using Zenity."
   (interactive)
   (let ((filename ($string-but-last ($exec ($build-open-file-cmd-string)))))
     (unless ($string-empty? filename)
       ($open-file filename))))
 
 (defun $open-file-gui-other-window ()
-  "Open a file using Zenity"
+  "Open a file using Zenity."
   (interactive)
   (let ((filename ($string-but-last ($exec ($build-open-file-cmd-string)))))
     (unless ($string-empty? filename)
       ($open-file-other-window filename))))
 
 (defun $string-empty? (str)
-  "Determine if a string is empty"
+  "Determine if a string is empty."
   (zerop (length str)))
 
 (defun $first-char-as-string (str)
-  "Return the first character of a string as string"
+  "Return the first character of a string as strin.g"
   (if (not ($string-empty? str))
       (substring str 0 1)
     ""))
 
 (defun $last-char-as-string (str)
-  "Return the last character of a string as string"
+  "Return the last character of a string as string."
   (if (not ($string-empty? str))
       (let ((len (length str)))
         (substring str (- len 1) len))
     ""))
 
 (defun $trim-spaces (text)
-  "Trim spaces at the beginning and the end of a portion of text"
+  "Trim spaces at the beginning and the end of a portion of text."
   (while (and (not ($string-empty? text))
               (string= " " ($first-char-as-string text)))
     (setf text (substring text 1)))
@@ -636,18 +636,18 @@ Example:
 
 (defun $is-external-command? (text)
   "Determine if a portion of text indicates an external
-command (started with a `!`)"
+command (started with a `!`)."
   (and (not ($string-empty? text))
        (string= "!" ($first-char-as-string text))))
 
 (defun $is-directory? (text)
   "Determine if a portion of text is a directory on the
-filesystem"
+filesystem."
   (read ($exec (format "[ -d '%s' ] && echo -n t || echo -n nil" text))))
 
 (defun $eval-or-exec-print (command-text)
   "Execute external command then pipe result to the current
-buffer or eval an Emacs Lisp expression"
+buffer or eval an Emacs Lisp expression."
   (let ((command ($trim-spaces command-text)))
     (unless ($string-empty? command)
       (progn

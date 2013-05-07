@@ -360,10 +360,6 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
   (interactive "sLicense (CaSE-SeNSitIVE): ")
   (insert-file (format "~/Docs/Licenses/%s.txt" license-file)))
 
-;;;
-;;; Wrappers, helpers
-;;;
-
 (defun $clipboard<-region (begin end)
   "Copy region to clipboard"
   (clipboard-kill-ring-save begin end))

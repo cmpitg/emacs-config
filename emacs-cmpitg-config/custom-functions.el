@@ -10,6 +10,9 @@
 ;; * Make all the config files packages
 ;; * Default compile command for filetype
 ;; * Hide compilation buffer
+;; * Add license (GUI)
+;; * Add license header (GUI)
+;; * Better semantic for interactive
 ;;
 
 ;;;

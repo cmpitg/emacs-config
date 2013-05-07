@@ -347,7 +347,7 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
                                                (cdr x)))
           patterns))
 
-(defun tim-add-new-snippet (mode name)
+(defun $add-new-snippet (mode name)
   "Add new yassnipet snippet"
   (interactive "MMode (without the `-mode` part): \nMSnippet name: ")
   (let* ((mode (format "%s-mode" mode))
@@ -694,7 +694,7 @@ buffer or eval an Emacs Lisp expression"
 
 (defun $defalias (new-symbol old-symbol doc-string)
   "Define an alias NEW-SYMBOL from OLD-SYMBOL with documentation
-string.  E.g. ($defalias '$add-snippet 'tim-add-new-snippet \"Add
+string.  E.g. ($defalias '$add-snippet '$add-new-snippet \"Add
 new snippet\")"
   (defalias new-symbol old-symbol)
   (puthash new-symbol doc-string *$doc-strings*))
@@ -704,22 +704,6 @@ new snippet\")"
 
 ($defalias '$pipe-then-exec-in-other-window 'shell-command-on-region
   "Filter a command but pipe the other to other window")
-
-($defalias '$add-snippet 'tim-add-new-snippet
-  "Add a new yasnippet snippet")
-
-($defalias '$modify-opacity 'tim-opacity-modify
-  "Modify current frame opacity")
-
-($defalias '$create-tags 'create-tags
-  "Create tags table using exuberant-tags")
-
-($defalias '$save-macro 'save-macro
-  "Save current cached macro")
-
-($defalias '$put-mode-line-to-top 'tim-put-mode-line-to-top "")
-
-($defalias '$toggle-case 'tim-toggle-case "")
 
 ($defalias '$current-point 'point "")
 

@@ -409,14 +409,14 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
         (error "No word at point" word))))
 
 (defun $mark-line ()
-  "Mark current line"
+  "Mark current line."
   (interactive)
   (beginning-of-line)
   (push-mark (point) t t)
   (end-of-line))
 
 (defun $insert-me ()
-  "Insert my information"
+  "Insert my information."
   (interactive)
   (insert "Duong \"Yang\" Nguyen <cmpitgATgmailDOTcom>"))
 

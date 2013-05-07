@@ -496,10 +496,10 @@ Example:
     (dolist (filetype filetypes)
       (add-to-list 'auto-mode-alist (cons filetype mode)))))
 
-(defun $goto-snippets-folder ()
-  "Go to personal snippets folder"
+(defun $goto-snippets-dir ()
+  "Go to personal snippets directory"
   (interactive)
-  (find-file ($custom-els-path "mysnippets")))
+  (find-file *snippet-dir*))
 
 (defun $goto-keymap-ext-config ()
   "Go to keymap-extended configuration file"

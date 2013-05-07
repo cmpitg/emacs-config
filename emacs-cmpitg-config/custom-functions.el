@@ -672,16 +672,14 @@ buffer or eval an Emacs Lisp expression."
   (define-key evil-motion-state-map key func))
 
 (defun $evil-undefine-helper ()
-  "(Helper) Prevent evil from disabling a default Emacs kepmap"
+  "(Helper) Prevent evil from disabling a default Emacs kepmap."
   (interactive)
   (let (evil-mode-map-alist)
     (call-interactively (key-binding (this-command-keys)))))
 
 (defun $evil-undefine (key)
-  "(Helper) Prevent evil from disabling a default Emacs kepmap"
+  "(Helper) Prevent evil from disabling a default Emacs kepmap."
   ($evil-define-key key 'evil-undefine))
-
-;; ($evil-undefine (kbd "M-x"))
 
 (defun $defalias (new-symbol old-symbol doc-string)
   "Define an alias NEW-SYMBOL from OLD-SYMBOL with documentation

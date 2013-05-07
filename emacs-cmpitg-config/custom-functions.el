@@ -362,7 +362,7 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
     (find-file yas-file)))
 
 (defun $add-license (license-file)
-  "Add license to point"
+  "Add license."
   (interactive "sLicense (CaSE-SeNSitIVE): ")
   (insert-file (format "%s/%s.txt" *license-dir* license-file)))
 

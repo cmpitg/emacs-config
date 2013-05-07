@@ -17,7 +17,9 @@
 ;;;
 
 ;; Exuberant ctags tags generating
-(setq *ctags-path* "/usr/bin/ctags")
+(setq *ctags-path* "/usr/bin/ctags"
+      *snippet-dir* "~/.elisp/mysnippets"
+      )
 
 ;;;
 ;;; Definitions
@@ -351,7 +353,7 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
   "Add new yassnipet snippet"
   (interactive "MMode (without the `-mode` part): \nMSnippet name: ")
   (let* ((mode (format "%s-mode" mode))
-         (yas-file (format "~/.elisp/mysnippets/%s/%s" mode name)))
+         (yas-file (format "%s/%s/%s" *snippet-dir* mode name)))
     (message "file: %s" yas-file)
     (find-file yas-file)))
 

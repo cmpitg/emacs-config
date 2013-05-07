@@ -7,11 +7,24 @@
 ;;   - ~/emacs-config
 ;;   - ~/emacs-config/init.el
 ;;   - ~/emacs-config/emacs-cmpitg-config/keymap-common.el
-;; * File browser:
-;;   - Right-click context menu
-;;   - GUI path selection
-;;   - Auto-complete path
+;; * Make all the config files packages
+;; * Default compile command for filetype
+;; * Hide compilation buffer
+;; * Add license (GUI)
+;; * Add license header (GUI)
+;; * Better semantic for interactive
 ;;
+
+;;;
+;;; Customization
+;;;
+
+;; Exuberant ctags tags generating
+(setq *ctags-path* "/usr/bin/ctags"
+      *snippet-dir* "~/emacs-config/snippets"
+      *license-dir* "~/emacs-config/license-list/"
+      *me* "Duong H. Nguyen <cmpitg AT gmailDOTcom>"
+      )
 
 ;;;
 ;;; Definitions
@@ -28,30 +41,30 @@
 ;;;
 
 (defun $custom-els-path (suffix)
-  "Return the path of the custom elisp configuration"
+  "Return the path of the custom Emacs Lisp configuration."
   (unless ($is-var-defined? '*custom-els-dir*)
     (setq *custom-els-dir* "~/emacs-cmpitg/emacs-cmpitg-config/"))
   (concat *custom-els-dir* suffix))
 
 (defun $load-custom-el (&rest filenames)
-  "Load customization file"
+  "Load customization file."
   (dolist (file filenames)
     (load-file ($custom-els-path file))))
 
 (defun $install-packages (&rest packages)
-  "Install a list of package if not installed"
+  "Install a list of package if not installed."
   (dolist (package-name packages)
     (unless ($package-installed? package-name)
       (package-install package-name))))
 
 (defun $current-path ()
-  "Get full path of the current file"
+  "Get full path of the current file."
   (interactive)
   (if buffer-file-name buffer-file-name
     ""))
 
 (defun $duplicate-line ()
-  "Duplicate current line"
+  "Duplicate current line."
   (interactive)
   (beginning-of-line)
   (kill-line)
@@ -62,19 +75,17 @@
   (previous-line))
 
 (defun $server-start (&rest dir)
-  "Start an Emacs server in a specific socket directory"
-  ;; (setq server-socket-dir (if dir
-  ;;                             (format "/tmp/%s" dir)
-  ;;                           "/tmp/emacs-te/"))
+  "Start an Emacs server in a specific socket directory.  If no
+directory is specified, the default dir /tmp/emacs1000/ is used."
   (if dir (setq server-socket-dir dir))
   (server-start))
 
 (defun $add-load-path (path)
-  "Add path to load-path"
+  "Add path to load-path."
   (add-to-list 'load-path path))
 
 (defun $next-buffer ()
-  "Move to the next non-special buffer, unless it's *scratch*"
+  "Move to the next non-special buffer, unless it's *scratch*."
   (interactive)
   (let* ((name "") (pos nil) (stop nil))
     (while (null stop)
@@ -85,15 +96,14 @@
               (> pos 0)) (setf stop t)))))
 
 (defun $move-to-compilation-buffer ()
-  "Move to *compilation* buffer, if it doesn't exist yet, stand
-still."
+  "Move to *compilation* buffer if it exists."
   (interactive)
   (if (find "*compilation*" (mapcar #'buffer-name (buffer-list))
             :test #'equal)
       (switch-to-buffer "*compilation*")))
 
 (defun $previous-buffer ()
-  "Move to the previous non-special buffer, unless it's *scratch*"
+  "Move to the previous non-special buffer, unless it's *scratch*."
   (interactive)
   (let* ((name "") (pos nil) (stop nil))
     (while (null stop)
@@ -103,7 +113,6 @@ still."
       (if (or (null pos)
               (> pos 0)) (setf stop t)))))
 
-;; Function to change default window height and width
 (defun $set-frame-size-according-to-resolution ()
   "Set frame size based on current resolution"
   (interactive)
@@ -121,7 +130,6 @@ still."
                      (cons 'height (/ (- (x-display-pixel-height) 100)
                                       (frame-char-height)))))))
 
-;; Function to change opacity of emacs window
 (defun $modify-opacity (&optional dec)
   "Modify the opacity of emacs frame; if DEC is t,
 increase the opacity."
@@ -131,31 +139,30 @@ increase the opacity."
     (when (and (>= new-alpha frame-alpha-lower-limit) (<= new-alpha 100))
       (modify-frame-parameters nil (list (cons 'alpha new-alpha))))))
 
-(setq is-ibus-on? nil)
+(setq *is-ibus-on?* nil)
 (defun $toggle-ibus ()
   "Toggle ibus."
   (interactive)
-  (if (null is-ibus-on?)
+  (if (null *is-ibus-on?*)
       (progn (ibus-enable)
-             (setf is-ibus-on? t))
+             (setf *is-ibus-on?* t))
       (progn (ibus-disable)
-             (setf is-ibus-on? nil))))
+             (setf *is-ibus-on?* nil))))
 
-(setq is-ecb-running? nil)
+(setq *is-ecb-running?* nil)
 (defun $toggle-ecb ()
   "Toggle ECB."
   (interactive)
-  (if (null is-ecb-running?)
+  (if (null *is-ecb-running?*)
       (progn (ecb-activate)
-             (setf is-ecb-running? t))
+             (setf *is-ecb-running?* t))
       (progn (ecb-deactivate)
-             (setf is-ecb-running? nil))))
+             (setf *is-ecb-running?* nil))))
 
-;; Put the mode-line to the top of the window
 (defun $put-mode-line-to-top ()
+  "Put the mode-line to the top of the window."
   (setq header-line-format mode-line-format mode-line-format nil))
 
-;; Vi-like open line
 (defun $open-line (arg)
   "Open line and move to the next line."
   (interactive "p")
@@ -163,18 +170,16 @@ increase the opacity."
   (open-line arg)
   (next-line 1))
 
-;; Vi-like open line before
 (defun $open-line-before (arg)
   "Open line and move to the previous line."
   (interactive "p")
   (beginning-of-line)
   (open-line arg))
 
-;; Toggle case fix
 (defun $toggle-letter-case ()
   "Toggle the letter case of current word or text selection.
-Toggles from 3 cases: UPPER CASE, lower case, Title Case,
-in that cyclic order."
+Toggles from 3 cases: UPPER CASE, lower case, Title Case, in that
+cyclic order."
   (interactive)
   (let (pos1 pos2 (deactivate-mark nil) (case-fold-search nil))
     (if (and transient-mark-mode mark-active)
@@ -206,17 +211,16 @@ in that cyclic order."
        (downcase-region pos1 pos2)
        (put this-command 'state "all lower")))))
 
-;; Fixed hard-wrapped paragraphs
-(defun fix-hard-wrapped-region (begin end)
+(defun $fix-hard-wrapped-region (begin end)
+  "Fix hard-wrapped paragraphs."
   (interactive "r")
   (shell-command-on-region begin end "fmt -w 2500" nil t))
 
 (defun $is-var-defined? (symbol)
-  "Check if the variable corresponding to the symbol is defined"
+  "Check if the variable corresponding to the symbol is defined."
   (boundp symbol))
 
-;;; Delete current file
-(defun delete-current-file ()
+(defun $delete-current-file ()
   "Delete the file associated with the current buffer.
 Delete the current buffer too."
   (interactive)
@@ -227,26 +231,22 @@ Delete the current buffer too."
       (delete-file currentFile)
       (message (concat "Deleted file: " currentFile)) ) ) )
 
-(defun open-current-file-as-admin ()
-  "Open the current buffer as unix root.
-This command works on unixes only."
+(defun $open-current-file-as-admin ()
+  "Open the current buffer as *nix root.
+This command works on `sudo` *nixes only."
   (interactive)
   (when buffer-file-name
     (find-alternate-file
      (concat "/sudo:root@localhost:"
              buffer-file-name))))
 
-;; Exuberant ctags tags generating
-;; (setq path-to-ctags "/usr/bin/ctags")
-(setq path-to-ctags "/home/cmpitg/bin/create-ctags")
-
-(defun create-tags (dir-name)
+(defun $create-tags (dir-name)
   "Create tags file using exuberant ctags."
   (interactive "DDirectory: ")
   (shell-command
-   ;; (format "%s -f %s/TAGS -e -R %s *.c *.h *.cpp *.hpp *.java *.php *.js *.pas" path-to-ctags
+   ;; (format "%s -f %s/TAGS -e -R %s *.c *.h *.cpp *.hpp *.java *.php *.js *.pas" *ctags-path*
    ;;         dir-name (directory-file-name dir-name))
-   (format "%s %s -e" path-to-ctags dir-name)))
+   (format "%s %s -e" *ctags-path* dir-name)))
 
 (defun $save-macro (name)
   "Take a name as argument and save the last defined macro."
@@ -263,7 +263,7 @@ This command works on unixes only."
   )
 
 (defun $make-executable ()
-  "Chmod +x a file"
+  "Chmod +x current file."
   (interactive)
   (and
    (save-excursion
@@ -279,7 +279,7 @@ This command works on unixes only."
     (concat "Saved as script: " buffer-file-name))))
 
 (defun $compile-haml ()
-  "Compile haml file to html file"
+  "Compile HAML file to HTML file."
   (interactive)
   (and (string-match ".*\.haml$" ($current-file-full-path))
        (let ((output-file (replace-regexp-in-string "\.haml$" ".html"
@@ -288,22 +288,21 @@ This command works on unixes only."
                           "\"" output-file "\"")))))
 
 (defun $compile-coffee ()
-  "Compile CoffeeScript to JavaScript"
+  "Compile CoffeeScript to JavaScript."
   (interactive)
   (and (string-match ".*\.coffee$" ($current-file-full-path))
        (compile (concat "coffee -c " ($current-file-full-path)))))
 
 (defun $compile-livescript ()
-  "Compile LiveScript to JavaScript"
+  "Compile LiveScript to JavaScript."
   (interactive)
   (and (string-match ".*\.ls$" ($current-file-full-path))
        (compile (concat "livescript -c -d " ($current-file-full-path)))))
 
-(switch-to-buffer "*scratch*")
-
-(defun unicode-symbol (name)
-  "Translate a symbolic name for a Unicode character -- e.g., LEFT-ARROW
- or GREATER-THAN into an actual Unicode character code. "
+(defun $unicode-symbol (name)
+  "Translate a symbolic name for a Unicode character -- e.g.,
+ LEFT-ARROW or GREATER-THAN into an actual Unicode character
+ code. "
   (decode-char 'ucs (case name
                       (left-arrow 8592)
                       (up-arrow 8593)
@@ -338,7 +337,7 @@ This command works on unixes only."
                       (gamma #X03B3)
                       (delta #X03B4))))
 
-(defun substitute-pattern-with-unicode (pattern symbol)
+(defun $substitute-pattern-with-unicode (pattern symbol)
   "Add a font lock hook to replace the matched part of PATTERN
 with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
   (font-lock-add-keywords
@@ -348,47 +347,43 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
                                     'decompose-region)
                     nil))))))
 
-(defun substitute-patterns-with-unicode (patterns)
+(defun $substitute-patterns-with-unicode (patterns)
   "Call SUBSTITUTE-PATTERN-WITH-UNICODE repeatedly."
   (mapcar #'(lambda (x)
               (substitute-pattern-with-unicode (car x)
                                                (cdr x)))
           patterns))
 
-(defun tim-add-new-snippet (mode name)
-  "Add new yassnipet snippet"
+(defun $add-new-snippet (mode name)
+  "Add new yassnipet snippet."
   (interactive "MMode (without the `-mode` part): \nMSnippet name: ")
   (let* ((mode (format "%s-mode" mode))
-         (yas-file (format "~/.elisp/mysnippets/%s/%s" mode name)))
+         (yas-file (format "%s/%s/%s" *snippet-dir* mode name)))
     (message "file: %s" yas-file)
     (find-file yas-file)))
 
 (defun $add-license (license-file)
-  "Add license to point"
+  "Add license."
   (interactive "sLicense (CaSE-SeNSitIVE): ")
-  (insert-file (format "~/Docs/Licenses/%s.txt" license-file)))
-
-;;;
-;;; Wrappers, helpers
-;;;
+  (insert-file (format "%s/%s.txt" *license-dir* license-file)))
 
 (defun $clipboard<-region (begin end)
-  "Copy region to clipboard"
+  "Copy region to clipboard."
   (clipboard-kill-ring-save begin end))
 
 (defun $kill-ring<- (str)
-  "Copy a string to the kill ring"
+  "Copy a string to the kill ring."
   (interactive "MString: ")
   (kill-new str))
 
 (defun $clipboard<- (str)
-  "Copy a string to clipboard"
+  "Copy a string to clipboard."
   (interactive "MString: ")
   (let ((x-select-enable-clipboard t))
     (x-select-text str)))
 
 (defun $clipboard<-pwd ()
-  "Copy current directory to clipboard"
+  "Copy current directory to clipboard."
   (interactive)
   ($clipboard<- ($current-dir)))
 
@@ -415,55 +410,51 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
         (error "No word at point" word))))
 
 (defun $mark-line ()
-  "Mark current line"
+  "Mark current line."
   (interactive)
   (beginning-of-line)
   (push-mark (point) t t)
   (end-of-line))
 
 (defun $insert-me ()
-  "Insert my information"
+  "Insert my information."
   (interactive)
-  (insert "Duong \"Yang\" Nguyen <cmpitgATgmailDOTcom>"))
+  (insert *me*))
 
 (defun $autoload-mode (file-regex mode-symbol)
   "Add autoload mode when opening file.
 Example: ($autoload-mode \"Rakefile\" . 'ruby-mode)"
   (add-to-list 'auto-mode-alist (cons file-regex mode-symbol)))
 
-;; (defun $make-test-command ()
-;;   (interactive "")
-;;   )
-
 (defun $delete-line ()
-  "Delete current line"
+  "Delete current line."
   (interactive)
   (beginning-of-line)
   (kill-line)
   (kill-line))
 
 (defun $exec (command)
-  "Execute a shell command then return its value as string"
+  "Execute a shell command then return its value as string."
   (interactive "MCommand: ")
   (shell-command-to-string command))
 
 (defun $exec-in-other-window (command)
-  "Execute in other window"
+  "Execute in other window."
   (interactive "MCommand: ")
   (shell-command command))
 
 (defun $exec-then-pipe (command)
-  "Execute and pipe output to the current buffer"
+  "Execute and pipe output to the current buffer."
   (interactive "MCommand: ")
   (shell-command command t))
 
 (defun $exec-then-pipe-selection ()
-  "Execute selection and pipe output to the current buffer"
+  "Execute selection and pipe output to the current buffer."
   (interactive)
   ($exec-then-pipe ($current-selection)))
 
 (defun $pipe-then-exec (command)
-  "pipe current region to a command, exec it, and pipe the output back"
+  "pipe current region to a command, exec it, and pipe the output back."
   (interactive "MCommand: ")
   (shell-command-on-region
    (if mark-active (region-beginning) 1)
@@ -486,7 +477,7 @@ we might have in the frame."
       (keyboard-quit)))
 
 (defun $toggle-evil-local ()
-  "Toggle evil-mode for current buffer"
+  "Toggle evil-mode for current buffer."
   (interactive)
   (if evil-local-mode
       (progn
@@ -505,141 +496,134 @@ Example:
     (dolist (filetype filetypes)
       (add-to-list 'auto-mode-alist (cons filetype mode)))))
 
-(defun $goto-snippets-folder ()
-  "Go to personal snippets folder"
+(defun $goto-snippets-dir ()
+  "Go to personal snippets directory."
   (interactive)
-  (find-file ($custom-els-path "mysnippets")))
-
-(defun $goto-keymap-ext-config ()
-  "Go to keymap-extended configuration file"
-  (interactive)
-  (find-file ($custom-els-path "keymap-extended.el")))
+  (find-file *snippet-dir*))
 
 (defun $goto-next-DEBUG ()
-  "Go to next DEBUG"
+  "Go to next DEBUG."
   (interactive)
   (search-forward "DEBUG"))
 
 (defun $goto-prev-DEBUG ()
-  "Go to prev DEBUG"
+  "Go to prev DEBUG."
   (interactive)
   (search-backward "DEBUG"))
 
 (defun $goto-next-FIXME ()
-  "Go to next FIXME"
+  "Go to next FIXME."
   (interactive)
   (search-forward "FIXME"))
 
 (defun $goto-prev-FIXME ()
-  "Go to prev FIXME"
+  "Go to prev FIXME."
   (interactive)
   (search-backward "FIXME"))
 
 (defun $open-shell ()
-  "Open shell"
-  ;; TODO
-  ;; If the shell is already open, switch to it
+  "Open shell."
   (interactive)
   (split-window-vertically)
   (other-window 1)
   (shell))
 
 (defun $man-this ()
-  "man this word"
+  "`man` this word."
   (interactive)
   (manual-entry (current-word)))
 
 (defun $switch-to-scratch ()
-  "Switch to the *scratch* buffer"
+  "Switch to the *scratch* buffer."
   (interactive)
   (switch-to-buffer "*scratch*"))
 
 (defun $selection-start ()
-  "Return the position of the start of the current selection"
+  "Return the position of the start of the current selection."
   (region-beginning))
 
 (defun $selection-end ()
-  "Return the position of the end of the current selection"
+  "Return the position of the end of the current selection."
   (region-end))
 
 (defun $is-selecting? ()
-  "Determine if a selection is being held"
+  "Determine if a selection is being held."
   (region-active-p))
 
 (defun $current-selection ()
-  "Return the current selected text"
+  "Return the current selected text."
   (if ($is-selecting?)
       (buffer-substring ($selection-start)
                         ($selection-end))
       ""))
 
 (defun $get-selection ()
-  "Return the current selected text"
+  "Return the current selected text."
   ($current-selection))
 
 (defun $delete-selected-text ()
-  "Delete the selected text, do nothing if none text is selected"
+  "Delete the selected text, do nothing if none text is selected."
   (if ($is-selecting?)
       (delete-region ($selection-start) ($selection-end))))
 
 (defun $eval-string (str)
-  "Eval a string"
+  "Eval a string."
   (interactive)
   ($eval (read str)))
 
 (defun $string-empty? (str)
-  "Determine if a string is empty"
+  "Determine if a string is empty."
   (= 0 (length str)))
 
 (defun $string-but-last (str)
-  "Return a string with its last character removed"
+  "Return a string with its last character removed."
   (if ($string-empty? str) ""
     (substring str 0 -1)))
 
 (defun $current-dir ()
-  "Current directory"
+  "Current directory."
   (or (file-name-directory (or load-file-name buffer-file-name ""))
       "~"))
 
 (defun $build-open-file-cmd-string ()
-  "Build a string used to execute an open-file dialog"
+  "Build a string used to execute an open-file dialog."
   (concat "zenity --file-selection --filename "
           ($current-dir)
           " 2>/dev/null"))
 
 (defun $open-file-gui ()
-  "Open a file using Zenity"
+  "Open a file using Zenity."
   (interactive)
   (let ((filename ($string-but-last ($exec ($build-open-file-cmd-string)))))
     (unless ($string-empty? filename)
       ($open-file filename))))
 
 (defun $open-file-gui-other-window ()
-  "Open a file using Zenity"
+  "Open a file using Zenity."
   (interactive)
   (let ((filename ($string-but-last ($exec ($build-open-file-cmd-string)))))
     (unless ($string-empty? filename)
       ($open-file-other-window filename))))
 
 (defun $string-empty? (str)
-  "Determine if a string is empty"
+  "Determine if a string is empty."
   (zerop (length str)))
 
 (defun $first-char-as-string (str)
-  "Return the first character of a string as string"
+  "Return the first character of a string as strin.g"
   (if (not ($string-empty? str))
       (substring str 0 1)
     ""))
 
 (defun $last-char-as-string (str)
-  "Return the last character of a string as string"
+  "Return the last character of a string as string."
   (if (not ($string-empty? str))
       (let ((len (length str)))
         (substring str (- len 1) len))
     ""))
 
 (defun $trim-spaces (text)
-  "Trim spaces at the beginning and the end of a portion of text"
+  "Trim spaces at the beginning and the end of a portion of text."
   (while (and (not ($string-empty? text))
               (string= " " ($first-char-as-string text)))
     (setf text (substring text 1)))
@@ -652,18 +636,18 @@ Example:
 
 (defun $is-external-command? (text)
   "Determine if a portion of text indicates an external
-command (started with a `!`)"
+command (started with a `!`)."
   (and (not ($string-empty? text))
        (string= "!" ($first-char-as-string text))))
 
 (defun $is-directory? (text)
   "Determine if a portion of text is a directory on the
-filesystem"
+filesystem."
   (read ($exec (format "[ -d '%s' ] && echo -n t || echo -n nil" text))))
 
 (defun $eval-or-exec-print (command-text)
   "Execute external command then pipe result to the current
-buffer or eval an Emacs Lisp expression"
+buffer or eval an Emacs Lisp expression."
   (let ((command ($trim-spaces command-text)))
     (unless ($string-empty? command)
       (progn
@@ -679,7 +663,7 @@ buffer or eval an Emacs Lisp expression"
               (t ($eval-string command)))))))
 
 (defun $evil-define-key (key func)
-  "Define keymap in all evil states"
+  "Define keymap in all evil states."
   (define-key evil-normal-state-map key func)
   (define-key evil-insert-state-map key func)
   (define-key evil-visual-state-map key func)
@@ -687,26 +671,19 @@ buffer or eval an Emacs Lisp expression"
   (define-key evil-operator-state-map key func)
   (define-key evil-motion-state-map key func))
 
-;; ($evil-define-key (kbd "M-x") 'execute-extended-command)
-;; (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
-;; (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
-;; (define-key evil-normal-state-map "\M-r" 'isearch-backward)
-
 (defun $evil-undefine-helper ()
-  "(Helper) Prevent evil from disabling a default Emacs kepmap"
+  "(Helper) Prevent evil from disabling a default Emacs kepmap."
   (interactive)
   (let (evil-mode-map-alist)
     (call-interactively (key-binding (this-command-keys)))))
 
 (defun $evil-undefine (key)
-  "(Helper) Prevent evil from disabling a default Emacs kepmap"
+  "(Helper) Prevent evil from disabling a default Emacs kepmap."
   ($evil-define-key key 'evil-undefine))
-
-;; ($evil-undefine (kbd "M-x"))
 
 (defun $defalias (new-symbol old-symbol doc-string)
   "Define an alias NEW-SYMBOL from OLD-SYMBOL with documentation
-string.  E.g. ($defalias '$add-snippet 'tim-add-new-snippet \"Add
+string.  E.g. ($defalias '$add-snippet '$add-new-snippet \"Add
 new snippet\")"
   (defalias new-symbol old-symbol)
   (puthash new-symbol doc-string *$doc-strings*))
@@ -716,26 +693,6 @@ new snippet\")"
 
 ($defalias '$pipe-then-exec-in-other-window 'shell-command-on-region
   "Filter a command but pipe the other to other window")
-
-($defalias '$add-snippet 'tim-add-new-snippet
-  "Add a new yasnippet snippet")
-
-($defalias '$modify-opacity 'tim-opacity-modify
-  "Modify current frame opacity")
-
-($defalias '$create-tags 'create-tags
-  "Create tags table using exuberant-tags")
-
-($defalias '$save-macro 'save-macro
-  "Save current cached macro")
-
-($defalias '$open-current-file-as-admin 'open-current-file-as-admin "")
-
-($defalias '$delete-current-file 'delete-current-file "")
-
-($defalias '$put-mode-line-to-top 'tim-put-mode-line-to-top "")
-
-($defalias '$toggle-case 'tim-toggle-case "")
 
 ($defalias '$current-point 'point "")
 

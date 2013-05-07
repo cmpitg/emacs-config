@@ -367,16 +367,16 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
   (insert-file (format "%s/%s.txt" *license-dir* license-file)))
 
 (defun $clipboard<-region (begin end)
-  "Copy region to clipboard"
+  "Copy region to clipboard."
   (clipboard-kill-ring-save begin end))
 
 (defun $kill-ring<- (str)
-  "Copy a string to the kill ring"
+  "Copy a string to the kill ring."
   (interactive "MString: ")
   (kill-new str))
 
 (defun $clipboard<- (str)
-  "Copy a string to clipboard"
+  "Copy a string to clipboard."
   (interactive "MString: ")
   (let ((x-select-enable-clipboard t))
     (x-select-text str)))

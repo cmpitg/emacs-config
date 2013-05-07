@@ -23,6 +23,7 @@
 (setq *ctags-path* "/usr/bin/ctags"
       *snippet-dir* "~/.elisp/mysnippets"
       *license-dir* "~/Docs/Licenses/"
+      *me* "Duong H. Nguyen <cmpitg AT gmailDOTcom>"
       )
 
 ;;;
@@ -418,7 +419,7 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
 (defun $insert-me ()
   "Insert my information."
   (interactive)
-  (insert "Duong \"Yang\" Nguyen <cmpitgATgmailDOTcom>"))
+  (insert *me*))
 
 (defun $autoload-mode (file-regex mode-symbol)
   "Add autoload mode when opening file.

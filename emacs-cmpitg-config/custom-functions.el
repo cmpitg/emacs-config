@@ -382,7 +382,7 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
     (x-select-text str)))
 
 (defun $clipboard<-pwd ()
-  "Copy current directory to clipboard"
+  "Copy current directory to clipboard."
   (interactive)
   ($clipboard<- ($current-dir)))
 

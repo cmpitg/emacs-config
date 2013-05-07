@@ -663,18 +663,13 @@ buffer or eval an Emacs Lisp expression."
               (t ($eval-string command)))))))
 
 (defun $evil-define-key (key func)
-  "Define keymap in all evil states"
+  "Define keymap in all evil states."
   (define-key evil-normal-state-map key func)
   (define-key evil-insert-state-map key func)
   (define-key evil-visual-state-map key func)
   (define-key evil-replace-state-map key func)
   (define-key evil-operator-state-map key func)
   (define-key evil-motion-state-map key func))
-
-;; ($evil-define-key (kbd "M-x") 'execute-extended-command)
-;; (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
-;; (define-key evil-normal-state-map (kbd "M-x") 'execute-extended-command)
-;; (define-key evil-normal-state-map "\M-r" 'isearch-backward)
 
 (defun $evil-undefine-helper ()
   "(Helper) Prevent evil from disabling a default Emacs kepmap"

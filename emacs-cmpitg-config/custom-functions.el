@@ -22,6 +22,7 @@
 ;; Exuberant ctags tags generating
 (setq *ctags-path* "/usr/bin/ctags"
       *snippet-dir* "~/.elisp/mysnippets"
+      *license-dir* "~/Docs/Licenses/"
       )
 
 ;;;
@@ -353,7 +354,7 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
           patterns))
 
 (defun $add-new-snippet (mode name)
-  "Add new yassnipet snippet"
+  "Add new yassnipet snippet."
   (interactive "MMode (without the `-mode` part): \nMSnippet name: ")
   (let* ((mode (format "%s-mode" mode))
          (yas-file (format "%s/%s/%s" *snippet-dir* mode name)))
@@ -363,7 +364,7 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
 (defun $add-license (license-file)
   "Add license to point"
   (interactive "sLicense (CaSE-SeNSitIVE): ")
-  (insert-file (format "~/Docs/Licenses/%s.txt" license-file)))
+  (insert-file (format "%s/%s.txt" *license-dir* license-file)))
 
 (defun $clipboard<-region (begin end)
   "Copy region to clipboard"

@@ -426,39 +426,35 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
 Example: ($autoload-mode \"Rakefile\" . 'ruby-mode)"
   (add-to-list 'auto-mode-alist (cons file-regex mode-symbol)))
 
-;; (defun $make-test-command ()
-;;   (interactive "")
-;;   )
-
 (defun $delete-line ()
-  "Delete current line"
+  "Delete current line."
   (interactive)
   (beginning-of-line)
   (kill-line)
   (kill-line))
 
 (defun $exec (command)
-  "Execute a shell command then return its value as string"
+  "Execute a shell command then return its value as string."
   (interactive "MCommand: ")
   (shell-command-to-string command))
 
 (defun $exec-in-other-window (command)
-  "Execute in other window"
+  "Execute in other window."
   (interactive "MCommand: ")
   (shell-command command))
 
 (defun $exec-then-pipe (command)
-  "Execute and pipe output to the current buffer"
+  "Execute and pipe output to the current buffer."
   (interactive "MCommand: ")
   (shell-command command t))
 
 (defun $exec-then-pipe-selection ()
-  "Execute selection and pipe output to the current buffer"
+  "Execute selection and pipe output to the current buffer."
   (interactive)
   ($exec-then-pipe ($current-selection)))
 
 (defun $pipe-then-exec (command)
-  "pipe current region to a command, exec it, and pipe the output back"
+  "pipe current region to a command, exec it, and pipe the output back."
   (interactive "MCommand: ")
   (shell-command-on-region
    (if mark-active (region-beginning) 1)
@@ -481,7 +477,7 @@ we might have in the frame."
       (keyboard-quit)))
 
 (defun $toggle-evil-local ()
-  "Toggle evil-mode for current buffer"
+  "Toggle evil-mode for current buffer."
   (interactive)
   (if evil-local-mode
       (progn

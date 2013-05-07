@@ -497,39 +497,32 @@ Example:
       (add-to-list 'auto-mode-alist (cons filetype mode)))))
 
 (defun $goto-snippets-dir ()
-  "Go to personal snippets directory"
+  "Go to personal snippets directory."
   (interactive)
   (find-file *snippet-dir*))
 
-(defun $goto-keymap-ext-config ()
-  "Go to keymap-extended configuration file"
-  (interactive)
-  (find-file ($custom-els-path "keymap-extended.el")))
-
 (defun $goto-next-DEBUG ()
-  "Go to next DEBUG"
+  "Go to next DEBUG."
   (interactive)
   (search-forward "DEBUG"))
 
 (defun $goto-prev-DEBUG ()
-  "Go to prev DEBUG"
+  "Go to prev DEBUG."
   (interactive)
   (search-backward "DEBUG"))
 
 (defun $goto-next-FIXME ()
-  "Go to next FIXME"
+  "Go to next FIXME."
   (interactive)
   (search-forward "FIXME"))
 
 (defun $goto-prev-FIXME ()
-  "Go to prev FIXME"
+  "Go to prev FIXME."
   (interactive)
   (search-backward "FIXME"))
 
 (defun $open-shell ()
-  "Open shell"
-  ;; TODO
-  ;; If the shell is already open, switch to it
+  "Open shell."
   (interactive)
   (split-window-vertically)
   (other-window 1)

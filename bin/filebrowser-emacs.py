@@ -8,7 +8,7 @@
 # * Document for PySide:
 #   - Setting QPushButton with pixmap (Done)
 #   - Using action (Done)
-#   - Using shortcut
+#   - Using shortcut (Done)
 #   - Setting the application icon
 #   - How to construct context menu
 #   - closeEvent

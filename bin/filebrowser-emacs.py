@@ -6,8 +6,8 @@
 # * Passing directory path (Done)
 #
 # * Document for PySide:
-#   - Setting QPushButton with pixmap
-#   - Using action
+#   - Setting QPushButton with pixmap (Done)
+#   - Using action (Done)
 #   - Using shortcut
 #   - Setting the application icon
 #   - How to construct context menu

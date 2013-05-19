@@ -10,7 +10,7 @@
 #   - Using action (Done)
 #   - Using shortcut (Done)
 #   - Setting the application icon (Done)
-#   - How to construct context menu
+#   - How to construct context menu (Done)
 #   - closeEvent
 #
 # * Last visited dir @ `$HOME/emacs-config/filebrowser-lastdir.txt` (Done)

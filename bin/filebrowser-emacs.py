@@ -9,7 +9,7 @@
 #   - Setting QPushButton with pixmap (Done)
 #   - Using action (Done)
 #   - Using shortcut (Done)
-#   - Setting the application icon
+#   - Setting the application icon (Done)
 #   - How to construct context menu
 #   - closeEvent
 #

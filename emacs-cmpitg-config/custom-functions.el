@@ -662,6 +662,16 @@ buffer or eval an Emacs Lisp expression."
 
               (t ($eval-string command)))))))
 
+(defun jekyll-add-last-updated ()
+  "Add last_update timestamp with `date -R` format."
+  (interactive)
+  ($goto-point (point-min))
+  (re-search-forward "^last_updated:.*$")
+  (replace-match (format "last_updated: %s"
+                         ($string-but-last ($exec "date -R")))))
+
+;; (global-set-key (kbd "C-<home>") 'jekyll-add-last-updated)
+
 (defun $evil-define-key (key func)
   "Define keymap in all evil states."
   (define-key evil-normal-state-map key func)

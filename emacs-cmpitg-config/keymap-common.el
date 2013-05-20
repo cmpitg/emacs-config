@@ -59,6 +59,7 @@
 (global-set-key (kbd "C-o") '$open-line)
 (global-set-key (kbd "C-S-O") '$open-line-before)
 (global-set-key (kbd "C-=") 'align-regexp)
+(global-set-key (kbd "C-<home>") '$jekyll-add-last-updated)
 
 (global-set-key (kbd "<menu> C-<return>") 'complete-symbol)
 (global-set-key (kbd "<C-return>") 'complete-tag)

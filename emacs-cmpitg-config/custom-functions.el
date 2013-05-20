@@ -662,7 +662,7 @@ buffer or eval an Emacs Lisp expression."
 
               (t ($eval-string command)))))))
 
-(defun jekyll-add-last-updated ()
+(defun $jekyll-add-last-updated ()
   "Add last_update timestamp with `date -R` format."
   (interactive)
   ($goto-point (point-min))

@@ -6,12 +6,12 @@
 # * Passing directory path (Done)
 #
 # * Document for PySide:
-#   - Setting QPushButton with pixmap
-#   - Using action
-#   - Using shortcut
-#   - Setting the application icon
-#   - How to construct context menu
-#   - closeEvent
+#   - Setting QPushButton with pixmap (Done)
+#   - Using action (Done)
+#   - Using shortcut (Done)
+#   - Setting the application icon (Done)
+#   - How to construct context menu (Done)
+#   - closeEvent (Done)
 #
 # * Last visited dir @ `$HOME/emacs-config/filebrowser-lastdir.txt` (Done)
 #

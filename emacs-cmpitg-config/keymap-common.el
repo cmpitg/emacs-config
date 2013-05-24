@@ -18,7 +18,7 @@
 (global-set-key (kbd "C-h DEL") '(lambda ()
                                    "Jump to keymap config"
                                    (interactive)
-                                   ($open-file "~/.emacs_cmpitg/keymap-common.el")))
+                                   ($open-file "~/emacs-config/emacs-cmpitg-config/keymap-common.el")))
 
 ;;
 ;; Buffer
@@ -59,6 +59,7 @@
 (global-set-key (kbd "C-o") '$open-line)
 (global-set-key (kbd "C-S-O") '$open-line-before)
 (global-set-key (kbd "C-=") 'align-regexp)
+(global-set-key (kbd "C-<home>") '$jekyll-add-last-updated)
 
 (global-set-key (kbd "<menu> C-<return>") 'complete-symbol)
 (global-set-key (kbd "<C-return>") 'complete-tag)

@@ -22,7 +22,7 @@
 ;; Exuberant ctags tags generating
 (setq *ctags-path* "/usr/bin/ctags"
       *snippet-dir* "~/emacs-config/snippets"
-      *license-dir* "~/emacs-config/license-list/"
+      *license-dir* "~/emacs-config/license-list"
       *me* "Duong H. Nguyen <cmpitg AT gmailDOTcom>"
       )
 
@@ -661,6 +661,16 @@ buffer or eval an Emacs Lisp expression."
                ($exec-in-other-window (format "ls '%s'" command)))
 
               (t ($eval-string command)))))))
+
+(defun $jekyll-add-last-updated ()
+  "Add last_update timestamp with `date -R` format."
+  (interactive)
+  ($goto-point (point-min))
+  (if (re-search-forward "^last_updated:.*$")
+      (replace-match (format "last_updated: %s"
+                             ($string-but-last ($exec "date -R"))))))
+
+;; (global-set-key (kbd "C-<home>") 'jekyll-add-last-updated)
 
 (defun $evil-define-key (key func)
   "Define keymap in all evil states."

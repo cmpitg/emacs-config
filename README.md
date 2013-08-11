@@ -16,6 +16,8 @@ This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is pa
 
 * Python-Xlib is required for `ibus-mode` to work
 
+* Python modules: `jedi epc` (for Python auto-completion)
+
 ## Installation
 
 * First, clone the repository to your `$HOME`:

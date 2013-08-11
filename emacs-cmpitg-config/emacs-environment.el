@@ -251,6 +251,9 @@
 ;;; Use the same clipboard with X
 (setq x-select-enable-clipboard nil)
 
+;;; Auto complete switching buffer mode
+(iswitchb-mode t)
+
 ;;; Set frame title
 (setq frame-title-format
       '(multiple-frames "%b" ("@" system-name )))

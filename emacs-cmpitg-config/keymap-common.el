@@ -11,6 +11,10 @@
 
 ($load-custom-el "keymap-ergo.el")
 
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x M-x") 'execute-extended-command)
+
+
 ;;
 ;; Bookmark jumping
 ;;
@@ -63,6 +67,7 @@
 
 (global-set-key (kbd "<menu> C-<return>") 'complete-symbol)
 (global-set-key (kbd "<C-return>") 'complete-tag)
+(global-set-key (kbd "<M-return>") 'ac-fuzzy-complete)
 
 (global-set-key (kbd "s-w") 'whitespace-cleanup)
 
@@ -92,6 +97,12 @@
 (global-set-key (kbd "<s-menu> s-!") '$exec-then-pipe)
 (global-set-key (kbd "<s-menu> s-@") '$pipe-then-exec)
 (global-set-key (kbd "<s-menu> s-\\") '$pipe-then-exec-in-other-window)
+
+(global-set-key (kbd "s-m") '$eval-then-replace-last-exp)
+(global-set-key (kbd "s-b") '$eval-then-replace)
+
+
+(+ 1 2)
 
 ;;
 ;; Window

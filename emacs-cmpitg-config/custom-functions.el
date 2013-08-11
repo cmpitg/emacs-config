@@ -40,6 +40,29 @@
 ;;; Functions
 ;;;
 
+(defun $move-to-beginning-of-line (arg)
+  "Move point back to indentation of beginning of line.
+
+Move point to the first non-whitespace character on this line.
+If point is already there, move to the beginning of the line.
+Effectively toggle between the first non-whitespace character and
+the beginning of the line.
+
+If ARG is not nil or 1, move forward ARG - 1 lines first.  If
+point reaches the beginning or end of the buffer, stop there."
+  (interactive "^p")
+  (setq arg (or arg 1))
+
+  ;; Move lines first
+  (when (/= arg 1)
+    (let ((line-move-visual nil))
+      (forward-line (1- arg))))
+
+  (let ((orig-point (point)))
+    (back-to-indentation)
+    (when (= orig-point (point))
+      ($move-to-beginning-of-line 1))))
+
 (defun $custom-els-path (suffix)
   "Return the path of the custom Emacs Lisp configuration."
   (unless ($is-var-defined? '*custom-els-dir*)
@@ -73,6 +96,20 @@
   (yank)
   (beginning-of-line)
   (previous-line))
+
+(defun $eval-then-replace-last-exp ()
+  "Eval region then replace last expression with result."
+  (interactive)
+  (let ((value (eval (preceding-sexp))))
+    (kill-sexp -1)
+    (insert (format "%s" value))))
+
+(defun $eval-then-replace ()
+  "Eval region then replace region with result."
+  (interactive)
+  (let ((value ($eval-string ($get-selection))))
+    (kill-region ($selection-start) ($selection-end))
+    (insert (format "%s" value)))))
 
 (defun $server-start (&rest dir)
   "Start an Emacs server in a specific socket directory.  If no

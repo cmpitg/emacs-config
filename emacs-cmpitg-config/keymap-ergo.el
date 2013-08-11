@@ -10,7 +10,9 @@
 (global-set-key (kbd "s-h") 'backward-char)
 (global-set-key (kbd "s-n") 'forward-char)
 
-(global-set-key (kbd "s-d") 'move-beginning-of-line)
+;; (global-set-key (kbd "s-d") 'move-beginning-of-line)
+(global-set-key (kbd "s-d") '$move-to-beginning-of-line)
+(global-set-key (kbd "C-a") '$move-to-beginning-of-line)
 (global-set-key (kbd "s-D") 'move-end-of-line)
 
 (global-set-key (kbd "M-s-c") '(lambda nil (interactive) (previous-line 5)))

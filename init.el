@@ -18,7 +18,7 @@
                            paredit
                            autopair
                            auto-complete
-                           helmo
+                           helm
                            smex
                            evil
                            evil-nerd-commenter
@@ -26,6 +26,7 @@
                            evil-paredit
                            thingatpt
                            multiple-cursors
+                           dash
                            ))
 
 
@@ -70,6 +71,14 @@
 (mapc #'(lambda (dir)
           (add-to-list 'load-path (format "%s%s" *elpa-package-dir* dir)))
       (directory-files *elpa-package-dir* nil ".*"))
+
+;;
+;; dash - modern Emacs Lisp APIs
+;;
+
+;; https://github.com/magnars/dash.el
+
+(require 'dash)
 
 ;;
 ;; Redo mode

@@ -7,6 +7,7 @@
       *package-list*     '(redo+
                            smooth-scrolling
                            auto-complete
+                           jedi
                            whitespace
                            ruby-mode
                            yaml-mode
@@ -17,10 +18,14 @@
                            paredit
                            autopair
                            auto-complete
+                           helm
+                           smex
                            evil
                            evil-nerd-commenter
                            evil-leader
-                           evil-paredit))
+                           evil-paredit
+                           thingatpt
+                           ))
 
 
 ;; cmpitg's specific configuration
@@ -85,6 +90,15 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (auto-complete-mode 1)
+(setq ac-fuzzy-enable t)
+
+;;
+;; jedi for Python auto-completion
+;;
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
 
 ;;
 ;; Auto pairing brackets
@@ -169,7 +183,13 @@
 (setq ibus-cursor-color '("red" "blue" "limegreen"))
 (setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus.el/ibus-el-agent")
 
-;; 
+;;
+;; Add thing-at-point function
+;;
+
+(require 'thingatpt)
+
+;;
 ;; Markdown-mode
 ;; 
 
@@ -244,6 +264,28 @@
 ;; 
 
 (require 'whitespace)
+
+;;
+;; Helm for completion framework
+;;
+
+(require 'helm-config)
+(global-set-key (kbd "<M-f3>") 'helm-find-files)
+(global-set-key (kbd "<f10>") 'helm-do-grep)
+(global-set-key (kbd "s-@") '$duplicate-line)
+(global-set-key (kbd "<f8>") 'helm-buffers-list)
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "<f12>") 'helm-M-x)
+;; (add-to-list 'helm-boring-buffer-regexp-list "\\*.+\\*")
+(setq helm-boring-buffer-regexp-list '("\\*.+\\*"))
+;; (setq helm-command-prefix-key "<f5>")
+
+;;
+;; Smex for enhancing M-x
+;;
+
+(require 'smex)
+(smex-initialize)
 
 ;;
 ;; Saving hooks

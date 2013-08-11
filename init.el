@@ -288,15 +288,6 @@
 ;;
 
 (require 'helm-config)
-(global-set-key (kbd "<M-f3>") 'helm-find-files)
-(global-set-key (kbd "<f10>") 'helm-do-grep)
-(global-set-key (kbd "s-@") '$duplicate-line)
-(global-set-key (kbd "<f8>") 'helm-buffers-list)
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "<f12>") 'helm-M-x)
-;; (add-to-list 'helm-boring-buffer-regexp-list "\\*.+\\*")
-(setq helm-boring-buffer-regexp-list '("\\*.+\\*"))
-;; (setq helm-command-prefix-key "<f5>")
 
 ;;
 ;; Smex for enhancing M-x

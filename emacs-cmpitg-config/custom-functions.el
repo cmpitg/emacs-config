@@ -109,7 +109,7 @@ point reaches the beginning or end of the buffer, stop there."
   (interactive)
   (let ((value ($eval-string ($get-selection))))
     (kill-region ($selection-start) ($selection-end))
-    (insert (format "%s" value)))))
+    (insert (format "%s" value))))
 
 (defun $server-start (&rest dir)
   "Start an Emacs server in a specific socket directory.  If no

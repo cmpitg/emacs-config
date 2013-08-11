@@ -71,6 +71,12 @@
 
 (global-set-key (kbd "s-w") 'whitespace-cleanup)
 
+(global-set-key (kbd "s-+") 'mc/edit-lines)
+(global-set-key (kbd "C-.") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
+
+
 (global-set-key (kbd "<M-f7>") '(lambda () "Next DEBUG" (interactive) (search-forward "DEBUG")))
 (global-set-key (kbd "<S-M-f7>") '(lambda () "Previous DEBUG" (interactive) (search-backward "DEBUG")))
 (global-set-key (kbd "<M-f5>") '(lambda () "Next FIXME" (interactive) (search-forward "FIXME")))
@@ -100,9 +106,6 @@
 
 (global-set-key (kbd "s-m") '$eval-then-replace-last-exp)
 (global-set-key (kbd "s-b") '$eval-then-replace)
-
-
-(+ 1 2)
 
 ;;
 ;; Window

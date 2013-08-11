@@ -18,13 +18,14 @@
                            paredit
                            autopair
                            auto-complete
-                           helm
+                           helmo
                            smex
                            evil
                            evil-nerd-commenter
                            evil-leader
                            evil-paredit
                            thingatpt
+                           multiple-cursors
                            ))
 
 
@@ -188,6 +189,14 @@
 ;;
 
 (require 'thingatpt)
+
+;;
+;; Support for multiple cursors
+;;
+
+;; https://github.com/emacsmirror/multiple-cursors
+
+(require 'multiple-cursors)
 
 ;;
 ;; Markdown-mode

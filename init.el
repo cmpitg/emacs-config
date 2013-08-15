@@ -1,5 +1,9 @@
 ;; -*- mode: emacs-lisp -*-
 
+;;;
+;;; TODO: write documentation/make screencast about workflow
+;;;
+
 ;; Global constants
 
 (setq *elpa-package-dir* "~/.emacs.d/elpa/"
@@ -27,6 +31,8 @@
                            thingatpt
                            multiple-cursors
                            dash
+                           expand-region
+                           yasnippet
                            ))
 
 
@@ -81,6 +87,12 @@
 (require 'dash)
 
 ;;
+;; Expand region - marking based-on semantic
+;;
+
+(require 'expand-region)
+
+;;
 ;; Redo mode
 ;;
 
@@ -91,6 +103,13 @@
 ;;
 
 (require 'smooth-scrolling)
+
+;;
+;; Yasnippet
+;;
+
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;;
 ;; Autocomplete

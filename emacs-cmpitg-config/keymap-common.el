@@ -14,7 +14,6 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
-
 ;;
 ;; Bookmark jumping
 ;;
@@ -46,12 +45,16 @@
                                 (interactive)
                                 (scroll-other-window -6)))
 
+(global-set-key (kbd "<C-delete>") '(lambda () (interactive)
+                                      (kill-buffer (current-buffer))))
+
 (global-set-key (kbd "C-x C-b") 'bs-show)
 (global-set-key (kbd "s-B") '(lambda ()
                                "Switch to last buffer"
                                (interactive)
                                (switch-to-buffer (other-buffer))))
-(global-set-key (kbd "<f8>") 'sr-speedbar-toggle)
+;; (global-set-key (kbd "<f8>") 'sr-speedbar-toggle)
+(global-set-key (kbd "<S-f8>") 'helm-bookmarks)
 
 ;;
 ;; Text
@@ -78,6 +81,7 @@
 (global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
 
+(global-set-key (kbd "s-=") 'er/expand-region)
 
 (global-set-key (kbd "<M-f7>") '(lambda () "Next DEBUG" (interactive) (search-forward "DEBUG")))
 (global-set-key (kbd "<S-M-f7>") '(lambda () "Previous DEBUG" (interactive) (search-backward "DEBUG")))

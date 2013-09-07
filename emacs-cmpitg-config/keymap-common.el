@@ -9,7 +9,7 @@
 ;; ErgoEmacs bindings
 ;;
 
-($load-custom-el "keymap-ergo.el")
+;; ($load-custom-el "keymap-ergo.el")
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
@@ -32,8 +32,7 @@
 (global-set-key (kbd "<f3>") '$open-file-gui)
 (global-set-key (kbd "<S-f3>") '$open-file-gui-other-window)
 (global-set-key (kbd "C-<f9>") '$move-to-compilation-buffer)
-(global-set-key (kbd "C-<f4>") '(lambda () (interactive)
-                                 (kill-buffer (current-buffer))))
+(global-set-key (kbd "C-<f4>") '$kill-current-buffer)
 (global-set-key (kbd "M-<f4>") 'recentf-open-files)
 (global-set-key (kbd "C-<f1>") '$switch-to-scratch)
 (global-set-key (kbd "<menu> <menu>") 'other-window)
@@ -44,17 +43,15 @@
 (global-set-key (kbd "C-M-S-v") '(lambda ()
                                 (interactive)
                                 (scroll-other-window -6)))
-
-(global-set-key (kbd "<C-delete>") '(lambda () (interactive)
-                                      (kill-buffer (current-buffer))))
+ 
+(global-set-key (kbd "<C-delete>") '$kill-current-buffer)
 
 (global-set-key (kbd "C-x C-b") 'bs-show)
-(global-set-key (kbd "s-B") '(lambda ()
-                               "Switch to last buffer"
-                               (interactive)
-                               (switch-to-buffer (other-buffer))))
+(global-set-key (kbd "s-B") '$switch-to-last-buffer)
 ;; (global-set-key (kbd "<f8>") 'sr-speedbar-toggle)
 (global-set-key (kbd "<S-f8>") 'helm-bookmarks)
+
+(global-set-key (kbd "C-x C-n") 'multi-scratch-new)
 
 ;;
 ;; Text
@@ -69,16 +66,17 @@
 (global-set-key (kbd "C-<home>") '$jekyll-add-last-updated)
 
 (global-set-key (kbd "<menu> C-<return>") 'complete-symbol)
-(global-set-key (kbd "<C-return>") 'complete-tag)
+;; (global-set-key (kbd "<C-return>") 'complete-tag)
 (global-set-key (kbd "<M-return>") 'ac-fuzzy-complete)
 
 (global-set-key (kbd "s-w") 'whitespace-cleanup)
 
 (global-set-key (kbd "s-&") 'join-line)
 
+;; Multiple cursors
 (global-set-key (kbd "s-+") 'mc/edit-lines)
-(global-set-key (kbd "C-.") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-#") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-!") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-.") 'mc/mark-all-like-this)
 
 (global-set-key (kbd "s-=") 'er/expand-region)
@@ -124,14 +122,16 @@
 (global-set-key (kbd "C-%") 'delete-other-windows)
 
 (global-set-key [C-mouse-2] 'split-window-vertically)
+(global-set-key [C-down-mouse-2] 'split-window-vertically)
 (global-set-key [M-mouse-2] 'split-window-horizontally)
+(global-set-key [M-down-mouse-2] 'split-window-horizontally)
 (global-set-key [S-mouse-2] 'delete-other-windows)
+(global-set-key [S-down-mouse-2] 'delete-other-windows)
 
 ;;
 ;; Misc
 ;;
 
-(global-set-key (kbd "C-/") '$toggle-comment-region)
 (global-set-key (kbd "C-M-_") 'redo)
 (global-set-key (kbd "<f1>") '$man-this)
 (global-set-key (kbd "<mouse-2>") '$eval-selection)

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+emacs -Q -l ~/emacs-config/emacs-xiki.el --debug-init $* >/dev/null 2>&1 &disown 2>/dev/null

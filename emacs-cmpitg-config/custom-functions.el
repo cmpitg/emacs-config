@@ -86,6 +86,16 @@ point reaches the beginning or end of the buffer, stop there."
   (if buffer-file-name buffer-file-name
     ""))
 
+(defun $kill-current-buffer ()
+  "Kill the current buffer."
+  (interactive)
+    (kill-buffer (current-buffer)))
+
+(defun $switch-to-last-buffer ()
+  "Switch to last buffer."
+  (interactive)
+  (switch-to-buffer (other-buffer)))
+
 (defun $duplicate-line ()
   "Duplicate current line."
   (interactive)

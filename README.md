@@ -40,6 +40,7 @@ This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is pa
     ```sh
     ln -s ~/emacs-config/bin/filebrowser-emacs.py ~/bin/
     ln -s ~/emacs-config/bin/te ~/bin/
+    ln -s ~/emacs-config/bin/emacs-xiki ~/bin/
     ```
 
 * Make your own customization file if necessary, edit and have fun:
@@ -68,9 +69,17 @@ Just remove the `~/emacs-config` directory and your `~/emacs-custom.el` if neces
     rm ~/emacs-custom.el
     ```
 
+And the executable files:
+
+    ```sh
+    rm ~/bin/{te,filebrowser-emacs.py,emacs-xiki}
+    ```
+
 ## Running
 
-Run the `te` (or `~/bin/te`) command.  All other customization must go into your `~/emacs-custom.el` file.
+* Run the `te` (or `~/bin/te`) command.  All other customization must go into your `~/emacs-custom.el` file.
+
+* If you're using Xiki, install Xiki and run `emacs-xiki`.
 
 ## Detailed Description
 

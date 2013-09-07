@@ -118,6 +118,16 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+(setq ac-sources
+      '(ac-source-filename
+        ac-source-functions
+        ac-source-yasnippet
+        ac-source-variables
+        ac-source-symbols
+        ac-source-features
+        ac-source-abbrev
+        ac-source-words-in-same-mode-buffers
+        ac-source-dictionary))
 (auto-complete-mode 1)
 (setq ac-fuzzy-enable t)
 

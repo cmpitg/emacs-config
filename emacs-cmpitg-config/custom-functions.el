@@ -206,6 +206,25 @@ increase the opacity."
       (progn (ecb-deactivate)
              (setf *is-ecb-running?* nil))))
 
+(defun $setup-moz-javascript ()
+  "Setting JavaScript mode with MozRepl."
+  (moz-minor-mode 1))
+
+(defun $load-paredit-mode ()
+  "Load paredit mode and disable autopair."
+  (paredit-mode t)
+  (autopair-mode nil))
+
+(defun $auto-reload-firefox-after-save-hook ()
+  "Auto reload Firefox when saving."
+  (add-hook 'after-save-hook
+            '(lambda ()
+               (interactive)
+               (comint-send-string (inferior-moz-process)
+                                   "setTimout(BrowserReload(), '1000');"))
+            ;; buffer-local
+            'append 'local))
+
 (defun $put-mode-line-to-top ()
   "Put the mode-line to the top of the window."
   (setq header-line-format mode-line-format mode-line-format nil))

@@ -28,7 +28,8 @@
 (global-set-key (kbd "s-u") 'delete-char)
 (global-set-key (kbd "s-e") 'backward-delete-char)
 (global-set-key (kbd "s-p") 'kill-word)
-(global-set-key (kbd "s-.") 'backward-kill-word)
+;; (global-set-key (kbd "s-.") 'backward-kill-word)
+(global-set-key (kbd "s-.") '$mark-word-backward)
 
 (global-set-key (kbd "s-x")
                 (lambda ()

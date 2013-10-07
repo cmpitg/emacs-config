@@ -65,6 +65,8 @@
 (global-set-key (kbd "C-=") 'align-regexp)
 (global-set-key (kbd "C-<home>") '$jekyll-add-last-updated)
 
+(global-set-key (kbd "<C-backspace>") '$mark-word-backward)
+
 (global-set-key (kbd "<menu> C-<return>") 'complete-symbol)
 ;; (global-set-key (kbd "<C-return>") 'complete-tag)
 (global-set-key (kbd "<M-return>") 'ac-fuzzy-complete)
@@ -150,11 +152,15 @@
 ;;
 
 (global-set-key (kbd "C-<menu> C-f") 'auto-fill-mode)
+(global-set-key (kbd "C-<menu> C-<menu> C-<menu>") (lambda ()
+                                                     (interactive)
+                                                     (set-fill-column 78)))
 (global-set-key (kbd "C-<menu> C-p") 'paredit-mode)
 (global-set-key (kbd "C-<menu> C-e") 'evil-mode)
 (global-set-key (kbd "C-<menu> C-w") 'whitespace-mode)
 (global-set-key (kbd "C-M-S-SPC") '$toggle-ibus)
 (global-set-key (kbd "<C-menu> C-a") 'auto-complete-mode)
+(global-set-key (kbd "<C-menu> <C-return>") 'markdown-mode)
 (global-set-key (kbd "s-z") '$open-current-file-as-admin)
 (global-set-key (kbd "s-v") 'package-list-packages)
 (global-set-key (kbd "s-\\") 'ibus-mode)

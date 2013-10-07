@@ -34,8 +34,12 @@
                            expand-region
                            yasnippet
                            gist
+                           json
+                           quack
+                           geiser
+                           js3-mode
+                           pabbrev
                            ))
-
 
 ;; cmpitg's specific configuration
 
@@ -106,6 +110,12 @@
 (require 'dash)
 
 ;;
+;; JSON mode
+;;
+
+(require 'json)
+
+;;
 ;; Expand region - marking based-on semantic
 ;;
 
@@ -130,6 +140,33 @@
 ;;
 
 (require 'smooth-scrolling)
+
+;;
+;; JavaScript
+;;
+
+(require 'js3-mode)
+(setq js3-auto-indent-p t
+      js3-enter-indents-newline t
+      js3-indent-on-enter-key t)
+
+(add-hook 'html-mode-hook '$auto-reload-firefox-after-save-hook)
+(add-hook 'css-mode-hook '$auto-reload-firefox-after-save-hook)
+
+;;
+;; Firefox integration setup
+;;
+
+($add-load-path "~/emacs-config/emacs-local-packages/moz/")
+(require 'moz)
+(add-hook 'javascript-mode-hook '$setup-moz-javascript)
+(add-hook 'js3-mode-hook '$setup-moz-javascript)
+
+;;
+;; Predictive abbreviation
+;;
+
+(require 'pabbrev)
 
 ;;
 ;; Yasnippet
@@ -159,6 +196,17 @@
 (setq ac-fuzzy-enable t)
 
 ;;
+;; Scheme & Racket
+;;
+;; Quack doc: http://www.neilvandyke.org/quack/quack.el
+;; Geiser doc: http://www.nongnu.org/geiser
+
+(require 'geiser)
+
+;; Quack should be loaded after geiser
+(require 'quack)
+
+;;
 ;; jedi for Python auto-completion
 ;;
 
@@ -176,9 +224,9 @@
 
 (require 'paredit)
 
-(add-hook 'emacs-lisp-mode-hook (lambda () (paredit-mode t)))
-(add-hook 'lisp-mode-hook (lambda () (paredit-mode t)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode t)))
+(add-hook 'emacs-lisp-mode-hook '$load-paredit-mode)
+(add-hook 'lisp-mode-hook '$load-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook '$load-paredit-mode)
 
 ;;; Use with ElDoc
 (require 'eldoc)

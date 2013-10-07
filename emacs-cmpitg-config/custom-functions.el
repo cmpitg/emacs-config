@@ -688,6 +688,16 @@ Example:
         (substring str (- len 1) len))
     ""))
 
+(defun $mark-word-backward (times)
+  "Mark word backward."
+  (interactive "p")
+  (if ($is-selecting?)
+      (kill-region ($selection-start) ($selection-end))
+    (progn (if (and (not (eq last-command this-command))
+                    (not (eq last-command 'mark-sexp)))
+               (set-mark (point)))
+           (backward-word times))))
+
 (defun $trim-spaces (text)
   "Trim spaces at the beginning and the end of a portion of text."
   (while (and (not ($string-empty? text))

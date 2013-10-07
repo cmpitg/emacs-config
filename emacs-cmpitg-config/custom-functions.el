@@ -676,7 +676,7 @@ Example:
   (zerop (length str)))
 
 (defun $first-char-as-string (str)
-  "Return the first character of a string as strin.g"
+  "Return the first character of a string as string."
   (if (not ($string-empty? str))
       (substring str 0 1)
     ""))

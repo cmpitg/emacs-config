@@ -46,3 +46,10 @@
 
 ; Don't create #... files when editing
 (setq make-backup-files nil)
+
+;; Numbering lines
+(require 'linum)
+(global-linum-mode 1)
+
+;;; fill-column
+(set-fill-column 78)

@@ -22,7 +22,12 @@
 
 (global-set-key (kbd "s-g") 'backward-word)
 (global-set-key (kbd "s-G") 'backward-sexp)
-(global-set-key (kbd "s-r") 'forward-word)
+;; (global-set-key (kbd "s-r") 'forward-word)
+(global-set-key (kbd "s-r") (lambda ()
+                              (interactive)
+                              (if ($string-contains? ($->string major-mode) "lisp")
+                                  (forward-word)
+                                ($smart-forward-exp))))
 (global-set-key (kbd "s-R") 'forward-sexp)
 
 (global-set-key (kbd "s-u") 'delete-char)

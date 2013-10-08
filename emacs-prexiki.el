@@ -20,7 +20,7 @@
                            markdown-mode+
                            sr-speedbar
                            paredit
-                           autopair
+                           ;; autopair
                            auto-complete
                            helm
                            smex
@@ -218,9 +218,9 @@
 ;; Auto pairing brackets
 ;;
 
-(require 'autopair)
-(add-hook 'find-file-hook (lambda () (autopair-mode 1)))
-(add-hook 'lisp-mode-hook (lambda () (autopair-mode nil)))
+;; (require 'autopair)
+;; (add-hook 'find-file-hook (lambda () (autopair-mode 1)))
+;; (add-hook 'lisp-mode-hook (lambda () (autopair-mode nil)))
 
 (require 'paredit)
 

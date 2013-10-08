@@ -13,6 +13,7 @@
 ;; * Add license (GUI)
 ;; * Add license header (GUI)
 ;; * Better semantic for interactive
+;; * Adding $smart-backward-expression
 ;;
 
 ;;;

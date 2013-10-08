@@ -556,11 +556,62 @@ we might have in the frame."
 Example:
     ($auto-load-mode \"\\\\.rake$\" 'ruby-mode)
     ($auto-load-mode '(\"\\\\.md$\" \"\\\\.markdown$\") 'markdown-mode)"
-  
+
   (if (stringp filetypes)
       (add-to-list 'auto-mode-alist (cons filetypes mode))
     (dolist (filetype filetypes)
       (add-to-list 'auto-mode-alist (cons filetype mode)))))
+
+(defun $get-text (start end)
+  "Return text from current buffer between start and end point."
+  (if (or (< start (point-min))
+          (< (point-max) end))
+      ""
+    (buffer-substring start end)))
+
+(defun $current-char ()
+  "Return the string representing the character at the current
+cursor position."
+  ($get-text (point) (+ 1 (point))))
+
+(defun $peek-char ()
+  "Peek next character, return the string representing it.."
+  ($get-text (+ 1 (point)) (+ 2 (point))))
+
+(defun $goto-str (str)
+  "Go to the next appearance of a string."
+  (interactive "MString: ")
+  (search-forward str nil t))
+
+(defun $->string (exp)
+  "Convert an expression to string."
+  (format "%s" exp))
+
+(defun $smart-forward-exp ()
+  "Smart forward expression.  E.g.
+
+  |say-hello-to me, 'Jane'
+  say-hello-to| me, 'Jane'
+  say-hello-to |me, 'Jane'
+  say-hello-to me,| 'Jane'
+  say-hello-to me, |'Jane'
+  say-hello-to me, 'Jane'|"
+  (interactive)
+  (message "%s" (string-equal " " ($peek-char)))
+  (if (and (not (string-equal " " ($peek-char)))
+           (not (string-equal " " ($current-char))))
+      (if (null ($goto-str " "))
+          (end-of-buffer)
+        (backward-char))
+
+    (progn (search-forward-regexp "[^[:space:]]" nil t)
+           (backward-char))))
+
+(global-set-key (kbd "s-r") (lambda ()
+                              (interactive)
+                              (if ($string-contains? ($->string major-mode) "lisp")
+                                  (forward-word)
+                                ($smart-forward-exp))))
 
 (defun $goto-snippets-dir ()
   "Go to personal snippets directory."
@@ -645,6 +696,10 @@ Example:
   "Return a string with its last character removed."
   (if ($string-empty? str) ""
     (substring str 0 -1)))
+
+(defun $string-contains? (str substring)
+  "Check if a string contains a substring."
+  (not (null (string-match substring str))))
 
 (defun $current-dir ()
   "Current directory."

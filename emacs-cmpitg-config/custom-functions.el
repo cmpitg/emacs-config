@@ -608,12 +608,6 @@ cursor position."
     (progn (search-forward-regexp "[^[:space:]]" nil t)
            (backward-char))))
 
-(global-set-key (kbd "s-r") (lambda ()
-                              (interactive)
-                              (if ($string-contains? ($->string major-mode) "lisp")
-                                  (forward-word)
-                                ($smart-forward-exp))))
-
 (defun $goto-snippets-dir ()
   "Go to personal snippets directory."
   (interactive)

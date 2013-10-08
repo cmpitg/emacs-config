@@ -598,7 +598,6 @@ cursor position."
   say-hello-to me, |'Jane'
   say-hello-to me, 'Jane'|"
   (interactive)
-  (message "%s" (string-equal " " ($peek-char)))
   (if (and (not (string-equal " " ($peek-char)))
            (not (string-equal " " ($current-char))))
       (if (null ($goto-str " "))

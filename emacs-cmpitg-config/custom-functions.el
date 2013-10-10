@@ -588,24 +588,26 @@ cursor position."
   "Convert an expression to string."
   (format "%s" exp))
 
-(defun $smart-forward-exp ()
-  "Smart forward expression.  E.g.
+;; (defun $smart-forward-exp ()
+;;   "Smart forward expression.  E.g.
 
-  |say-hello-to me, 'Jane'
-  say-hello-to| me, 'Jane'
-  say-hello-to |me, 'Jane'
-  say-hello-to me,| 'Jane'
-  say-hello-to me, |'Jane'
-  say-hello-to me, 'Jane'|"
-  (interactive)
-  (if (and (not (string-equal " " ($peek-char)))
-           (not (string-equal " " ($current-char))))
-      (if (null ($goto-str " "))
-          (end-of-buffer)
-        (backward-char))
+;;   |say-hello-to me, 'Jane'
+;;   say-hello-to| me, 'Jane'
+;;   say-hello-to |me, 'Jane'
+;;   say-hello-to me,| 'Jane'
+;;   say-hello-to me, |'Jane'
+;;   say-hello-to me, 'Jane'|"
+;;   (interactive)
+;;   (if (and (not (string-equal " " ($peek-char)))
+;;            (not (string-equal " " ($current-char))))
+;;       (if (null ;; ($goto-str " ")
+;;            (search-forward-regexp "[ .]" nil t)
+;;                 )
+;;           (end-of-buffer)
+;;         (backward-char))
 
-    (progn (search-forward-regexp "[^[:space:]]" nil t)
-           (backward-char))))
+;;     (progn (search-forward-regexp "[^[:space:]]" nil t)
+;;            (backward-char))))
 
 (defun $goto-snippets-dir ()
   "Go to personal snippets directory."
@@ -822,6 +824,9 @@ string.  E.g. ($defalias '$add-snippet '$add-new-snippet \"Add
 new snippet\")"
   (defalias new-symbol old-symbol)
   (puthash new-symbol doc-string *$doc-strings*))
+
+($defalias '$smart-forward-exp 'forward-word
+  "Forward word")
 
 ($defalias '$filter-command '$pipe-then-exec
   "Filter a command")

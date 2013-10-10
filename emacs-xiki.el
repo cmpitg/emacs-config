@@ -53,3 +53,9 @@
 
 ;;; fill-column
 (set-fill-column 78)
+
+;; Change cursor type
+;;(set-default 'cursor-type 'hbar)
+(set-default 'cursor-type 'bar)
+;;(set-default 'cursor-type 'box)
+

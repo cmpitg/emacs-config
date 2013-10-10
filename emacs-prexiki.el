@@ -339,9 +339,16 @@
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
-;; 
+;;
+;; Ruby mode
+;;
+
+(require 'ruby-mode)
+($auto-load-mode '("\\Rakefile$") 'ruby-mode)
+
+;;
 ;; PicoLisp mode
-;; 
+;;
 
 ($add-load-path "~/emacs-config/emacs-local-packages/picolisp-mode")
 

@@ -160,6 +160,7 @@
 (global-set-key (kbd "C-<menu> C-<menu> C-<menu>") (lambda ()
                                                      (interactive)
                                                      (set-fill-column 78)))
+(global-set-key (kbd "C-<menu> C-(") 'smartparens-mode)
 ;; (global-set-key (kbd "C-<menu> C-p") (lambda ()
 ;;                                        "Paredit mode on, autopair mode off"
 ;;                                        (interactive)

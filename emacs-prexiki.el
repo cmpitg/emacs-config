@@ -21,6 +21,7 @@
                            sr-speedbar
                            paredit
                            ;; autopair
+                           smartparens
                            auto-complete
                            helm
                            smex
@@ -221,6 +222,9 @@
 ;; (require 'autopair)
 ;; (add-hook 'find-file-hook (lambda () (autopair-mode 1)))
 ;; (add-hook 'lisp-mode-hook (lambda () (autopair-mode nil)))
+
+(require 'smartparens)
+(require 'smartparens-config)
 
 (require 'paredit)
 

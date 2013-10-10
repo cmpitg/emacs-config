@@ -94,6 +94,7 @@
 (setq-default case-replace nil)
 
 ;;; fill-column
+(setq-default fill-column 78)
 (set-fill-column 78)
 
 ;; Disable backup file

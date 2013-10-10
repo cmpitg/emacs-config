@@ -198,6 +198,7 @@
 (setq font-lock-maximum-size nil)
 
 ;;; fill-column
+(setq-default fill-column 78)
 (set-fill-column 78)
 
 ;;; Automatically turn on auto-fill and refill mode

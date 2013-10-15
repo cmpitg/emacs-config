@@ -214,7 +214,7 @@ increase the opacity."
 (defun $load-paredit-mode ()
   "Load paredit mode and disable autopair."
   (paredit-mode t)
-  (autopair-mode nil))
+  (autopair-mode 0))
 
 (defun $auto-reload-firefox-after-save-hook ()
   "Auto reload Firefox when saving."

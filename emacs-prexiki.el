@@ -23,8 +23,7 @@
                            markdown-mode+
                            sr-speedbar
                            paredit
-                           ;; autopair
-                           smartparens
+                           autopair
                            auto-complete
                            helm
                            smex
@@ -41,13 +40,13 @@
                            json
                            quack
                            geiser
-                           js3-mode
+                           js2-mode
                            pabbrev
                            ))
 
 ;; cmpitg's specific configuration
 
-(load-file "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
+(load-file *custom-functions-path*)
 
 ($load-custom-el "keymap-ergo.el"
                  "keymap-common.el"
@@ -223,17 +222,28 @@
 ;; Auto pairing brackets
 ;;
 
-;; (require 'autopair)
+(require 'autopair)
+(autopair-global-mode)
 ;; (add-hook 'find-file-hook (lambda () (autopair-mode 1)))
 ;; (add-hook 'lisp-mode-hook (lambda () (autopair-mode nil)))
 
-(require 'smartparens)
-(require 'smartparens-config)
+;; smartparens messed up with indentation & input method
+;; (require 'smartparens)
+;; (require 'smartparens-config)
 
 (require 'paredit)
 
-(add-hook 'emacs-lisp-mode-hook '$load-paredit-mode)
-(add-hook 'lisp-mode-hook '$load-paredit-mode)
+(defadvice paredit-mode (around disable-autopairs-around (arg))
+  "Disable autopairs mode if paredit-mode is turned on."
+  ad-do-it
+  (if (null ad-return-value)
+      (autopair-mode 1)
+    (autopair-mode 0)))
+
+(ad-activate 'paredit-mode)
+
+(add-hook 'emacs-lisp-mode-hook       '$load-paredit-mode)
+(add-hook 'lisp-mode-hook             '$load-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook '$load-paredit-mode)
 
 ;;; Use with ElDoc

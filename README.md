@@ -197,11 +197,17 @@ General Public License version 3.0.
     + Copy file/directory name
     + Delete file/directory from your drive
 
-* Current visited path is displayed in the first text box called the *pathbar*.  Supported format includes `~` and shell variables (such as `$HOME`, `$SOMEDIR`).  Shortcut to go directly to the *pathbar*: `Ctrl+L`.
+* Current visited path is displayed in the first text box called the
+  *pathbar*.  Supported format includes `~` and shell variables (such as
+  `$HOME`, `$SOMEDIR`).  Shortcut to go directly to the *pathbar*: `Ctrl+L`.
 
-* User could modify directly the *pathbar* or click on the left-top browse button to visit a directory.  Shortcut to open directory browser dialog: `Ctrl+O`.
+* User could modify directly the *pathbar* or click on the left-top browse
+  button to visit a directory.  Shortcut to open directory browser dialog:
+  `Ctrl+O`.
 
-* The displayed files/directories could be filter by name with the regular expression in the second text box (called *filterbar*).  Shortcut to go directly to the *filterbar*: `Ctrl-F`.
+* The displayed files/directories could be filter by name with the regular
+  expression in the second text box (called *filterbar*).  Shortcut to go
+  directly to the *filterbar*: `Ctrl-F`.
 
 ## TODOs
 

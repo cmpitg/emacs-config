@@ -151,12 +151,7 @@
 (global-set-key (kbd "C-<menu> C-<menu> C-<menu>") (lambda ()
                                                      (interactive)
                                                      (set-fill-column 78)))
-(global-set-key (kbd "C-<menu> C-(") 'smartparens-mode)
-;; (global-set-key (kbd "C-<menu> C-p") (lambda ()
-;;                                        "Paredit mode on, autopair mode off"
-;;                                        (interactive)
-;;                                        (paredit-mode)
-;;                                        (autopair-mode nil)))
+(global-set-key (kbd "C-<menu> C-(") 'autopair-mode)
 (global-set-key (kbd "C-<menu> C-p") 'paredit-mode)
 (global-set-key (kbd "C-<menu> C-e") 'evil-mode)
 (global-set-key (kbd "C-<menu> C-w") 'whitespace-mode)

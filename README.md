@@ -2,21 +2,51 @@
 
 ## Introduction
 
-This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is packaged so it could be automagically installed in any new system which runs Emacs 24+.  The best and most recommended way to use is via the installation method mentioned below.  You could use this configuration in parallel with any Emacs configuration (such as [Emacs Prelude](https://github.com/bbatsov/prelude)) as long as other configurations don't mess up with the `~/emacs-config` directory.
+This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is
+packaged so it could be automagically installed in any new system which runs
+Emacs 24+.  The best and most recommended way to use is via the installation
+method mentioned below.  You could use this configuration in parallel with any
+Emacs configuration (such as
+[Emacs Prelude](https://github.com/bbatsov/prelude)) as long as other
+configurations don't mess up with the `~/emacs-config` directory.
 
 ## Requirements
 
 * A \*nix system, I *don't and probably never will* support Window$
 
-* Emacs 24
+* Emacs 24+
 
-* zenity (GTK+ GUI dialog, used for file choosing)
+* [Xiki](http://xiki.org)
 
-* PySide for Python 3 (`python3-pyside` package in a Debian-based systems)
+* For the GUI file browser:
+  - Emacs is running under server mode with default socket path.  This could
+    be achieved by using the `init.el` config or simply evaluating
+    `(server-start)` in your Emacs.
+  - PySide for Python 3 (`python3-pyside` package in a Debian-based systems)
 
-* Python-Xlib is required for `ibus-mode` to work
+* For file opening: zenity (GTK+ GUI dialog, used for file choosing)
 
-* Python modules: `jedi epc` (for Python auto-completion)
+* For `ibus-mode`: Python-Xlib
+
+* For Python development:
+  - Packages `jedi epc` for auto-completion
+
+* For Ruby development:
+  - [RSense](http://cx4a.org/software/rsense/) for Ruby completion
+  - Gems: `pry pry-doc yard` for Ruby-dev and [Pry](http://pryrepl.org/) integration
+
+### Installing requirements in Debian
+
+Im my system, I install Ruby using [RVM](https://rvm.io/), use Python 3.2, and
+switch from `su` to `sudo`.  So the installation process is roughly:
+
+```sh
+# Install Emacs 24+, I built in manually
+sudo aptitude install python3-pyside python-xlib zenity
+sudo pip-3.2 install python-xlib jedi epc
+gem install -V pry pry-doc yard
+# Install Xiki, refer to https://github.com/trogdoro/xiki
+```
 
 ## Installation
 

@@ -5,6 +5,7 @@
 ;; (load "~/emacs-config/emacs-cmpitg-config/keymap-common.el")
 
 (load "~/emacs-config/emacs-prexiki.el")
+
 (setq *xiki-path*
       "/home/cmpitg/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.9/data/emacs/site-lisp/")
 
@@ -59,3 +60,4 @@
 (set-default 'cursor-type 'bar)
 ;;(set-default 'cursor-type 'box)
 
+(load "~/emacs-config/emacs-custom.el")

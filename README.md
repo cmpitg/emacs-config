@@ -142,19 +142,50 @@ Differences from default Emacs:
 
 * "When in doubt, leave it out".  Use only what I need.
 
-* Opening file with a GUI dialog (provided by Zenity, defined in `~/emacs-config/emacs-cmpitg-config/custom-functions.el`).
+* Opening file with a GUI dialog (provided by Zenity, defined in
+  `~/emacs-config/emacs-cmpitg-config/custom-functions.el`).
 
 * Maintainable.
 
+### Keybindings and use cases
+
+* What does this keybinding do? `C-h k [keybinding]`
+
+* Description for this function and its keybinding? `C-h f [function-name]`
+
+* Open file:
+  - `<f3>` open file with Zenity
+  - `<M-f3>` open file with Helm
+
+* Bookmarks:
+  - Go to bookmark: `<S-f8>`
+  - List bookmarks: `C-x r l`
+    * `d` to delete bookmark
+    * `x` to commit deletions
+  - Add to bookmark: `C-x r m`
+
+#### With any interactive mode
+
+The following keybindings are applied to when you want to interative with a
+REPL.  Currently supported REPL:
+[MozRepl](https://github.com/bard/mozrepl/wiki) (for JavaScript) and
+[Pry](http://pryrepl.org/) (for Ruby).
+
+* Invoke and jump the REPL: `C-c C-i`
+
+* Eval last expression: `C-x C-e` or `C-c C-e`
+
+* Eval region: `C-c C-r`
+
+* Eval buffer: `C-c C-b`
+
+* Eval function: `C-M-x` or `C-c C-c`
+
 ### File Browser
 
-The file browser is written in `PySide` (Python wrapper for Qt framework).  Source code is the file browser is distributed under the terms of the GNU General Public License version 3.0.
-
-#### Requirements
-
-* Emacs 24+
-
-* Emacs is running under server mode with default socket path.  This could be achieved by using the `init.el` config or simply evaluating `(server-start)` in your Emacs.
+The file browser is written in `PySide` (Python wrapper for Qt framework).
+Source code is the file browser is distributed under the terms of the GNU
+General Public License version 3.0.
 
 #### All features:
 

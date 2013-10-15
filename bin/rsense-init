@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+rsenserc_path = File.expand_path "~/.rsense"
+
+output = """home = #{File.expand_path '~'}/emacs-config/rsense
+load-path = #{$LOAD_PATH.join(':')}
+gem-path = #{Gem.path.join(':')}
+"""
+
+File.open(rsenserc_path, 'w') { |file|
+  file.write output
+}

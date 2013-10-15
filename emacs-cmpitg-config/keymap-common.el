@@ -20,15 +20,6 @@
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
 ;;
-;; Bookmark jumping
-;;
-
-(global-set-key (kbd "C-h DEL") '(lambda ()
-                                   "Jump to keymap config"
-                                   (interactive)
-                                   ($open-file "~/emacs-config/emacs-cmpitg-config/keymap-common.el")))
-
-;;
 ;; Buffer
 ;;
 

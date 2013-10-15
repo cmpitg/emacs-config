@@ -54,10 +54,11 @@ gem install -V pry pry-doc yard
 
     ```sh
     cd ~
-    git clone git://github.com/CMPITG/emacs-config.git
+    git clone git://github.com/cmpitg/emacs-config.git
     ```
 
-* Make sure you have a local `bin` directory for executable files.  You can skip this step if you've already had:
+* Make sure you have a local `bin` directory for executable files.  You can
+  skip this step if you've already had:
 
     ```sh
     mkdir -p ~/bin/
@@ -71,14 +72,29 @@ gem install -V pry pry-doc yard
     ln -s ~/emacs-config/bin/filebrowser-emacs.py ~/bin/
     ln -s ~/emacs-config/bin/te ~/bin/
     ln -s ~/emacs-config/bin/emacs-xiki ~/bin/
+    ln -s ~/emacs-config/rsense/bin/rsense ~/bin/
     ```
+
+* Create `~/.rsense` for RSense:
+
+    ```sh
+    ~/emacs-config/bin/rsense-init
+    ```
+
+* Disable Pry's pager (for Emacs-Pry integration):
+
+    ```sh
+    echo "Pry.config.pager = false" >> ~/.pryrc
+    ```
+
+* Edit Xiki path in `~/emacs-config/emacs-xiki.el`
 
 * Make your own customization file if necessary, edit and have fun:
 
     ```sh
     touch ~/emacs-custom.el
     ```
-    
+
 (TODO) Desktop file
 
 ## Update

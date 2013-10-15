@@ -185,6 +185,31 @@
 (yas-global-mode 1)
 
 ;;
+;; Ruby mode
+;;
+
+;;
+;; Load before autocomplete
+;;
+;; http://cx4a.org/software/rsense/manual.html
+;;
+
+(require 'ruby-mode)
+
+;; RSense
+(setq rsense-home (getenv "$RSENSE_HOME"))
+($add-load-path (concat rsense-home "/etc"))
+(require 'rsense)
+
+;; With Pry
+;; https://github.com/Mon-Ouie/ruby-dev.el
+(require 'ruby-dev)
+(autoload 'turn-on-ruby-dev "ruby-dev" nil t)
+
+(add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
+($auto-load-mode '("\\Rakefile$") 'ruby-mode)
+
+;;
 ;; Autocomplete
 ;;
 
@@ -203,6 +228,11 @@
         ac-source-dictionary))
 (auto-complete-mode 1)
 (setq ac-fuzzy-enable t)
+
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-rsense-method)
+            (add-to-list 'ac-sources 'ac-source-rsense-constant)))
 
 ;;
 ;; Scheme & Racket
@@ -361,13 +391,6 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-
-;;
-;; Ruby mode
-;;
-
-(require 'ruby-mode)
-($auto-load-mode '("\\Rakefile$") 'ruby-mode)
 
 ;;
 ;; PicoLisp mode

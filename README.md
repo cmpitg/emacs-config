@@ -123,9 +123,14 @@ And the executable files:
 
 ## Running
 
-* Run the `te` (or `~/bin/te`) command.  All other customization must go into your `~/emacs-custom.el` file.
+* Run the `te` (or `~/bin/te`) command.  All other customization must go into
+  your `~/emacs-custom.el` file.
 
 * If you're using Xiki, install Xiki and run `emacs-xiki`.
+
+* By default, the variable `$RSENSE_HOME` is set to
+  `$HOME/emacs-config/rsense`.  To change this, search for `(setenv
+  "$RSENSE_HOME"` in `the `.el` file(s) and change it as you need.
 
 ## Detailed Description
 

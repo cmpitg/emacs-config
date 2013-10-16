@@ -8,9 +8,10 @@
 
 (setenv "$RSENSE_HOME" "~/emacs-config/rsense")
 
-(setq *custom-functions-path* "~/emacs-config/emacs-cmpitg-config/custom-functions.el"
-      *elpa-package-dir* "~/.emacs.d/elpa/"
-      *custom-els-dir*   "~/emacs-config/emacs-cmpitg-config/"
+(setq *custom-functions-path*  "~/emacs-config/emacs-cmpitg-config/custom-functions.el"
+      *snippet-dir*            "~/emacs-config/snippets"
+      *elpa-package-dir*       "~/.emacs.d/elpa/"
+      *custom-els-dir*         "~/emacs-config/emacs-cmpitg-config/"
       *package-list*     '(redo+
                            smooth-scrolling
                            auto-complete

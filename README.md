@@ -134,7 +134,8 @@ And the executable files:
 
 * Emacs uses [Yasnippet](https://github.com/capitaomorte/yasnippet) for
   [Textmate-like](https://macromates.com) snippet feature.  Put your custom
-  snippets in `~/emacs-config/snippets` directory.
+  snippets in your `*snippet-dir*` directory.  By default, `*snippet-dir*` is
+  `~/emacs-config/snippets` and can be changed in `.el` files.
 
 ## Detailed Description
 

@@ -64,6 +64,8 @@
 (global-set-key (kbd "<C-backspace>") '$mark-word-backward)
 
 (global-set-key (kbd "<menu> C-<return>") 'complete-symbol)
+(global-set-key (kbd "C-/") 'pabbrev-expand-maybe)
+
 ;; (global-set-key (kbd "<C-return>") 'complete-tag)
 (global-set-key (kbd "<M-return>") 'ac-fuzzy-complete)
 

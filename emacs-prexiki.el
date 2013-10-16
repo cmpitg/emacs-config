@@ -186,9 +186,12 @@
 ;; Load before autocomplete
 
 (require 'yasnippet)
+(setq yas-snippet-dirs
+      (if (null yas-snippet-dirs)
+          '()
+        yas-snippet-dirs))
+(add-to-list 'yas-snippet-dirs *snippet-dir*)
 (yas-global-mode 1)
-(setq yas/root-directory *snippet-dir*)
-(yas/load-directory yas/root-directory)
 
 ;;
 ;; Ruby mode

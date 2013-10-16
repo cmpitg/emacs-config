@@ -177,13 +177,18 @@
 ;;
 
 (require 'pabbrev)
+(global-pabbrev-mode)
 
 ;;
 ;; Yasnippet
 ;;
 
+;; Load before autocomplete
+
 (require 'yasnippet)
 (yas-global-mode 1)
+(setq yas/root-directory *snippet-dir*)
+(yas/load-directory yas/root-directory)
 
 ;;
 ;; Ruby mode
@@ -227,6 +232,7 @@
         ac-source-abbrev
         ac-source-words-in-same-mode-buffers
         ac-source-dictionary))
+
 (auto-complete-mode 1)
 (setq ac-fuzzy-enable t)
 

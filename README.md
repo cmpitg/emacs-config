@@ -132,6 +132,10 @@ And the executable files:
   `$HOME/emacs-config/rsense`.  To change this, search for `(setenv
   "$RSENSE_HOME"` in `the `.el` file(s) and change it as you need.
 
+* Emacs uses [Yasnippet](https://github.com/capitaomorte/yasnippet) for
+  [Textmate-like](https://macromates.com) snippet feature.  Put your custom
+  snippets in `~/emacs-config/snippets` directory.
+
 ## Detailed Description
 
 Differences from default Emacs:

@@ -186,12 +186,12 @@
 ;; Load before autocomplete
 
 (require 'yasnippet)
-(setq yas-snippet-dirs
-      (if (null yas-snippet-dirs)
-          '()
-        yas-snippet-dirs))
-(add-to-list 'yas-snippet-dirs *snippet-dir*)
-(yas-global-mode 1)
+;; (setq yas-snippet-dirs
+;;       (if (null yas-snippet-dirs)
+;;           '()
+;;         yas-snippet-dirs))
+;; (add-to-list 'yas-snippet-dirs *snippet-dir*)
+;; (yas-global-mode 1)
 
 ;;
 ;; Ruby mode
@@ -228,7 +228,7 @@
 (setq ac-sources
       '(ac-source-filename
         ac-source-functions
-        ac-source-yasnippet
+        ;; ac-source-yasnippet
         ac-source-variables
         ac-source-symbols
         ac-source-features

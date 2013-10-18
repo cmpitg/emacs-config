@@ -6,7 +6,7 @@
 
 ;; Global constants
 
-(setenv "$RSENSE_HOME" "~/emacs-config/rsense")
+(setenv "$RSENSE_HOME" (expand-file-name "~/emacs-config/rsense"))
 
 (setq *custom-functions-path*  "~/emacs-config/emacs-cmpitg-config/custom-functions.el"
       *snippet-dir*            "~/emacs-config/snippets"

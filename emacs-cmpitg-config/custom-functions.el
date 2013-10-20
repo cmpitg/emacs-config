@@ -207,6 +207,15 @@ increase the opacity."
       (progn (ecb-deactivate)
              (setf *is-ecb-running?* nil))))
 
+(defun $helm-multi-all ()
+  "multi-occur in all buffers backed by files."
+  (interactive)
+  (helm-multi-occur
+   (delq nil
+         (mapcar (lambda (b)
+                   (when (buffer-file-name b) (buffer-name b)))
+                 (buffer-list)))))
+
 (defun $setup-moz-javascript ()
   "Setting JavaScript mode with MozRepl."
   (moz-minor-mode 1))

@@ -116,7 +116,8 @@
 ;;
 
 (global-set-key (kbd "S-<f4>") 'delete-window)
-(global-set-key (kbd "<f4>") 'find-file-other-window)
+;; (global-set-key (kbd "<f4>") 'find-file-other-window)
+(global-set-key (kbd "<f4>") '$helm-multi-all)
 (global-set-key (kbd "C-7") 'split-window-vertically)
 (global-set-key (kbd "C-5") 'split-window-horizontally)
 (global-set-key (kbd "C-%") 'delete-other-windows)

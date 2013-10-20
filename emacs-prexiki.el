@@ -430,6 +430,9 @@
 
 (require 'helm-config)
 
+(eval-after-load "helm-regexp"
+  '(helm-attrset 'follow 1 helm-source-moccur))
+
 ;;
 ;; Smex for enhancing M-x
 ;;

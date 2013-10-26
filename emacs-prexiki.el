@@ -180,18 +180,26 @@
 (global-pabbrev-mode)
 
 ;;
+;; Slime for Common Lisp development
+;;
+
+(require 'slime)
+(setq inferior-lisp-program *default-lisp-repl-path*)
+(slime-setup)
+
+;;
 ;; Yasnippet
 ;;
 
 ;; Load before autocomplete
 
 (require 'yasnippet)
-;; (setq yas-snippet-dirs
-;;       (if (null yas-snippet-dirs)
-;;           '()
-;;         yas-snippet-dirs))
-;; (add-to-list 'yas-snippet-dirs *snippet-dir*)
-;; (yas-global-mode 1)
+(setq yas-snippet-dirs
+      (if (null yas-snippet-dirs)
+          '()
+        yas-snippet-dirs))
+(add-to-list 'yas-snippet-dirs *snippet-dir*)
+(yas-global-mode 1)
 
 ;;
 ;; Ruby mode

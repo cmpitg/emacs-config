@@ -12,6 +12,7 @@
       *snippet-dir*            "~/emacs-config/snippets"
       *elpa-package-dir*       "~/.emacs.d/elpa/"
       *custom-els-dir*         "~/emacs-config/emacs-cmpitg-config/"
+      *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
       *package-list*     '(redo+
                            smooth-scrolling
                            auto-complete
@@ -27,6 +28,7 @@
                            autopair
                            auto-complete
                            helm
+                           slime
                            smex
                            evil
                            evil-nerd-commenter

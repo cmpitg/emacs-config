@@ -45,7 +45,7 @@ Im my system, I install Ruby using [RVM](https://rvm.io/), use Python 3.2, and
 switch from `su` to `sudo`.  So the installation process is roughly:
 
 ```sh
-# Install Emacs 24+, I built in manually
+# Install Emacs 24+, I built it manually
 sudo aptitude install python3-pyside python-xlib zenity
 sudo pip-3.2 install python-xlib jedi epc
 gem install -V pry pry-doc yard
@@ -70,7 +70,7 @@ gem install -V pry pry-doc yard
   # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
   # echo "export PATH=$HOME/bin:$PATH" >> ~/.zshrc
   ```
-* Now, symlinks all the executables to your `$HOME/bin`:
+* Now, symlink all the executables to your `$HOME/bin`:
 
   ```sh
   ln -s ~/emacs-config/bin/filebrowser-emacs.py ~/bin/
@@ -96,7 +96,7 @@ gem install -V pry pry-doc yard
 * Make your own customization file if necessary, edit and have fun:
 
   ```sh
-  touch ~/emacs-custom.el
+  touch ~/emacs-config/emacs-custom.el
   ```
 
 (TODO) Desktop file

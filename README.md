@@ -10,7 +10,7 @@ Emacs configuration (such as
 [Emacs Prelude](https://github.com/bbatsov/prelude)) as long as other
 configurations don't mess up with the `~/emacs-config` directory.
 
-## Screetshot
+## Screenshot
 
 ![My Emacs screenshot](https://raw.github.com/cmpitg/emacs-config/master/images/2013-11-01_08-59-30_Emacs_session.png "My Emacs setup")
 

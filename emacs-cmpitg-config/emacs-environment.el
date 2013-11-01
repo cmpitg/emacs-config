@@ -224,7 +224,7 @@
 (setq ps-paper-type 'a4)
 
 ;;; Use the same clipboard with X
-(setq x-select-enable-clipboard nil)
+(setq x-select-enable-clipboard t)
 
 ;;; Auto complete switching buffer mode
 (iswitchb-mode t)

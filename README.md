@@ -236,14 +236,6 @@ Refactor this document into simple use cases/tasks.
 
 * `s-\` to toggle `ibus-mode` (`ibus-mode`), then `C-M-S-SPC` to toggle Ibus (`$toggle-ibus`)
 
-* `<C-down-mouse-1>` to show buffer menu (`mouse-buffer-menu`)
-
-* `<S-mouse-1>` to execute shell command on selection then pipe to the current position (`$exec-then-pipe-selection`)
-
-* `<mouse-2>` (middle click) to eval selection (`$eval-selection`)
-
-* `<M-mouse-3>` to select and do that again to kill (`mouse-secondary-save-then-kill`)
-
 * `<C-f4>` to close the current file (`$close-file`)
 
 * `<f8>` to toggle the Speedbar buffer (`speedbar-toggle`):
@@ -263,7 +255,7 @@ Refactor this document into simple use cases/tasks.
   - `C-h f` to get a function definition (`describe-function`)
 
 * Code:
-  - `C-/` to toggle comment on selection (`'$toggle-comment-region`) (TODO)
+  - `C--` to toggle comment on selection (`'$toggle-comment-region`)
 
 * Toggle whitespace visibility `C-<menu> C-w`:
   - Delete redundant whitespaces `s-w`

@@ -56,48 +56,48 @@ gem install -V pry pry-doc yard
 
 * First, clone the repository to your `$HOME`:
 
-    ```sh
-    cd ~
-    git clone git://github.com/cmpitg/emacs-config.git
-    ```
+  ```sh
+  cd ~
+  git clone git://github.com/cmpitg/emacs-config.git
+  ```
 
 * Make sure you have a local `bin` directory for executable files.  You can
   skip this step if you've already had:
 
-    ```sh
-    mkdir -p ~/bin/
-    echo "export PATH=$HOME/bin:$PATH" >> ~/.bashrc
-    # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
-    # echo "export PATH=$HOME/bin:$PATH" >> ~/.zshrc
-    ```
+  ```sh
+  mkdir -p ~/bin/
+  echo "export PATH=$HOME/bin:$PATH" >> ~/.bashrc
+  # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
+  # echo "export PATH=$HOME/bin:$PATH" >> ~/.zshrc
+  ```
 * Now, symlinks all the executables to your `$HOME/bin`:
 
-    ```sh
-    ln -s ~/emacs-config/bin/filebrowser-emacs.py ~/bin/
-    ln -s ~/emacs-config/bin/te ~/bin/
-    ln -s ~/emacs-config/bin/emacs-xiki ~/bin/
-    ln -s ~/emacs-config/rsense/bin/rsense ~/bin/
-    ```
+  ```sh
+  ln -s ~/emacs-config/bin/filebrowser-emacs.py ~/bin/
+  ln -s ~/emacs-config/bin/te ~/bin/
+  ln -s ~/emacs-config/bin/emacs-xiki ~/bin/
+  ln -s ~/emacs-config/rsense/bin/rsense ~/bin/
+  ```
 
 * Create `~/.rsense` for RSense:
 
-    ```sh
-    ~/emacs-config/bin/rsense-init
-    ```
+  ```sh
+  ~/emacs-config/bin/rsense-init
+  ```
 
 * Disable Pry's pager (for Emacs-Pry integration):
 
-    ```sh
-    echo "Pry.config.pager = false" >> ~/.pryrc
-    ```
+  ```sh
+  echo "Pry.config.pager = false" >> ~/.pryrc
+  ```
 
 * Edit Xiki path in `~/emacs-config/emacs-xiki.el`
 
 * Make your own customization file if necessary, edit and have fun:
 
-    ```sh
-    touch ~/emacs-custom.el
-    ```
+  ```sh
+  touch ~/emacs-custom.el
+  ```
 
 (TODO) Desktop file
 
@@ -105,25 +105,25 @@ gem install -V pry pry-doc yard
 
 (TODO)
 
-    ```sh
-    cd ~/emacs-config/
-    git pull
-    ```
+```sh
+cd ~/emacs-config/
+git pull
+```
 
 ## Uninstallation
 
 Just remove the `~/emacs-config` directory and your `~/emacs-custom.el` if necessary:
 
-    ```sh
-    rm -rf ~/emacs-config
-    rm ~/emacs-custom.el
-    ```
+```sh
+rm -rf ~/emacs-config
+rm ~/emacs-custom.el
+```
 
 And the executable files:
 
-    ```sh
-    rm ~/bin/{te,filebrowser-emacs.py,emacs-xiki}
-    ```
+```sh
+rm ~/bin/{te,filebrowser-emacs.py,emacs-xiki}
+```
 
 ## Running
 

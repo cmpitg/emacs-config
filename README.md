@@ -12,7 +12,7 @@ configurations don't mess up with the `~/emacs-config` directory.
 
 ## Screenshot
 
-![My Emacs screenshot](https://raw.github.com/cmpitg/emacs-config/master/images/2013-11-01_08-59-30_Emacs_session.png "My Emacs setup")
+![My Emacs screenshot](http://i.imgur.com/FNnCESN.png "My Emacs setup")
 
 ## Requirements
 

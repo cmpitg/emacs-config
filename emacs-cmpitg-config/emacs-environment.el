@@ -6,8 +6,7 @@
 ;; Set theme
 
 ;; Color theme
-;(load-file "~/.elisp/color-theme/color-theme.el")
-;; (add-to-list 'load-path "~/.elisp/color-theme/")
+;; (add-to-list 'load-path "~/emacs-config/color-theme/")
 ;; (require 'color-theme)
 ;; (eval-after-load "color-theme"
 ;;   '(progn
@@ -15,15 +14,12 @@
 ;;      (color-theme-hober)))
 
 ;; ;; Theme
-;; (load "~/.elisp/themes/color-theme-blackboard.el")
-;; (load "~/.elisp/themes/color-theme-molokai/color-theme-molokai.el")
+;; (load "~/emacs-config/themes/color-theme-blackboard.el")
+;; (load "~/emacs-config/themes/color-theme-molokai/color-theme-molokai.el")
 ;; (require 'color-theme-molokai)
 
-;; (load "~/.elisp/themes/color-theme-inspiration-dark.el")
+;; (load "~/emacs-config/themes/color-theme-inspiration-dark.el")
 ;; (require 'inspiration)
-
-;; (load "~/.elisp/themes/color-theme-textmate.el")
-;; (require 'color-theme-textmate)
 
 ;; (load "~/src/elisp/twilight-emacs/color-theme-twilight.el")
 
@@ -42,10 +38,6 @@
 ;(color-theme-charcoal-black)
 ;(color-theme-calm-forest)
 
-;; Set cursor color
-;; (set-cursor-color "cyan")
-;; (set-cursor-color "gray")
-
 ;; Using system font
 
 (setq font-use-system-font t)
@@ -53,16 +45,16 @@
 ;; Custom variables
 
 (custom-set-variables
- '(column-number-mode t)
- '(display-battery-mode t)
- '(display-time-mode t)
+ ;; '(column-number-mode t)
+ ;; '(display-battery-mode t)
+ ;; '(display-time-mode t)
+ ;; '(size-indication-mode t)
  '(face-font-family-alternatives (quote (("Monaco" "Consolas" "Monospace")
                                          ("Monaco" "Consolas" "CMU Typewriter Text" "fixed")
                                          ("Geneva" "Sans Serif" "helv" "helvetica" "arial" "fixed")
                                          ("helv" "helvetica" "arial" "fixed"))))
  '(safe-local-variable-values (quote ((Syntax . ANSI-Common-Lisp) (Base . 10) (encoding . utf-8))))
  '(show-paren-mode t)
- '(size-indication-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 
 ;; Custom fonts
@@ -81,45 +73,27 @@
                          :width normal
                          :foundry "unknown"
                          :family "Monaco"))))
- '(cursor ((t (:background "cyan" :foreground "gray"))))
- '(mode-line ((t (:background "grey75"
-                              :foreground "#3d3d3d"
-                              :inverse-video t
-                              :box (:line-width 1 :color "#000000" :style released-button)
-                              :slant normal
-                              :weight normal
-                              :height 100
-                              :family "Geneva"))))
- '(rst-level-1-face ((t (:embolden t))) t)
- '(sr-active-path-face ((t (:background "#333333" :foreground "yellow" :weight bold :height 120))))
- '(sr-compressed-face ((t (:foreground "#AAAAAA"))))
- '(sr-directory-face ((t (:foreground "magenta" :weight bold))))
- '(sr-editing-path-face ((t (:background "#444444" :foreground "yellow" :weight bold :height 120))))
- '(sr-highlight-path-face ((t (:background "#444444" :foreground "#ace6ac" :weight bold :height 120))))
- '(sr-packaged-face ((t (:foreground "DarkCyan"))))
- '(sr-passive-path-face ((t (:background "#333333" :foreground "lightgray" :weight bold :height 120))))
- )
+ ;; '(mode-line ((t (:background "grey75"
+ ;;                              :foreground "#3d3d3d"
+ ;;                              :inverse-video t
+ ;;                              :box (:line-width 1 :color "#000000" :style released-button)
+ ;;                              :slant normal
+ ;;                              :weight normal
+ ;;                              :height 100
+ ;;                              :family "Geneva"))))
+ ;; '(mode-line ((t (:inverse-video t
+ ;;                                 :slant normal
+ ;;                                 :weight normal
+ ;;                                 :height 100
+ ;;                                 :family "Geneva"))))
 
-;;
-;; Theme
-;;
+ '(rst-level-1-face ((t (:embolden t))) t))
 
-(set-background-color "#f9f9f9")
+;; yes/no questions become y/n questions
+(defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Comment color
-;; (set-face-foreground 'font-lock-comment-face "#3a345f")
-(set-face-attribute 'font-lock-comment-face nil :foreground "#3a345f")
-;; (set-face-attribute 'default nil :family "Menlo" :height 120) (set-face-attribute 'font-lock-comment-face nil :foreground "#3f7f5f") (set-face-attribute 'font-lock-string-face nil :foreground "#4f004f") (set-face-attribute 'font-lock-constant-face nil :foreground "#4f004f") (set-face-attribute 'font-lock-keyword-face nil :foreground "#00003f") (set-face-attribute 'font-lock-builtin-face nil :foreground "#00003f") (set-face-attribute 'font-lock-type-face nil :foreground "#000000") (set-face-attribute 'font-lock-function-name-face nil :foreground "#000000" :weight 'bold) (set-face-attribute 'font-lock-variable-name-face nil :foreground "#000000" :weight 'bold)
-
-;;
-;; Other
-;;
-
-;; Set the appropriate indent styles
-  ;; Available mode gnu, k&r, bsd, stroustrup, linux, python, java,
-  ;; whitesmith, ellemtel, and awk
-(setq c-default-style
-      '((java-mode . "java") (awk-mode . "awk") (other . "bsd")))
+;; Backspace and Del delete selection, except in paredit-mode
+(delete-selection-mode 1)
 
 ;; Set the default tab width
 (setq default-tab-width 4)

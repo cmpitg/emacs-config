@@ -1,7 +1,10 @@
 ;; -*- mode: emacs-lisp -*-
 
 ;;;
-;;; TODO: write documentation/make screencast about workflow
+;;; TODO
+;;; * write documentation/make screencast about workflow
+;;; * make "~/emacs-config" a constant    
+;;; * YAML to config generate Emacs Lisp config file :-)
 ;;;
 
 ;; Global constants
@@ -14,6 +17,8 @@
       *custom-els-dir*         "~/emacs-config/emacs-cmpitg-config/"
       *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
       *package-list*     '(redo+
+                           color-theme
+                           ;; powerline
                            smooth-scrolling
                            auto-complete
                            jedi
@@ -108,6 +113,47 @@
 ;;; Auto complete switching buffer mode
 (iswitchb-mode t)
 
+;; Default scratch-buffer mode
+(setq initial-major-mode 'emacs-lisp-mode)
+
+;;
+;; Theming and stuff
+;;
+
+(require 'color-theme)
+
+;; Comment color
+;; (set-face-foreground 'font-lock-comment-face "#3a345f")
+(set-face-attribute 'font-lock-comment-face nil :foreground "#3a345f")
+
+;; Set cursor color
+;; (set-cursor-color "cyan")
+;; (set-cursor-color "gray")
+(set-cursor-color "black")
+;; (set-background-color "#f2f2f2")
+(set-background-color "#efefef")
+
+;;(load "~/emacs-config/themes/color-theme-textmate-modified.el")
+;;(require 'color-theme-textmate-modified)
+;;(color-theme-textmate-modified)
+
+;;
+;; Powerful and beautiful modeline
+;;
+;; Repo (bad): https://github.com/milkypostman/powerline
+;; Another (better): https://github.com/jonathanchu/emacs-powerline
+
+($add-load-path "~/emacs-config/emacs-local-packages/emacs-powerline/")
+(require 'cl)
+(require 'powerline)
+
+;;
+;; Acme-like mouse chord
+;;
+;; https://github.com/akrito/acme-mouse.git
+
+(load "~/emacs-config/emacs-local-packages/acme-mouse/acme-mouse.el")
+
 ;;
 ;; dash - modern Emacs Lisp APIs
 ;;
@@ -198,12 +244,12 @@
 ;; Load before autocomplete
 
 (require 'yasnippet)
-(setq yas-snippet-dirs
-      (if (null yas-snippet-dirs)
-          '()
-        yas-snippet-dirs))
-(add-to-list 'yas-snippet-dirs *snippet-dir*)
-(yas-global-mode 1)
+;; (setq yas-snippet-dirs
+;;       (if (null yas-snippet-dirs)
+;;           '()
+;;         yas-snippet-dirs))
+;; (add-to-list 'yas-snippet-dirs *snippet-dir*)
+;; (yas-global-mode 1)
 
 ;;
 ;; Ruby mode
@@ -281,12 +327,6 @@
 
 (require 'autopair)
 (autopair-global-mode)
-;; (add-hook 'find-file-hook (lambda () (autopair-mode 1)))
-;; (add-hook 'lisp-mode-hook (lambda () (autopair-mode nil)))
-
-;; smartparens messed up with indentation & input method
-;; (require 'smartparens)
-;; (require 'smartparens-config)
 
 (require 'paredit)
 

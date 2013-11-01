@@ -224,7 +224,7 @@ Refactor this document into simple use cases/tasks.
 
 ## Fragemented Notes
 
-* Use **mouse effectively**
+* Use **mouse effectively**, [Acme mouse chords](http://acme.cat-v.org/mouse)
 
 * Open/save file:
   - `<f3>` to open file with GUI (Zenity) (`$open-file-gui`)

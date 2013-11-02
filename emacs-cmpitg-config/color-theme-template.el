@@ -1,4 +1,5 @@
 (require 'color-theme)
+
 (defun color-theme-djcb-dark ()
   "dark color theme created by djcb, Jan. 2009."
   (interactive)
@@ -31,3 +32,5 @@
        (region ((t (:foreground nil :background "#555555"))))
        (show-paren-match-face ((t (:bold t :foreground "#ffffff" 
                                     :background "#050505")))))))
+
+(provide 'color-theme-djcb-dark)

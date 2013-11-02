@@ -3,16 +3,6 @@
 ;; Set the appropriate frame size
 ; (set-frame-size-according-to-resolution)
 
-;; Set theme
-
-;; Color theme
-;; (add-to-list 'load-path "~/emacs-config/color-theme/")
-;; (require 'color-theme)
-;; (eval-after-load "color-theme"
-;;   '(progn
-;;      (color-theme-initialize)
-;;      (color-theme-hober)))
-
 ;; ;; Theme
 ;; (load "~/emacs-config/themes/color-theme-blackboard.el")
 ;; (load "~/emacs-config/themes/color-theme-molokai/color-theme-molokai.el")

@@ -20,12 +20,14 @@ configurations don't mess up with the `~/emacs-config` directory.
 
 * Emacs 24+
 
-* [Xiki](http://xiki.org) (optional, if you use Xiki)
+* [Xiki](http://xiki.org) (optional)
 
 * For the GUI file browser:
+
   - Emacs is running under server mode with default socket path.  This could
     be achieved by using the `init.el` config or simply evaluating
     `(server-start)` in your Emacs.
+
   - PySide for Python 3 (`python3-pyside` package in a Debian-based systems)
 
 * For file opening: zenity (GTK+ GUI dialog, used for file choosing)

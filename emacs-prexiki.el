@@ -342,6 +342,8 @@
 (add-hook 'emacs-lisp-mode-hook       '$load-paredit-mode)
 (add-hook 'lisp-mode-hook             '$load-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook '$load-paredit-mode)
+(add-hook 'scheme-mode-hook           '$load-paredit-mode)
+(add-hook 'geiser-repl-mode-hook      '$load-paredit-mode)
 
 ;;; Use with ElDoc
 (require 'eldoc)

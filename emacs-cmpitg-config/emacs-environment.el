@@ -3,21 +3,6 @@
 ;; Set the appropriate frame size
 ; (set-frame-size-according-to-resolution)
 
-;; ;; Theme
-;; (load "~/emacs-config/themes/color-theme-blackboard.el")
-;; (load "~/emacs-config/themes/color-theme-molokai/color-theme-molokai.el")
-;; (require 'color-theme-molokai)
-
-;; (load "~/emacs-config/themes/color-theme-inspiration-dark.el")
-;; (require 'inspiration)
-
-;; (load "~/src/elisp/twilight-emacs/color-theme-twilight.el")
-
-;; (add-to-list 'load-path "~/src/elisp/zenburn-emacs")
-;; (require 'color-theme-zenburn)
-
-;(load "~/src/elisp/emacs24-solarized/solarized-theme.el")
-;(load "~/src/elisp/emacs24-solarized/solarized-light-theme.el")
 ;(color-theme-molokai)
 ;(color-theme-zenburn)
 ;(color-theme-textmate)

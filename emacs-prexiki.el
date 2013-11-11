@@ -116,6 +116,7 @@
 
 ;; Default scratch-buffer mode
 (setq initial-major-mode 'emacs-lisp-mode)
+(setq-default initial-major-mode 'emacs-lisp-mode)
 
 ;;
 ;; Theming and stuff

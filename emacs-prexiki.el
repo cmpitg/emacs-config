@@ -18,6 +18,7 @@
       *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
       *package-list*     '(redo+
                            color-theme
+                           rainbow-delimiters
                            ;; powerline
                            smooth-scrolling
                            auto-complete
@@ -146,6 +147,13 @@
 ($add-load-path "~/emacs-config/emacs-local-packages/emacs-powerline/")
 (require 'cl)
 (require 'powerline)
+
+;;
+;; Highlight brackets
+;;
+
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;
 ;; Acme-like mouse chord

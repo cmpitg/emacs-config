@@ -41,6 +41,15 @@
 ;;; Functions
 ;;;
 
+(defun $new-home-script (file-name)
+  "Creating a new file/script at ~/bin/."
+  (interactive (list
+                (read-string "File name (~/bin/): "
+                             "~/bin/"
+                             nil
+                             "")))
+  ($open-file file-name))
+
 (defun $current-buffer-name ()
   "Retrieve the name of the current buffer."
   (buffer-name (current-buffer)))

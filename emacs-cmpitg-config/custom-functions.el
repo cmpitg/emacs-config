@@ -41,6 +41,11 @@
 ;;; Functions
 ;;;
 
+(defun $start-mozrepl ()
+  "Start MozRepl."
+  (interactive)
+  (inferior-moz-start-process))
+
 (defun* $read-string (prompt &key
                              (initial-input         nil)
                              (history               nil)

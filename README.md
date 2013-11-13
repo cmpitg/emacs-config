@@ -158,6 +158,8 @@ Differences from default Emacs:
 
 * Maintainable.
 
+* Automatically `chmod +x` shebang-ed files.
+
 ### Keybindings and use cases
 
 * What does this keybinding do? `C-h k [keybinding]`

@@ -41,6 +41,12 @@
 ;;; Functions
 ;;;
 
+(defun $open-url-in-firefox (url)
+  "Open a URL in Firefox."
+  (interactive (list ($read-string "URL: "
+                                   :initial-input "https://encrypted.google.com")))
+  ($send-to-mozrepl (format "switchToTabHavingURI('%s', true)" url)))
+
 (defun $refresh-firefox ()
   "Refresh current tab of Firefox browser."
   (interactive)

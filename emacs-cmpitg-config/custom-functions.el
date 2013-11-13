@@ -56,6 +56,13 @@
   (interactive)
   (inferior-moz-start-process))
 
+(defun $send-to-mozrepl (string)
+  "Send a string to MozRepl."
+  (interactive "MCommand: ")
+  ($start-mozrepl)
+  (comint-send-string (inferior-moz-process)
+                      string))
+
 (defun* $read-string (prompt &key
                              (initial-input         nil)
                              (history               nil)

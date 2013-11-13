@@ -139,7 +139,8 @@ If point is already there, move to the beginning of the line."
 (defun $current-path ()
   "Get full path of the current file."
   (interactive)
-  (if buffer-file-name buffer-file-name
+  (if buffer-file-name
+      buffer-file-name
     ""))
 
 (defun $kill-current-buffer ()

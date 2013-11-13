@@ -44,12 +44,9 @@
 (defun $refresh-firefox ()
   "Refresh current tab of Firefox browser."
   (interactive)
-  ($start-mozrepl)
-
   ;; This function can be used when editing HTML/CSS/Web resources, so the
   ;; timeout is there for the file to properly saved.
-  (comint-send-string (inferior-moz-process)
-                      "setTimeout(BrowserReload, 300)"))
+  ($send-to-mozrepl "setTimeout(BrowserReload, 300)"))
 
 (defun $start-mozrepl ()
   "Start MozRepl."
@@ -59,7 +56,7 @@
 (defun $send-to-mozrepl (string)
   "Send a string to MozRepl."
   (interactive "MCommand: ")
-  ($start-mozrepl)
+  ($start-mozrepl)                      ; Make sure MozRepl is up and running
   (comint-send-string (inferior-moz-process)
                       string))
 

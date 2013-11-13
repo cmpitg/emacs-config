@@ -13,9 +13,9 @@
 
 (setq *custom-functions-path*  "~/emacs-config/emacs-cmpitg-config/custom-functions.el"
       *snippet-dir*            "~/emacs-config/snippets"
-      *elpa-package-dir*       "~/.emacs.d/elpa/"
       *custom-els-dir*         "~/emacs-config/emacs-cmpitg-config/"
       *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
+      *elpa-package-dir*       "~/.emacs.d/elpa/"
       *package-list*     '(redo+
                            color-theme
                            rainbow-delimiters

@@ -19,11 +19,11 @@
 ;;     * Send buffer to MozRepl
 ;;     * Send region to MozRepl
 ;;     * Browser auto-reload
+;;     * Switch to repl then switch back
 ;;   - Google a selection with $google
 ;;   - Refresh the browser with $refresh-firefox
 ;;   - Send command to MozRepl with $send-to-mozrepl
 ;;   - Open a URL on Firefox with $open-url-in-firefox
-;;
 
 ;;;
 ;;; Customization

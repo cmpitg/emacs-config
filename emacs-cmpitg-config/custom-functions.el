@@ -41,6 +41,21 @@
 ;;; Functions
 ;;;
 
+(defun* $read-string (prompt &key
+                             (initial-input         nil)
+                             (history               nil)
+                             (default-value         nil)
+                             (inherit-input-method  nil))
+  "An alias of read-string, with keyword arguments.  See
+read-string documentation for more details.
+
+  Read a string from the minibuffer."
+  (read-string prompt
+               initial-input
+               history
+               default-value
+               inherit-input-method))
+
 (defun $new-home-script (file-name)
   "Creating a new file/script at ~/bin/."
   (interactive (list

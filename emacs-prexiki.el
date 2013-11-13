@@ -57,8 +57,7 @@
 
 (load-file *custom-functions-path*)
 
-($load-custom-el "keymap-ergo.el"
-                 "keymap-common.el"
+($load-custom-el "keymap-common.el"
                  "aliases.el"
                  )
 

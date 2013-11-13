@@ -1,3 +1,7 @@
+;; Load Ergo keymap for Programmer Dvorak keyboard
+
+($load-custom-el "keymap-ergo-programmer-dvorak.el")
+
 ;;
 ;; Bookmark jumping
 ;;

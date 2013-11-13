@@ -190,9 +190,17 @@ REPL.  Currently supported REPL:
 
 * Eval region: `C-c C-r`
 
-* Eval buffer: `C-c C-b`
+* Eval buffer: `C-c C-b` or `C-c C-c` (in some modes)
 
-* Eval function: `C-M-x` or `C-c C-c`
+* Eval function: `C-M-x` or `C-c C-c` (in some modes)
+
+##### With Python development
+
+(TODO) Making screencast, solving a Project Euler problem
+
+##### With Racket development
+
+(TODO) Making screencast, solving a Project Euler problem
 
 ### File Browser
 

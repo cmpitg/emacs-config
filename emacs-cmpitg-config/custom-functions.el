@@ -41,7 +41,11 @@
 ;;; Functions
 ;;;
 
-(defun $move-to-beginning-of-line (arg)
+(defun $current-buffer-name ()
+  "Retrieve the name of the current buffer."
+  (buffer-name (current-buffer)))
+
+(defun $move-to-beginning-of-line ()
   "Move point back to indentation of beginning of line.
 
 Move point to the first non-whitespace character on this line.

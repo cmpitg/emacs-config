@@ -1,9 +1,3 @@
-; Load my favourite keybinding options
-;(load "~/emacs-config/emacs-cmpitg-config/aliases.el")
-;; (load "~/emacs-config/emacs-cmpitg-config/custom-functions.el")
-;; (load "~/emacs-config/emacs-cmpitg-config/keymap-ergo.el")
-;; (load "~/emacs-config/emacs-cmpitg-config/keymap-common.el")
-
 (load "~/emacs-config/emacs-prexiki.el")
 
 (setq *xiki-path*
@@ -60,4 +54,9 @@
 (set-default 'cursor-type 'bar)
 ;;(set-default 'cursor-type 'box)
 
-(load "~/emacs-config/emacs-custom.el")
+;;
+;; All user-defined customization goes here
+;;
+
+(if ($file-exists? "~/emacs-custom.el")
+    (load "~/emacs-custom.el"))

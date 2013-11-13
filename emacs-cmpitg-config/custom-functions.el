@@ -299,14 +299,17 @@ increase the opacity."
   "Open line and move to the next line."
   (interactive "p")
   (end-of-line)
+  (delete-horizontal-space)
   (open-line arg)
-  (next-line 1))
+  (next-line 1)
+  (indent-according-to-mode))
 
 (defun $open-line-before (arg)
   "Open line and move to the previous line."
   (interactive "p")
   (beginning-of-line)
-  (open-line arg))
+  (open-line arg)
+  (indent-according-to-mode))
 
 (defun $toggle-letter-case ()
   "Toggle the letter case of current word or text selection.

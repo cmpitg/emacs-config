@@ -67,13 +67,8 @@
 ;; http://www.emacswiki.org/emacs/IndentingLisp
 ;;
 
-(defun reindent-lisp ()
-  "Reindent Lisp functions with Common Lisp-style indentation.
-  Default intentation sucks."
-  (set (make-local-variable 'lisp-indent-function)
-       'common-lisp-indent-function))
-
-(add-hook 'lisp-mode-hook 'reindent-lisp)
+;; (put 'if 'common-lisp-indent-function 1)
+;; (put 'if 'common-lisp-indent-function 2)
 
 ;;
 ;; Start Emacs server

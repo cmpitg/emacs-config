@@ -180,18 +180,22 @@ Differences from default Emacs:
 #### With any interactive mode
 
 The following keybindings are applied to when you want to interative with a
-REPL.  Currently supported REPL:
-[MozRepl](https://github.com/bard/mozrepl/wiki) (for JavaScript) and
-[Pry](http://pryrepl.org/) (for Ruby).
+REPL.
 
-* Invoke and jump the REPL: `C-c C-i`
+Currently supported REPL:
 
+* [MozRepl](https://github.com/bard/mozrepl/wiki) (for JavaScript)
+* [Pry](http://pryrepl.org/) (for Ruby).
+* [Geiser](http://www.nongnu.org/geiser/) for Scheme and
+  [Racket development](http://docs.racket-lang.org/guide/Emacs.html).
+* Python (built-in).
+
+General keybindings:
+
+* Invoke and/or jump to REPL: `C-c C-z` or `C-c C-i`
 * Eval last expression: `C-x C-e` or `C-c C-e`
-
 * Eval region: `C-c C-r`
-
 * Eval buffer: `C-c C-b` or `C-c C-c` (in some modes)
-
 * Eval function: `C-M-x` or `C-c C-c` (in some modes)
 
 ##### With Python development

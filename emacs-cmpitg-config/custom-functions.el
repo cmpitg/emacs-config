@@ -58,11 +58,8 @@ read-string documentation for more details.
 
 (defun $new-home-script (file-name)
   "Creating a new file/script at ~/bin/."
-  (interactive (list
-                (read-string "File name (~/bin/): "
-                             "~/bin/"
-                             nil
-                             "")))
+  (interactive (list ($read-string "File name (~/bin/): "
+                           :initial-input "~/bin/")))
   ($open-file file-name))
 
 (defun $current-buffer-name ()

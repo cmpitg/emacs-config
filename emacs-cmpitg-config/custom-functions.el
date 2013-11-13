@@ -53,9 +53,9 @@
 (defun $google (keyword)
   "Google a keyword in Firefox."
   (interactive (list ($read-string "Keyword: "
-                                   :initial-input ($get-selection)))))
+                                   :initial-input ($get-selection))))
   ($open-url-in-firefox
-   (format "https://encrypted.google.com/search?q=%s" keyword))))
+   (format "https://encrypted.google.com/search?q=%s" keyword)))
 
 (defun $open-url-in-firefox (url)
   "Open a URL in Firefox."

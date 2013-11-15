@@ -52,6 +52,7 @@
                            geiser
                            js2-mode
                            pabbrev
+                           dired-details+
                            sunrise-commander
                            sunrise-x-tabs
                            sunrise-x-loop
@@ -137,6 +138,8 @@
 ;; File management with dired
 ;;
 ;; Default: -lahF
+
+(require 'dired-details+)
 
 (setq dired-listing-switches "-lhFgG --group-directories-first")
 

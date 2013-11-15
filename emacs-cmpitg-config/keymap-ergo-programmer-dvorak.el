@@ -43,7 +43,6 @@
                   (delete-horizontal-space)))
 (global-set-key (kbd "s-X") '$delete-line)
 
-(global-set-key (kbd "s-SPC") 'mark-sexp)
 (global-set-key (kbd "s-_") '$mark-line)
 (global-set-key (kbd "s-)") '$mark-word)
 (global-set-key (kbd "s-S-SPC") '$mark-defun)

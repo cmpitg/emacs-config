@@ -58,7 +58,8 @@
                            sunrise-x-loop
                            sunrise-x-checkpoints
                            sunrise-x-tree
-                           magit))
+                           magit
+                           monky))
 
 ;; cmpitg's specific configuration
 

@@ -53,6 +53,19 @@
 ;;; Functions
 ;;;
 
+(defun $get-scm ()
+  "Return the current source control management (SCM) of current
+file as symbol."
+  (interactive)
+  (let ((mode-name (downcase
+                    (replace-regexp-in-string " \\|[[:digit:]]\\|:.*\\|-.*" "" vc-mode))))
+    (if (/= 0 (length mode-name))
+      (make-symbol mode-name)
+      nil)))
+
+(make-symbol (downcase
+                (replace-regexp-in-string " \\|[[:digit:]]\\|:.*" "" "")))
+
 (defun $google (keyword)
   "Google a keyword in Firefox."
   (interactive (list ($read-string "Keyword: "

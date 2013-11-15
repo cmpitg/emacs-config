@@ -47,7 +47,7 @@
 ;; (global-set-key (kbd "<f8>") 'sr-speedbar-toggle)
 (global-set-key (kbd "<S-f8>") 'helm-bookmarks)
 
-(global-set-key (kbd "C-z") popwin:keymap)
+(global-set-key (kbd "C-z") 'popwin:keymap)
 
 (global-set-key (kbd "C-x C-n") 'multi-scratch-new)
 

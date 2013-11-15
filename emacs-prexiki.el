@@ -52,7 +52,11 @@
                            geiser
                            js2-mode
                            pabbrev
-                           ))
+                           sunrise-commander
+                           sunrise-x-tabs
+                           sunrise-x-loop
+                           sunrise-x-checkpoints
+                           sunrise-x-tree))
 
 ;; cmpitg's specific configuration
 
@@ -89,6 +93,8 @@
              '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives
+             '("SC" . "http://joseito.republika.pl/sunrise-commander/"))
 
 (package-initialize)
 
@@ -219,6 +225,15 @@
 
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;;
+;; Sunrise commander
+;;
+
+(require 'sunrise-commander)
+(require 'sunrise-x-loop)
+(require 'sunrise-x-tabs)
+(require 'sunrise-x-tree)
 
 ;;
 ;; Acme-like mouse chord

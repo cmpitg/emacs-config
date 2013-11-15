@@ -17,6 +17,7 @@
       *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
       *elpa-package-dir*       "~/.emacs.d/elpa/"
       *package-list*     '(redo+
+                           popwin
                            color-theme
                            rainbow-delimiters
                            ;; powerline
@@ -156,6 +157,61 @@
 ($add-load-path "~/emacs-config/emacs-local-packages/emacs-powerline/")
 (require 'cl)
 (require 'powerline)
+
+;;
+;; Popwin - better popup management
+;;
+;; https://github.com/m2ym/popwin-el
+;;
+;; | Key    | Command                               |
+;; |--------+---------------------------------------|
+;; | b      | popwin:popup-buffer                   |
+;; | l      | popwin:popup-last-buffer              |
+;; | o      | popwin:display-buffer                 |
+;; | C-b    | popwin:switch-to-last-buffer          |
+;; | C-p    | popwin:original-pop-to-last-buffer    |
+;; | C-o    | popwin:original-display-last-buffer   |
+;; | SPC    | popwin:select-popup-window            |
+;; | s      | popwin:stick-popup-window             |
+;; | 0      | popwin:close-popup-window             |
+;; | f, C-f | popwin:find-file                      |
+;; | e      | popwin:messages                       |
+;; | C-u    | popwin:universal-display              |
+;; | 1      | popwin:one-window                     |
+
+(require 'popwin)
+(popwin-mode 1)
+
+(push '("\*anything*" :regexp t :height 20) popwin:special-display-config)
+;; M-x anything
+(setq anything-samewindow nil)
+(push '("*anything*" :height 20) popwin:special-display-config)
+
+;; M-x dired-jump-other-window
+(push '(dired-mode :position top) popwin:special-display-config)
+
+;; M-!
+(push "*Shell Command Output*" popwin:special-display-config)
+
+;; M-x compile
+(push '(compilation-mode :noselect t) popwin:special-display-config)
+
+;; slime
+(push "*slime-apropos*" popwin:special-display-config)
+(push "*slime-macroexpansion*" popwin:special-display-config)
+(push "*slime-description*" popwin:special-display-config)
+(push '("*slime-compilation*" :noselect t) popwin:special-display-config)
+(push "*slime-xref*" popwin:special-display-config)
+(push '(sldb-mode :stick t) popwin:special-display-config)
+(push 'slime-repl-mode popwin:special-display-config)
+(push 'slime-connection-list-mode popwin:special-display-config)
+
+;; vc
+(push "*vc-diff*" popwin:special-display-config)
+(push "*vc-change-log*" popwin:special-display-config)
+
+;; undo-tree
+(push '(" *undo-tree*" :width 0.3 :position right) popwin:special-display-config)
 
 ;;
 ;; Highlight brackets

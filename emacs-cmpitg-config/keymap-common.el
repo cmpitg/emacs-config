@@ -183,3 +183,6 @@
 ;; Mode specific
 ;; 
 
+;; Git
+
+(global-set-key (kbd "s-SPC g") 'magit-status)

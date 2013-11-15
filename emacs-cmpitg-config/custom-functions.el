@@ -53,18 +53,27 @@
 ;;; Functions
 ;;;
 
+(defun $scm-status ()
+  "Call for the corresponding SCM `status` command."
+  (interactive)
+  (let ((current-scm ($get-scm)))
+    (cond
+      ((string= "git" current-scm)
+       (magit-status nil))
+      
+      ((string= "hg" current-scm)
+       (monky-status))
+      
+      (t nil))))
+
 (defun $get-scm ()
   "Return the current source control management (SCM) of current
-file as symbol."
+file as string."
   (interactive)
   (let ((mode-name (downcase
                     (replace-regexp-in-string " \\|[[:digit:]]\\|:.*\\|-.*" "" vc-mode))))
-    (if (/= 0 (length mode-name))
-      (make-symbol mode-name)
-      nil)))
+    mode-name))
 
-(make-symbol (downcase
-                (replace-regexp-in-string " \\|[[:digit:]]\\|:.*" "" "")))
 
 (defun $google (keyword)
   "Google a keyword in Firefox."

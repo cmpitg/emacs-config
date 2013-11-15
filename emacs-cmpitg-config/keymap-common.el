@@ -185,4 +185,4 @@
 
 ;; Git
 
-(global-set-key (kbd "s-SPC g") 'magit-status)
+(global-set-key (kbd "s-SPC g") '$scm-status)

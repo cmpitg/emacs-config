@@ -188,7 +188,7 @@ Differences from default Emacs:
 
 ## Use Cases With Keybindings
 
-TODO: Draw tables
+TODO: Making nice table with: Keybinding - Description - Function - Provided by
 
 * What does this keybinding do? `C-h k [keybinding]`
 
@@ -258,6 +258,7 @@ General keybindings:
 
 * Open Sunrise: `s-SPC SPC`
 * Sunrise change dir: `s-SPC c`
+* In Dired mode, to toggle detail information: `(` or `)`
 
 In Sunrise mode:
 

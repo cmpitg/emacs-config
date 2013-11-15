@@ -47,6 +47,8 @@
 ;; (global-set-key (kbd "<f8>") 'sr-speedbar-toggle)
 (global-set-key (kbd "<S-f8>") 'helm-bookmarks)
 
+(global-set-key (kbd "C-z") popwin:keymap)
+
 (global-set-key (kbd "C-x C-n") 'multi-scratch-new)
 
 ;;
@@ -145,6 +147,13 @@
                                        (interactive)
                                        (set-frame-parameter nil
                                         'alpha 78)))
+
+;;
+;; Navigation
+;;
+
+(global-set-key (kbd "s-SPC SPC") 'sunrise)
+(global-set-key (kbd "s-SPC c") 'sunrise-cd)
 
 ;;
 ;; Mode

@@ -57,7 +57,8 @@
                            sunrise-x-tabs
                            sunrise-x-loop
                            sunrise-x-checkpoints
-                           sunrise-x-tree))
+                           sunrise-x-tree
+                           magit))
 
 ;; cmpitg's specific configuration
 
@@ -244,6 +245,19 @@
 (require 'sunrise-x-loop)
 (require 'sunrise-x-tabs)
 (require 'sunrise-x-tree)
+
+;;
+;; Magit - the excellent Git mode for Emacs
+;;
+
+;; Home:
+;;   http://magit.github.io/
+;; Cheatsheet:
+;;   http://daemianmack.com/magit-cheatsheet.html
+;; Manual:
+;;   http://magit.github.io/magit/magit.html
+
+(require 'magit)
 
 ;;
 ;; Acme-like mouse chord

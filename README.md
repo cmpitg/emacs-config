@@ -160,59 +160,7 @@ Differences from default Emacs:
 
 * Automatically `chmod +x` shebang-ed files.
 
-### Keybindings and use cases
-
-* What does this keybinding do? `C-h k [keybinding]`
-
-* Description for this function and its keybinding? `C-h f [function-name]`
-
-* Open file:
-  - `<f3>` open file with Zenity
-  - `<M-f3>` open file with Helm
-
-* Bookmarks:
-  - Go to bookmark: `<S-f8>`
-  - List bookmarks: `C-x r l`
-    * `d` to delete bookmark
-    * `x` to commit deletions
-  - Add to bookmark: `C-x r m`
-
-#### With any interactive mode
-
-The following keybindings are applied to when you want to interative with a
-REPL.
-
-Currently supported REPL:
-
-* [MozRepl](https://github.com/bard/mozrepl/wiki) (for JavaScript)
-* [Pry](http://pryrepl.org/) (for Ruby).
-* [Geiser](http://www.nongnu.org/geiser/) for Scheme and
-  [Racket development](http://docs.racket-lang.org/guide/Emacs.html).
-* Python (built-in).
-
-General keybindings:
-
-* Invoke and/or jump to REPL: `C-c C-z` or `C-c C-i`
-* Eval last expression: `C-x C-e` or `C-c C-e`
-* Eval region: `C-c C-r`
-* Eval buffer: `C-c C-b` or `C-c C-c` (in some modes)
-* Eval function: `C-M-x` or `C-c C-c` (in some modes)
-
-##### With Python development
-
-(TODO) Making screencast, solving a Project Euler problem
-
-##### With Racket development
-
-(TODO) Making screencast, solving a Project Euler problem
-
-### File Browser
-
-The file browser is written in `PySide` (Python wrapper for Qt framework).
-Source code is the file browser is distributed under the terms of the GNU
-General Public License version 3.0.
-
-#### Features
+## Features
 
 * Files and directories are displayed as a tree:
   - Double click an item it in your Emacs server
@@ -233,6 +181,101 @@ General Public License version 3.0.
 * The displayed files/directories could be filter by name with the regular
   expression in the second text box (called *filterbar*).  Shortcut to go
   directly to the *filterbar*: `Ctrl-F`.
+
+* All temporary buffers (buffers started and ended with `*`, such as `*Help*`,
+  `*Completions*`, `*Messages*`, ...) are treated as popup buffer using
+  [popwin](https://github.com/m2ym/popwin-el) extension.
+
+## Use Cases With Keybindings
+
+TODO: Draw tables
+
+* What does this keybinding do? `C-h k [keybinding]`
+
+* Description for this function and its keybinding? `C-h f [function-name]`
+
+* Scratch/temporary buffer:
+  - Switch default scratch buffer: `C-f1`
+  - New scratch buffer: `C-x C-n`
+
+* Open file:
+  - `f3` open file with Zenity
+  - `M-f3` open file with Helm
+
+* Bookmarks:
+  - Go to bookmark: `S-f8`
+  - List bookmarks: `C-x r l`
+    * `d` to delete bookmark
+    * `x` to commit deletions
+  - Add to bookmark: `C-x r m`
+
+* Window management:
+  - Delete all other windows: `C-%`
+  - Split vertically: `C-7`
+  - Split horizontally: `C-5`
+  - Hide [popup](https://github.com/m2ym/popwin-el) window: `C-g`
+  - Scroll other window down: `C-M-v`
+  - Scroll other window up: `C-S-M-v`
+
+* Buffer management:
+  - Show current buffer list: `f8`
+  - Kill current buffer: `C-delete` or `C-f4`
+
+* Basic text processing:
+  - Upcase word, lowcase word, and capitalize word: `M-u`, `M-l`, and `M-c`
+
+### With Any Interactive mode
+
+The following keybindings are applied to when you want to interative with a
+REPL.
+
+Currently supported REPL:
+
+* [MozRepl](https://github.com/bard/mozrepl/wiki) (for JavaScript)
+* [Pry](http://pryrepl.org/) (for Ruby).
+* [Geiser](http://www.nongnu.org/geiser/) for Scheme and
+  [Racket development](http://docs.racket-lang.org/guide/Emacs.html).
+* Python (built-in).
+
+General keybindings:
+
+* Invoke and/or jump to REPL: `C-c C-z` or `C-c C-i`
+* Eval last expression: `C-x C-e` or `C-c C-e`
+* Eval region: `C-c C-r`
+* Eval buffer: `C-c C-b` or `C-c C-c` (in some modes)
+* Eval function: `C-M-x` or `C-c C-c` (in some modes)
+* Show documentation of current word/symbol/identifier: `f1`
+
+#### With Python Development
+
+(TODO) Making screencast, solving a Project Euler problem
+
+#### With Racket Development
+
+(TODO) Making screencast, solving a Project Euler problem
+
+#### File Manager with Sunrise Commander
+
+* Open Sunrise: `s-SPC SPC`
+* Sunrise change dir: `s-SPC c`
+
+In Sunrise mode:
+
+* Hide details: `C-backspace`
+
+(TODO) Making screencast with use cases:
+
+* Mass renaming with `wdired`
+* Mass copy/moving
+* Shell commands
+* Open file with external program
+* Tree browsing
+
+### File Browser
+
+The file browser is written in `PySide` (Python wrapper for Qt framework).
+Source code is the file browser is distributed under the terms of the GNU
+General Public License version 3.0.
 
 ## TODOs
 

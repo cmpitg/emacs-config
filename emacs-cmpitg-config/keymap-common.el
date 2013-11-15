@@ -124,6 +124,11 @@
 (global-set-key (kbd "C-5") 'split-window-horizontally)
 (global-set-key (kbd "C-%") 'delete-other-windows)
 
+(global-set-key (kbd "<M-S-left>") 'windmove-left)
+(global-set-key (kbd "<M-S-right>") 'windmove-right)
+(global-set-key (kbd "<M-S-up>") 'windmove-up)
+(global-set-key (kbd "<M-S-down>") 'windmove-down)
+
 ;;
 ;; Misc
 ;;

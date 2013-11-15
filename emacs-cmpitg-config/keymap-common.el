@@ -124,19 +124,12 @@
 (global-set-key (kbd "C-5") 'split-window-horizontally)
 (global-set-key (kbd "C-%") 'delete-other-windows)
 
-;; (global-set-key [C-mouse-2] 'split-window-vertically)
-;; (global-set-key [C-down-mouse-2] 'split-window-vertically)
-;; (global-set-key [M-mouse-2] 'split-window-horizontally)
-;; (global-set-key [M-down-mouse-2] 'split-window-horizontally)
-;; (global-set-key [S-mouse-2] 'delete-other-windows)
-;; (global-set-key [S-down-mouse-2] 'delete-other-windows)
-
 ;;
 ;; Misc
 ;;
 
 (global-set-key (kbd "C-M-_") 'redo)
-(global-set-key (kbd "<f1>") '$man-this)
+;; (global-set-key (kbd "<f1>") '$man-this)
 ;; (global-set-key (kbd "<mouse-2>") '$eval-selection)
 
 (define-key emacs-lisp-mode-map (kbd "<f1>") '(lambda ()

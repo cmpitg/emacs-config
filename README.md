@@ -276,7 +276,11 @@ In Sunrise mode:
 
 Cheatsheet: http://daemianmack.com/magit-cheatsheet.html
 
+Git should be setup with SSH.
+
 Git status: `s-SPC g`
+
+- Quit: `q`
 
 - Committing:
   * Previous hunk, next hunk: `p`, `n`

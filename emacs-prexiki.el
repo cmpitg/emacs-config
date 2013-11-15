@@ -258,6 +258,12 @@
 (require 'magit)
 
 ;;
+;; Monky - Magit for Mercurial
+;;
+
+(require 'monky)
+
+;;
 ;; Acme-like mouse chord
 ;;
 ;; https://github.com/akrito/acme-mouse.git

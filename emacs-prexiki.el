@@ -134,6 +134,13 @@
 (setq-default initial-major-mode 'emacs-lisp-mode)
 
 ;;
+;; File management with dired
+;;
+;; Default: -lahF
+
+(setq dired-listing-switches "-lhFgG --group-directories-first")
+
+;;
 ;; Theming and stuff
 ;;
 

@@ -272,6 +272,48 @@ In Sunrise mode:
 * Open file with external program
 * Tree browsing
 
+#### Working with Git
+
+Cheatsheet: http://daemianmack.com/magit-cheatsheet.html
+
+Git status: `s-SPC g`
+
+- Committing:
+  * Previous hunk, next hunk: `p`, `n`
+  * Stage/unstage current hunk: `s`/`u`
+  * Stage/unstage all hunks: `S`/`U`
+  * Ignore file: `i`
+  * Toggle visibility: `tab`
+  * Toggle visibility of all: `S-tab`
+  * Reload buffer: `g`
+  
+- Commit: `c`
+  * Execute commit: `C-c C-c`
+  
+- History and verbose history: `l`, `L`
+
+- Copy SHA1: `C-w`
+
+- Marking:
+  * Mark/unmark current commit: `..`/`C-u ..`
+  * Toggle commit marking: `.`
+
+- Diff-ing:
+  *Show diff between marked and current commit: `=`
+
+- Reseting:
+  * Current head: `x`
+  * Hard reset, **destructive**: `X`
+
+- Pushing & pulling & rebasing:
+  * Push: `P`
+  * Pull: `F`
+  * Rebase: `R`
+
+- Branching:
+  * Switch branch: `b`
+  * Create and switch branch: `B`
+
 ### File Browser
 
 The file browser is written in `PySide` (Python wrapper for Qt framework).

@@ -36,6 +36,9 @@
       *me* "Duong H. Nguyen <cmpitg AT gmailDOTcom>"
       )
 
+(require 'cl)
+(require 'cl-lib)
+
 ;;;
 ;;; Definitions
 ;;;

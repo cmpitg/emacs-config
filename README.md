@@ -28,18 +28,19 @@ configurations don't mess up with the `~/emacs-config` directory.
     be achieved by using the `init.el` config or simply evaluating
     `(server-start)` in your Emacs.
 
-  - PySide for Python 3 (`python3-pyside` package in a Debian-based systems)
+  - PySide for Python 3 (`python3-pyside` package in Debian-based systems).
 
 * For file opening: zenity (GTK+ GUI dialog, used for file choosing)
 
-* For `ibus-mode`: Python-Xlib
+* For `ibus-mode`: `python-xlib` package.
 
 * For Python development:
-  - Packages `jedi epc` for auto-completion
+  - Packages `jedi epc` for auto-completion.
 
 * For Ruby development:
   - [RSense](http://cx4a.org/software/rsense/) for Ruby completion
-  - Gems: `pry pry-doc yard` for Ruby-dev and [Pry](http://pryrepl.org/) integration
+  - Gems: `pry pry-doc yard` for Ruby-dev and [Pry](http://pryrepl.org/)
+    integration.
 
 ### Installing Requirements in Debian
 

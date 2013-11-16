@@ -173,8 +173,10 @@ rm ~/bin/{te,filebrowser-emacs.py,emacs-xiki}
 ### The GUI File Browser
 
 The file browser is written in `PySide` (Python wrapper for Qt framework).
-Source code is the file browser is distributed under the terms of the GNU
+Source code of the file browser is distributed under the terms of the GNU
 General Public License version 3.0.
+
+Features:
 
 * Files and directories are displayed as a tree:
   - Double click an item it in your Emacs server

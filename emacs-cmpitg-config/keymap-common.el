@@ -191,3 +191,9 @@
 ;; Git
 
 (global-set-key (kbd "s-SPC g") '$scm-status)
+
+;; Emacs Lisp
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (define-key emacs-lisp-mode-map (kbd "C-c C-r") 'eval-region)))

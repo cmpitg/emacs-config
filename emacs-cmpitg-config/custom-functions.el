@@ -107,6 +107,36 @@ file as string."
   (comint-send-string (inferior-moz-process)
                       string))
 
+(defun $sunrise ()
+  "Open Sunrise Commander, remove the nonpage buffer."
+  (interactive)
+  (unless sr-running
+    (sunrise)
+    (sr-reset-view-remove-nonpane-buffer)))
+
+(defun $sunrise-cd ()
+  "Open Sunrise Commander with current directory, remove the
+nonpage buffer."
+  (interactive)
+  (unless sr-running
+    (sunrise-cd)
+    (sr-reset-view-remove-nonpane-buffer)))
+
+(defun sr-reset-view ()
+  "Reset Sunrise Commander pane view."
+  (interactive)
+  (when sr-running
+    (sr-setup-windows)))
+
+(defun sr-reset-view-remove-nonpane-buffer ()
+  "Reset Sunrise Commander pane view, removing the nonpane
+buffer."
+  (interactive)
+  (when sr-running
+    (sr-setup-windows)
+    (windmove-down)
+    (delete-window)))
+
 (defun* $read-string (prompt &key
                              (initial-input         nil)
                              (history               nil)

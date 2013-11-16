@@ -41,7 +41,7 @@ configurations don't mess up with the `~/emacs-config` directory.
   - [RSense](http://cx4a.org/software/rsense/) for Ruby completion
   - Gems: `pry pry-doc yard` for Ruby-dev and [Pry](http://pryrepl.org/) integration
 
-### Installing requirements in Debian
+### Installing Requirements in Debian
 
 Im my system, I install Ruby using [RVM](https://rvm.io/), use Python 3.2, and
 switch from `su` to `sudo`.  So the installation process is roughly:
@@ -195,7 +195,7 @@ General Public License version 3.0.
   expression in the second text box (called *filterbar*).  Shortcut to go
   directly to the *filterbar*: `Ctrl-F`.
 
-## Use Cases With Keybindings
+## Use Cases with Keybindings
 
 TODO: Making nice table with: Keybinding - Description - Function - Provided by
 

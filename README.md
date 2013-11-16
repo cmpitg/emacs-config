@@ -148,8 +148,6 @@ rm ~/bin/{te,filebrowser-emacs.py,emacs-xiki}
 
 ## Detailed Description
 
-Differences from default Emacs:
-
 * [ErgoEmacs](http://ergoemacs.org/) keybindings, with `<Super>` key as the
   modifier.
 
@@ -167,7 +165,15 @@ Differences from default Emacs:
 
 * Automatically `chmod +x` shebang-ed files.
 
-## Features
+* All temporary buffers (buffers started and ended with `*`, such as `*Help*`,
+  `*Completions*`, `*Messages*`, ...) are treated as popup buffer using
+  [popwin](https://github.com/m2ym/popwin-el) extension.
+
+### The GUI File Browser
+
+The file browser is written in `PySide` (Python wrapper for Qt framework).
+Source code is the file browser is distributed under the terms of the GNU
+General Public License version 3.0.
 
 * Files and directories are displayed as a tree:
   - Double click an item it in your Emacs server
@@ -188,10 +194,6 @@ Differences from default Emacs:
 * The displayed files/directories could be filter by name with the regular
   expression in the second text box (called *filterbar*).  Shortcut to go
   directly to the *filterbar*: `Ctrl-F`.
-
-* All temporary buffers (buffers started and ended with `*`, such as `*Help*`,
-  `*Completions*`, `*Messages*`, ...) are treated as popup buffer using
-  [popwin](https://github.com/m2ym/popwin-el) extension.
 
 ## Use Cases With Keybindings
 
@@ -313,10 +315,10 @@ Git status: `s-SPC g`
   * Toggle visibility: `tab`
   * Toggle visibility of all: `S-tab`
   * Reload buffer: `g`
-  
+
 - Commit: `c`
   * Execute commit: `C-c C-c`
-  
+
 - History and verbose history: `l`, `L`
 
 - Copy SHA1: `C-w`
@@ -344,12 +346,6 @@ Git status: `s-SPC g`
 #### Github
 
 * `gist-region`
-
-### File Browser
-
-The file browser is written in `PySide` (Python wrapper for Qt framework).
-Source code is the file browser is distributed under the terms of the GNU
-General Public License version 3.0.
 
 ## TODOs
 

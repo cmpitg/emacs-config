@@ -20,7 +20,6 @@
                            popwin
                            color-theme
                            rainbow-delimiters
-                           ;; powerline
                            smooth-scrolling
                            auto-complete
                            jedi

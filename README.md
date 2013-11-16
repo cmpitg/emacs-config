@@ -269,7 +269,7 @@ General keybindings:
 
 (TODO) Making screencast, solving a Project Euler problem
 
-#### File Manager with Sunrise Commander
+#### File Management with Sunrise Commander
 
 * Open Sunrise: `s-SPC SPC`
 * Sunrise change dir: `s-SPC c`

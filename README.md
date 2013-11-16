@@ -105,12 +105,15 @@ gem install -V pry pry-doc yard
 
 ## Update
 
-(TODO)
-
 ```sh
 cd ~/emacs-config/
 git pull
 ```
+
+Then restart Emacs.  Note that if you have made some changes to files other
+than `emacs-custom.el`, `git rebase` is better than `git pull`.  Consult Stack
+Overflow for
+[the reason why](http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase).
 
 ## Uninstallation
 
@@ -147,7 +150,11 @@ rm ~/bin/{te,filebrowser-emacs.py,emacs-xiki}
 
 Differences from default Emacs:
 
-* [ErgoEmacs](http://ergoemacs.org/) keybindings, with `<Super>` key as the modifier.
+* [ErgoEmacs](http://ergoemacs.org/) keybindings, with `<Super>` key as the
+  modifier.
+
+* Optimized for
+  [Programmer Dvorak key layout](http://www.kaufmann.no/roland/dvorak/index.html).
 
 * Making extensive use of mouse and `<Super>` key.
 
@@ -214,6 +221,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
   - Open file with Helm: `<M-f3>`:
     * `C-l` to go up one level
     * `C-z` to go down one level
+  - Open current file as root, using `sudo`: `s-z`
   - Close current buffer: `<C-f4>`
 
 * Bookmarks:
@@ -346,14 +354,6 @@ General Public License version 3.0.
 ## TODOs
 
 Refactor this document into simple use cases/tasks.
-
-## Fragemented Notes
-
-* Open/save file:
-  - `<f3>` to open file with GUI (Zenity) (`$open-file-gui`)
-  - `<S-f3>` to open file with GUI (Zenity) in another window (`$open-file-gui-other-window`)
-  - `<f2>` to save file (`$save-file`)
-  - `s-z` to open current file as root using `sudo` (`$open-current-file-as-admin`)
 
 * `s-v` to go to package manager's package list (`package-list-packages`)
 

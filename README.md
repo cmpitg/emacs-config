@@ -228,6 +228,9 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
     * `C-z` to go down one level
   - Open current file as root, using `sudo`: `s-z`
   - Close current buffer: `<C-f4>`
+  - `<return>` in any file browsing mode to smartly open file with Emacs or
+    external application (thanks to the excellent
+    [`openwith` extension](http://www.logic.at/prolog/misc/openwith.el))
 
 * Bookmarks:
   - Go to bookmark: `S-f8`

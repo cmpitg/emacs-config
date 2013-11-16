@@ -11,6 +11,12 @@
 
 (setenv "$RSENSE_HOME" (expand-file-name "~/emacs-config/rsense"))
 
+(setq *openwith-assoc*
+      '(("\\.pdf\\'" "evince" (file))
+        ("\\.mp3\\'" "smplayer" (file))
+        ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
+        ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
+
 (setq *custom-functions-path*  "~/emacs-config/emacs-cmpitg-config/custom-functions.el"
       *snippet-dir*            "~/emacs-config/snippets"
       *custom-els-dir*         "~/emacs-config/emacs-cmpitg-config/"
@@ -279,11 +285,7 @@
 (require 'openwith)
 (openwith-mode t)
 
-(setq openwith-associations
-  '(("\\.pdf\\'" "evince" (file))
-    ("\\.mp3\\'" "smplayer" (file))
-    ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
-    ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
+(setq openwith-associations *openwith-assoc*)
 
 ;;
 ;; dash - modern Emacs Lisp APIs

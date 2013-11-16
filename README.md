@@ -200,7 +200,8 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
 
 * Open file:
   - `f3` open file with Zenity
-  - `M-f3` open file with Helm
+  - `<M-f3>` open file with Helm
+  - 
 
 * Bookmarks:
   - Go to bookmark: `S-f8`
@@ -318,6 +319,10 @@ Git status: `s-SPC g`
   * Switch branch: `b`
   * Create and switch branch: `B`
 
+#### Github
+
+* `gist-region`
+
 ### File Browser
 
 The file browser is written in `PySide` (Python wrapper for Qt framework).
@@ -342,21 +347,7 @@ Refactor this document into simple use cases/tasks.
 
 * `s-\` to toggle `ibus-mode` (`ibus-mode`), then `C-M-S-SPC` to toggle Ibus (`$toggle-ibus`)
 
-* `<C-f4>` to close the current file (`$close-file`)
-
-* `<f8>` to toggle the Speedbar buffer (`speedbar-toggle`):
-  - `g` to update its contents
-  - `f` to display directory
-  - `b` to display current buffers
-
-* Window splitting:
-  - `C-%` to make full one window (`delete-other-windows`)
-  - `C-7` and `<M-mouse-2>` to split window vertically (`split-window-vertically`)
-  - `C-5` to split window horizontally (`split-window-horizontally`)
-  - `<S-f4>` and `<S-mouse-2>` to delete window (`delete-window`)
-
 * Getting help:
-  - `<f1>` to man current word (`$man-this`)
   - `C-h k` to determine if a key sequence is of any binding (`describe-key`)
   - `C-h f` to get a function definition (`describe-function`)
 

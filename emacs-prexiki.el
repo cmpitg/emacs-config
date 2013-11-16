@@ -245,6 +245,8 @@
 (require 'sunrise-x-tabs)
 (require 'sunrise-x-tree)
 
+(setq sr-listing-switches " --time-style=locale --group-directories-first -alDhgG")
+
 ;;
 ;; Magit - the excellent Git mode for Emacs
 ;;

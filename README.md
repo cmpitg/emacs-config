@@ -199,9 +199,11 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
   - New scratch buffer: `C-x C-n`
 
 * Open file:
-  - `f3` open file with Zenity
-  - `<M-f3>` open file with Helm
-  - 
+  - Open file with Zenity: `f3`
+  - Open file with Helm: `<M-f3>`:
+    * `C-l` to go up one level
+    * `C-z` to go down one level
+  - Close current buffer: `<C-f4>`
 
 * Bookmarks:
   - Go to bookmark: `S-f8`
@@ -212,6 +214,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
 
 * Window management:
   - Delete all other windows: `C-%`
+  - Hide current window: `<S-f4>`
   - Split vertically: `C-7`
   - Split horizontally: `C-5`
   - Hide [popup](https://github.com/m2ym/popwin-el) window: `C-g`
@@ -346,10 +349,6 @@ Refactor this document into simple use cases/tasks.
 * `s-v` to go to package manager's package list (`package-list-packages`)
 
 * `s-\` to toggle `ibus-mode` (`ibus-mode`), then `C-M-S-SPC` to toggle Ibus (`$toggle-ibus`)
-
-* Getting help:
-  - `C-h k` to determine if a key sequence is of any binding (`describe-key`)
-  - `C-h f` to get a function definition (`describe-function`)
 
 * Code:
   - `C--` to toggle comment on selection (`'$toggle-comment-region`)

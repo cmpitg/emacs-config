@@ -190,6 +190,17 @@ Differences from default Emacs:
 
 TODO: Making nice table with: Keybinding - Description - Function - Provided by
 
+* Use **mouse effectively**, [Acme mouse chords](http://acme.cat-v.org/mouse):
+  - Selecting text by dragging *button one*, keep holding down *button one*:
+    * Press *button two* to cut
+    * Press *button three* to paste
+  - When some text is selected, press *button three* to search for selection
+    in the current buffer.
+
+  ![Acme mouse chords in Emacs](http://i.imgur.com/H0Xh8RG.png)
+
+  Original image is at [acme.cat-v](http://acme.cat-v.org/mouse).
+
 * What does this keybinding do? `C-h k [keybinding]`
 
 * Description for this function and its keybinding? `C-h f [function-name]`
@@ -337,8 +348,6 @@ General Public License version 3.0.
 Refactor this document into simple use cases/tasks.
 
 ## Fragemented Notes
-
-* Use **mouse effectively**, [Acme mouse chords](http://acme.cat-v.org/mouse)
 
 * Open/save file:
   - `<f3>` to open file with GUI (Zenity) (`$open-file-gui`)

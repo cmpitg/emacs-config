@@ -150,8 +150,12 @@
 ;; Navigation
 ;;
 
-(global-set-key (kbd "s-SPC SPC") 'sunrise)
-(global-set-key (kbd "s-SPC c") 'sunrise-cd)
+;; (global-set-key (kbd "s-SPC SPC") 'sunrise)
+;; (global-set-key (kbd "s-SPC c") 'sunrise-cd)
+
+;; Open sunrise without nonpane panel
+(global-set-key (kbd "s-SPC SPC") '$sunrise)
+(global-set-key (kbd "s-SPC c") '$sunrise-cd)
 
 ;;
 ;; Mode

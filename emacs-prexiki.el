@@ -36,6 +36,7 @@
                            helm
                            slime
                            smex
+                           openwith
                            evil
                            evil-nerd-commenter
                            evil-leader
@@ -65,8 +66,7 @@
 (load-file *custom-functions-path*)
 
 ($load-custom-el "keymap-common.el"
-                 "aliases.el"
-                 )
+                 "aliases.el")
 
 ;;
 ;; Better Lisp indentation
@@ -271,6 +271,19 @@
 ;; https://github.com/akrito/acme-mouse.git
 
 (load "~/emacs-config/emacs-local-packages/acme-mouse/acme-mouse.el")
+
+;;
+;; Open with file with external application
+;;
+
+(require 'openwith)
+(openwith-mode t)
+
+(setq openwith-associations
+  '(("\\.pdf\\'" "evince" (file))
+    ("\\.mp3\\'" "smplayer" (file))
+    ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
+    ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
 
 ;;
 ;; dash - modern Emacs Lisp APIs

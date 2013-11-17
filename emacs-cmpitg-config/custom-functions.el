@@ -53,6 +53,23 @@
 ;;; Functions
 ;;;
 
+(defun $get-package-list ()
+  "Get the list of packages information cached in your repositories.
+
+This function return the value of `package-alist` variable. Which
+returns an alist of all packages available for activation.
+
+Each element has the form (PKG . DESC), where PKG is a package
+name (a symbol) and DESC is a vector that describes the package.
+
+The vector DESC has the form [VERSION-LIST REQS DOCSTRING].
+  VERSION-LIST is a version list.
+  REQS is a list of packages required by the package, each
+   requirement having the form (NAME VL) where NAME is a string
+   and VL is a version list.
+  DOCSTRING is a brief description of the package."
+  package-alist)
+
 (defun $scm-status ()
   "Call for the corresponding SCM `status` command."
   (interactive)

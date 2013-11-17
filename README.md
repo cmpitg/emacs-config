@@ -263,6 +263,11 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
       (feature provided by
       [smartscan](http://www.masteringemacs.org/articles/2013/10/31/smart-scan-jump-symbols-buffer/))
 
+* Completion:
+  - Using `pabbrev` only: `<s-return>`
+  - Using `autocomplete` or `pabbrev`: `<tab>`
+  - Using `hippie-expand` (fuzzy completion with guessing): `M-/`
+
 ### With Any Interactive mode
 
 The following keybindings are applied to when you want to interative with a

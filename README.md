@@ -99,7 +99,7 @@ gem install -V pry pry-doc yard
 * Make your own customization file if necessary, edit and have fun:
 
   ```sh
-  touch ~/emacs-config/emacs-custom.el
+  touch ~/emacs-custom.el
   ```
 
 (TODO) Desktop file

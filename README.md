@@ -254,6 +254,11 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
 
 * Basic text processing:
   - Upcase word, lowcase word, and capitalize word: `M-u`, `M-l`, and `M-c`
+  - Find next/prev occurrences, use one of these:
+    * *Button three* click on a *selection* (see Acme mouse chords)
+    * Go to the prev/next occurrence of the symbol at cursor: `M-p`/`M-n`
+      (feature provided by
+      [smartscan](http://www.masteringemacs.org/articles/2013/10/31/smart-scan-jump-symbols-buffer/))
 
 ### With Any Interactive mode
 

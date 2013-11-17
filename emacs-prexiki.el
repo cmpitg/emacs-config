@@ -150,7 +150,7 @@
 ;; Save cursor position each time you open a file
 ;; http://ergoemacs.org/emacs/emacs_save_cursor_position.html
 (require 'saveplace)
-(setq save-place-file (concat user-emacs-directory "save-place.el"))
+(setq save-place-file "~/emacs-cmpitg/save-places")
 (setq-default save-place t)
 
 ;;

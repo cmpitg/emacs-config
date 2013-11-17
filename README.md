@@ -217,6 +217,9 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
 
 * Description for this function and its keybinding? `C-h f [function-name]`
 
+* Emacs Lisp: support
+  [modern ways to process lists](https://github.com/magnars/dash.el).
+
 * Scratch/temporary buffer:
   - Switch default scratch buffer: `C-f1`
   - New scratch buffer: `C-x C-n`

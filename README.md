@@ -351,7 +351,13 @@ Git status: `s-SPC g`
 
 #### Github
 
-* `gist-region`
+It's best to config your
+[Git environment for Github](https://github.com/blog/180-local-github-config)
+first.  Current my Emacs uses [@defunkt](https://github.com/defunkt)'s
+[gist.el](https://github.com/defunkt/gist.el)
+
+* `gist-region-or-buffer`
+* `gist-region-or-buffer-private`
 
 ## TODOs
 

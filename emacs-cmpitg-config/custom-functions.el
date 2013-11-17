@@ -53,6 +53,22 @@
 ;;; Functions
 ;;;
 
+(defun* $download-file (url filepath &key (overwrite nil))
+  "Download a file.
+
+E.g.
+
+;; Download, raise an error if the file exists
+\($download-file \"https://raw.github.com/defunkt/gist.el/master/gist.el\"
+                \"/tmp/gist.el\"\)
+
+;; Download and overwrite if already exists
+\($download-file \"https://raw.github.com/defunkt/gist.el/master/gist.el\"
+                \"/tmp/gist.el\"
+                :overwrite t\)"
+  (interactive "MURL: \nFSave to: ")
+  (url-copy-file url filepath overwrite))
+
 (defun $get-package-list ()
   "Get the list of packages information cached in your repositories.
 

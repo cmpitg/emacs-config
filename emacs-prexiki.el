@@ -27,6 +27,7 @@
                            color-theme
                            rainbow-delimiters
                            smooth-scrolling
+                           smartscan
                            auto-complete
                            jedi
                            whitespace
@@ -50,6 +51,7 @@
                            thingatpt
                            multiple-cursors
                            dash
+                           tabbar-ruler
                            expand-region
                            yasnippet
                            gist
@@ -235,11 +237,40 @@
 (push '(" *undo-tree*" :width 0.3 :position right)  popwin:special-display-config)
 
 ;;
+;; Tab bar
+;;
+
+(setq tabbar-ruler-global-tabbar t)    ; If you want tabbar
+;; (setq tabbar-ruler-global-ruler t)     ; if you want a global ruler
+;; (setq tabbar-ruler-popup-menu t)       ; If you want a popup menu.
+;; (setq tabbar-ruler-popup-toolbar t)    ; If you want a popup toolbar
+;; (setq tabbar-ruler-popup-scrollbar t)  ; If you want to only show the scroll
+;;                                        ; bar when your mouse is moving.
+(require 'tabbar-ruler)
+
+;;
+;; Smartscan helps jumping between occurrences of a symbol
+;;
+
+(require 'smartscan)
+(global-smartscan-mode 1)
+
+;; `smartscan-symbol-go-forward' - M-n
+;; `smartscan-symbol-go-backward' - M-p
+
+;;
 ;; Highlight brackets
 ;;
 
+;; Somehow show-paren-mode is slow, using rainbow-delimiters instead
+;; (show-paren-mode 1)
+;; (setq show-paren-delay 0)
+;; ;; (setq show-paren-style 'expression)
+;; (setq show-paren-style 'parenthesis)
+
 (require 'rainbow-delimiters)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(global-rainbow-delimiters-mode)
+;; (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;
 ;; Sunrise commander

@@ -66,6 +66,7 @@
                            sunrise-x-loop
                            sunrise-x-checkpoints
                            sunrise-x-tree
+                           fic-mode
                            magit
                            monky))
 
@@ -182,6 +183,13 @@
 ;;(load "~/emacs-config/themes/color-theme-textmate-modified.el")
 ;;(require 'color-theme-textmate-modified)
 ;;(color-theme-textmate-modified)
+
+;;
+;; Highlight TODO, FIXME, ...
+;;
+
+(require 'fic-mode)
+(add-hook 'prog-mode-hook 'turn-on-fic-mode)
 
 ;;
 ;; Powerful and beautiful modeline

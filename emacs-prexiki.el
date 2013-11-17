@@ -335,6 +335,7 @@
 ;; https://github.com/magnars/dash.el
 
 (require 'dash)
+(eval-after-load "dash" '(dash-enable-font-lock))
 
 ;;
 ;; JSON mode

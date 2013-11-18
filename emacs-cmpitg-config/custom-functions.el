@@ -53,6 +53,23 @@
 ;;; Functions
 ;;;
 
+(defun* $popup-message (content &key (buffer-name "*Temporary*"))
+  "Display a popup window with CONTENT as its content and an
+optional BUFFER-NAME name.  Require popwin extension.  Press ESC
+or C-g to close the window.
+
+E.g.
+
+;; Display \"Hello World\" in a popup window.
+\($popup-message \"Hello World\"\)
+
+;; Display \"Hola Mundo\" in a popup window, naming that window buffer \"*mundo*\"
+\($popup-message \"Hello World\" :buffer-name \"*mundo*\"\)
+"
+  (require 'popwin)
+  (with-output-to-temp-buffer buffer-name
+    (pp content)))
+
 (defun* $download-file (url filepath &key (overwrite nil))
   "Download a file.
 

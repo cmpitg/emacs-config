@@ -12,9 +12,10 @@
 
 (setenv "$RSENSE_HOME" (expand-file-name "~/emacs-config/rsense"))
 
-(setq *openwith-assoc*
+(setq openwith-associations
       '(("\\.pdf\\'" "evince" (file))
         ("\\.mp3\\'" "smplayer" (file))
+        ("\\.odt\\'" "libreoffice" (file))
         ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
         ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
 
@@ -334,8 +335,6 @@
 
 (require 'openwith)
 (openwith-mode t)
-
-(setq openwith-associations *openwith-assoc*)
 
 ;;
 ;; dash - modern Emacs Lisp APIs

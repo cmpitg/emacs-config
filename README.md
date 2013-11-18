@@ -255,6 +255,10 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
   - Show current buffer list: `f8`
   - Kill current buffer: `C-delete` or `C-f4`
 
+* Movement:
+  - Set a mark (to jump): `C-SPC C-SPC`
+  - Come back to the last mark or point where you just editted: `C-u C-SPC`
+
 * Basic text processing:
   - Upcase word, lowcase word, and capitalize word: `M-u`, `M-l`, and `M-c`
   - Find next/prev occurrences, use one of these:

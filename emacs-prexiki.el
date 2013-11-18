@@ -192,8 +192,12 @@
 ;; Highlight TODO, FIXME, ...
 ;;
 
-(require 'fic-mode)
-(add-hook 'prog-mode-hook 'turn-on-fic-mode)
+;; (require 'fic-mode)
+;; (define-globalized-minor-mode global-fic-mode fic-mode
+;;   (lambda () (unless (minibufferp)
+;;                (turn-on-fic-mode))))
+
+;; (global-fic-mode)
 
 ;;
 ;; Powerful and beautiful modeline

@@ -670,6 +670,9 @@
 (eval-after-load "helm-regexp"
   '(helm-attrset 'follow 1 helm-source-moccur))
 
+;; Don't auto change-dir
+(setq-default helm-ff-auto-update-initial-value nil)
+
 ;;
 ;; Smex for enhancing M-x
 ;;

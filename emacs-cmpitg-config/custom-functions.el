@@ -68,7 +68,7 @@ E.g.
 "
   (require 'popwin)
   (with-output-to-temp-buffer buffer-name
-    (pp content)))
+    (princ content)))
 
 (defun* $download-file (url filepath &key (overwrite nil))
   "Download a file.

@@ -311,6 +311,10 @@ General keybindings:
 In Sunrise mode:
 
 * Hide details: `C-backspace`
+* Prefixing copy/cut commands with `C-u` does the action in the background (a
+  feature provided by
+  [`sunrise-x-loop`](http://www.emacswiki.org/emacs/sunrise-x-loop.el)
+  package)
 
 (TODO) Making screencast with use cases:
 

@@ -69,9 +69,12 @@
                          sunrise-x-loop
                          sunrise-x-checkpoints
                          sunrise-x-tree
+                         sunrise-x-modeline
                          fic-mode
                          magit
-                         monky)
+                         monky
+                         zlc
+                         )
   "List of packages using in this Emacs configuration.")
 
 ;; cmpitg's specific configuration
@@ -306,8 +309,12 @@
 (require 'sunrise-x-loop)
 (require 'sunrise-x-tabs)
 (require 'sunrise-x-tree)
+(require 'sunrise-x-modeline)
 
 (setq sr-listing-switches " --time-style=locale --group-directories-first -alDhgG")
+
+;; Display modeline using UTF8 characters
+(setq sr-modeline-use-utf8-marks t)
 
 ;;
 ;; Magit - the excellent Git mode for Emacs

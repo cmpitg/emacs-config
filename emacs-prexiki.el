@@ -448,6 +448,19 @@
 ;; (yas-global-mode 1)
 
 ;;
+;; zlc - Zsh completion
+;;
+
+(require 'zlc)
+(zlc-mode t)
+
+;; (define-key minibuffer-local-map (kbd "<down>")  'zlc-select-next-vertical)
+;; (define-key minibuffer-local-map (kbd "<up>")    'zlc-select-previous-vertical)
+;; (define-key minibuffer-local-map (kbd "<right>") 'zlc-select-next)
+;; (define-key minibuffer-local-map (kbd "<left>")  'zlc-select-previous)
+;; (define-key minibuffer-local-map (kbd "C-c") 'zlc-reset)
+
+;;
 ;; Ruby mode
 ;;
 

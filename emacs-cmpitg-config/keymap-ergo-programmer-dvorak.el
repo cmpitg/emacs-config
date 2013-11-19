@@ -60,3 +60,7 @@
 
 (global-set-key (kbd "s-s") 'isearch-forward-regexp)
 (global-set-key (kbd "s-S") 'isearch-backward-regexp)
+
+(eval-after-load 'helm-mode '(progn
+                               (define-key helm-map (kbd "s-t") 'helm-next-line)
+                               (define-key helm-map (kbd "s-c") 'helm-previous-line)))

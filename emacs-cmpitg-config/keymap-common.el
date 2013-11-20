@@ -65,7 +65,7 @@
 
 (global-set-key (kbd "<C-backspace>") '$mark-word-backward)
 
-(global-set-key (kbd "<menu> C-<return>") 'complete-symbol)
+;; (global-set-key (kbd "<menu> C-<return>") 'complete-symbol)
 (global-set-key (kbd "s-<return>") 'pabbrev-expand-maybe)
 
 ;; (global-set-key (kbd "<C-return>") 'complete-tag)
@@ -137,21 +137,14 @@
 ;; (global-set-key (kbd "<f1>") '$man-this)
 ;; (global-set-key (kbd "<mouse-2>") '$eval-selection)
 
-(define-key emacs-lisp-mode-map (kbd "<f1>") '(lambda ()
-                                               (interactive)
-                                               (apropos (current-word))))
-(define-key emacs-lisp-mode-map (kbd "M-<f1>") 'apropos)
-(global-set-key (kbd "<menu> M-t t") '(lambda ()
-                                       (interactive)
-                                       (set-frame-parameter nil
-                                        'alpha 78)))
+;; (global-set-key (kbd "<menu> M-t t") '(lambda ()
+;;                                        (interactive)
+;;                                        (set-frame-parameter nil
+;;                                         'alpha 78)))
 
 ;;
 ;; Navigation
 ;;
-
-;; (global-set-key (kbd "s-SPC SPC") 'sunrise)
-;; (global-set-key (kbd "s-SPC c") 'sunrise-cd)
 
 ;; Open sunrise without nonpane panel
 (global-set-key (kbd "s-SPC SPC") '$sunrise)
@@ -188,6 +181,9 @@
 (setq helm-boring-buffer-regexp-list '("\\*.+\\*"))
 ;; (setq helm-command-prefix-key "<f5>")
 
+;; One key to rule them all
+(global-set-key (kbd "s-SPC s-SPC") 'one-key-open-associated-menu-set)
+
 ;; 
 ;; Mode specific
 ;; 
@@ -200,4 +196,8 @@
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (define-key emacs-lisp-mode-map (kbd "C-c C-r") 'eval-region)))
+            (define-key emacs-lisp-mode-map (kbd "C-c C-r") 'eval-region)
+            (define-key emacs-lisp-mode-map (kbd "C-c C-b") 'eval-buffer)
+            (define-key emacs-lisp-mode-map (kbd "<f1>") '(lambda ()
+                                                            (interactive)
+                                                            (apropos (current-word))))))

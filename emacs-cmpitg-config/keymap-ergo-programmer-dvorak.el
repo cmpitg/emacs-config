@@ -33,8 +33,8 @@
 (global-set-key (kbd "s-u") 'delete-char)
 (global-set-key (kbd "s-e") 'backward-delete-char)
 (global-set-key (kbd "s-p") 'kill-word)
-;; (global-set-key (kbd "s-.") 'backward-kill-word)
-(global-set-key (kbd "s-.") '$mark-word-backward)
+(global-set-key (kbd "s-.") 'backward-kill-word)
+;; (global-set-key (kbd "s-.") '$mark-word-backward)
 
 (global-set-key (kbd "s-x")
                 (lambda ()
@@ -58,9 +58,12 @@
 (global-set-key (kbd "s-'") 'undo)
 (global-set-key (kbd "s-\"") 'undo-tree-redo)
 
-(global-set-key (kbd "s-s") 'isearch-forward-regexp)
-(global-set-key (kbd "s-S") 'isearch-backward-regexp)
+;; (global-set-key (kbd "s-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "s-s") 'helm-occur)
+;; (global-set-key (kbd "s-S") 'isearch-backward-regexp)
 
-(eval-after-load 'helm-mode '(progn
-                               (define-key helm-map (kbd "s-t") 'helm-next-line)
-                               (define-key helm-map (kbd "s-c") 'helm-previous-line)))
+;;(define-key helm-map (kbd "s-t") 'helm-next-line)
+;;(define-key helm-map (kbd "s-c") 'helm-previous-line)
+

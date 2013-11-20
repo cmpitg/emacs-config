@@ -53,6 +53,20 @@
 ;;; Functions
 ;;;
 
+(defun $install-or-update-el-get ()
+  "Install/update el-get."
+  (interactive)
+  (cond
+   (($is-function-defined? 'el-get-self-update)
+    (el-get-self-update))
+
+   (t
+    (url-retrieve
+     "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+     (lambda (s)
+       (goto-char (point-max))
+       (eval-print-last-sexp))))))
+
 (defun* $popup-message (content &key (buffer-name "*Temporary*"))
   "Display a popup window with CONTENT as its content and an
 optional BUFFER-NAME name.  Require popwin extension.  Press ESC

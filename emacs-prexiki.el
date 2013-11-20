@@ -5,7 +5,6 @@
 ;;; * write documentation/make screencast about workflow
 ;;; * make "~/emacs-config" a constant    
 ;;; * YAML to config generate Emacs Lisp config file :-)
-;;; * Redo screenshot fic-mode
 ;;;
 
 ;; Global constants

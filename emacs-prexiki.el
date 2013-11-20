@@ -158,8 +158,25 @@
 ;; Save cursor position each time you open a file
 ;; http://ergoemacs.org/emacs/emacs_save_cursor_position.html
 (require 'saveplace)
-(setq save-place-file "~/emacs-cmpitg/save-places")
+(setq save-place-file "~/emacs-save-places")
 (setq-default save-place t)
+
+;;
+;; Log command, for making screencast
+;;
+
+;;
+;; hexrgb for color manipulation
+;;
+
+(require 'hexrgb)
+
+;;
+;; One key to rule them all
+;;
+;; http://www.emacswiki.org/emacs/OneKey
+
+(require 'one-key)
 
 ;;
 ;; File management with dired

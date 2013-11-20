@@ -74,8 +74,11 @@
                          magit
                          monky
                          zlc
-                         )
+                         hexrgb)
   "List of packages using in this Emacs configuration.")
+
+(defvar *el-get-package-list* '(one-key)
+  "List of packages not available in ELPA but available to install with el-get.")
 
 ;; cmpitg's specific configuration
 

@@ -31,6 +31,7 @@
                          smooth-scrolling
                          smartscan
                          auto-complete
+                         icicles
                          jedi
                          whitespace
                          ruby-mode
@@ -353,6 +354,14 @@
 
 ;; Display modeline using UTF8 characters
 (setq sr-modeline-use-utf8-marks t)
+
+;;
+;; Icicles for better minibuffer completion
+;;
+;; http://www.emacswiki.org/emacs/Icicles
+
+(require 'icicles)
+(icy-mode 1)
 
 ;;
 ;; Magit - the excellent Git mode for Emacs

@@ -457,8 +457,21 @@ cyclic order."
   (shell-command-on-region begin end "fmt -w 2500" nil t))
 
 (defun $is-var-defined? (symbol)
-  "Check if the variable corresponding to the symbol is defined."
+  "Check if the variable corresponding to the symbol is defined.
+
+E.g.
+
+\($is-var-defined? 'a-random-symbol-unlikely-to-be-defined\)  ; => nil
+\($is-var-defined? 'c-mode-map\)                              ; => t"
   (boundp symbol))
+
+(defun $is-function-defined? (symbol)
+  "Check if the function corresponding to the symbol is defined.
+
+E.g.
+\($is-function-defined? 'a-random-symbol-unlikely-to-be-defined\)  ; => nil
+\($is-function-defined? '$is-function-defined?\)                   ; => t"
+  (fboundp symbol))
 
 (defun $delete-current-file ()
   "Delete the file associated with the current buffer.

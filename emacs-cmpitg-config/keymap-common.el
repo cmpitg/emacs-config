@@ -14,8 +14,6 @@
 ;; ErgoEmacs bindings
 ;;
 
-;; ($load-custom-el "keymap-ergo.el")
-
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 

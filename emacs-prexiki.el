@@ -129,10 +129,27 @@
       (directory-files *elpa-package-dir* nil ".*"))
 
 ;;
+;; el-get - yet another sophisticated package manager
+;;
+;; https://github.com/dimitri/el-get
+
+(unless (require 'el-get nil 'noerror)
+  ($install-or-update-el-get))
+
+(add-to-list 'el-get-recipe-path "~/emacs-config/el-get-user/recipes")
+(el-get 'sync)
+
+(apply #'el-get-install *el-get-package-list*)
+
+;;
 ;; Setting the environment
 ;;
 
 (setq search-highlight 1)
+
+;; More tolerable stack
+(setq max-lisp-eval-depth 15000
+      max-specpdl-size    15000)
 
 ;; Never change case when replacing
 (setq-default case-replace nil)

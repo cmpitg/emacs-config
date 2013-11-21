@@ -67,3 +67,11 @@
 ;;(define-key helm-map (kbd "s-t") 'helm-next-line)
 ;;(define-key helm-map (kbd "s-c") 'helm-previous-line)
 
+
+(add-hook 'lisp-mode-hook
+          '(lambda ()
+             (define-key paredit-mode-map (kbd "s-.") 'paredit-backward-kill-word)))
+
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (define-key paredit-mode-map (kbd "s-.") 'paredit-backward-kill-word)))

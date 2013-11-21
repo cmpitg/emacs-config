@@ -53,6 +53,17 @@
 ;;; Functions
 ;;;
 
+(defun $join-strings (separator a-seq)
+  "Join strings.  Works with any type of sequence and any data type as its element.
+
+E.g.
+
+\($join-strings \"|\" '\(\"a\" \"b\" \"c\"\)\) ; => \"a|b|c\"
+\($join-strings \"|\" [1 \"b\" c]\) ; => \"1|b|c\""
+  (-reduce (lambda (result element)
+               (format "%s%s%s" result separator element))
+           (-map (lambda (x) x) a-seq)))
+
 (defun $install-or-update-el-get ()
   "Install/update el-get."
   (interactive)

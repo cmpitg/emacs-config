@@ -53,6 +53,12 @@
 ;;; Functions
 ;;;
 
+(defun $read-file (path)
+  "Read file and return file content as string."
+  (with-temp-buffer
+    (insert-file-contents path)
+    (buffer-string)))
+
 (defun $join-strings (separator a-seq)
   "Join strings.  Works with any type of sequence and any data type as its element.
 

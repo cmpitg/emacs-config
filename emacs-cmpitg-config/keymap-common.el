@@ -116,6 +116,11 @@
 ;;
 
 (global-set-key (kbd "S-<f4>") 'delete-window)
+(eval-after-load 'icicles-cmd1
+  '(progn
+     ;; S-f4 is always mapped to delete-window
+     (global-set-key [remap icicle-kmacro] 'delete-window)))
+
 ;; (global-set-key (kbd "<f4>") 'find-file-other-window)
 (global-set-key (kbd "<f4>") '$helm-multi-all)
 (global-set-key (kbd "C-7") 'split-window-vertically)

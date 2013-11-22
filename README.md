@@ -73,13 +73,16 @@ gem install -V pry pry-doc yard
   # For non-Bash users, add the same thing to your rc, e.g. with Zsh:
   # echo "export PATH=$HOME/bin:$PATH" >> ~/.zshrc
   ```
-* Now, symlink all the executables to your `$HOME/bin`:
+* Now, symlink all the executables to your `$HOME/bin` and the desktop file to
+  your `~/.local/share/applications/`:
 
   ```sh
   ln -s ~/emacs-config/bin/filebrowser-emacs.py ~/bin/
-  ln -s ~/emacs-config/bin/te ~/bin/
+  ln -s ~/emacs-config/bin/emacs-cmpitg ~/bin/
   ln -s ~/emacs-config/bin/emacs-xiki ~/bin/
   ln -s ~/emacs-config/rsense/bin/rsense ~/bin/
+  mkdir -p ~/.local/share/applications/
+  ln -s ~/emacs-config/emacs-cmpitg.desktop ~/.local/share/applications/
   ```
 
 * Create `~/.rsense` for RSense:
@@ -101,8 +104,6 @@ gem install -V pry pry-doc yard
   ```sh
   touch ~/emacs-custom.el
   ```
-
-(TODO) Desktop file
 
 ## Update
 
@@ -128,13 +129,13 @@ rm ~/emacs-custom.el
 And the executable files:
 
 ```sh
-rm ~/bin/{te,filebrowser-emacs.py,emacs-xiki}
+rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
 ```
 
 ## Running
 
-* Run the `te` (or `~/bin/te`) command.  All other customization must go into
-  your `~/emacs-custom.el` file.
+* Run the `emacs-cmpitg` (or `~/bin/emacs-cmpitg`) command or run `GNU Emacs
+  (cmpitg)` from your menu.
 
 * If you're using Xiki, install Xiki and run `emacs-xiki`.
 

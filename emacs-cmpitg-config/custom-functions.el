@@ -34,7 +34,16 @@
       *snippet-dir* "~/emacs-config/snippets"
       *license-dir* "~/emacs-config/license-list"
       *me* "Duong H. Nguyen <cmpitg AT gmailDOTcom>"
+      
       )
+
+(defvar *$emacs-lisp-keywords*
+  '("$defalias")
+  "List of symbols we want to treat as keywords.")
+
+(defvar *$emacs-lisp-functions*
+  '("$auto-load-mode")
+  "List of symbols we want to treat as \"special\" functions.")
 
 (require 'cl)
 (require 'cl-lib)
@@ -45,9 +54,6 @@
 
 (defvar *$doc-strings* (make-hash-table)
   "Storing documentation strings.")
-
-(defvar *$emacs-lisp-keywords*   '("$defalias"))
-(defvar *$emacs-lisp-functions*  '("$auto-load-mode"))
 
 ;;;
 ;;; Functions

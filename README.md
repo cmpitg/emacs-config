@@ -250,6 +250,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
   - New scratch buffer: `C-x C-n`
 
 * Open file:
+  - Recent file: `<M-f4>`
   - Open file with Zenity: `f3`
   - Open file with Helm: `<M-f3>`:
     * `C-l` to go up one level

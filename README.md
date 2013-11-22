@@ -128,8 +128,9 @@ Just remove the `~/emacs-config` directory, your `~/emacs-custom.el` and
 
 ```sh
 rm -rf ~/emacs-config
-rm ~/emacs-custom.el
-rm ~/emacs-custom-foremost.el
+rm -f ~/.local/share/applications/emacs-cmpitg.desktop
+rm -f ~/emacs-custom.el
+rm -f ~/emacs-custom-foremost.el
 ```
 
 And the executable files:

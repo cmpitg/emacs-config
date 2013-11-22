@@ -1092,7 +1092,11 @@ new snippet\")"
 
 (put 'font-lock-add-keywords 'lisp-indent-function 1)
 (put '$defalias 'lisp-indent-function 2)
+
+;;; Better `if' and `list' indentation
 (put 'list 'lisp-indent-function nil)
+(put 'if 'lisp-indent-function 1)
+(put 'quote lisp-indent-function 1)
 
 (font-lock-add-keywords 'emacs-lisp-mode
   (list (cons (eval-when-compile

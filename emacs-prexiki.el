@@ -31,7 +31,6 @@
                          smooth-scrolling
                          smartscan
                          auto-complete
-                         icicles
                          jedi
                          whitespace
                          ruby-mode
@@ -88,15 +87,6 @@
 
 ($load-custom-el "keymap-common.el"
                  "aliases.el")
-
-;;
-;; Better Lisp indentation
-;;
-;; http://www.emacswiki.org/emacs/IndentingLisp
-;;
-
-;; (put 'if 'common-lisp-indent-function 1)
-;; (put 'if 'common-lisp-indent-function 2)
 
 ;;
 ;; Start Emacs server
@@ -177,7 +167,8 @@
 
 ;; Don't let the cursor go into minibuffer prompt
 ;; http://ergoemacs.org/emacs/emacs_stop_cursor_enter_prompt.html
-(setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
+(setq minibuffer-prompt-properties
+      (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
 ;; Save cursor position each time you open a file
 ;; http://ergoemacs.org/emacs/emacs_save_cursor_position.html
@@ -186,21 +177,10 @@
 (setq-default save-place t)
 
 ;;
-;; Log command, for making screencast
-;;
-
-;;
 ;; hexrgb for color manipulation
 ;;
 
 (require 'hexrgb)
-
-;;
-;; One key to rule them all
-;;
-;; http://www.emacswiki.org/emacs/OneKey
-
-;; (require 'one-key)
 
 ;;
 ;; File management with dired
@@ -231,17 +211,6 @@
 ;;(load "~/emacs-config/themes/color-theme-textmate-modified.el")
 ;;(require 'color-theme-textmate-modified)
 ;;(color-theme-textmate-modified)
-
-;;
-;; Highlight TODO, FIXME, ...
-;;
-
-;; (require 'fic-mode)
-;; (define-globalized-minor-mode global-fic-mode fic-mode
-;;   (lambda () (unless (minibufferp)
-;;                (turn-on-fic-mode))))
-
-;; (global-fic-mode)
 
 ;;
 ;; Powerful and beautiful modeline
@@ -358,14 +327,6 @@
 (setq sr-modeline-use-utf8-marks t)
 
 ;;
-;; Icicles for better minibuffer completion
-;;
-;; http://www.emacswiki.org/emacs/Icicles
-
-(require 'icicles)
-(icy-mode 1)
-
-;;
 ;; Magit - the excellent Git mode for Emacs
 ;;
 
@@ -469,8 +430,8 @@
 ;; Predictive abbreviation
 ;;
 
-(require 'pabbrev)
-(global-pabbrev-mode)
+;; (require 'pabbrev)
+;; (global-pabbrev-mode)
 
 ;;
 ;; Slime for Common Lisp development
@@ -655,7 +616,7 @@
 ;; Speedbar in the same frame
 ;;
 
-(require 'sr-speedbar)
+;; (require 'sr-speedbar)
 
 ;;
 ;; MultiScratch
@@ -762,10 +723,3 @@
 ;; Make shebang-ed files executable
 
 (add-hook 'after-save-hook '$make-executable)
-
-;;
-;; All user-defined customization goes here
-;;
-
-(if ($file-exists? "~/emacs-custom.el")
-    (load "~/emacs-custom.el"))

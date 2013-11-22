@@ -102,7 +102,11 @@ gem install -V pry pry-doc yard
 * Make your own customization file if necessary, edit and have fun:
 
   ```sh
+  # Main custom file, loaded after everything has done
   touch ~/emacs-custom.el
+
+  # Loaded foremost
+  touch ~/emacs-custom-foremost.el
   ```
 
 ## Update
@@ -119,11 +123,13 @@ Overflow for
 
 ## Uninstallation
 
-Just remove the `~/emacs-config` directory and your `~/emacs-custom.el` if necessary:
+Just remove the `~/emacs-config` directory, your `~/emacs-custom.el` and
+`~/emacs-custom-foremost.el` if necessary:
 
 ```sh
 rm -rf ~/emacs-config
 rm ~/emacs-custom.el
+rm ~/emacs-custom-foremost.el
 ```
 
 And the executable files:
@@ -147,6 +153,24 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
   [Textmate-like](https://macromates.com) snippet feature.  Put your custom
   snippets in your `*snippet-dir*` directory.  By default, `*snippet-dir*` is
   `~/emacs-config/snippets` and can be changed in `.el` files.
+
+* A default Emacs server is automagically started when your Emacs starts.  Use
+
+  ```sh
+  emacsclient -e "Some Emacs Lisp code"
+  ```
+
+  to evaluate a piece of Emacs Lisp code using the current server.  Eval
+  `($start-server)` to restart the Emacs server.  You might shut down the
+  Emacs server, but the file browser (see below) would fail to work though.
+
+### Customization
+
+* `~/emacs-custom.el` is your main customization file.  This file will be
+  loaded after cmpitg configuration has been loaded.
+
+* `~/emacs-custom-foremost.el` would be loaded **before everything** is
+  loaded.
 
 ## Detailed Description
 

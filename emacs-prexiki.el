@@ -693,7 +693,7 @@
             (paredit-mode +1)
             (tsm-mode)
             (define-key picolisp-mode-map (kbd "RET") 'newline-and-indent)
-            (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete) ) )
+            (define-key picolisp-mode-map (kbd "C-h") 'paredit-backward-delete)))
 
 ;;
 ;; Enable to ability to show trailing whitespace

@@ -264,7 +264,8 @@ If point is already there, move to the beginning of the line."
 (defun $load-custom-el (&rest filenames)
   "Load customization file."
   (dolist (file filenames)
-    (load-file ($custom-els-path file))))
+    (let ((file-path ($custom-els-path file)))
+      (when ($file-exists? file-path) (load-file file-path)))))
 
 (defun $install-packages (&rest packages)
   "Install a list of package if not installed."

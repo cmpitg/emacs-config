@@ -64,10 +64,6 @@
 (global-set-key (kbd "s-s") 'helm-occur)
 ;; (global-set-key (kbd "s-S") 'isearch-backward-regexp)
 
-;;(define-key helm-map (kbd "s-t") 'helm-next-line)
-;;(define-key helm-map (kbd "s-c") 'helm-previous-line)
-
-
 (add-hook 'lisp-mode-hook
           '(lambda ()
              (define-key paredit-mode-map (kbd "s-.") 'paredit-backward-kill-word)))
@@ -75,3 +71,8 @@
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
              (define-key paredit-mode-map (kbd "s-.") 'paredit-backward-kill-word)))
+
+(eval-after-load 'helm
+  '(progn
+     (define-key helm-map (kbd "s-t") 'helm-next-line)
+     (define-key helm-map (kbd "s-c") 'helm-previous-line)))

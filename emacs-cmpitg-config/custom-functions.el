@@ -172,7 +172,9 @@ file as string."
 (defun $open-url-in-firefox (url)
   "Open a URL in Firefox."
   (interactive (list ($read-string "URL: "
-                                   :initial-input "https://encrypted.google.com")))
+                                   :initial-input (if ($is-selecting?)
+                                                    ($get-selection)
+                                                    (thing-at-point-url-at-point)))))
   ($send-to-mozrepl (format "switchToTabHavingURI('%s', true)" url)))
 
 (defun $refresh-firefox ()

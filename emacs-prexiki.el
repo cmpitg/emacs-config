@@ -4,7 +4,6 @@
 ;;; TODO
 ;;; * write documentation/make screencast about workflow
 ;;; * make "~/emacs-config" a constant    
-;;; * YAML to config generate Emacs Lisp config file :-)
 ;;; * Rename this file
 ;;; * Global variables are placed in a seperated file
 ;;; * Load everything with `eval-after-load` so config would be messed up if a

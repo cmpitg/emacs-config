@@ -13,6 +13,7 @@
 ;; Main
 
 (-load-files-if-exists- "~/emacs-config/emacs-cmpitg-config/emacs-environment.el"
+                        "~/emacs-config/package-list.el"
                         "~/emacs-config/emacs-prexiki.el")
 
 ;; All user-defined customization goes here

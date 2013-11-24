@@ -16,7 +16,7 @@
 ;;;   - Automatically check for updates
 ;;;   - Update packages
 ;;;   - Async download and installation with progress bar (later-do)
-;;; * [task] decouple: defining & implementing (global vars at one place)
+;;; * [task] Decouple: defining & implementing (global vars at one place)
 ;;; * Function: better M-q inside comments
 ;;; * Modularize all of my customization:
 ;;;   - Each feature is self-documented, using TomDoc, with HTML output hosted
@@ -24,8 +24,11 @@
 ;;;   - (require 'a-feature) to load
 ;;; * [doc] Documentation and cheatsheet for all custom functions, with HTML
 ;;;   output for online browsing and inline lookup
-;;; * [doc] guide on how to package
-;;; * [doc] guide on how to write a mode
+;;; * [doc] Guide on how to package
+;;; * [doc] Guide on how to write a mode
+;;; * [task] Structural editing (suggestion based on the context, at a
+;;;   separated window, mouse click support, easy manipulation)
+;;; * Sublime-like preview buffer
 ;;;
 
 ;; Global constants

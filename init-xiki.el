@@ -1,7 +1,30 @@
-(load "~/emacs-config/emacs-prexiki.el")
+;;
+;; Copyright (C) 2012-2013 Duong H. Nguyen <cmpitgATgmaildotcom>
+;;
+;; bogoengine is free software: you can redistribute it and/or modify it under
+;; the terms of the GNU General Public License as published by the Free
+;; Software Foundation, either version 3 of the License, or (at your option)
+;; any later version.
+;;
+;; bogoengine is distributed in the hope that it will be useful, but WITHOUT
+;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+;; FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+;; more details.
+;;
+;; You should have received a copy of the GNU General Public License along
+;; with this program.  If not, see <http://www.gnu.org/licenses/>.
+;;
 
-(setq *xiki-path*
-      "/home/cmpitg/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.9/data/emacs/site-lisp/")
+(defun -load-files-if-exists- (&rest paths)
+  "Load files when they exists."
+  (dolist (file-path paths)
+   (when (file-exists-p file-path)
+     (load file-path))))
+
+(-load-files-if-exists- "~/emacs-custom-foremost.el"
+                        "~/emacs-config/global-vars.el"
+                        "~/emacs-config/package-list.el"
+                        "~/emacs-config/main.el")
 
 (global-unset-key (kbd "C-/"))
 
@@ -10,36 +33,34 @@
 (require 'el4r)
 (el4r-boot)
 
-; Fix open-file command
-(global-set-key (kbd "C-o") '$open-line)
+;;; Xiki environment
 
-; Let me press "y", instead of type "yes"
+;; Let me press "y", instead of type "yes"
 (fset 'yes-or-no-p 'y-or-n-p)
 
-; C-k kills whole line if at beginning
+;; C-k kills whole line if at beginning
 (setq kill-whole-line nil)
 
-; Make tabe into spaces when you type them
+;; Make tabe into spaces when you type them
 (setq-default indent-tabs-mode nil)
-; Display existing tabs as 2 characters wide
+;; Display existing tabs as 2 characters wide
 (setq-default tab-width 2)
 
-; No new frame for ediff
+;; No new frame for ediff
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-; Show ediff views side-by-side
+;; Show ediff views side-by-side
 (setq ediff-split-window-function 'split-window-horizontally)
 
-; Set default font
+;; Set default font
 (set-face-attribute 'default nil
   :height 110
-  :family "Monaco"
-  )
+  :family "Monaco")
 
-; Save cursor location upon closing files, and restore upon reopening
+;; Save cursor location upon closing files, and restore upon reopening
 (require 'saveplace)
 (setq-default save-place t)
 
-; Don't create #... files when editing
+;; Don't create #... files when editing
 (setq make-backup-files nil)
 
 ;; Numbering lines
@@ -47,16 +68,12 @@
 (global-linum-mode 1)
 
 ;;; fill-column
+(setq-default fill-column 78)
 (set-fill-column 78)
 
 ;; Change cursor type
-;;(set-default 'cursor-type 'hbar)
+;;; 'hbar 'bar or 'box
 (set-default 'cursor-type 'bar)
-;;(set-default 'cursor-type 'box)
 
-;;
-;; All user-defined customization goes here
-;;
-
-(if ($file-exists? "~/emacs-custom.el")
-    (load "~/emacs-custom.el"))
+;;; User-defined customization
+(-load-files-if-exists- "~/emacs-custom.el")

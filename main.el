@@ -21,9 +21,8 @@
 ;;; TODO
 ;;;
 ;;; * write documentation/make screencast about workflow
-;;; * make "~/emacs-config" a constant    
-;;; * Rename this file
-;;; * Global variables are placed in a seperated file
+;;; * DONE Rename this file
+;;; * DONE Global variables are placed in a seperated file
 ;;; * Load everything with `eval-after-load` so config would be messed up if a
 ;;;   package is not loaded
 ;;; * Better interface to ELPA and el-get:
@@ -33,7 +32,7 @@
 ;;;   - Automatically check for updates
 ;;;   - Update packages
 ;;;   - Async download and installation with progress bar (later-do)
-;;; * [task] Decouple: defining & implementing (global vars at one place)
+;;; * DONE [task] Decouple: defining & implementing (global vars at one place)
 ;;; * Function: better M-q inside comments
 ;;; * Modularize all of my customization:
 ;;;   - Each feature is self-documented, using TomDoc, with HTML output hosted

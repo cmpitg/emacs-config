@@ -26,7 +26,7 @@
 (-load-files-if-exists- "~/emacs-custom-foremost.el"  ; Foremost
                         "~/emacs-config/global-vars.el"
                         "~/emacs-config/package-list.el"
-                        "~/emacs-config/emacs-cmpitg-config/emacs-environment.el"
+                        "~/emacs-config/emacs-cmpitg-config/environment.el"
                         "~/emacs-config/main.el"
                         "~/emacs-custom.el"           ; User-defined customization
                         )

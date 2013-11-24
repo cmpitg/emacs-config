@@ -173,6 +173,9 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
 * `~/emacs-custom-foremost.el` would be loaded **before everything** is
   loaded.
 
+* Other things related to Xiki enrivonment should be customized in
+  `~/emacs-config/init-xiki.el`.
+
 ## Detailed Description
 
 * [ErgoEmacs](http://ergoemacs.org/) keybindings, with `<Super>` key as the

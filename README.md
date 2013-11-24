@@ -408,6 +408,13 @@ first.  Current my Emacs uses [@defunkt](https://github.com/defunkt)'s
 * `gist-region-or-buffer`
 * `gist-region-or-buffer-private`
 
+## License
+
+Except for packages which don't belong to this configuration in the first
+place, and unless clearly stated, all the code in this configuration is
+distributed in terms of the GNU General Public License version 3 (GPL v3).
+See `COPYING` for further information.
+
 ## TODOs
 
 Refactor this document into simple use cases/tasks.

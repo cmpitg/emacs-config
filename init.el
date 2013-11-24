@@ -27,6 +27,6 @@
                         "~/emacs-config/global-vars.el"
                         "~/emacs-config/package-list.el"
                         "~/emacs-config/emacs-cmpitg-config/emacs-environment.el"
-                        "~/emacs-config/emacs-prexiki.el"
+                        "~/emacs-config/main.el"
                         "~/emacs-custom.el"           ; User-defined customization
                         )

@@ -29,3 +29,8 @@
       *custom-els-dir*         "~/emacs-config/emacs-cmpitg-config/"
       *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
       *elpa-package-dir*       "~/.emacs.d/elpa/")
+
+;;; Ignore this variable if you don't use Xiki
+(defvar *xiki-path*
+  "/home/cmpitg/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.9/data/emacs/site-lisp/"
+  "Path to Xiki gem's site-lisp directory.")

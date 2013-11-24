@@ -1,5 +1,3 @@
-;; -*- mode: emacs-lisp -*-
-
 ;;
 ;; Copyright (C) 2012-2013 Duong H. Nguyen <cmpitgATgmaildotcom>
 ;;

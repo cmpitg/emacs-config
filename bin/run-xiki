@@ -1,7 +1,3 @@
 #!/bin/sh
 
-RSENSE_HOME = $HOME/emacs-config/rsense
-
 xiki ; xiki restart
-sleep 3
-emacs-xiki $*

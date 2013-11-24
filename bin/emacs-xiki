@@ -1,3 +1,8 @@
 #!/bin/sh
 
-emacs -Q -l ~/emacs-config/emacs-xiki.el --debug-init $* >/dev/null 2>&1 &disown 2>/dev/null
+RSENSE_HOME=$HOME/emacs-config/rsense
+
+run-xiki
+sleep 3                         # We wait a bit, due to a bug in Xiki
+
+emacs -Q -l ~/emacs-config/init-xiki.el --debug-init $* >/dev/null 2>&1 &disown 2>/dev/null

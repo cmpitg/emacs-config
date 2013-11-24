@@ -48,23 +48,6 @@
 ;;; * Sublime-like preview buffer
 ;;;
 
-;; Global constants
-
-(setenv "$RSENSE_HOME" (expand-file-name "~/emacs-config/rsense"))
-
-(setq openwith-associations
-      '(("\\.pdf\\'" "evince" (file))
-        ("\\.mp3\\'" "smplayer" (file))
-        ("\\.odt\\'" "libreoffice" (file))
-        ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
-        ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
-
-(setq *custom-functions-path*  "~/emacs-config/emacs-cmpitg-config/custom-functions.el"
-      *snippet-dir*            "~/emacs-config/snippets"
-      *custom-els-dir*         "~/emacs-config/emacs-cmpitg-config/"
-      *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
-      *elpa-package-dir*       "~/.emacs.d/elpa/")
-
 ;; cmpitg's specific configuration
 
 (load-file *custom-functions-path*)

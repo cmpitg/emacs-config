@@ -426,7 +426,8 @@ Refactor this document into simple use cases/tasks.
 
 * `s-v` to go to package manager's package list (`package-list-packages`)
 
-* `s-\` to toggle `ibus-mode` (`ibus-mode`), then `C-M-S-SPC` to toggle Ibus (`$toggle-ibus`)
+* `s-\` to toggle `ibus-mode` (`ibus-mode`), then `C-M-S-SPC` to toggle Ibus
+  (`$toggle-ibus`)
 
 * Code:
   - `C--` to toggle comment on selection (`'$toggle-comment-region`)

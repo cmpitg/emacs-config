@@ -24,9 +24,9 @@
         ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
         ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
 
-(setq *custom-functions-path*  "~/emacs-config/emacs-cmpitg-config/custom-functions.el"
+(setq *custom-functions-path*  "~/emacs-config/config-default/custom-functions.el"
       *snippet-dir*            "~/emacs-config/snippets"
-      *custom-els-dir*         "~/emacs-config/emacs-cmpitg-config/"
+      *custom-els-dir*         "~/emacs-config/config-default/"
       *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
       *elpa-package-dir*       "~/.emacs.d/elpa/")
 

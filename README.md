@@ -190,7 +190,7 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
 * "When in doubt, leave it out".  Use only what I need.
 
 * Opening file with a GUI dialog (provided by Zenity, defined in
-  `~/emacs-config/emacs-cmpitg-config/custom-functions.el`).
+  `~/emacs-config/config-default/custom-functions.el`).
 
 * Maintainable.
 

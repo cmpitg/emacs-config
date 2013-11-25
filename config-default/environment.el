@@ -15,6 +15,40 @@
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
 
+(setq search-highlight 1)
+
+;; More tolerable stack
+(setq max-lisp-eval-depth 15000
+      max-specpdl-size    15000)
+
+;; Never change case when replacing
+(setq-default case-replace nil)
+
+;;; fill-column
+(setq-default fill-column 78)
+(set-fill-column 78)
+
+;; Disable backup file
+(setq make-backup-files nil)
+
+;;; Auto complete switching buffer mode
+(iswitchb-mode t)
+
+;; Default scratch-buffer mode
+(setq initial-major-mode 'emacs-lisp-mode)
+(setq-default initial-major-mode 'emacs-lisp-mode)
+
+;; Don't let the cursor go into minibuffer prompt
+;; http://ergoemacs.org/emacs/emacs_stop_cursor_enter_prompt.html
+(setq minibuffer-prompt-properties
+      (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
+
+;; Save cursor position each time you open a file
+;; http://ergoemacs.org/emacs/emacs_save_cursor_position.html
+(require 'saveplace)
+(setq save-place-file "~/emacs-save-places")
+(setq-default save-place t)
+
 ;; yes/no questions become y/n questions
 (defalias 'yes-or-no-p 'y-or-n-p)
 

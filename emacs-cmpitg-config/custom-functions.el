@@ -49,13 +49,6 @@
 (require 'cl-lib)
 
 ;;;
-;;; Definitions
-;;;
-
-(defvar *$doc-strings* (make-hash-table)
-  "Storing documentation strings.")
-
-;;;
 ;;; Functions
 ;;;
 
@@ -1050,7 +1043,7 @@ buffer or eval an Emacs Lisp expression."
 string.  E.g. ($defalias '$add-snippet '$add-new-snippet \"Add
 new snippet\")"
   (defalias new-symbol old-symbol)
-  (puthash new-symbol doc-string *$doc-strings*))
+  (put new-symbol 'function-documentation doc-string))
 
 ($defalias '$smart-forward-exp 'forward-word
   "Forward word")
@@ -1061,7 +1054,8 @@ new snippet\")"
 ($defalias '$pipe-then-exec-in-other-window 'shell-command-on-region
   "Filter a command but pipe the other to other window")
 
-($defalias '$current-point 'point "")
+($defalias '$current-point 'point
+  "")
 
 ($defalias '$current-word 'current-word "")
 

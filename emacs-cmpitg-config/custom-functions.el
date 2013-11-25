@@ -1055,9 +1055,11 @@ new snippet\")"
   "Filter a command but pipe the other to other window")
 
 ($defalias '$current-point 'point
-  "")
+  "Return current position of the keyboard cursor in the
+buffer.")
 
-($defalias '$current-word 'current-word "")
+($defalias '$current-word 'current-word
+  "Return the current word as string.")
 
 ($defalias '$goto-point 'goto-char
   "Goto `point` in the buffer")

@@ -297,6 +297,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
     * Go to the prev/next occurrence of the symbol at cursor: `M-p`/`M-n`
       (feature provided by
       [smartscan](http://www.masteringemacs.org/articles/2013/10/31/smart-scan-jump-symbols-buffer/))
+  - Find all occurrences of a regular expression in all opened files: `<f4>`
 
 * Completion:
   - Using `pabbrev` only: `<s-return>`

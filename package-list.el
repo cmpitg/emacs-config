@@ -44,7 +44,6 @@
                          thingatpt
                          multiple-cursors
                          dash
-                         ;; tabbar-ruler
                          expand-region
                          yasnippet
                          gist

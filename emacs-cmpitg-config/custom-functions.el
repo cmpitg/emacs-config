@@ -20,10 +20,6 @@
 ;; * Goto package directory
 ;; * Remove package
 ;; * Simple way to add menu
-;; * Bookmark -> add to menu:
-;;   - ~/emacs-config
-;;   - ~/emacs-config/init.el
-;;   - ~/emacs-config/emacs-cmpitg-config/keymap-common.el
 ;; * Make all the config files packages
 ;; * Default compile command for filetype
 ;; * Hide compilation buffer

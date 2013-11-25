@@ -875,7 +875,8 @@ cursor position."
 (defun $switch-to-scratch ()
   "Switch to the *scratch* buffer."
   (interactive)
-  (switch-to-buffer "*scratch*"))
+  (unless (string-equal "*scratch*" ($current-buffer-name))
+    (switch-to-buffer-other-window "*scratch*")))
 
 (defun $selection-start ()
   "Return the position of the start of the current selection."

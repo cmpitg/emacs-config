@@ -49,8 +49,7 @@
 
 (load-file *custom-functions-path*)
 
-($load-custom-el "keymap-common.el"
-                 "aliases.el")
+($load-custom-el "keymap-common.el")
 
 ;;
 ;; Start Emacs server

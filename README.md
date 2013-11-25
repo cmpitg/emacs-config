@@ -16,7 +16,8 @@ configurations don't mess up with the `~/emacs-config` directory.
 
 ## Requirements
 
-* A \*nix system, I *don't and probably never will* support Window$
+* A \*nix system, I *don't and probably never will* support
+  [Window$](https://en.wikipedia.org/wiki/Microsoft_Windows)
 
 * Emacs 24+
 

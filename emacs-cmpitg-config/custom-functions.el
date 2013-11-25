@@ -270,9 +270,10 @@ If point is already there, move to the beginning of the line."
       (move-beginning-of-line nil))))
 
 (defun $custom-els-path (suffix)
-  "Return the path of the custom Emacs Lisp configuration."
+  "Return the path of the custom Emacs Lisp configuration.
+Default: `~/emacs-config/config-default/`."
   (unless ($is-var-defined? '*custom-els-dir*)
-    (setq *custom-els-dir* "~/emacs-cmpitg/emacs-cmpitg-config/"))
+    (setq *custom-els-dir* "~/emacs-config/config-default/"))
   (concat *custom-els-dir* suffix))
 
 (defun $load-custom-el (&rest filenames)

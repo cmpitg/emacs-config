@@ -375,12 +375,11 @@
 ;; Load before autocomplete
 
 (require 'yasnippet)
-;; (setq yas-snippet-dirs
-;;       (if (null yas-snippet-dirs)
-;;           '()
-;;         yas-snippet-dirs))
-;; (add-to-list 'yas-snippet-dirs *snippet-dir*)
-;; (yas-global-mode 1)
+
+(eval-after-load 'yasnippet
+  '(add-to-list 'yas-snippet-dirs (expand-file-name *snippet-dir*)))
+
+(yas-global-mode 1)
 
 ;;
 ;; zlc - Zsh completion

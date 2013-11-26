@@ -65,6 +65,16 @@
 ;;; Functions
 ;;;
 
+(defun $string-start-with? (string substring)
+  "Determine if a string starts with a substring.
+
+E.g.
+
+\($string-start-with? \"config-default\" \"config-\"\)  ;; => t
+\($string-start-with? \"config-default\" \"Config-\"\)  ;; => nil"
+  (let ((case-fold-search nil))
+    (not (null (string-match-p (concat "^" substring) string)))))
+
 (defun $list-dir (path)
   "List a directory content."
   (directory-files path))

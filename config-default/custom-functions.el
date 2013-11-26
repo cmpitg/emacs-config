@@ -65,6 +65,10 @@
 ;;; Functions
 ;;;
 
+(defun $symbol->string (symbol)
+  "Convert a symbol to a string."
+  (symbol-name symbol))
+
 (defun $string->symbol (string)
   "Convert a string into an uninterned symbol."
   (make-symbol string))

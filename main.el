@@ -21,6 +21,7 @@
 ;;; * write documentation/make screencast about workflow
 ;;; * Discover Helm menu
 ;;; * Discover construct regexp menu and make screencast
+;;; * Discover and write about `auto-insert`
 ;;; * helm-locate-library
 ;;; * DONE Rename this file
 ;;; * DONE Global variables are placed in a seperated file

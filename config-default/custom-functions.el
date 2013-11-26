@@ -79,7 +79,7 @@ format `config-[feature-name].el` in
       (-filter (lambda (filename)
                  ($string-start-with? filename "config-")))
       (-map (lambda (library-name)
-              ($string->symbol (file-name-base library-name)))))))
+              (intern (file-name-base library-name)))))))
 
 (defun $symbol->string (symbol)
   "Convert a symbol to a string."

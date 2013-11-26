@@ -60,12 +60,13 @@
 
 (require 'cl)
 (require 'cl-lib)
+(require 'dash)
 
 ;;;
 ;;; Functions
 ;;;
 
-(defun $list-default-config ()
+(defun $list-default-configs ()
   "Return a list of symbols as features, defined by filenames of
 format `config-[feature-name].el` in
 `~/emacs-config/config-default/`"

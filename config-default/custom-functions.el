@@ -65,6 +65,10 @@
 ;;; Functions
 ;;;
 
+(defun $list-dir (path)
+  "List a directory content."
+  (directory-files path))
+
 (defun $read-file (path)
   "Read file and return file content as string."
   (with-temp-buffer

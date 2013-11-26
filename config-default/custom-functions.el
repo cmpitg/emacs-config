@@ -75,6 +75,16 @@ E.g.
   (let ((case-fold-search nil))
     (not (null (string-match-p (concat "^" substring) string)))))
 
+(defun $string-end-with? (string substring)
+  "Determine if a string ends with a substring.
+
+E.g.
+
+\($string-end-with? \"config-default\" \"default\"\)  ;; => t
+\($string-end-with? \"config-default\" \"Default\"\)  ;; => nil"
+  (let ((case-fold-search nil))
+    (not (null (string-match-p (concat substring "$") string)))))
+
 (defun $list-dir (path)
   "List a directory content."
   (directory-files path))

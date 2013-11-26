@@ -2,7 +2,7 @@
 
 ;;
 ;; TODO:
-;;   Change all of these to YAML and write generate and load scripts
+;;   Change all of these to JSON and write generate and load scripts
 ;;
 
 ;; <menu> key is really convenient, so first we get rid of its default

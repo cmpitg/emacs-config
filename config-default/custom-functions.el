@@ -15,6 +15,9 @@
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
 
+;; Dependencies:
+;;   dash
+
 ;; TODO
 ;;
 ;; * Goto package directory

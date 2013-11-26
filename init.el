@@ -21,6 +21,9 @@
    (when (file-exists-p file-path)
      (load file-path))))
 
+(add-to-list 'load-path "~/emacs-config/")
+(add-to-list 'load-path "~/emacs-config/config-default/")
+
 (-load-files-if-exists- "~/emacs-custom-foremost.el"  ; Foremost
                         "~/emacs-config/global-vars.el"
                         "~/emacs-config/package-list.el"

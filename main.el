@@ -91,6 +91,14 @@
       (directory-files *elpa-package-dir* nil ".*"))
 
 ;;
+;; Load all but disabled packages (defined in `package-list.el`)
+;;
+
+(dolist ((package-symbol ($list-default-configs)))
+  (when (not (member package-symbol *disabled-package-list*))
+    (require package-symbol)))
+
+;;
 ;; el-get - yet another sophisticated package manager
 ;;
 ;; https://github.com/dimitri/el-get

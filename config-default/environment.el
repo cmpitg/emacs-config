@@ -15,6 +15,27 @@
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
 
+;;
+;; Theming and stuff
+;;
+
+(require 'color-theme)
+
+;; Comment color
+;; (set-face-foreground 'font-lock-comment-face "#3a345f")
+(set-face-attribute 'font-lock-comment-face nil :foreground "#3a345f")
+
+;; Set cursor color
+;; (set-cursor-color "cyan")
+;; (set-cursor-color "gray")
+(set-cursor-color "black")
+;; (set-background-color "#f2f2f2")
+(set-background-color "#efefef")
+
+;;(load "~/emacs-config/themes/color-theme-textmate-modified.el")
+;;(require 'color-theme-textmate-modified)
+;;(color-theme-textmate-modified)
+
 (setq search-highlight 1)
 
 ;; More tolerable stack

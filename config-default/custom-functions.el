@@ -65,6 +65,10 @@
 ;;; Functions
 ;;;
 
+(defun $string->symbol (string)
+  "Convert a string into an uninterned symbol."
+  (make-symbol string))
+
 (defun $string-start-with? (string substring)
   "Determine if a string starts with a substring.
 

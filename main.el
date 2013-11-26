@@ -113,11 +113,7 @@
 
 (apply #'el-get-install *el-get-package-list*)
 
-;;
-;; hexrgb for color manipulation
-;;
-
-(require 'hexrgb)
+(require 'config-hexrgb)
 
 ;;
 ;; File management with dired

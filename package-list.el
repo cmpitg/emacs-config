@@ -68,3 +68,5 @@
 
 (defvar *el-get-package-list* '(later-do)
   "List of packages not available in ELPA but available to install with el-get.")
+
+(defvar *disabled-package-list* '())

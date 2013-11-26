@@ -19,6 +19,7 @@
 ;;; TODO
 ;;;
 ;;; * write documentation/make screencast about workflow
+;;; * Discover Helm menu
 ;;; * DONE Rename this file
 ;;; * DONE Global variables are placed in a seperated file
 ;;; * Load everything with `eval-after-load` so config would be messed up if a

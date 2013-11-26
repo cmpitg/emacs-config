@@ -27,6 +27,7 @@
 (-load-files-if-exists- "~/emacs-custom-foremost.el"
                         "~/emacs-config/global-vars.el"
                         "~/emacs-config/package-list.el"
+                        "~/emacs-config/init-package-managers.el"
                         "~/emacs-config/main.el"
                         "~/emacs-config/main-xiki.el"
                         "~/emacs-custom.el")

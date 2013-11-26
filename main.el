@@ -49,11 +49,11 @@
 ;;; * Sublime-like preview buffer
 ;;;
 
-;; cmpitg's specific configuration
+;;
+;; Load all the convenient functions
+;;
 
 (load-file *custom-functions-path*)
-
-($load-custom-el "keymap-common.el")
 
 ;;
 ;; Start Emacs server
@@ -61,34 +61,23 @@
 
 ($server-start)
 
-;;
-;; Package manager
-;;
+;; Install packages
 
-(require 'package)
-
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-             '("gnu" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives
-             '("SC" . "http://joseito.republika.pl/sunrise-commander/"))
-
-(package-initialize)
-
-;; Fetch the list of available packages
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-(apply #'$install-packages *package-list*)
+;; (apply 'package-install *package-list*)
+(apply '$install-packages *package-list*)
+(apply 'el-get-install *el-get-package-list*)
 
 ;; Add all the load path
 
 (mapc #'(lambda (dir)
           (add-to-list 'load-path (format "%s%s" *elpa-package-dir* dir)))
       (directory-files *elpa-package-dir* nil ".*"))
+
+;;
+;; cmpitg's specific config
+;;
+
+($load-custom-el "keymap-common.el")
 
 ;;
 ;; Load all but disabled packages (defined in `package-list.el`)
@@ -99,23 +88,6 @@
     (require package-symbol)))
 
 ;;
-;; el-get - yet another sophisticated package manager
-;;
-;; https://github.com/dimitri/el-get
-
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
-(unless (require 'el-get nil 'noerror)
-  ($install-or-update-el-get))
-
-(add-to-list 'el-get-recipe-path "~/emacs-config/el-get-user/recipes")
-(el-get 'sync)
-
-(apply #'el-get-install *el-get-package-list*)
-
-(require 'config-hexrgb)
-
-;;
 ;; File management with dired
 ;;
 ;; Default: -lahF
@@ -123,27 +95,6 @@
 (require 'dired-details+)
 
 (setq dired-listing-switches "-lhFgG --group-directories-first")
-
-;;
-;; Theming and stuff
-;;
-
-(require 'color-theme)
-
-;; Comment color
-;; (set-face-foreground 'font-lock-comment-face "#3a345f")
-(set-face-attribute 'font-lock-comment-face nil :foreground "#3a345f")
-
-;; Set cursor color
-;; (set-cursor-color "cyan")
-;; (set-cursor-color "gray")
-(set-cursor-color "black")
-;; (set-background-color "#f2f2f2")
-(set-background-color "#efefef")
-
-;;(load "~/emacs-config/themes/color-theme-textmate-modified.el")
-;;(require 'color-theme-textmate-modified)
-;;(color-theme-textmate-modified)
 
 ;;
 ;; Powerful and beautiful modeline

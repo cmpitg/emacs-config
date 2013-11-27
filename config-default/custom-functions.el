@@ -345,7 +345,7 @@ buffer."
 			     (default-value         nil)
 			     (inherit-input-method  nil))
   "An alias of read-string, with keyword arguments.  See
-read-string documentation for more details.
+`read-string' documentation for more details.
 
   Read a string from the minibuffer."
   (read-string prompt

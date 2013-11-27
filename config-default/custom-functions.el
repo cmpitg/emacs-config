@@ -310,7 +310,7 @@ file as string."
 		      string))
 
 (defun $sunrise ()
-  "Open Sunrise Commander, remove the nonpage buffer."
+  "Open Sunrise Commander, remove the nonpane buffer."
   (interactive)
   (unless sr-running
     (sunrise)

@@ -105,8 +105,8 @@ installed and loaded.")
 
 (dolist (package *must-have-package-list*)
   (when (not (package-installed-p package))
-    (package-install package)
-    (require package)))
+    (package-install package))
+  (require package))
 
 ;;
 ;; Load and config must-have packages

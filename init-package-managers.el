@@ -27,6 +27,18 @@
     s                                   ; "Modern" string processing
     cl                                  ; Common Lisp subset in Emacs Lisp
     cl-lib                              ; Common Lisp library
+    helm                                ; Smart completion framework
+    thingatpt                           ; Getting thing at current pointg
+    multiple-cursors                    ; Sublime-like multiple cursors
+    expand-region                       ; Expand selection based-on semantic
+                                        ; units
+    eldoc                               ; Echo area function signature
+    popwin                              ; Better popwin window management,
+                                        ; dispose with Esc or C-g
+    color-theme
+    smooth-scrolling
+    smartscan                           ; Jump between occurrences of a symbol
+    smex                                ; Better M-x
     )
   "List of packages that are vital to this config and must be
 installed and loaded.")
@@ -85,6 +97,8 @@ installed and loaded.")
     (add-to-list 'load-path
                  (concat local-package-dir dirname))))
 
+(add-to-list 'load-path "~/emacs-config/rsense/etc/")
+
 ;;
 ;; Install and load all must-have packages with ELPA
 ;;
@@ -93,3 +107,33 @@ installed and loaded.")
   (when (not (package-installed-p package))
     (package-install package)
     (require package)))
+
+;;
+;; Load and config must-have packages
+;;
+
+;;
+;; Dash
+;;
+;; https://github.com/magnars/dash.el
+
+(eval-after-load 'dash
+  '(dash-enable-font-lock))
+
+;;
+;; Helm for completion framework
+;;
+
+(require 'helm-config)
+
+(eval-after-load "helm-regexp"
+  '(helm-attrset 'follow 1 helm-source-moccur))
+
+;; Don't auto change-dir
+(setq-default helm-ff-auto-update-initial-value nil)
+
+;;
+;; Smex for enhancing M-x
+;;
+
+(smex-initialize)

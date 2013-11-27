@@ -25,15 +25,14 @@
 ;;; * helm-locate-library
 ;;; * DONE Rename this file
 ;;; * DONE Global variables are placed in a seperated file
-;;; * Load everything with `eval-after-load` so config would be messed up if a
+;;; * DONE Load everything with `eval-after-load` so config would be messed up if a
 ;;;   package is not loaded
 ;;; * Better interface to ELPA and el-get:
-;;;   - Check if a package exists
+;;;   - DONE Check if a package exists
 ;;;   - Check for package dependencies
 ;;;   - Update package DB
 ;;;   - Automatically check for updates
 ;;;   - Update packages
-;;;   - Async download and installation with progress bar (later-do)
 ;;; * DONE [task] Decouple: defining & implementing (global vars at one place)
 ;;; * Function: better M-q inside comments
 ;;; * Modularize all of my customization:

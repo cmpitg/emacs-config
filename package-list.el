@@ -15,58 +15,76 @@
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
 
-(defvar *package-list* '(redo+
-                         popwin
-                         color-theme
-                         rainbow-delimiters
-                         smooth-scrolling
-                         smartscan
-                         auto-complete
-                         jedi
-                         whitespace
-                         ruby-mode
-                         yaml-mode
-                         haskell-mode
-                         markdown-mode
-                         markdown-mode+
-                         sr-speedbar
-                         paredit
-                         autopair
-                         auto-complete
-                         helm
-                         slime
-                         smex
-                         openwith
-                         evil
-                         evil-nerd-commenter
-                         evil-leader
-                         evil-paredit
-                         thingatpt
-                         multiple-cursors
-                         dash
-                         expand-region
-                         yasnippet
-                         gist
-                         json
-                         quack
-                         geiser
-                         js2-mode
-                         pabbrev
-                         dired-details+
-                         sunrise-commander
-                         sunrise-x-tabs
-                         sunrise-x-loop
-                         sunrise-x-checkpoints
-                         sunrise-x-tree
-                         sunrise-x-modeline
-                         fic-mode
-                         magit
-                         monky
-                         zlc
-                         hexrgb)
+(defvar *elpa-package-list* '(popwin
+                              color-theme
+                              rainbow-delimiters
+                              smooth-scrolling
+                              smartscan
+                              auto-complete
+                              jedi
+                              whitespace
+                              ruby-mode
+                              yaml-mode
+                              haskell-mode
+                              markdown-mode
+                              markdown-mode+
+                              sr-speedbar
+                              paredit
+                              autopair
+                              auto-complete
+                              helm
+                              slime
+                              smex
+                              openwith
+                              evil
+                              evil-nerd-commenter
+                              evil-leader
+                              evil-paredit
+                              thingatpt
+                              multiple-cursors
+                              dash
+                              expand-region
+                              yasnippet
+                              gist
+                              json
+                              quack
+                              geiser
+                              js2-mode
+                              pabbrev
+                              dired-details+
+                              sunrise-commander
+                              sunrise-x-tabs
+                              sunrise-x-loop
+                              sunrise-x-checkpoints
+                              sunrise-x-tree
+                              sunrise-x-modeline
+                              fic-mode
+                              magit
+                              monky
+                              zlc
+                              hexrgb)
   "List of packages using in this Emacs configuration.")
 
-(defvar *el-get-package-list* '(later-do)
+(defvar *el-get-package-list*
+  '(later-do                            ; Async eval
+    powerline                           ; @johnathanchu version, beautiful
+                                        ; modeline
+                                        ; https://github.com/jonathanchu/emacs-powerline
+    multi-scratch                       ; Multiple scratch buffers
+    moz-repl                            ; MozRepl
+    )
   "List of packages not available in ELPA but available to install with el-get.")
 
-(defvar *disabled-package-list* '())
+(defvar *local-package-list*
+  '(acme-mouse                          ; Acme-like mouse chords binding
+    ibus                                ; iBus interface
+    ))
+
+;;; For user customization
+
+(defvar *user-package-list* '()
+  "List of packages that user wants to load beside preloaded ones
+by default.")
+
+(defvar *user-disable-package-list* '()
+  "List of packages in the default set that are not loaded.")

@@ -16,28 +16,21 @@
 ;;
 
 (defvar *elpa-package-list* 
-  '(popwin                              ; Better popwin window management,
-                                        ; dispose with Esc or C-g
-    color-theme
-    rainbow-delimiters                  ; Highlight matching parentheses
-    smooth-scrolling
-    smartscan                           ; Jump between occurrences of a symbol
-    jedi                                ; Autocomplete and cool stuff for
+  '(jedi                                ; Autocomplete and cool stuff for
                                         ; Python development
-    whitespace                          ; Display whitespace
+    rainbow-delimiters                  ; Highlight matching parentheses
     ruby-mode
+    ruby-dev                            ; Ruby and Pry
     yaml-mode
     haskell-mode
     markdown-mode
     markdown-mode+
-    sr-speedbar
+    sr-speedbar                         ; Speedbar in the same frame
     paredit                             ; Parentheses manipulation in Lisp
                                         ; modes
     autopair                            ; Auto-pairing parentheses
     auto-complete
-    helm                                ; Smart completion framework
     slime                               ; Best Common Lisp development tool
-    smex                                ; Better M-x with completion
     openwith                            ; Open file with external program, in
                                         ; any file-browsing modes like Sunrise
                                         ; Commander or Dired
@@ -45,10 +38,6 @@
     evil-nerd-commenter                 ; Vim commenter
     evil-leader                         ; Vim leader command
     evil-paredit                        ; Paredit-like mode for evil
-    thingatpt                           ; Getting thing at current pointg
-    multiple-cursors                    ; Sublime-like multiple cursors
-    expand-region                       ; Expand selection based-on semantic
-                                        ; units
     yasnippet                           ; Textmate-like snippet and better
     gist                                ; Interface to Github's gist
     json                                ; JSON lib for Emacs
@@ -77,12 +66,15 @@
                                         ; https://github.com/jonathanchu/emacs-powerline
     multi-scratch                       ; Multiple scratch buffers
     moz-repl                            ; MozRepl
+    whitespace                          ; Display trailing whitespace
     )
   "List of packages not available in ELPA but available to install with el-get.")
 
 (defvar *local-package-list*
   '(acme-mouse                          ; Acme-like mouse chords binding
     ibus                                ; iBus interface
+    rsense                              ; Comprehensive Ruby development
+    picolisp
     ))
 
 ;;; For user customization

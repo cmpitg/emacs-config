@@ -90,10 +90,11 @@
 i.e. all packages in `*elpa-package-list*' and
 `*user-package-list*' but NOT in `*user-disable-package-list*'."
   (-filter (lambda (package)
-	     (not (member package *user-disable-package-list*)))
-	   (-concat *user-package-list*
-		    *elpa-package-list*
-		    *el-get-package-list*)))
+             (not (member package *user-disable-package-list*)))
+           (-concat *user-package-list*
+                    *local-package-list*
+                    *elpa-package-list*
+                    *el-get-package-list*)))
 
 ;; (defun $list-default-configs ()
 ;;   "Return a list of symbols as features, defined by filenames of
@@ -385,13 +386,13 @@ Default: `~/emacs-config/config-default/`."
 (defun $install-packages (&rest packages)
   "Install a list of package if not installed."
   (dolist (package-name packages)
-    (unless ($package-installed? package-name)
+    (unless (or ($package-installed? package-name)
+                (memq package-name *local-package-list*))
       (cond
-       (($elpa-package-exists? package-name)
-	(package-install package-name))
-
        (($el-get-package-exists? package-name)
-	(el-get-install package-name))))))
+	(el-get-install package-name))
+       (($elpa-package-exists? package-name)
+	(package-install package-name))))))
 
 (defun $current-path ()
   "Get full path of the current file."

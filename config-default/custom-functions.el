@@ -20,6 +20,10 @@
 
 ;; TODO
 ;;
+;; * Document
+;;   - List packages in ELPA and el-get
+;;   - Determine if a package exists
+;;   - Determine if a package is installed
 ;; * Goto package directory
 ;; * Remove package
 ;; * Simple way to add menu

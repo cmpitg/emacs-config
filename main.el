@@ -64,12 +64,12 @@
 ;; Install packages
 
 (apply '$install-packages ($list-packages-to-be-loaded))
-(apply 'el-get-install *el-get-package-list*)
+;; (apply 'el-get-install *el-get-package-list*)
 
 ;; Add all the load path
 
-(mapc #'(lambda (dir)
-          (add-to-list 'load-path (format "%s%s" *elpa-package-dir* dir)))
+(mapc '(lambda (dir)
+         (add-to-list 'load-path (format "%s%s" *elpa-package-dir* dir)))
       (directory-files *elpa-package-dir* nil ".*"))
 
 ;;

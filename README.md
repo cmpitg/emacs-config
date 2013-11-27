@@ -184,6 +184,9 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
 * Other things related to Xiki enrivonment should be customized in
   `~/emacs-config/init-xiki.el`.
 
+**Notes**: If you would like to know how it works, `init.el` (or
+`init-xiki.el` for Xiki version) is/are first place(s) to get started.
+
 ## Detailed Description
 
 * All `config-` files in your `$HOME/emacs-config/config-default` is

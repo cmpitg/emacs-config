@@ -18,6 +18,8 @@
 ;;;
 ;;; TODO
 ;;;
+;;; * This file actually install packages and config everything, rename this
+;;;   to reflect the task
 ;;; * write documentation/make screencast about workflow
 ;;; * Discover Helm menu
 ;;; * Discover construct regexp menu and make screencast

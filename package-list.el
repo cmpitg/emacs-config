@@ -15,54 +15,59 @@
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
 
-(defvar *elpa-package-list* '(popwin
-                              color-theme
-                              rainbow-delimiters
-                              smooth-scrolling
-                              smartscan
-                              auto-complete
-                              jedi
-                              whitespace
-                              ruby-mode
-                              yaml-mode
-                              haskell-mode
-                              markdown-mode
-                              markdown-mode+
-                              sr-speedbar
-                              paredit
-                              autopair
-                              auto-complete
-                              helm
-                              slime
-                              smex
-                              openwith
-                              evil
-                              evil-nerd-commenter
-                              evil-leader
-                              evil-paredit
-                              thingatpt
-                              multiple-cursors
-                              dash
-                              expand-region
-                              yasnippet
-                              gist
-                              json
-                              quack
-                              geiser
-                              js2-mode
-                              pabbrev
-                              dired-details+
-                              sunrise-commander
-                              sunrise-x-tabs
-                              sunrise-x-loop
-                              sunrise-x-checkpoints
-                              sunrise-x-tree
-                              sunrise-x-modeline
-                              fic-mode
-                              magit
-                              monky
-                              zlc
-                              hexrgb)
+(defvar *elpa-package-list* 
+  '(popwin                              ; Better popwin window management,
+                                        ; dispose with Esc or C-g
+    color-theme
+    rainbow-delimiters                  ; Highlight matching parentheses
+    smooth-scrolling
+    smartscan                           ; Jump between occurrences of a symbol
+    jedi                                ; Autocomplete and cool stuff for
+                                        ; Python development
+    whitespace                          ; Display whitespace
+    ruby-mode
+    yaml-mode
+    haskell-mode
+    markdown-mode
+    markdown-mode+
+    sr-speedbar
+    paredit                             ; Parentheses manipulation in Lisp
+                                        ; modes
+    autopair                            ; Auto-pairing parentheses
+    auto-complete
+    helm                                ; Smart completion framework
+    slime                               ; Best Common Lisp development tool
+    smex                                ; Better M-x with completion
+    openwith                            ; Open file with external program, in
+                                        ; any file-browsing modes like Sunrise
+                                        ; Commander or Dired
+    evil                                ; Vim emulator
+    evil-nerd-commenter                 ; Vim commenter
+    evil-leader                         ; Vim leader command
+    evil-paredit                        ; Paredit-like mode for evil
+    thingatpt                           ; Getting thing at current pointg
+    multiple-cursors                    ; Sublime-like multiple cursors
+    expand-region                       ; Expand selection based-on semantic
+                                        ; units
+    yasnippet                           ; Textmate-like snippet and better
+    gist                                ; Interface to Github's gist
+    json                                ; JSON lib for Emacs
+    quack                               ; Another mode for Scheme development
+    geiser                              ; Scheme development
+    js2-mode                            ; JavaScript
+    pabbrev                             ; Better abbrev
+    dired-details+                      ; Better Dired information control
+    sunrise-commander                   ; File manager
+    sunrise-x-tabs
+    sunrise-x-loop                      ; Execute commands async in SR
+    sunrise-x-checkpoints
+    sunrise-x-tree                      ; Tree browsing feature for SR
+    sunrise-x-modeline                  ; Nicer modeline in SR
+    magit                               ; Best Git interface for Emacs
+    monky                               ; Magit-like mode for Mercurial
+    zlc                                 ; Zsh completion
+    hexrgb                              ; Color manipulation
+    )
   "List of packages using in this Emacs configuration.")
 
 (defvar *el-get-package-list*

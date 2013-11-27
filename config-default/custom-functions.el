@@ -54,7 +54,7 @@
       *snippet-dir* "~/emacs-config/snippets"
       *license-dir* "~/emacs-config/license-list"
       *me* "Duong H. Nguyen <cmpitg AT gmailDOTcom>"
-      
+
       )
 
 (defvar *$emacs-lisp-keywords*
@@ -73,17 +73,39 @@
 ;;; Functions
 ;;;
 
-(defun $list-default-configs ()
-  "Return a list of symbols as features, defined by filenames of
-format `config-[feature-name].el` in
-`~/emacs-config/config-default/`"
-  (let ((dirpath "~/emacs-config/config-default/"))
-    (->> dirpath
-      $list-dir
-      (-filter (lambda (filename)
-                 ($string-start-with? filename "config-")))
-      (-map (lambda (library-name)
-              (intern (file-name-base library-name)))))))
+(defun $package-installed? (package-symbol)
+  "Determine if a package is installed."
+  (or (package-installed-p package-symbol)
+      (el-get-package-is-installed package-symbol)
+      ($local-package-is-installed? package-symbol)))
+
+(defun $local-package-is-installed? (package-symbol)
+  "Determine if a package is installed at
+`$HOME/emacs-config/emacs-local-packages`."
+  ;; TODO to be implemented
+  nil)
+
+(defun $list-packages-to-be-loaded ()
+  "List all packages to be loaded when Emacs is initialized,
+i.e. all packages in `*elpa-package-list*' and
+`*user-package-list*' but NOT in `*user-disable-package-list*'."
+  (-filter (lambda (package)
+	     (not (member package *user-disable-package-list*)))
+	   (-concat *user-package-list*
+		    *elpa-package-list*
+		    *el-get-package-list*)))
+
+;; (defun $list-default-configs ()
+;;   "Return a list of symbols as features, defined by filenames of
+;; format `config-[feature-name].el` in
+;; `~/emacs-config/config-default/`"
+;;   (let ((dirpath "~/emacs-config/config-default/"))
+;;     (->> dirpath
+;;       $list-dir
+;;       (-filter (lambda (filename)
+;;                  ($string-start-with? filename "config-")))
+;;       (-map (lambda (library-name)
+;;               (intern (file-name-base library-name)))))))
 
 (defun $symbol->string (symbol)
   "Convert a symbol to a string."
@@ -131,8 +153,8 @@ E.g.
 \($join-strings \"|\" '\(\"a\" \"b\" \"c\"\)\) ; => \"a|b|c\"
 \($join-strings \"|\" [1 \"b\" c]\) ; => \"1|b|c\""
   (-reduce (lambda (result element)
-               (format "%s%s%s" result separator element))
-           (-map (lambda (x) x) a-seq)))
+	       (format "%s%s%s" result separator element))
+	   (-map (lambda (x) x) a-seq)))
 
 (defun $install-or-update-el-get ()
   "Install/update el-get."
@@ -172,17 +194,43 @@ E.g.
 
 ;; Download, raise an error if the file exists
 \($download-file \"https://raw.github.com/defunkt/gist.el/master/gist.el\"
-                \"/tmp/gist.el\"\)
+		\"/tmp/gist.el\"\)
 
 ;; Download and overwrite if already exists
 \($download-file \"https://raw.github.com/defunkt/gist.el/master/gist.el\"
-                \"/tmp/gist.el\"
-                :overwrite t\)"
+		\"/tmp/gist.el\"
+		:overwrite t\)"
   (interactive "MURL: \nFSave to: ")
   (url-copy-file url filepath overwrite))
 
-(defun $get-package-list ()
-  "Get the list of packages information cached in your repositories.
+(defun $el-get-package-list ()
+  "Get the list of packages cached in el-get repositories.  This
+function doesn't update el-get database.  Returns a plist of format
+
+\(:name package-name :description package-description\)"
+  (el-get-read-all-recipes))
+
+(defun $el-get-package-exists? (package-symbol)
+  "Determine if a package exists in el-get repositories.  This
+function doesn't update local el-get database."
+  (not (null
+	(memq package-symbol (-map (lambda (package)
+				     (plist-get package :name))
+				   ($el-get-package-list))))))
+
+(defun $elpa-package-exists? (package-symbol)
+  "Determine if a package exists in ELPA.  This function doesn't
+update local ELPA database."
+  (not (null (memq package-symbol (-map (lambda (element)
+					  (car element))
+					($elpa-get-package-list))))))
+
+(defun $elpa-get-package-list ()
+  "Get the list of packages information cached in your ELPA repositories."
+  package-archive-contents)
+
+(defun $elpa-get-installed-package-list ()
+  "Get the list of packages information installed in your ELPA repositories.
 
 This function return the value of `package-alist` variable. Which
 returns an alist of all packages available for activation.
@@ -205,10 +253,10 @@ The vector DESC has the form [VERSION-LIST REQS DOCSTRING].
     (cond
       ((string= "git" current-scm)
        (magit-status nil))
-      
+
       ((string= "hg" current-scm)
        (monky-status))
-      
+
       (t nil))))
 
 (defun $get-scm ()
@@ -216,23 +264,23 @@ The vector DESC has the form [VERSION-LIST REQS DOCSTRING].
 file as string."
   (interactive)
   (let ((mode-name (downcase
-                    (replace-regexp-in-string " \\|[[:digit:]]\\|:.*\\|-.*" "" vc-mode))))
+		    (replace-regexp-in-string " \\|[[:digit:]]\\|:.*\\|-.*" "" vc-mode))))
     mode-name))
 
 
 (defun $google (keyword)
   "Google a keyword in Firefox."
   (interactive (list ($read-string "Keyword: "
-                                   :initial-input ($get-selection))))
+				   :initial-input ($get-selection))))
   ($open-url-in-firefox
    (format "https://encrypted.google.com/search?q=%s" keyword)))
 
 (defun $open-url-in-firefox (url)
   "Open a URL in Firefox."
   (interactive (list ($read-string "URL: "
-                                   :initial-input (if ($is-selecting?)
-                                                    ($get-selection)
-                                                    (thing-at-point-url-at-point)))))
+				   :initial-input (if ($is-selecting?)
+						    ($get-selection)
+						    (thing-at-point-url-at-point)))))
   ($send-to-mozrepl (format "switchToTabHavingURI('%s', true)" url)))
 
 (defun $refresh-firefox ()
@@ -252,7 +300,7 @@ file as string."
   (interactive "MCommand: ")
   ($start-mozrepl)                      ; Make sure MozRepl is up and running
   (comint-send-string (inferior-moz-process)
-                      string))
+		      string))
 
 (defun $sunrise ()
   "Open Sunrise Commander, remove the nonpage buffer."
@@ -285,24 +333,24 @@ buffer."
     (delete-window)))
 
 (defun* $read-string (prompt &key
-                             (initial-input         nil)
-                             (history               nil)
-                             (default-value         nil)
-                             (inherit-input-method  nil))
+			     (initial-input         nil)
+			     (history               nil)
+			     (default-value         nil)
+			     (inherit-input-method  nil))
   "An alias of read-string, with keyword arguments.  See
 read-string documentation for more details.
 
   Read a string from the minibuffer."
   (read-string prompt
-               initial-input
-               history
-               default-value
-               inherit-input-method))
+	       initial-input
+	       history
+	       default-value
+	       inherit-input-method))
 
 (defun $new-home-script (file-name)
   "Creating a new file/script at ~/bin/."
   (interactive (list ($read-string "File name (~/bin/): "
-                           :initial-input "~/bin/")))
+			   :initial-input "~/bin/")))
   ($open-file file-name))
 
 (defun $current-buffer-name ()
@@ -338,7 +386,12 @@ Default: `~/emacs-config/config-default/`."
   "Install a list of package if not installed."
   (dolist (package-name packages)
     (unless ($package-installed? package-name)
-      (package-install package-name))))
+      (cond
+       (($elpa-package-exists? package-name)
+	(package-install package-name))
+
+       (($el-get-package-exists? package-name)
+	(el-get-install package-name))))))
 
 (defun $current-path ()
   "Get full path of the current file."
@@ -401,13 +454,13 @@ directory is specified, the default dir /tmp/emacs1000/ is used."
       (setf pos (string-match "*" name))
       (if (string= "*scratch*" name) (setf stop t))
       (if (or (null pos)
-              (> pos 0)) (setf stop t)))))
+	      (> pos 0)) (setf stop t)))))
 
 (defun $move-to-compilation-buffer ()
   "Move to *compilation* buffer if it exists."
   (interactive)
   (if (find "*compilation*" (mapcar #'buffer-name (buffer-list))
-            :test #'equal)
+	    :test #'equal)
       (switch-to-buffer "*compilation*")))
 
 (defun $previous-buffer ()
@@ -419,31 +472,31 @@ directory is specified, the default dir /tmp/emacs1000/ is used."
       (setf pos (string-match "*" name))
       (if (string= "*scratch*" name) (setf stop t))
       (if (or (null pos)
-              (> pos 0)) (setf stop t)))))
+	      (> pos 0)) (setf stop t)))))
 
 (defun $set-frame-size-according-to-resolution ()
   "Set frame size based on current resolution"
   (interactive)
   (if window-system
       (progn
-        ;; Largest displays: 120 (width)
-        ;; Smaller ones:     100 (width)
-        ;; Smallest ones:     80 (width)
-        (if (> (x-display-pixel-width) 1280)
-            (add-to-list 'default-frame-alist (cons 'width 200))
-            (if (> (x-display-pixel-width) 1024)
-                (add-to-list 'default-frame-alist (cons 'width 150))
-                (add-to-list 'default-frame-alist (cons 'width 80))))
-        (add-to-list 'default-frame-alist
-                     (cons 'height (/ (- (x-display-pixel-height) 100)
-                                      (frame-char-height)))))))
+	;; Largest displays: 120 (width)
+	;; Smaller ones:     100 (width)
+	;; Smallest ones:     80 (width)
+	(if (> (x-display-pixel-width) 1280)
+	    (add-to-list 'default-frame-alist (cons 'width 200))
+	    (if (> (x-display-pixel-width) 1024)
+		(add-to-list 'default-frame-alist (cons 'width 150))
+		(add-to-list 'default-frame-alist (cons 'width 80))))
+	(add-to-list 'default-frame-alist
+		     (cons 'height (/ (- (x-display-pixel-height) 100)
+				      (frame-char-height)))))))
 
 (defun $modify-opacity (&optional dec)
   "Modify the opacity of emacs frame; if DEC is t,
 increase the opacity."
   (let* ((alpha-or-nil (frame-parameter nil 'alpha))
-         (old-alpha (if alpha-or-nil alpha-or-nil 100))
-         (new-alpha (if dec (- old-alpha 10) (+ old-alpha 10))))
+	 (old-alpha (if alpha-or-nil alpha-or-nil 100))
+	 (new-alpha (if dec (- old-alpha 10) (+ old-alpha 10))))
     (when (and (>= new-alpha frame-alpha-lower-limit) (<= new-alpha 100))
       (modify-frame-parameters nil (list (cons 'alpha new-alpha))))))
 
@@ -453,9 +506,9 @@ increase the opacity."
   (interactive)
   (if (null *is-ibus-on?*)
       (progn (ibus-enable)
-             (setf *is-ibus-on?* t))
+	     (setf *is-ibus-on?* t))
       (progn (ibus-disable)
-             (setf *is-ibus-on?* nil))))
+	     (setf *is-ibus-on?* nil))))
 
 (setq *is-ecb-running?* nil)
 (defun $toggle-ecb ()
@@ -463,18 +516,18 @@ increase the opacity."
   (interactive)
   (if (null *is-ecb-running?*)
       (progn (ecb-activate)
-             (setf *is-ecb-running?* t))
+	     (setf *is-ecb-running?* t))
       (progn (ecb-deactivate)
-             (setf *is-ecb-running?* nil))))
+	     (setf *is-ecb-running?* nil))))
 
 (defun $helm-multi-all ()
   "multi-occur in all buffers backed by files."
   (interactive)
   (helm-multi-occur
    (delq nil
-         (mapcar (lambda (b)
-                   (when (buffer-file-name b) (buffer-name b)))
-                 (buffer-list)))))
+	 (mapcar (lambda (b)
+		   (when (buffer-file-name b) (buffer-name b)))
+		 (buffer-list)))))
 
 (defun $setup-moz-javascript ()
   "Setting JavaScript mode with MozRepl."
@@ -488,12 +541,12 @@ increase the opacity."
 (defun $auto-reload-firefox-after-save-hook ()
   "Auto reload Firefox when saving."
   (add-hook 'after-save-hook
-            '(lambda ()
-               (interactive)
-               (comint-send-string (inferior-moz-process)
-                                   "setTimout(BrowserReload(), '1000');"))
-            ;; buffer-local
-            'append 'local))
+	    '(lambda ()
+	       (interactive)
+	       (comint-send-string (inferior-moz-process)
+				   "setTimout(BrowserReload(), '1000');"))
+	    ;; buffer-local
+	    'append 'local))
 
 (defun $put-mode-line-to-top ()
   "Put the mode-line to the top of the window."
@@ -522,23 +575,23 @@ cyclic order."
   (interactive)
   (let (pos1 pos2 (deactivate-mark nil) (case-fold-search nil))
     (if (and transient-mark-mode mark-active)
-        (setq pos1 (region-beginning)
-              pos2 (region-end))
-        (setq pos1 (car (bounds-of-thing-at-point 'word))
-              pos2 (cdr (bounds-of-thing-at-point 'word))))
+	(setq pos1 (region-beginning)
+	      pos2 (region-end))
+	(setq pos1 (car (bounds-of-thing-at-point 'word))
+	      pos2 (cdr (bounds-of-thing-at-point 'word))))
 
     (unless (eq last-command this-command)
       (save-excursion
-        (goto-char pos1)
-        (cond
-          ((looking-at "[[:lower:]][[:lower:]]")
-           (put this-command 'state "all lower"))
-          ((looking-at "[[:upper:]][[:upper:]]")
-           (put this-command 'state "all caps"))
-          ((looking-at "[[:upper:]][[:lower:]]")
-           (put this-command 'state "init caps"))
-          (t (put this-command 'state "all lower"))
-          )))
+	(goto-char pos1)
+	(cond
+	  ((looking-at "[[:lower:]][[:lower:]]")
+	   (put this-command 'state "all lower"))
+	  ((looking-at "[[:upper:]][[:upper:]]")
+	   (put this-command 'state "all caps"))
+	  ((looking-at "[[:upper:]][[:lower:]]")
+	   (put this-command 'state "init caps"))
+	  (t (put this-command 'state "all lower"))
+	  )))
     (cond
       ((string= "all lower" (get this-command 'state))
        (upcase-initials-region pos1 pos2)
@@ -590,7 +643,7 @@ This command works on `sudo` *nixes only."
   (when buffer-file-name
     (find-alternate-file
      (concat "/sudo:root@localhost:"
-             buffer-file-name))))
+	     buffer-file-name))))
 
 (defun $create-tags (dir-name)
   "Create tags file using exuberant ctags."
@@ -611,7 +664,7 @@ This command works on `sudo` *nixes only."
   (newline)
   (save-buffer)
   (kill-buffer)
-                                        ;  (switch-to-buffer nil)
+					;  (switch-to-buffer nil)
   )
 
 (defun $make-executable ()
@@ -623,7 +676,7 @@ This command works on `sudo` *nixes only."
        (widen)
        (goto-char (point-min))
        (save-match-data
-         (looking-at "^#!"))))
+	 (looking-at "^#!"))))
    (not (file-executable-p buffer-file-name))
    (shell-command (concat "chmod u+x " (shell-quote-argument buffer-file-name)))
    (revert-buffer)
@@ -635,9 +688,9 @@ This command works on `sudo` *nixes only."
   (interactive)
   (and (string-match ".*\.haml$" ($current-file-full-path))
        (let ((output-file (replace-regexp-in-string "\.haml$" ".html"
-                                                    ($current-file-full-path))))
-         (compile (concat "haml \"" ($current-file-full-path) "\" "
-                          "\"" output-file "\"")))))
+						    ($current-file-full-path))))
+	 (compile (concat "haml \"" ($current-file-full-path) "\" "
+			  "\"" output-file "\"")))))
 
 (defun $compile-coffee ()
   "Compile CoffeeScript to JavaScript."
@@ -656,61 +709,61 @@ This command works on `sudo` *nixes only."
  LEFT-ARROW or GREATER-THAN into an actual Unicode character
  code. "
   (decode-char 'ucs (case name
-                      (left-arrow 8592)
-                      (up-arrow 8593)
-                      (right-arrow 8594)
-                      (down-arrow 8595)
-                      (double-vertical-bar #X2551)
-                      (equal #X003d)
-                      (not-equal #X2260)
-                      (identical #X2261)
-                      (not-identical #X2262)
-                      (less-than #X003c)
-                      (greater-than #X003e)
-                      (less-than-or-equal-to #X2264)
-                      (greater-than-or-equal-to #X2265)
-                      (logical-and #X2227)
-                      (logical-or #X2228)
-                      (logical-neg #X00AC)
-                      ('nil #X2205)
-                      (horizontal-ellipsis #X2026)
-                      (double-exclamation #X203C)
-                      (prime #X2032)
-                      (double-prime #X2033)
-                      (for-all #X2200)
-                      (there-exists #X2203)
-                      (element-of #X2208)
-                      (square-root #X221A)
-                      (squared #X00B2)
-                      (cubed #X00B3)
-                      (lambda #X03BB)
-                      (alpha #X03B1)
-                      (beta #X03B2)
-                      (gamma #X03B3)
-                      (delta #X03B4))))
+		      (left-arrow 8592)
+		      (up-arrow 8593)
+		      (right-arrow 8594)
+		      (down-arrow 8595)
+		      (double-vertical-bar #X2551)
+		      (equal #X003d)
+		      (not-equal #X2260)
+		      (identical #X2261)
+		      (not-identical #X2262)
+		      (less-than #X003c)
+		      (greater-than #X003e)
+		      (less-than-or-equal-to #X2264)
+		      (greater-than-or-equal-to #X2265)
+		      (logical-and #X2227)
+		      (logical-or #X2228)
+		      (logical-neg #X00AC)
+		      ('nil #X2205)
+		      (horizontal-ellipsis #X2026)
+		      (double-exclamation #X203C)
+		      (prime #X2032)
+		      (double-prime #X2033)
+		      (for-all #X2200)
+		      (there-exists #X2203)
+		      (element-of #X2208)
+		      (square-root #X221A)
+		      (squared #X00B2)
+		      (cubed #X00B3)
+		      (lambda #X03BB)
+		      (alpha #X03B1)
+		      (beta #X03B2)
+		      (gamma #X03B3)
+		      (delta #X03B4))))
 
 (defun $substitute-pattern-with-unicode (pattern symbol)
   "Add a font lock hook to replace the matched part of PATTERN
 with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
   (font-lock-add-keywords
    nil `((,pattern
-          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                    ,(unicode-symbol symbol)
-                                    'decompose-region)
-                    nil))))))
+	  (0 (progn (compose-region (match-beginning 1) (match-end 1)
+				    ,(unicode-symbol symbol)
+				    'decompose-region)
+		    nil))))))
 
 (defun $substitute-patterns-with-unicode (patterns)
   "Call SUBSTITUTE-PATTERN-WITH-UNICODE repeatedly."
   (mapcar #'(lambda (x)
-              (substitute-pattern-with-unicode (car x)
-                                               (cdr x)))
-          patterns))
+	      (substitute-pattern-with-unicode (car x)
+					       (cdr x)))
+	  patterns))
 
 (defun $add-new-snippet (mode name)
   "Add new yassnipet snippet."
   (interactive "MMode (without the `-mode` part): \nMSnippet name: ")
   (let* ((mode (format "%s-mode" mode))
-         (yas-file (format "%s/%s/%s" *snippet-dir* mode name)))
+	 (yas-file (format "%s/%s/%s" *snippet-dir* mode name)))
     (message "file: %s" yas-file)
     (find-file yas-file)))
 
@@ -748,18 +801,18 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
   "Put point at beginning of current word, set mark at end."
   (interactive)
   (let* ((opoint (point))
-         (word (current-word))
-         (word-length (length word)))
+	 (word (current-word))
+	 (word-length (length word)))
     (if (save-excursion
-          ;; Avoid signaling error when moving beyond buffer.
-          (if (> (point-min)  (- (point) word-length))
-              (beginning-of-buffer)
-              (forward-char (- (length word))))
-          (search-forward word (+ opoint (length word))
-                          'noerror))
-        (progn (push-mark (match-end 0) nil t)
-               (goto-char (match-beginning 0)))
-        (error "No word at point" word))))
+	  ;; Avoid signaling error when moving beyond buffer.
+	  (if (> (point-min)  (- (point) word-length))
+	      (beginning-of-buffer)
+	      (forward-char (- (length word))))
+	  (search-forward word (+ opoint (length word))
+			  'noerror))
+	(progn (push-mark (match-end 0) nil t)
+	       (goto-char (match-beginning 0)))
+	(error "No word at point" word))))
 
 (defun $mark-line ()
   "Mark current line."
@@ -825,7 +878,7 @@ we might have in the frame."
   (interactive)
   (if (not(window-minibuffer-p (selected-window)))
       (if (or mark-active (active-minibuffer-window))
-          (keyboard-escape-quit))
+	  (keyboard-escape-quit))
       (keyboard-quit)))
 
 (defun $toggle-evil-local ()
@@ -833,8 +886,8 @@ we might have in the frame."
   (interactive)
   (if evil-local-mode
       (progn
-        (evil-local-mode -1)
-        (setq cursor-type 'bar))
+	(evil-local-mode -1)
+	(setq cursor-type 'bar))
     (evil-local-mode)))
 
 (defun $auto-load-mode (filetypes mode)
@@ -851,7 +904,7 @@ Example:
 (defun $get-text (start end)
   "Return text from current buffer between start and end point."
   (if (or (< start (point-min))
-          (< (point-max) end))
+	  (< (point-max) end))
       ""
     (buffer-substring start end)))
 
@@ -953,7 +1006,7 @@ cursor position."
   "Return the current selected text."
   (if ($is-selecting?)
       (buffer-substring ($selection-start)
-                        ($selection-end))
+			($selection-end))
       ""))
 
 (defun $get-selection ()
@@ -991,8 +1044,8 @@ cursor position."
 (defun $build-open-file-cmd-string ()
   "Build a string used to execute an open-file dialog."
   (concat "zenity --file-selection --filename "
-          ($current-dir)
-          " 2>/dev/null"))
+	  ($current-dir)
+	  " 2>/dev/null"))
 
 (defun $open-file-gui ()
   "Open a file using Zenity."
@@ -1022,7 +1075,7 @@ cursor position."
   "Return the last character of a string as string."
   (if (not ($string-empty? str))
       (let ((len (length str)))
-        (substring str (- len 1) len))
+	(substring str (- len 1) len))
     ""))
 
 (defun $mark-word-backward (times)
@@ -1031,18 +1084,18 @@ cursor position."
   (if ($is-selecting?)
       (kill-region ($selection-start) ($selection-end))
     (progn (if (and (not (eq last-command this-command))
-                    (not (eq last-command 'mark-sexp)))
-               (set-mark (point)))
-           (backward-word times))))
+		    (not (eq last-command 'mark-sexp)))
+	       (set-mark (point)))
+	   (backward-word times))))
 
 (defun $trim-spaces (text)
   "Trim spaces at the beginning and the end of a portion of text."
   (while (and (not ($string-empty? text))
-              (string= " " ($first-char-as-string text)))
+	      (string= " " ($first-char-as-string text)))
     (setf text (substring text 1)))
 
   (while (and (not ($string-empty? text))
-              (string= " " ($last-char-as-string text)))
+	      (string= " " ($last-char-as-string text)))
     (setf text (substring text 0 (- (length text) 1))))
 
   text)
@@ -1064,16 +1117,16 @@ buffer or eval an Emacs Lisp expression."
   (let ((command ($trim-spaces command-text)))
     (unless ($string-empty? command)
       (progn
-        ($delete-selected-text)
-        (insert command)
-        (insert "\n")
-        (cond (($is-external-command? command)
-               ($exec-then-pipe (substring command 1)))
+	($delete-selected-text)
+	(insert command)
+	(insert "\n")
+	(cond (($is-external-command? command)
+	       ($exec-then-pipe (substring command 1)))
 
-              (($is-directory? command)
-               ($exec-in-other-window (format "ls '%s'" command)))
+	      (($is-directory? command)
+	       ($exec-in-other-window (format "ls '%s'" command)))
 
-              (t ($eval-string command)))))))
+	      (t ($eval-string command)))))))
 
 (defun $jekyll-add-last-updated ()
   "Add last_update timestamp with `date -R` format."
@@ -1081,7 +1134,7 @@ buffer or eval an Emacs Lisp expression."
   ($goto-point (point-min))
   (if (re-search-forward "^last_updated:.*$")
       (replace-match (format "last_updated: %s"
-                             ($string-but-last ($exec "date -R"))))))
+			     ($string-but-last ($exec "date -R"))))))
 
 ;; (global-set-key (kbd "C-<home>") 'jekyll-add-last-updated)
 
@@ -1151,9 +1204,6 @@ buffer.")
 ($defalias '$save-file 'save-buffer
   "Save current buffer")
 
-($defalias '$package-installed? 'package-installed-p
-  "Determine if a package is installed")
-
 ($defalias '$file-exists? 'file-exists-p
   "Determine if a file exists")
 
@@ -1171,8 +1221,8 @@ buffer.")
 
 (font-lock-add-keywords 'emacs-lisp-mode
   (list (cons (eval-when-compile
-                (regexp-opt *$emacs-lisp-keywords* 'words))
-              font-lock-keyword-face)
-        (cons (eval-when-compile
-                (regexp-opt *$emacs-lisp-functions* 'words))
-              font-lock-function-name-face)))
+		(regexp-opt *$emacs-lisp-keywords* 'words))
+	      font-lock-keyword-face)
+	(cons (eval-when-compile
+		(regexp-opt *$emacs-lisp-functions* 'words))
+	      font-lock-function-name-face)))

@@ -63,8 +63,7 @@
 
 ;; Install packages
 
-;; (apply 'package-install *package-list*)
-(apply '$install-packages *package-list*)
+(apply '$install-packages ($list-packages-to-be-loaded))
 (apply 'el-get-install *el-get-package-list*)
 
 ;; Add all the load path
@@ -83,18 +82,21 @@
 ;; Load all but disabled packages (defined in `package-list.el`)
 ;;
 
-(dolist ((package-symbol ($list-default-configs)))
-  (when (not (member package-symbol *disabled-package-list*))
-    (require package-symbol)))
+(dolist (package-symbol ($list-packages-to-be-loaded))
+  (require package-symbol))
+
+;;
+;; Now config all default packages
+;;
 
 ;;
 ;; File management with dired
 ;;
 ;; Default: -lahF
 
-(require 'dired-details+)
 
-(setq dired-listing-switches "-lhFgG --group-directories-first")
+(eval-after-load 'dired-details+ 
+  '(setq dired-listing-switches "-lhFgG --group-directories-first"))
 
 ;;
 ;; Powerful and beautiful modeline
@@ -102,9 +104,7 @@
 ;; Repo (bad): https://github.com/milkypostman/powerline
 ;; Another (better): https://github.com/jonathanchu/emacs-powerline
 
-($add-load-path "~/emacs-config/emacs-local-packages/emacs-powerline/")
-(require 'cl)
-(require 'powerline)
+(eval-after-load 'powerline)
 
 ;;
 ;; Popwin - better popup management
@@ -127,7 +127,7 @@
 ;; | C-u    | popwin:universal-display              |
 ;; | 1      | popwin:one-window                     |
 
-(require 'popwin)
+(eval-after-load 'popwin)
 (popwin-mode 1)
 
 (push '("\*anything*" :regexp t :height 20)         popwin:special-display-config)
@@ -169,13 +169,14 @@
 ;; ;; (setq tabbar-ruler-popup-toolbar t)    ; If you want a popup toolbar
 ;; ;; (setq tabbar-ruler-popup-scrollbar t)  ; If you want to only show the scroll
 ;; ;;                                        ; bar when your mouse is moving.
-;; (require 'tabbar-ruler)
+;; (eval-after-load 'tabbar-rul)
+)
 
 ;;
 ;; Smartscan helps jumping between occurrences of a symbol
 ;;
 
-(require 'smartscan)
+(eval-after-load 'smartscan)
 (global-smartscan-mode 1)
 
 ;; `smartscan-symbol-go-forward' - M-n
@@ -191,7 +192,7 @@
 ;; ;; (setq show-paren-style 'expression)
 ;; (setq show-paren-style 'parenthesis)
 
-(require 'rainbow-delimiters)
+(eval-after-load 'rainbow-delimiters)
 (global-rainbow-delimiters-mode)
 ;; (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
@@ -199,11 +200,11 @@
 ;; Sunrise commander
 ;;
 
-(require 'sunrise-commander)
-(require 'sunrise-x-loop)
-(require 'sunrise-x-tabs)
-(require 'sunrise-x-tree)
-(require 'sunrise-x-modeline)
+(eval-after-load 'sunrise-commander)
+(eval-after-load 'sunrise-x-loop)
+(eval-after-load 'sunrise-x-tabs)
+(eval-after-load 'sunrise-x-tree)
+(eval-after-load 'sunrise-x-modeline)
 
 (setq sr-listing-switches " --time-style=locale --group-directories-first -alDhgG")
 
@@ -221,13 +222,13 @@
 ;; Manual:
 ;;   http://magit.github.io/magit/magit.html
 
-(require 'magit)
+(eval-after-load 'magit)
 
 ;;
 ;; Monky - Magit for Mercurial
 ;;
 
-(require 'monky)
+(eval-after-load 'monky)
 
 ;;
 ;; Acme-like mouse chord
@@ -240,7 +241,7 @@
 ;; Open with file with external application
 ;;
 
-(require 'openwith)
+(eval-after-load 'openwith)
 (openwith-mode t)
 
 ;;
@@ -249,26 +250,26 @@
 
 ;; https://github.com/magnars/dash.el
 
-(require 'dash)
+(eval-after-load 'dash)
 (eval-after-load "dash" '(dash-enable-font-lock))
 
 ;;
 ;; JSON mode
 ;;
 
-(require 'json)
+(eval-after-load 'json)
 
 ;;
 ;; Expand region - marking based-on semantic
 ;;
 
-(require 'expand-region)
+(eval-after-load 'expand-region)
 
 ;;
 ;; Redo mode
 ;;
 
-;; (require 'redo+ nil 'error)
+;; (eval-after-load 'redo+ nil 'error)
 
 ;;
 ;; Gist
@@ -276,24 +277,24 @@
 
 ;; https://github.com/defunkt/gist.el
 
-(require 'gist)
+(eval-after-load 'gist)
 
 ;;
 ;; Smooth scrolling
 ;;
 
-(require 'smooth-scrolling)
+(eval-after-load 'smooth-scrolling)
 
 ;;
 ;; JavaScript
 ;;
 
-;; (require 'js3-mode)
+;; (eval-after-load 'js3-mode)
 ;; (setq js3-auto-indent-p t
 ;;       js3-enter-indents-newline t
 ;;       js3-indent-on-enter-key t)
 
-(require 'js2-mode)
+(eval-after-load 'js2-mode)
 (add-hook 'js-mode-hook 'js2-minor-mode)
 ($auto-load-mode '("\\.js\\'") 'js2-mode)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
@@ -306,7 +307,7 @@
 ;;
 
 ($add-load-path "~/emacs-config/emacs-local-packages/moz/")
-(require 'moz)
+(eval-after-load 'moz)
 (add-hook 'javascript-mode-hook '$setup-moz-javascript)
 (add-hook 'js3-mode-hook '$setup-moz-javascript)
 
@@ -314,14 +315,14 @@
 ;; Predictive abbreviation
 ;;
 
-;; (require 'pabbrev)
+;; (eval-after-load 'pabbrev)
 ;; (global-pabbrev-mode)
 
 ;;
 ;; Slime for Common Lisp development
 ;;
 
-(require 'slime)
+(eval-after-load 'slime)
 (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
 (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 (setq inferior-lisp-program *default-lisp-repl-path*)
@@ -333,7 +334,7 @@
 
 ;; Load before autocomplete
 
-(require 'yasnippet)
+(eval-after-load 'yasnippet)
 
 (eval-after-load 'yasnippet
   '(add-to-list 'yas-snippet-dirs (expand-file-name *snippet-dir*)))
@@ -344,7 +345,7 @@
 ;; zlc - Zsh completion
 ;;
 
-(require 'zlc)
+(eval-after-load 'zlc)
 (zlc-mode t)
 
 ;; (define-key minibuffer-local-map (kbd "<down>")  'zlc-select-next-vertical)
@@ -363,16 +364,16 @@
 ;; http://cx4a.org/software/rsense/manual.html
 ;;
 
-(require 'ruby-mode)
+(eval-after-load 'ruby-mode)
 
 ;; RSense
 (setq rsense-home (getenv "$RSENSE_HOME"))
 ($add-load-path (concat rsense-home "/etc"))
-(require 'rsense)
+(eval-after-load 'rsense)
 
 ;; With Pry
 ;; https://github.com/Mon-Ouie/ruby-dev.el
-(require 'ruby-dev)
+(eval-after-load 'ruby-dev)
 (autoload 'turn-on-ruby-dev "ruby-dev" nil t)
 
 (add-hook 'ruby-mode-hook 'turn-on-ruby-dev)
@@ -382,8 +383,8 @@
 ;; Autocomplete
 ;;
 
-(require 'auto-complete)
-(require 'auto-complete-config)
+(eval-after-load 'auto-complete)
+(eval-after-load 'auto-complete-config)
 (ac-config-default)
 (setq ac-sources
       '(ac-source-filename
@@ -410,10 +411,10 @@
 ;; Quack doc: http://www.neilvandyke.org/quack/quack.el
 ;; Geiser doc: http://www.nongnu.org/geiser
 
-(require 'geiser)
+(eval-after-load 'geiser)
 
 ;; Quack should be loaded after geiser
-(require 'quack)
+(eval-after-load 'quack)
 
 ;;
 ;; jedi for Python auto-completion
@@ -427,10 +428,10 @@
 ;; Auto pairing brackets
 ;;
 
-(require 'autopair)
+(eval-after-load 'autopair)
 (autopair-global-mode)
 
-(require 'paredit)
+(eval-after-load 'paredit)
 
 (defadvice paredit-mode (around disable-autopairs-around (arg))
   "Disable autopairs mode if paredit-mode is turned on."
@@ -448,7 +449,7 @@
 (add-hook 'geiser-repl-mode-hook      '$load-paredit-mode)
 
 ;;; Use with ElDoc
-(require 'eldoc)
+(eval-after-load 'eldoc)
 (eldoc-add-command
  'paredit-backward-delete
  'paredit-close-round)
@@ -503,7 +504,7 @@
 ;; Speedbar in the same frame
 ;;
 
-;; (require 'sr-speedbar)
+;; (eval-after-load 'sr-speedbar)
 
 ;;
 ;; MultiScratch
@@ -512,7 +513,7 @@
 ;; http://www.emacswiki.org/emacs/MultiScratch
 
 (load-file "~/emacs-config/emacs-local-packages/multi-scratch/multi-scratch.el")
-(require 'multi-scratch)
+(eval-after-load 'multi-scratch)
 
 ;; 
 ;; ibus-mode
@@ -520,21 +521,21 @@
 
 (load-file "~/emacs-config/emacs-local-packages/ibus.el/ibus-dev.el")
 
-(require 'ibus)
-
-;; Use C-SPC for Set Mark command
-(ibus-define-common-key ?\C-\s nil)
-;; Use C-/ for Undo command
-(ibus-define-common-key ?\C-/ nil)
-;; Change cursor color depending on IBus status
-(setq ibus-cursor-color '("red" "blue" "limegreen"))
-(setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus.el/ibus-el-agent")
+(eval-after-load 'ibus
+  '(progn
+     ;; Use C-SPC for Set Mark command
+     (ibus-define-common-key ?\C-\s nil)
+     ;; Use C-/ for Undo command
+     (ibus-define-common-key ?\C-/ nil)
+     ;; Change cursor color depending on IBus status
+     (setq ibus-cursor-color '("red" "blue" "limegreen"))
+     (setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus.el/ibus-el-agent")))
 
 ;;
 ;; Add thing-at-point function
 ;;
 
-(require 'thingatpt)
+(eval-after-load 'thingatpt)
 
 ;;
 ;; Support for multiple cursors
@@ -542,21 +543,21 @@
 
 ;; https://github.com/emacsmirror/multiple-cursors
 
-(require 'multiple-cursors)
+(eval-after-load 'multiple-cursors)
 
 ;;
 ;; Markdown-mode
 ;; 
 
-(require 'markdown-mode)
-(require 'markdown-mode+)
+(eval-after-load 'markdown-mode)
+(eval-after-load 'markdown-mode+)
 ($auto-load-mode '("\\.md$" "\\.markdown$") 'markdown-mode)
 
 ;;
 ;; Haskell mode
 ;;
 
-(require 'haskell-mode)
+(eval-after-load 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -568,7 +569,7 @@
 
 ($add-load-path "~/emacs-config/emacs-local-packages/picolisp-mode")
 
-(require 'picolisp)
+(eval-after-load 'picolisp)
 (setq picolisp-program-name "~/opt/picolisp/bin/plmod")
 ($auto-load-mode "\\.l$" 'picolisp-mode)
 (add-hook 'picolisp-mode-hook
@@ -582,13 +583,13 @@
 ;; Enable to ability to show trailing whitespace
 ;;
 
-(require 'whitespace)
+(eval-after-load 'whitespace)
 
 ;;
 ;; Helm for completion framework
 ;;
 
-(require 'helm-config)
+(eval-after-load 'helm-config)
 
 (eval-after-load "helm-regexp"
   '(helm-attrset 'follow 1 helm-source-moccur))
@@ -600,7 +601,7 @@
 ;; Smex for enhancing M-x
 ;;
 
-(require 'smex)
+(eval-after-load 'smex)
 (smex-initialize)
 
 ;;

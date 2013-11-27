@@ -83,7 +83,12 @@
 ;;
 
 (dolist (package-symbol ($list-packages-to-be-loaded))
-  (require package-symbol))
+  (cond
+   ((eq package-symbol 'moz-repl)       ; Exception: mode name is `moz` but
+                                        ; package name is `moz-repl`
+    (require 'moz))
+   (t
+    (require package-symbol))))
 
 ;;
 ;; Now config all default packages

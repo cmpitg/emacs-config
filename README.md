@@ -172,7 +172,10 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
   loaded after cmpitg configuration has been loaded.
 
 * `~/emacs-custom-foremost.el` would be loaded **before everything** is
-  loaded.
+  loaded.  One use case is to set the value of `*disabled-package-list*` to
+  the list of packages that you don't want to load during startup.  See
+  `emacs-custom-foremost-sample.el` for more detail, and see `package-list.el`
+  for full list of packages that are loaded by default.
 
 * Other things related to Xiki enrivonment should be customized in
   `~/emacs-config/init-xiki.el`.

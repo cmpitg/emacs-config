@@ -14,9 +14,21 @@
 ;; You should have received a copy of the GNU General Public License along
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
+;;; Description:
+;;
+;; This file initializes the package manager and loads all the essential
+;; packages that are required for this (cmpitg) configuration to function
+;; properly
+;;
 
 (defvar *must-have-package-list*
-  '(dash)
+  '(dash                                ; "Modern" list processing
+    ht                                  ; The missing hashtable library
+    s                                   ; "Modern" string processing
+    thingatpt                           ; Getting thing at current pointg
+    cl                                  ; Common Lisp subset in Emacs Lisp
+    cl-lib                              ; Common Lisp library
+    )
   "List of packages that are vital to this config and must be
 installed and loaded.")
 

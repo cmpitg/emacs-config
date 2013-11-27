@@ -25,7 +25,6 @@
   '(dash                                ; "Modern" list processing
     ht                                  ; The missing hashtable library
     s                                   ; "Modern" string processing
-    thingatpt                           ; Getting thing at current pointg
     cl                                  ; Common Lisp subset in Emacs Lisp
     cl-lib                              ; Common Lisp library
     )
@@ -77,7 +76,7 @@ installed and loaded.")
 (el-get 'sync)
 
 ;;
-;; Install and load all must-have packages
+;; Install and load all must-have packages with ELPA
 ;;
 
 (dolist (package *must-have-package-list*)

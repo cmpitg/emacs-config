@@ -24,10 +24,11 @@
 (add-to-list 'load-path "~/emacs-config/")
 (add-to-list 'load-path "~/emacs-config/config-default/")
 
-(-load-files-if-exists- "~/emacs-custom-foremost.el"
+(-load-files-if-exists- "~/emacs-config/package-list.el"
+                        "~/emacs-custom-foremost.el"  ; User-defined
                         "~/emacs-config/global-vars.el"
-                        "~/emacs-config/package-list.el"
                         "~/emacs-config/init-package-managers.el"
                         "~/emacs-config/main.el"
                         "~/emacs-config/main-xiki.el"
-                        "~/emacs-custom.el")
+                        "~/emacs-custom.el"           ; User-defined
+                        )

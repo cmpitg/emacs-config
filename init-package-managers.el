@@ -76,6 +76,16 @@ installed and loaded.")
 (el-get 'sync)
 
 ;;
+;; Add all local packages list in `$HOME/emacs-config/emacs-local-packages` to
+;; `loadpath`
+;;
+
+(let ((local-package-dir "~/emacs-config/emacs-local-packages/"))
+  (dolist (dirname (directory-files local-package-dir))
+    (add-to-list 'load-path
+                 (concat local-package-dir dirname))))
+
+;;
 ;; Install and load all must-have packages with ELPA
 ;;
 

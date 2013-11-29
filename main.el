@@ -18,6 +18,8 @@
 ;;;
 ;;; TODO
 ;;;
+;;; * Add function to lookup English (Oxford Advanced and Merriam-Webster)
+;;;   and Spanish words.
 ;;; * This file actually install packages and config everything, rename this
 ;;;   to reflect the task
 ;;; * write documentation/make screencast about workflow

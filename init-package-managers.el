@@ -137,3 +137,31 @@ installed and loaded.")
 ;;
 
 (smex-initialize)
+
+;;
+;; Smooth scrolling
+;;
+;; http://www.emacswiki.org/emacs/SmoothScrolling
+
+(require 'smooth-scrolling)
+
+;; Don't accelerate scrolling
+(setq mouse-wheel-progressive-speed nil)
+
+;; (setq scroll-step 3)
+
+;; (setq scroll-conservatively 10000)
+
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 3
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+
+(setq scroll-margin 1
+      ;; scroll-conservatively 0
+      scroll-conservatively 10000
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01)
+(setq-default scroll-up-aggressively 0.01
+              scroll-down-aggressively 0.01)

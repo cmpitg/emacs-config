@@ -189,6 +189,7 @@
 ;;
 ;; Highlight brackets
 ;;
+;; http://yoo2080.wordpress.com/2013/09/08/living-with-rainbow-delimiters-mode/
 
 ;; Somehow show-paren-mode is slow, using rainbow-delimiters instead
 ;; (show-paren-mode 1)

@@ -73,6 +73,8 @@
 
 (global-set-key (kbd "s-&") 'join-line)
 
+(global-set-key (kbd "s-SPC s") '$surround)
+
 ;; Multiple cursors
 (global-set-key (kbd "s-+") 'mc/edit-lines)
 (global-set-key (kbd "C-#") 'mc/mark-next-like-this)

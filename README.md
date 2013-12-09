@@ -313,6 +313,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
       (feature provided by
       [smartscan](http://www.masteringemacs.org/articles/2013/10/31/smart-scan-jump-symbols-buffer/))
   - Find all occurrences of a regular expression in all opened files: `<f4>`
+  - Surround text: `s-SPC s`
 
 * Completion:
   - Using `pabbrev` only: `<s-return>`

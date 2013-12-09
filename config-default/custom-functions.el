@@ -110,6 +110,29 @@ i.e. all packages in `*elpa-package-list*' and
 ;;       (-map (lambda (library-name)
 ;;               (intern (file-name-base library-name)))))))
 
+;;; Interactive text manipulation
+
+(defun $surround (begin-string end-string)
+  "Surround current selection with `begin-string` at the
+beginning and `end-string` at the end.  If selection is not
+active, insert `begin-string` and `end-string` and place the
+cursor in-between them."
+  (interactive "sStart string: \nsEnd string: ")
+  (cond 
+   (($is-selecting?)
+    (save-excursion
+      (let ((start-point ($selection-start))
+            (end-point   ($selection-end)))
+        ($goto-point start-point)
+        (insert begin-string)
+        ($goto-point end-point)
+        (forward-char (length begin-string))
+        (insert end-string))))
+
+   (t
+    (insert (concat begin-string end-string))
+    (backward-char (length end-string)))))
+
 ;;; Others
 
 (defun $symbol->string (symbol)

@@ -76,6 +76,16 @@
       (directory-files *elpa-package-dir* nil ".*"))
 
 ;;
+;; Highlight brackets
+;;
+;; http://yoo2080.wordpress.com/2013/09/08/living-with-rainbow-delimiters-mode/
+
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+;; ;; (setq show-paren-style 'expression)
+;; (setq show-paren-style 'parenthesis)
+
+;;
 ;; cmpitg's specific config
 ;;
 
@@ -184,21 +194,6 @@
 
 (eval-after-load 'smartscan
   '(global-smartscan-mode 1))
-
-
-;;
-;; Highlight brackets
-;;
-;; http://yoo2080.wordpress.com/2013/09/08/living-with-rainbow-delimiters-mode/
-
-;; Somehow show-paren-mode is slow, using rainbow-delimiters instead
-;; (show-paren-mode 1)
-;; (setq show-paren-delay 0)
-;; ;; (setq show-paren-style 'expression)
-;; (setq show-paren-style 'parenthesis)
-
-(eval-after-load 'rainbow-delimiters
-  '(global-rainbow-delimiters-mode))
 
 ;;
 ;; Sunrise commander

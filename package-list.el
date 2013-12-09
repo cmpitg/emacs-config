@@ -18,7 +18,6 @@
 (defvar *elpa-package-list* 
   '(jedi                                ; Autocomplete and cool stuff for
                                         ; Python development
-    rainbow-delimiters                  ; Highlight matching parentheses
     ruby-mode
     ruby-dev                            ; Ruby and Pry
     yaml-mode

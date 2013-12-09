@@ -73,6 +73,8 @@
 ;;; Functions
 ;;;
 
+;;; Package management
+
 (defun $package-installed? (package-symbol)
   "Determine if a package is installed."
   (or (package-installed-p package-symbol)
@@ -107,6 +109,8 @@ i.e. all packages in `*elpa-package-list*' and
 ;;                  ($string-start-with? filename "config-")))
 ;;       (-map (lambda (library-name)
 ;;               (intern (file-name-base library-name)))))))
+
+;;; Others
 
 (defun $symbol->string (symbol)
   "Convert a symbol to a string."

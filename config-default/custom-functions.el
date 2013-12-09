@@ -133,6 +133,21 @@ cursor in-between them."
     (insert (concat begin-string end-string))
     (backward-char (length end-string)))))
 
+(defun $markdown-italicize ()
+  "Italicize selection or adding italic format."
+  (interactive)
+  ($surround "*" "*"))
+
+(defun $markdown-embolden ()
+  "Embolden selection or adding bold format."
+  (interactive)
+  ($surround "**" "**"))
+
+(defun $markdown-rawify ()
+  "Rawify selection or adding raw format."
+  (interactive)
+  ($surround "`" "`"))
+
 ;;; Others
 
 (defun $symbol->string (symbol)

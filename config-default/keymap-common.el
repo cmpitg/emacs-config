@@ -207,3 +207,10 @@
             (define-key emacs-lisp-mode-map (kbd "<f1>") '(lambda ()
                                                             (interactive)
                                                             (apropos (current-word))))))
+;; Markdown
+
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (define-key markdown-mode-map (kbd "s-SPC i") '$markdown-italicize)
+            (define-key markdown-mode-map (kbd "s-SPC b") '$markdown-embolden)
+            (define-key markdown-mode-map (kbd "s-SPC r") '$markdown-rawify)))

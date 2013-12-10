@@ -45,12 +45,6 @@
     js2-mode                            ; JavaScript
     pabbrev                             ; Better abbrev
     dired-details+                      ; Better Dired information control
-    sunrise-commander                   ; File manager
-    sunrise-x-tabs
-    sunrise-x-loop                      ; Execute commands async in SR
-    sunrise-x-checkpoints
-    sunrise-x-tree                      ; Tree browsing feature for SR
-    sunrise-x-modeline                  ; Nicer modeline in SR
     magit                               ; Best Git interface for Emacs
     monky                               ; Magit-like mode for Mercurial
     zlc                                 ; Zsh completion

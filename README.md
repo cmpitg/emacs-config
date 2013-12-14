@@ -299,7 +299,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
   - Scroll other window up: `C-S-M-v`
 
 * Buffer management:
-  - Show current buffer list: `f8`
+  - Show current buffer list: `f8` (with helm) or `<C-f2>` (with `buffer-menu`)
   - Kill current buffer: `C-delete` or `C-f4`
 
 * Movement:

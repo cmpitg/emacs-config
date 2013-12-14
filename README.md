@@ -354,6 +354,13 @@ General keybindings:
 
 (TODO) Making screencast, solving a Project Euler problem
 
+#### `eshell` ####
+
+* Start/switch back and forth to eshell: `$switch-to-eshell-back-and-forth`
+
+* Display eshell history with `ido`, choosing history adds the command to
+  current eshell buffer: `$eshell-history`
+
 #### File Management with Sunrise Commander ####
 
 * Open Sunrise: `s-SPC SPC`

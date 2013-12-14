@@ -351,6 +351,19 @@ file as string."
   (comint-send-string (inferior-moz-process)
                       string))
 
+;;
+;; Eshell
+;;
+
+(defun $eshell-history ()
+  "Display eshell commands as with M-x.  The selected command is
+added to the current eshell buffer."
+  (interactive)
+  (insert
+   (ido-completing-read "Eshell history: "
+                        (delete-dups
+                         (ring-elements eshell-history-ring)))))
+
 (defun $switch-to-eshell-back-and-forth ()
   "Switch to eshell if current is not eshell, and switch to last
 active buffer if current buffer is eshell."

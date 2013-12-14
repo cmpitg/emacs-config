@@ -338,12 +338,6 @@
                  (add-to-list 'ac-sources 'ac-source-rsense-constant)))))
 
 ;;
-;; Scheme & Racket
-;;
-;; Quack doc: http://www.neilvandyke.org/quack/quack.el
-;; Geiser doc: http://www.nongnu.org/geiser
-
-;;
 ;; jedi for Python auto-completion
 ;;
 

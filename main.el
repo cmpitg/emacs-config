@@ -351,17 +351,24 @@
 ;; Auto pairing brackets
 ;;
 
-(eval-after-load 'autopair
-  '(autopair-global-mode))
+;; (eval-after-load 'autopair
+;;   '(autopair-global-mode))
+
+(eval-after-load 'smartparens
+  '(progn
+     (smartparens-global-mode)))
 
 (eval-after-load 'paredit
   '(progn
-     (defadvice paredit-mode (around disable-autopairs-around (arg))
+     (defadvice paredit-mode (around disable-otherparenslib-around (arg))
        "Disable autopairs mode if paredit-mode is turned on."
        ad-do-it
-       (if (null ad-return-value)
-         (autopair-mode 1)
-         (autopair-mode 0)))
+       (cond ((null ad-return-value)
+              (autopair-mode 0)
+              (smartparens-mode 1))
+             (t
+              (autopair-mode 0)
+              (smartparens-mode 0))))
 
      (ad-activate 'paredit-mode)
 
@@ -380,8 +387,7 @@
      (add-hook 'emacs-lisp-mode-hook       '$load-paredit-mode)
      (add-hook 'lisp-mode-hook             '$load-paredit-mode)
      (add-hook 'lisp-interaction-mode-hook '$load-paredit-mode)
-     (add-hook 'scheme-mode-hook           '$load-paredit-mode)
-     (add-hook 'geiser-repl-mode-hook      '$load-paredit-mode)))
+     (add-hook 'scheme-mode-hook           '$load-paredit-mode)))
 
 ;;
 ;; ElDoc for inline function signature in echo area

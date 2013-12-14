@@ -286,6 +286,8 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
     * `d` to delete bookmark
     * `x` to commit deletions
   - Add to bookmark: `C-x r m`
+  - Recent files: `<M-f4>` (thanks to
+    [`recentf`](http://www.emacswiki.org/emacs/RecentFiles))
 
 * Window management:
   - Delete all other windows: `C-%`

@@ -27,7 +27,7 @@
     sr-speedbar                         ; Speedbar in the same frame
     paredit                             ; Parentheses manipulation in Lisp
                                         ; modes
-    autopair                            ; Auto-pairing parentheses
+    smartparens                         ; Auto-pairing parentheses
     auto-complete
     slime                               ; Best Common Lisp development tool
     openwith                            ; Open file with external program, in

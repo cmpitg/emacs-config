@@ -40,8 +40,6 @@
     yasnippet                           ; Textmate-like snippet and better
     gist                                ; Interface to Github's gist
     json                                ; JSON lib for Emacs
-    quack                               ; Another mode for Scheme development
-    geiser                              ; Scheme development
     js2-mode                            ; JavaScript
     pabbrev                             ; Better abbrev
     dired-details+                      ; Better Dired information control

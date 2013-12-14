@@ -1,6 +1,6 @@
-# cmpitg's Emacs config
+# cmpitg's Emacs config #
 
-## Introduction
+## Introduction ##
 
 This is my (cmpitg's) personal Emacs 24 configuration.  This configuration is
 packaged so it could be automagically installed in any new system which runs
@@ -10,11 +10,11 @@ Emacs configuration (such as
 [Emacs Prelude](https://github.com/bbatsov/prelude)) as long as other
 configurations don't mess up with the `~/emacs-config` directory.
 
-## Screenshot
+## Screenshot ##
 
 ![My Emacs screenshot](http://i.imgur.com/FNnCESN.png "My Emacs setup")
 
-## Requirements
+## Requirements ##
 
 * A \*nix system, I *don't and probably never will* support
   [Window$](https://en.wikipedia.org/wiki/Microsoft_Windows)
@@ -43,20 +43,20 @@ configurations don't mess up with the `~/emacs-config` directory.
   - Gems: `pry pry-doc yard` for Ruby-dev and [Pry](http://pryrepl.org/)
     integration.
 
-### Installing Requirements in Debian
+### Installing Requirements in Debian ###
 
 Im my system, I install Ruby using [RVM](https://rvm.io/), use Python 3.2, and
 switch from `su` to `sudo`.  So the installation process is roughly:
 
 ```sh
-# Install Emacs 24+, I built it manually
+# Install Emacs 24+, I built it manually #
 sudo aptitude install python3-pyside python-xlib zenity
 sudo pip-3.2 install python-xlib jedi epc
 gem install -V pry pry-doc yard
-# Install Xiki, refer to https://github.com/trogdoro/xiki
+# Install Xiki, refer to https://github.com/trogdoro/xiki #
 ```
 
-## Installation
+## Installation ##
 
 * First, clone the repository to your `$HOME`:
 
@@ -110,7 +110,7 @@ gem install -V pry pry-doc yard
   touch ~/emacs-custom-foremost.el
   ```
 
-## Update
+## Update ##
 
 ```sh
 cd ~/emacs-config/
@@ -122,7 +122,7 @@ than `emacs-custom.el`, `git rebase` is better than `git pull`.  Consult Stack
 Overflow for
 [the reason why](http://stackoverflow.com/questions/3357122/git-pull-vs-git-fetch-git-rebase).
 
-## Uninstallation
+## Uninstallation ##
 
 Just remove the `~/emacs-config` directory, your `~/emacs-custom.el` and
 `~/emacs-custom-foremost.el` if necessary:
@@ -140,7 +140,7 @@ And the executable files:
 rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
 ```
 
-## Running
+## Running ##
 
 * Run the `emacs-cmpitg` (or `~/bin/emacs-cmpitg`) command or run `GNU Emacs
   (cmpitg)` from your menu.
@@ -166,7 +166,7 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
   `($start-server)` to restart the Emacs server.  You might shut down the
   Emacs server, but the file browser (see below) would fail to work though.
 
-### Customization
+### Customization ###
 
 * `~/emacs-custom.el` is your main customization file.  This file will be
   loaded after cmpitg configuration has been loaded.
@@ -187,7 +187,7 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
 **Notes**: If you would like to know how it works, `init.el` (or
 `init-xiki.el` for Xiki version) is/are first place(s) to get started.
 
-## Detailed Description
+## Detailed Description ##
 
 * All `config-` files in your `$HOME/emacs-config/config-default` is
   automatically `require`d, unless the package name appears in the list
@@ -214,7 +214,7 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
   `*Completions*`, `*Messages*`, ...) are treated as popup buffer using
   [popwin](https://github.com/m2ym/popwin-el) extension.
 
-### The GUI File Browser
+### The GUI File Browser ###
 
 The file browser is written in `PySide` (Python wrapper for Qt framework).
 Source code of the file browser is distributed under the terms of the GNU
@@ -242,7 +242,7 @@ Features:
   expression in the second text box (called *filterbar*).  Shortcut to go
   directly to the *filterbar*: `Ctrl-F`.
 
-## Use Cases with Keybindings
+## Use Cases with Keybindings ##
 
 TODO: Making nice table with: Keybinding - Description - Function - Provided by
 
@@ -322,7 +322,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
   - Using `autocomplete` or `pabbrev`: `<tab>`
   - Using `hippie-expand` (fuzzy completion with guessing): `M-/`
 
-### With Any Interactive mode
+### With Any Interactive mode ###
 
 The following keybindings are applied to when you want to interative with a
 REPL.
@@ -344,15 +344,15 @@ General keybindings:
 * Eval function: `C-M-x` or `C-c C-c` (in some modes)
 * Show documentation of current word/symbol/identifier: `f1`
 
-#### With Python Development
+#### With Python Development ####
 
 (TODO) Making screencast, solving a Project Euler problem
 
-#### With Racket Development
+#### With Racket Development ####
 
 (TODO) Making screencast, solving a Project Euler problem
 
-#### File Management with Sunrise Commander
+#### File Management with Sunrise Commander ####
 
 * Open Sunrise: `s-SPC SPC`
 * Sunrise change dir: `s-SPC c`
@@ -374,7 +374,7 @@ In Sunrise mode:
 * Open file with external program
 * Tree browsing
 
-#### Working with Git
+#### Working with Git ####
 
 Cheatsheet: http://daemianmack.com/magit-cheatsheet.html
 
@@ -420,7 +420,7 @@ Git status: `s-SPC g`
   * Switch branch: `b`
   * Create and switch branch: `B`
 
-#### Github
+#### Github ####
 
 It's best to config your
 [Git environment for Github](https://github.com/blog/180-local-github-config)
@@ -430,14 +430,14 @@ first.  Current my Emacs uses [@defunkt](https://github.com/defunkt)'s
 * `gist-region-or-buffer`
 * `gist-region-or-buffer-private`
 
-## License
+## License ##
 
 Except for packages which don't belong to this configuration in the first
 place, and unless clearly stated, all the code in this configuration is
 distributed in terms of the GNU General Public License version 3 (GPL v3).
 See `COPYING` for further information.
 
-## TODOs
+## TODOs ##
 
 Refactor this document into simple use cases/tasks.
 

@@ -435,6 +435,13 @@
 ;; Using local-set-key in a mode-hook is a better idea.
 (global-set-key (kbd "RET") 'electrify-return-if-match)
 
+;;
+;; Recent files
+;;
+
+(require 'recentf)
+(setq recentf-max-menu-items 50)
+
 ;; 
 ;; ibus-mode
 ;; 

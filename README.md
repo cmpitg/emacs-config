@@ -301,6 +301,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
 * Buffer management:
   - Show current buffer list: `f8` (with helm) or `<C-f2>` (with `buffer-menu`)
   - Kill current buffer: `C-delete` or `C-f4`
+  - Switch back and forth between 2 most recent buffers: `s-B`
 
 * Movement:
   - Set a mark (to jump): `C-SPC C-SPC`

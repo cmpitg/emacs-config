@@ -758,7 +758,7 @@ This command works on `sudo` *nixes only."
 (defun $unicode-symbol (name)
   "Translate a symbolic name for a Unicode character -- e.g.,
  LEFT-ARROW or GREATER-THAN into an actual Unicode character
- code. "
+ code."
   (decode-char 'ucs (case name
                       (left-arrow 8592)
                       (up-arrow 8593)

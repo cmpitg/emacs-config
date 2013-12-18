@@ -351,6 +351,15 @@ General keybindings:
 
 (TODO) Making screencast, solving a Project Euler problem
 
+#### With Lisp Development ####
+
+* Transpose 2 s-expression with `C-M-t`.  E.g.
+
+  ```scheme
+  '(1 |2)         ;; => '(2 1|)
+  '((1 2 3) |4)   ;; => '(4 (1 2 3)|)
+  ```
+
 #### With Racket Development ####
 
 (TODO) Making screencast, solving a Project Euler problem

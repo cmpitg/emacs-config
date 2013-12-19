@@ -25,6 +25,7 @@
   '(dash                                ; "Modern" list processing
     ht                                  ; The missing hashtable library
     s                                   ; "Modern" string processing
+    f                                   ; "Modern" file APIs
     cl                                  ; Common Lisp subset in Emacs Lisp
     cl-lib                              ; Common Lisp library
     helm                                ; Smart completion framework

@@ -281,7 +281,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
 
 * Open file:
   - Recent file: `<M-f4>`
-  - Open file with Zenity: `f3`
+  - Open file using fuzzy matching: `f3`
   - Open file with Helm: `<M-f3>`:
     * `C-l` to go up one level
     * `C-z` to go down one level

@@ -58,7 +58,18 @@
 (require 'cl-lib)
 (require 'dash)
 
-(load "./functions-eshell.el")
+;; Current directory
+(setq _custom-function-dir_
+      (file-name-directory (or load-file-name buffer-file-name "")))
+
+(setq module-path-list
+      '("functions-eshell.el"))
+
+(-map (lambda (module-path)
+        (load (format "%s%s"
+                      _custom-function-dir_
+                      module-path)))
+      module-path-list)
 
 ;;;
 ;;; Functions

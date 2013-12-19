@@ -75,7 +75,9 @@
 
 (setq _convenient-functions-path-list_
       '("functions-eshell.el"
-        "functions-package-manager.el"))
+        "functions-package-manager.el"
+        "functions-text.el"
+        ))
 
 (-map (lambda (path)
         (load (format "%s%s"
@@ -98,44 +100,6 @@
 ;;                  ($string-start-with? filename "config-")))
 ;;       (-map (lambda (library-name)
 ;;               (intern (file-name-base library-name)))))))
-
-;;; Interactive text manipulation
-
-(defun $surround (begin-string end-string)
-  "Surround current selection with `begin-string` at the
-beginning and `end-string` at the end.  If selection is not
-active, insert `begin-string` and `end-string` and place the
-cursor in-between them."
-  (interactive "sStart string: \nsEnd string: ")
-  (cond 
-   (($is-selecting?)
-    (save-excursion
-      (let ((start-point ($selection-start))
-            (end-point   ($selection-end)))
-        ($goto-point start-point)
-        (insert begin-string)
-        ($goto-point end-point)
-        (forward-char (length begin-string))
-        (insert end-string))))
-
-   (t
-    (insert (concat begin-string end-string))
-    (backward-char (length end-string)))))
-
-(defun $markdown-italicize ()
-  "Italicize selection or adding italic format."
-  (interactive)
-  ($surround "*" "*"))
-
-(defun $markdown-embolden ()
-  "Embolden selection or adding bold format."
-  (interactive)
-  ($surround "**" "**"))
-
-(defun $markdown-rawify ()
-  "Rawify selection or adding raw format."
-  (interactive)
-  ($surround "`" "`"))
 
 ;;; Others
 
@@ -187,20 +151,6 @@ E.g.
   (-reduce (lambda (result element)
              (format "%s%s%s" result separator element))
            (-map (lambda (x) x) a-seq)))
-
-(defun $install-or-update-el-get ()
-  "Install/update el-get."
-  (interactive)
-  (cond
-   (($is-function-defined? 'el-get-self-update)
-    (el-get-self-update))
-
-   (t
-    (url-retrieve
-     "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-     (lambda (s)
-       (goto-char (point-max))
-       (eval-print-last-sexp))))))
 
 (defun* $popup-message (content &key (buffer-name "*Temporary*"))
   "Display a popup window with CONTENT as its content and an
@@ -351,18 +301,6 @@ buffer."
   "Retrieve the name of the current buffer."
   (buffer-name (current-buffer)))
 
-(defun $move-to-beginning-of-line ()
-  "Move point back to indentation of beginning of line.
-
-Move point to the first non-whitespace character on this line.
-If point is already there, move to the beginning of the line."
-  (interactive)
-
-  (let ((orig-point (point)))
-    (back-to-indentation)
-    (when (= orig-point (point))
-      (move-beginning-of-line nil))))
-
 (defun $custom-els-path (suffix)
   "Return the path of the custom Emacs Lisp configuration.
 Default: `~/emacs-config/config-default/`."
@@ -392,17 +330,6 @@ Default: `~/emacs-config/config-default/`."
   "Switch to last buffer."
   (interactive)
   (switch-to-buffer (other-buffer)))
-
-(defun $duplicate-line ()
-  "Duplicate current line."
-  (interactive)
-  (beginning-of-line)
-  (kill-line)
-  (yank)
-  (newline)
-  (yank)
-  (beginning-of-line)
-  (previous-line))
 
 (defun $eval-then-replace-last-exp ()
   "Eval region then replace last expression with result."
@@ -537,62 +464,6 @@ increase the opacity."
 (defun $put-mode-line-to-top ()
   "Put the mode-line to the top of the window."
   (setq header-line-format mode-line-format mode-line-format nil))
-
-(defun $open-line (arg)
-  "Open line and move to the next line."
-  (interactive "p")
-  (end-of-line)
-  (delete-horizontal-space)
-  (open-line arg)
-  (next-line 1)
-  (indent-according-to-mode))
-
-(defun $open-line-before (arg)
-  "Open line and move to the previous line."
-  (interactive "p")
-  (beginning-of-line)
-  (open-line arg)
-  (indent-according-to-mode))
-
-(defun $toggle-letter-case ()
-  "Toggle the letter case of current word or text selection.
-Toggles from 3 cases: UPPER CASE, lower case, Title Case, in that
-cyclic order."
-  (interactive)
-  (let (pos1 pos2 (deactivate-mark nil) (case-fold-search nil))
-    (if (and transient-mark-mode mark-active)
-      (setq pos1 (region-beginning)
-            pos2 (region-end))
-      (setq pos1 (car (bounds-of-thing-at-point 'word))
-            pos2 (cdr (bounds-of-thing-at-point 'word))))
-
-    (unless (eq last-command this-command)
-      (save-excursion
-        (goto-char pos1)
-        (cond
-         ((looking-at "[[:lower:]][[:lower:]]")
-          (put this-command 'state "all lower"))
-         ((looking-at "[[:upper:]][[:upper:]]")
-          (put this-command 'state "all caps"))
-         ((looking-at "[[:upper:]][[:lower:]]")
-          (put this-command 'state "init caps"))
-         (t (put this-command 'state "all lower"))
-         )))
-    (cond
-     ((string= "all lower" (get this-command 'state))
-      (upcase-initials-region pos1 pos2)
-      (put this-command 'state "init caps"))
-     ((string= "init caps" (get this-command 'state))
-      (upcase-region pos1 pos2)
-      (put this-command 'state "all caps"))
-     ((string= "all caps" (get this-command 'state))
-      (downcase-region pos1 pos2)
-      (put this-command 'state "all lower")))))
-
-(defun $fix-hard-wrapped-region (begin end)
-  "Fix hard-wrapped paragraphs."
-  (interactive "r")
-  (shell-command-on-region begin end "fmt -w 2500" nil t))
 
 (defun $is-var-defined? (symbol)
   "Check if the variable corresponding to the symbol is defined.
@@ -783,46 +654,10 @@ with the Unicode symbol SYMBOL looked up with UNICODE-SYMBOL."
   (interactive "MMode name (without `-mode`): ")
   (insert (concat "-*- mode: " mode-name " -*-")))
 
-(defun $mark-word ()
-  "Put point at beginning of current word, set mark at end."
-  (interactive)
-  (let* ((opoint (point))
-         (word (current-word))
-         (word-length (length word)))
-    (if (save-excursion
-          ;; Avoid signaling error when moving beyond buffer.
-          (if (> (point-min)  (- (point) word-length))
-            (beginning-of-buffer)
-            (forward-char (- (length word))))
-          (search-forward word (+ opoint (length word))
-                          'noerror))
-      (progn (push-mark (match-end 0) nil t)
-             (goto-char (match-beginning 0)))
-      (error "No word at point" word))))
-
-(defun $mark-line ()
-  "Mark current line."
-  (interactive)
-  (beginning-of-line)
-  (push-mark (point) t t)
-  (end-of-line))
-
-(defun $insert-me ()
-  "Insert my information."
-  (interactive)
-  (insert *me*))
-
 (defun $autoload-mode (file-regex mode-symbol)
   "Add autoload mode when opening file.
 Example: ($autoload-mode \"Rakefile\" . 'ruby-mode)"
   (add-to-list 'auto-mode-alist (cons file-regex mode-symbol)))
-
-(defun $delete-line ()
-  "Delete current line."
-  (interactive)
-  (beginning-of-line)
-  (kill-line)
-  (kill-line))
 
 (defun $exec (command)
   "Execute a shell command then return its value as string."
@@ -886,22 +721,6 @@ Example:
     (add-to-list 'auto-mode-alist (cons filetypes mode))
     (dolist (filetype filetypes)
       (add-to-list 'auto-mode-alist (cons filetype mode)))))
-
-(defun $get-text (start end)
-  "Return text from current buffer between start and end point."
-  (if (or (< start (point-min))
-          (< (point-max) end))
-    ""
-    (buffer-substring start end)))
-
-(defun $current-char ()
-  "Return the string representing the character at the current
-cursor position."
-  ($get-text (point) (+ 1 (point))))
-
-(defun $peek-char ()
-  "Peek next character, return the string representing it.."
-  ($get-text (+ 1 (point)) (+ 2 (point))))
 
 (defun $goto-str (str)
   "Go to the next appearance of a string."

@@ -27,7 +27,7 @@
 (-load-files-if-exists- "~/emacs-config/package-list.el"
                         "~/emacs-custom-foremost.el" ; User-defined
                         "~/emacs-config/global-vars.el"
-                        "~/emacs-config/init-package-managers.el"
+                        "~/emacs-config/init-package-manager.el"
                         "~/emacs-config/main.el"
                         "~/emacs-config/config-default/environment.el"
                         "~/emacs-custom.el"          ; User-defined

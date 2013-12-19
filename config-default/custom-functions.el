@@ -41,6 +41,8 @@
 ;;   - Refresh the browser with $refresh-firefox
 ;;   - Send command to MozRepl with $send-to-mozrepl
 ;;   - Open a URL on Firefox with $open-url-in-firefox
+;; * Better helm-grep: remember last search
+;;
 
 ;;;
 ;;; Customization

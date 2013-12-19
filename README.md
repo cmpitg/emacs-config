@@ -198,7 +198,7 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
   - [Modern functional APIs for Emacs](https://github.com/magnars/dash.el) `dash`
   - [Multiple cursors](https://github.com/magnars/multiple-cursors.el)
 
-  See `$HOME/emacs-config/init-package-managers.el` for the full list of
+  See `$HOME/emacs-config/init-package-manager.el` for the full list of
   pre-installed packages.
 
 * All `config-` files in your `$HOME/emacs-config/config-default` is

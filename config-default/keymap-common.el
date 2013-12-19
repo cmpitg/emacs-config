@@ -23,8 +23,8 @@
 
 (global-set-key (kbd "<f2>") 'save-buffer)
 (global-set-key (kbd "C-<f2>") 'buffer-menu)
-(global-set-key (kbd "<f3>") '$open-file-gui)
-(global-set-key (kbd "<S-f3>") '$open-file-gui-other-window)
+(global-set-key (kbd "<f3>") 'fiplr-find-file)
+(global-set-key (kbd "<S-f3>") '$fiplr-find-file-other-window)
 (global-set-key (kbd "C-<f9>") '$move-to-compilation-buffer)
 (global-set-key (kbd "C-<f4>") '$kill-current-buffer)
 (global-set-key (kbd "M-<f4>") 'recentf-open-files)

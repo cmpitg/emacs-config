@@ -62,43 +62,28 @@
 (setq _custom-function-dir_
       (file-name-directory (or load-file-name buffer-file-name "")))
 
-(setq module-path-list
-      '("functions-eshell.el"))
+;;
+;; List of convenient functions to be loaded.
+;;
+;; IMPORTANT NOTE: these files are not modules in a sense that they are not
+;; separatedly functional without being loaded with each other.  If you intend
+;; to load just one or a few but not all, read the source code carefully.
+;; Order of loading matters.
+;;
 
-(-map (lambda (module-path)
+(setq _convenient-functions-path-list_
+      '("functions-eshell.el"
+        "functions-package-manager.el"))
+
+(-map (lambda (path)
         (load (format "%s%s"
                       _custom-function-dir_
-                      module-path)))
-      module-path-list)
+                      path)))
+      _convenient-functions-path-list_)
 
 ;;;
 ;;; Functions
 ;;;
-
-;;; Package management
-
-(defun $package-installed? (package-symbol)
-  "Determine if a package is installed."
-  (or (package-installed-p package-symbol)
-      (el-get-package-is-installed package-symbol)
-      ($local-package-is-installed? package-symbol)))
-
-(defun $local-package-is-installed? (package-symbol)
-  "Determine if a package is installed at
-`$HOME/emacs-config/emacs-local-packages`."
-  ;; TODO to be implemented
-  nil)
-
-(defun $list-packages-to-be-loaded ()
-  "List all packages to be loaded when Emacs is initialized,
-i.e. all packages in `*elpa-package-list*' and
-`*user-package-list*' but NOT in `*user-disable-package-list*'."
-  (-filter (lambda (package)
-             (not (member package *user-disable-package-list*)))
-           (-concat *user-package-list*
-                    *local-package-list*
-                    *elpa-package-list*
-                    *el-get-package-list*)))
 
 ;; (defun $list-default-configs ()
 ;;   "Return a list of symbols as features, defined by filenames of
@@ -248,49 +233,6 @@ c
   (interactive "MURL: \nFSave to: ")
   (url-copy-file url filepath overwrite))
 
-(defun $el-get-package-list ()
-  "Get the list of packages cached in el-get repositories.  This
-function doesn't update el-get database.  Returns a plist of format
-
-\(:name package-name :description package-description\)"
-  (el-get-read-all-recipes))
-
-(defun $el-get-package-exists? (package-symbol)
-  "Determine if a package exists in el-get repositories.  This
-function doesn't update local el-get database."
-  (not (null
-        (memq package-symbol (-map (lambda (package)
-                                     (plist-get package :name))
-                                   ($el-get-package-list))))))
-
-(defun $elpa-package-exists? (package-symbol)
-  "Determine if a package exists in ELPA.  This function doesn't
-update local ELPA database."
-  (not (null (memq package-symbol (-map (lambda (element)
-                                          (car element))
-                                        ($elpa-get-package-list))))))
-
-(defun $elpa-get-package-list ()
-  "Get the list of packages information cached in your ELPA repositories."
-  package-archive-contents)
-
-(defun $elpa-get-installed-package-list ()
-  "Get the list of packages information installed in your ELPA repositories.
-
-This function return the value of `package-alist` variable. Which
-returns an alist of all packages available for activation.
-
-Each element has the form (PKG . DESC), where PKG is a package
-name (a symbol) and DESC is a vector that describes the package.
-
-The vector DESC has the form [VERSION-LIST REQS DOCSTRING].
-  VERSION-LIST is a version list.
-  REQS is a list of packages required by the package, each
-   requirement having the form (NAME VL) where NAME is a string
-   and VL is a version list.
-  DOCSTRING is a brief description of the package."
-  package-alist)
-
 (defun $scm-status ()
   "Call for the corresponding SCM `status` command."
   (interactive)
@@ -431,17 +373,6 @@ Default: `~/emacs-config/config-default/`."
   (dolist (file filenames)
     (let ((file-path ($custom-els-path file)))
       (when ($file-exists? file-path) (load-file file-path)))))
-
-(defun $install-packages (&rest packages)
-  "Install a list of package if not installed."
-  (dolist (package-name packages)
-    (unless (or ($package-installed? package-name)
-                (memq package-name *local-package-list*))
-      (cond
-       (($el-get-package-exists? package-name)
-        (el-get-install package-name))
-       (($elpa-package-exists? package-name)
-        (package-install package-name))))))
 
 (defun $current-path ()
   "Get full path of the current file."

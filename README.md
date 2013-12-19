@@ -189,6 +189,17 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
 
 ## Detailed Description ##
 
+* Some selective libraries are *always loaded* by default, including but not
+  limited to:
+
+  - [The missing hashtable library for Emacs](https://github.com/Wilfred/ht.el) `ht.el`
+  - [Better APIs for string processing](https://github.com/magnars/s.el) `s.el`
+  - [Better APIs for file and directory processing](https://github.com/rejeep/f.el) `f.el`
+  - [Modern functional APIs for Emacs](https://github.com/magnars/dash.el) `dash`
+
+  See `$HOME/emacs-config/init-package-managers.el` for the full list of
+  pre-installed packages.
+
 * All `config-` files in your `$HOME/emacs-config/config-default` is
   automatically `require`d, unless the package name appears in the list
   `*disabled-package-list*`.

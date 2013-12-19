@@ -15,9 +15,6 @@
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
 
-;; Dependencies:
-;;   dash
-
 ;; TODO
 ;;
 ;; * Document
@@ -49,13 +46,17 @@
 ;;; Customization
 ;;;
 
-;; Exuberant ctags tags generating
-(setq *ctags-path* "/usr/bin/ctags"
-      *snippet-dir* "~/emacs-config/snippets"
-      *license-dir* "~/emacs-config/license-list"
-      *me* "Duong H. Nguyen <cmpitg AT gmailDOTcom>"
+(defvar *ctags-path* "/usr/bin/ctags"
+  "Path to your exuberant ctags.")
 
-      )
+(defvar *snippet-dir* "~/emacs-config/snippets"
+  "Path to your yasnippet's custom snippet directory.")
+
+(defvar *license-dir* "~/emacs-config/license-list"
+  "Path to your software license directory.")
+
+(defvar *me* "John Doe <john@example.com>"
+  "Yourself.")
 
 (defvar *$emacs-lisp-keywords*
   '("$defalias")

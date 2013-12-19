@@ -40,6 +40,7 @@
     smooth-scrolling
     smartscan                           ; Jump between occurrences of a symbol
     smex                                ; Better M-x
+    fiplr                               ; Find file with fuzzy matching
     )
   "List of packages that are vital to this config and must be
 installed and loaded.")

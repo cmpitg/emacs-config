@@ -306,7 +306,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
 * Movement:
   - Set a mark (to jump): `C-SPC C-SPC`
   - Come back to the last mark or point where you just editted: `C-u C-SPC`
-  - List all occurrences of an expression in current buffer: `s-s`
+  - List all occurrences of an expression in current buffer: `s-s` (`helm-occur`)
 
 * Basic text processing:
   - Upcase word, lowcase word, and capitalize word: `M-u`, `M-l`, and `M-c`

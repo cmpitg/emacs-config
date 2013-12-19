@@ -52,6 +52,18 @@
 ;;; * Sublime-like preview buffer
 ;;;
 
+(defvar *ctags-path* "/usr/bin/ctags"
+  "Path to your exuberant ctags.")
+
+(defvar *snippet-dir* "~/emacs-config/snippets"
+  "Path to your yasnippet's custom snippet directory.")
+
+(defvar *license-dir* "~/emacs-config/license-list"
+  "Path to your software license directory.")
+
+(defvar *me* "John Doe <john@example.com>"
+  "Yourself.")
+
 ;;
 ;; Load all the convenient functions
 ;;

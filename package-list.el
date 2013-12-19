@@ -47,6 +47,7 @@
     monky                               ; Magit-like mode for Mercurial
     zlc                                 ; Zsh completion
     hexrgb                              ; Color manipulation
+    fiplr                               ; Find file with fuzzy matching
     )
   "List of packages using in this Emacs configuration.")
 

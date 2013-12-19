@@ -196,6 +196,7 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
   - [Better APIs for string processing](https://github.com/magnars/s.el) `s.el`
   - [Better APIs for file and directory processing](https://github.com/rejeep/f.el) `f.el`
   - [Modern functional APIs for Emacs](https://github.com/magnars/dash.el) `dash`
+  - [Multiple cursors](https://github.com/magnars/multiple-cursors.el)
 
   See `$HOME/emacs-config/init-package-managers.el` for the full list of
   pre-installed packages.

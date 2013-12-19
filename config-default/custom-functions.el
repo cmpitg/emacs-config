@@ -1100,6 +1100,11 @@ cursor position."
           ($current-dir)
           " 2>/dev/null"))
 
+(defun $fiplr-find-file-other-window ()
+  "Open file with fuzzy matching (using fiplr) in other window.
+A new window is created if there's current only one window."
+  (message-box "To be implemented!"))
+
 (defun $open-file-gui ()
   "Open a file using Zenity."
   (interactive)

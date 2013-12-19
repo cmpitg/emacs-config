@@ -446,9 +446,9 @@ increase the opacity."
 (defun $load-paredit-mode ()
   "Load paredit mode and disable autopair."
   (paredit-mode t)
-  (when ($is-function-defined?)
+  (when ($is-function-defined? 'autopair-mode)
     (autopair-mode 0))
-  (when ($is-function-defined?)
+  (when ($is-function-defined? 'smartparens-mode)
     (smartparens-mode 0)))
 
 (defun $auto-reload-firefox-after-save-hook ()

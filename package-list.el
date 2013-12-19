@@ -47,6 +47,7 @@
     monky                               ; Magit-like mode for Mercurial
     zlc                                 ; Zsh completion
     hexrgb                              ; Color manipulation
+    flx-ido                             ; Better ido
     )
   "List of packages using in this Emacs configuration.")
 

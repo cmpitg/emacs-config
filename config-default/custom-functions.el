@@ -77,6 +77,7 @@
       '("functions-eshell.el"
         "functions-package-manager.el"
         "functions-text.el"
+        "functions-hashtable.el"
         ))
 
 (-map (lambda (path)

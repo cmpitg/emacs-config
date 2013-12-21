@@ -78,6 +78,7 @@
         "functions-package-manager.el"
         "functions-text.el"
         "functions-hashtable.el"
+        "functions-emacs-lisp-utils.el"
         ))
 
 (-map (lambda (path)

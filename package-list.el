@@ -48,6 +48,9 @@
     zlc                                 ; Zsh completion
     hexrgb                              ; Color manipulation
     flx-ido                             ; Better ido
+    projectile                          ; Better project management
+    helm-projectile                     ; Projectile-Helm integration
+    grizzl                              ; Grizzl fuzzy matching method
     )
   "List of packages using in this Emacs configuration.")
 

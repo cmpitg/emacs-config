@@ -59,6 +59,9 @@
 (require 'cl)
 (require 'cl-lib)
 (require 'dash)
+(require 's)
+(require 'f)
+(require 'ht)
 
 ;; Current directory
 (setq _custom-function-dir_
@@ -79,6 +82,7 @@
         "functions-text.el"
         "functions-hashtable.el"
         "functions-emacs-lisp-utils.el"
+        "functions-string.el"
         ))
 
 (-map (lambda (path)
@@ -112,26 +116,6 @@
 (defun $string->symbol (string)
   "Convert a string into an uninterned symbol."
   (make-symbol string))
-
-(defun $string-start-with? (string substring)
-  "Determine if a string starts with a substring.
-
-E.g.
-
-\($string-start-with? \"config-default\" \"config-\"\)  ;; => t
-\($string-start-with? \"config-default\" \"Config-\"\)  ;; => nil"
-  (let ((case-fold-search nil))
-    (not (null (string-match-p (concat "^" substring) string)))))
-
-(defun $string-end-with? (string substring)
-  "Determine if a string ends with a substring.
-
-E.g.
-
-\($string-end-with? \"config-default\" \"default\"\)  ;; => t
-\($string-end-with? \"config-default\" \"Default\"\)  ;; => nil"
-  (let ((case-fold-search nil))
-    (not (null (string-match-p (concat substring "$") string)))))
 
 (defun $list-dir (path)
   "List a directory content."

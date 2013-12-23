@@ -85,11 +85,10 @@
         "functions-string.el"
         ))
 
-(-map (lambda (path)
-        (load (format "%s%s"
-                      _custom-function-dir_
-                      path)))
-      _convenient-functions-path-list_)
+(dolist (path _convenient-functions-path-list_)
+  (load (format "%s%s"
+                _custom-function-dir_
+                path)))
 
 ;;;
 ;;; Functions

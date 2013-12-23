@@ -14,10 +14,6 @@
 ;; You should have received a copy of the GNU General Public License along
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
-;;
-;; TODO
-;; Note: This file shouldn't be loaded separatedly
-;;
 
 (defun $eshell-history ()
   "Display eshell commands as with M-x.  The selected command is

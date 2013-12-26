@@ -43,3 +43,17 @@
       (if (string= "*scratch*" name) (setf stop t))
       (if (or (null pos)
               (> pos 0)) (setf stop t)))))
+
+(defun $current-buffer-name ()
+  "Retrieve the name of the current buffer."
+  (buffer-name (current-buffer)))
+
+(defun $kill-current-buffer ()
+  "Kill the current buffer."
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+(defun $switch-to-last-buffer ()
+  "Switch to last buffer."
+  (interactive)
+  (switch-to-buffer (other-buffer)))

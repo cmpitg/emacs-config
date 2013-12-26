@@ -242,10 +242,6 @@ buffer."
                                    :initial-input "~/bin/")))
   ($open-file file-name))
 
-(defun $current-buffer-name ()
-  "Retrieve the name of the current buffer."
-  (buffer-name (current-buffer)))
-
 (defun $custom-els-path (suffix)
   "Return the path of the custom Emacs Lisp configuration.
 Default: `~/emacs-config/config-default/`."
@@ -265,16 +261,6 @@ Default: `~/emacs-config/config-default/`."
   (if buffer-file-name
     buffer-file-name
     ""))
-
-(defun $kill-current-buffer ()
-  "Kill the current buffer."
-  (interactive)
-  (kill-buffer (current-buffer)))
-
-(defun $switch-to-last-buffer ()
-  "Switch to last buffer."
-  (interactive)
-  (switch-to-buffer (other-buffer)))
 
 (defun $eval-then-replace-last-exp ()
   "Eval region then replace last expression with result."

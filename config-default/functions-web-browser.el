@@ -55,3 +55,14 @@
   ($start-mozrepl)                      ; Make sure MozRepl is up and running
   (comint-send-string (inferior-moz-process)
                       string))
+
+
+(defun $auto-reload-firefox-after-save-hook ()
+  "Auto reload Firefox when saving."
+  (add-hook 'after-save-hook
+            '(lambda ()
+               (interactive)
+               (comint-send-string (inferior-moz-process)
+                                   "setTimout(BrowserReload(), '1000');"))
+            ;; buffer-local
+            'append 'local))

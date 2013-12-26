@@ -367,16 +367,6 @@ increase the opacity."
   (when ($is-function-defined? 'smartparens-mode)
     (smartparens-mode 0)))
 
-(defun $auto-reload-firefox-after-save-hook ()
-  "Auto reload Firefox when saving."
-  (add-hook 'after-save-hook
-            '(lambda ()
-               (interactive)
-               (comint-send-string (inferior-moz-process)
-                                   "setTimout(BrowserReload(), '1000');"))
-            ;; buffer-local
-            'append 'local))
-
 (defun $put-mode-line-to-top ()
   "Put the mode-line to the top of the window."
   (setq header-line-format mode-line-format mode-line-format nil))

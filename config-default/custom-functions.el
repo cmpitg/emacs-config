@@ -300,35 +300,6 @@ directory is specified, the default dir /tmp/emacs1000/ is used."
   "Add path to load-path."
   (add-to-list 'load-path path))
 
-(defun $next-buffer ()
-  "Move to the next non-special buffer, unless it's *scratch*."
-  (interactive)
-  (let* ((name "") (pos nil) (stop nil))
-    (while (null stop)
-      (setf name (buffer-name (next-buffer)))
-      (setf pos (string-match "*" name))
-      (if (string= "*scratch*" name) (setf stop t))
-      (if (or (null pos)
-              (> pos 0)) (setf stop t)))))
-
-(defun $move-to-compilation-buffer ()
-  "Move to *compilation* buffer if it exists."
-  (interactive)
-  (if (find "*compilation*" (mapcar #'buffer-name (buffer-list))
-            :test #'equal)
-    (switch-to-buffer "*compilation*")))
-
-(defun $previous-buffer ()
-  "Move to the previous non-special buffer, unless it's *scratch*."
-  (interactive)
-  (let* ((name "") (pos nil) (stop nil))
-    (while (null stop)
-      (setf name (buffer-name (previous-buffer)))
-      (setf pos (string-match "*" name))
-      (if (string= "*scratch*" name) (setf stop t))
-      (if (or (null pos)
-              (> pos 0)) (setf stop t)))))
-
 (defun $set-frame-size-according-to-resolution ()
   "Set frame size based on current resolution"
   (interactive)

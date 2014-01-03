@@ -21,6 +21,7 @@
     ruby-mode
     ruby-dev                            ; Ruby and Pry
     yaml-mode
+    go-mode
     haskell-mode
     markdown-mode
     markdown-mode+

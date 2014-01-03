@@ -83,6 +83,7 @@
         "functions-hashtable.el"
         "functions-emacs-lisp-utils.el"
         "functions-string.el"
+        "functions-buffer.el"
         ))
 
 (dolist (path _convenient-functions-path-list_)

@@ -57,3 +57,10 @@
   "Switch to last buffer."
   (interactive)
   (switch-to-buffer (other-buffer)))
+
+(defun $insert-text-at-the-end ()
+  "Insert current selected text at the end of current buffer."
+  (interactive)
+  (call-interactively 'kill-ring-save)
+  (end-of-buffer)
+  (call-interactively 'yank))

@@ -84,6 +84,7 @@
         "functions-emacs-lisp-utils.el"
         "functions-string.el"
         "functions-buffer.el"
+        "functions-web-browser.el"
         ))
 
 (dolist (path _convenient-functions-path-list_)

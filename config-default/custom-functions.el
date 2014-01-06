@@ -56,12 +56,13 @@
   '("$auto-load-mode")
   "List of symbols we want to treat as \"special\" functions.")
 
-(require 'cl)
-(require 'cl-lib)
-(require 'dash)
-(require 's)
-(require 'f)
-(require 'ht)
+(require 'cl)                           ; Common Lisp subset
+(require 'cl-lib)                       ; Some Common Lisp libraries
+(require 'dash)                         ; Functional Emacs Lisp
+(require 's)                            ; Better string APIs
+(require 'f)                            ; Better APIs to work with file and
+                                        ; directories
+(require 'ht)                           ; Better hashtable APIs
 
 ;; Current directory
 (setq _custom-function-dir_

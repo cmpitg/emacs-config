@@ -23,9 +23,24 @@ E.g.
 
 \($insert-into-emacs-lisp-docstring \"\(message \\\"hola mundo!\\\"\)\"\)
 "
-(interactive "MInput your string: ")
+  (interactive "MInput your string: ")
   (insert (s-replace-all '(("\\" . "\\\\\\\\")
                            ("(" . "\\\\(")
                            (")" . "\\\\)")
                            ("\"" . "\\\\\""))
                          string)))
+
+(defun $add-bracket-and-eval (&optional string)
+  "TODO"
+  (interactive)
+  (let* ((preprocessed-sexp (cond ((not ($string-empty? string))
+                                   string)
+                                  (($is-selecting?)
+                                   ($get-selection))
+                                  (t
+                                   (read-string "Command: "))))
+         (sexp (if (not (and (s-starts-with? "(" preprocessed-sexp)
+                             (s-ends-with?   ")" preprocessed-sexp)))
+                 (format "(%s)" preprocessed-sexp)
+                 preprocessed-sexp)))
+    ($eval-string sexp)))

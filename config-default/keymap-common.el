@@ -187,12 +187,9 @@
 (setq helm-boring-buffer-regexp-list '("\\*.+\\*"))
 ;; (setq helm-command-prefix-key "<f5>")
 
-;; One key to rule them all
-(global-set-key (kbd "s-SPC s-SPC") 'one-key-open-associated-menu-set)
-
-;; 
+;;
 ;; Mode specific
-;; 
+;;
 
 ;; Git
 

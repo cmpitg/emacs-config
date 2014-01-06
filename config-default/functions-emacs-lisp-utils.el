@@ -31,7 +31,22 @@ E.g.
                          string)))
 
 (defun $add-bracket-and-eval (&optional string)
-  "TODO"
+  "Add outer-most surrounding bracket if necessary and eval the
+string.  This function may be called interactively.  If it's in
+interactive mode and there's current a selection, the selection
+is evaluted.
+
+This function is convenient when being called interactively or
+quickly eval a selection which contains Emacs Lisp code.
+
+E.g.
+
+\($add-bracket-and-eval \"message \\\"¡Hola mundo!\\\"\"\)
+;; => ¡Hola mundo!
+
+\($add-bracket-and-eval \"\(message \\\"¡Hola mundo!\\\"\)\"\)
+;; => ¡Hola mundo!
+"
   (interactive)
   (let* ((preprocessed-sexp (cond ((not ($string-empty? string))
                                    string)

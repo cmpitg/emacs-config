@@ -64,3 +64,9 @@
   (call-interactively 'kill-ring-save)
   (end-of-buffer)
   (call-interactively 'yank))
+
+(defun $last-sexp ()
+  "Return the sexp right before the current cursor."
+  (interactive)
+  (preceding-sexp))
+

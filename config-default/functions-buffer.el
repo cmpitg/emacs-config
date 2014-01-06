@@ -70,3 +70,20 @@
   (interactive)
   (preceding-sexp))
 
+(defun $geiser-repl-process ()
+  "Return the process behind current Geiser REPL."
+  (let ((repl-buffer (get-buffer "* Racket REPL *")))
+    (if repl-buffer
+      (get-buffer-process repl-buffer)
+      nil)))
+
+(defun $geiser-send-string (string)
+  "Evaluate last sexp with Geiser and send it to the REPL."
+  (interactive)
+  (let ((string-to-send (cond ((not ($string-empty? string))
+                               string)
+                              (($is-selecting?)
+                               ($get-selection))
+                              (t
+                               ($read-string "String: ")))))
+    (comint-send-string ($geiser-repl-process) string)))

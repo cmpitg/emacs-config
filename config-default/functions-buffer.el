@@ -87,3 +87,7 @@
                               (t
                                ($read-string "String: ")))))
     (comint-send-string ($geiser-repl-process) string)))
+
+(defun $current-line-comment-style ()
+  "Return the current line-comment style for current buffer mode."
+  comment-start)

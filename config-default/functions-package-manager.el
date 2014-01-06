@@ -107,4 +107,3 @@ i.e. all packages in `*elpa-package-list*' and
      (lambda (s)
        (goto-char (point-max))
        (eval-print-last-sexp))))))
-

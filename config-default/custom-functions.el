@@ -98,18 +98,6 @@
 ;;; Functions
 ;;;
 
-;; (defun $list-default-configs ()
-;;   "Return a list of symbols as features, defined by filenames of
-;; format `config-[feature-name].el` in
-;; `~/emacs-config/config-default/`"
-;;   (let ((dirpath "~/emacs-config/config-default/"))
-;;     (->> dirpath
-;;       $list-dir
-;;       (-filter (lambda (filename)
-;;                  ($string-start-with? filename "config-")))
-;;       (-map (lambda (library-name)
-;;               (intern (file-name-base library-name)))))))
-
 ;;; Others
 
 (defun $symbol->string (symbol)

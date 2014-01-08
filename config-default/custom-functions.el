@@ -86,7 +86,8 @@
         "functions-string.el"
         "functions-buffer.el"
         "functions-web-browser.el"
-        "functions-shell"
+        "functions-shell.el"
+        "functions-files.el"
         ))
 
 (dolist (path _convenient-functions-path-list_)

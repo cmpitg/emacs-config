@@ -50,7 +50,16 @@
 ;;; * [task] Structural editing (suggestion based on the context, at a
 ;;;   separated window, mouse click support, easy manipulation)
 ;;; * Sublime-like preview buffer
-;;;
+
+;; TODO
+;;     (helm
+;;      :sources '(helm-source-grep)
+;;      :buffer (format "*helm %s*" (if zgrep "zgrep" (helm-grep-command recurse)))
+;;      :default-directory helm-grep-last-default-directory
+;;      :keymap helm-grep-map ; [1]
+;;      :history 'helm-grep-history
+;;      :truncate-lines t)))
+;;
 
 (defvar *ctags-path* "/usr/bin/ctags"
   "Path to your exuberant ctags.")

@@ -24,7 +24,7 @@
 (global-set-key (kbd "<f2>") 'save-buffer)
 (global-set-key (kbd "C-<f2>") 'buffer-menu)
 (global-set-key (kbd "<f3>") 'fiplr-find-file)
-(global-set-key (kbd "<S-f3>") '$fiplr-find-file-other-window)
+(global-set-key (kbd "<S-f3>") '$find-file-extended)
 (global-set-key (kbd "C-<f9>") '$move-to-compilation-buffer)
 (global-set-key (kbd "C-<f4>") '$kill-current-buffer)
 (global-set-key (kbd "M-<f4>") 'recentf-open-files)
@@ -177,7 +177,7 @@
 ;; (global-set-key (kbd "M-/") 'dabbrev-expand)
 
 (global-set-key (kbd "<M-f3>") 'helm-find-files)
-(global-set-key (kbd "<f10>") 'helm-do-grep)
+(global-set-key (kbd "<f10>") '$helm-grep)
 (global-set-key (kbd "s-@") '$duplicate-line)
 (global-set-key (kbd "<f8>") 'helm-buffers-list)
 (global-set-key (kbd "M-/") 'hippie-expand)

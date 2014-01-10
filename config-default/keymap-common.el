@@ -71,7 +71,7 @@
 
 (global-set-key (kbd "s-w") 'whitespace-cleanup)
 
-(global-set-key (kbd "s-&") 'join-line)
+(global-set-key (kbd "s-&") '$join-line)
 
 (global-set-key (kbd "s-SPC s") '$surround)
 

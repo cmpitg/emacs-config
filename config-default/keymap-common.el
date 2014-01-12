@@ -203,7 +203,9 @@
             (define-key emacs-lisp-mode-map (kbd "C-c C-b") 'eval-buffer)
             (define-key emacs-lisp-mode-map (kbd "<f1>") '(lambda ()
                                                             (interactive)
-                                                            (apropos (current-word))))))
+                                                            (apropos (current-word))))
+            (define-key emacs-lisp-mode-map (kbd "<S-f1>") 'find-function)
+            ))
 ;; Markdown
 
 (add-hook 'markdown-mode-hook

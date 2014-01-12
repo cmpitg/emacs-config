@@ -397,10 +397,8 @@
        "Disable autopairs mode if paredit-mode is turned on."
        ad-do-it
        (cond ((null ad-return-value)
-              (autopair-mode 0)
               (smartparens-mode 1))
              (t
-              (autopair-mode 0)
               (smartparens-mode 0))))
 
      (ad-activate 'paredit-mode)

@@ -15,7 +15,7 @@
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
 
-(defun $eshell-history ()
+(defun eshell-history ()
   "Display eshell commands as with M-x.  The selected command is
 added to the current eshell buffer."
   (interactive)
@@ -24,7 +24,7 @@ added to the current eshell buffer."
                         (delete-dups
                          (ring-elements eshell-history-ring)))))
 
-(defun $switch-to-eshell-back-and-forth ()
+(defun switch-to-eshell-back-and-forth ()
   "Switch to eshell if current is not eshell, and switch to last
 active buffer if current buffer is eshell."
   (interactive)

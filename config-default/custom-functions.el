@@ -181,8 +181,14 @@ c
 file as string."
   (interactive)
   (let ((mode-name (downcase
-                    (replace-regexp-in-string " \\|[[:digit:]]\\|:.*\\|-.*" "" vc-mode))))
-    mode-name))
+                    (replace-regexp-in-string " \\|[[:digit:]]\\|:.*\\|-.*" ""
+                                              (or vc-mode
+                                                  "")))))
+    (cond ((and ($string-empty? mode-name)
+                (magit-get-top-dir))
+           "git")
+          (t
+           mode-name))))
 
 (defun $sunrise ()
   "Open Sunrise Commander, remove the nonpane buffer."

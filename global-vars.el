@@ -17,12 +17,21 @@
 
 (setenv "$RSENSE_HOME" (expand-file-name "~/emacs-config/rsense"))
 
+;; (defvar *openwith-associations*
+;;   '(("\\.pdf\\'" "evince" (file))
+;;     ("\\.mp3\\'" "smplayer" (file))
+;;     ("\\.odt\\'" "libreoffice" (file))
+;;     ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
+;;     ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file)))
+;;   "Determine which program is used to open which filetype with
+;;  `openwith' library.")
+
 (setq openwith-associations
-      '(("\\.pdf\\'" "evince" (file))
-        ("\\.mp3\\'" "smplayer" (file))
-        ("\\.odt\\'" "libreoffice" (file))
-        ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
-        ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
+  '(("\\.pdf\\'" "evince" (file))
+    ("\\.mp3\\'" "smplayer" (file))
+    ("\\.odt\\'" "libreoffice" (file))
+    ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
+    ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
 
 (setq *custom-functions-path*  "~/emacs-config/config-default/custom-functions.el"
       *snippet-dir*            "~/emacs-config/snippets"

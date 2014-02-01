@@ -89,6 +89,7 @@
         "functions-shell.el"
         "functions-files.el"
         "functions-string.el"
+        "functions-snippet.el"
         ))
 
 (dolist (path _convenient-functions-path-list_)

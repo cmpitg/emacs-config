@@ -720,19 +720,6 @@ Example:
   (interactive)
   ($eval (read str)))
 
-(defun $string-empty? (str)
-  "Determine if a string is empty."
-  (= 0 (length str)))
-
-(defun $string-but-last (str)
-  "Return a string with its last character removed."
-  (if ($string-empty? str) ""
-      (substring str 0 -1)))
-
-(defun $string-contains? (str substring)
-  "Check if a string contains a substring."
-  (not (null (string-match substring str))))
-
 (defun $current-dir ()
   "Current directory."
   (or (file-name-directory (or load-file-name buffer-file-name ""))

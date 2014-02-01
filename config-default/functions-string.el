@@ -35,3 +35,19 @@ E.g.
 \($string-end-with? \"config-default\" \"default\"\)  ;; => t
 \($string-end-with? \"config-default\" \"Default\"\)  ;; => nil"
   (s-ends-with? substring string ignore-case))
+
+(defun string-empty? (str)
+  "Determine if a string is empty."
+  (and (stringp str)
+       (= 0 (length str))))
+
+(defalias '$string-empty? 'string-empty?)
+
+(defun $string-but-last (str)
+  "Return a string with its last character removed."
+  (if ($string-empty? str) ""
+      (substring str 0 -1)))
+
+(defun $string-contains? (str substring)
+  "Check if a string contains a substring."
+  (not (null (string-match substring str))))

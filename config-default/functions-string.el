@@ -37,9 +37,11 @@ E.g.
   (s-ends-with? substring string ignore-case))
 
 (defun string-empty? (str)
-  "Determine if a string is empty."
-  (and (stringp str)
-       (= 0 (length str))))
+  "Determine if a string is empty.  `nil' is treated as empty
+string."
+  (or (null str)
+      (and (stringp str)
+           (= 0 (length str)))))
 
 (defalias '$string-empty? 'string-empty?)
 

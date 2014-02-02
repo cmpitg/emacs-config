@@ -215,3 +215,5 @@ convenient wrapper of `join-line'."
   "Delete the selected text, do nothing if none text is selected."
   (if ($is-selecting?)
     (delete-region ($selection-start) ($selection-end))))
+
+(defalias 'get-selection '$get-selection)

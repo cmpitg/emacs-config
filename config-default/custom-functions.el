@@ -688,34 +688,6 @@ Example:
   (unless (string-equal "*scratch*" ($current-buffer-name))
     (switch-to-buffer-other-window "*scratch*")))
 
-(defun $selection-start ()
-  "Return the position of the start of the current selection."
-  (region-beginning))
-
-(defun $selection-end ()
-  "Return the position of the end of the current selection."
-  (region-end))
-
-(defun $is-selecting? ()
-  "Determine if a selection is being held."
-  (region-active-p))
-
-(defun $current-selection ()
-  "Return the current selected text."
-  (if ($is-selecting?)
-    (buffer-substring ($selection-start)
-                      ($selection-end))
-    ""))
-
-(defun $get-selection ()
-  "Return the current selected text."
-  ($current-selection))
-
-(defun $delete-selected-text ()
-  "Delete the selected text, do nothing if none text is selected."
-  (if ($is-selecting?)
-    (delete-region ($selection-start) ($selection-end))))
-
 (defun $eval-string (str)
   "Eval a string."
   (interactive)

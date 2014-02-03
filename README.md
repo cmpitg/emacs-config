@@ -349,7 +349,7 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
     * To start editting: `C-c C-p`
     * To save changes: `C-x C-s`
     * To discard changes: `C-x C-k`
-    * To commit changes to files: `wgrep-save-all-buffers`
+    * To commit changes to files: `C-c C-e` or `wgrep-save-all-buffers`
 
 ### With Any Interactive mode ###
 

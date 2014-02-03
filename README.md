@@ -154,7 +154,7 @@ rm ~/bin/{filebrowser-emacs.py,emacs-xiki,emacs-cmpitg}
 * Emacs uses [Yasnippet](https://github.com/capitaomorte/yasnippet) for
   [Textmate-like](https://macromates.com) snippet feature.  Put your custom
   snippets in your `*snippet-dir*` directory.  By default, `*snippet-dir*` is
-  `~/emacs-config/snippets` and can be changed in `.el` files.
+  `~/emacs-config/snippets/` and can be changed in `.el` files.
 
 * A default Emacs server is automagically started when your Emacs starts.  Use
 
@@ -336,6 +336,12 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
   - Using `pabbrev` only: `<s-return>`
   - Using `autocomplete` or `pabbrev`: `<tab>`
   - Using `hippie-expand` (fuzzy completion with guessing): `M-/`
+
+* Yasnippet:
+  - Visit snippet file: `C-c & C-v`
+  - When in `snippet-mode`:
+    * Tryout snippet: `C-c C-t`
+    * Load snippet: `C-c C-c`
 
 ### With Any Interactive mode ###
 

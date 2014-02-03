@@ -53,7 +53,6 @@
 ;; Text
 ;;
 
-(global-set-key (kbd "C-<f3>") 'grep)
 (global-set-key (kbd "C-<f5>") 'previous-error)
 (global-set-key (kbd "C-<f7>") 'next-error)
 (global-set-key (kbd "C-o") '$open-line)
@@ -178,6 +177,7 @@
 
 (global-set-key (kbd "<M-f3>") 'helm-find-files)
 (global-set-key (kbd "<f10>") '$helm-grep)
+(global-set-key (kbd "<C-f10>") 'ack)
 (global-set-key (kbd "s-@") '$duplicate-line)
 (global-set-key (kbd "<f8>") 'helm-buffers-list)
 (global-set-key (kbd "M-/") 'hippie-expand)

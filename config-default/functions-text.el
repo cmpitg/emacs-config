@@ -216,4 +216,13 @@ convenient wrapper of `join-line'."
   (if ($is-selecting?)
     (delete-region ($selection-start) ($selection-end))))
 
+(defun replace-selection (&optional text)
+  "Replace selection with text."
+  (interactive)
+  (let ((text (if (stringp text)
+                text
+                (read-string "Text: "))))
+    (call-interactively 'delete-region)
+    (insert-string text)))
+
 (defalias 'get-selection '$get-selection)

@@ -835,7 +835,7 @@ new snippet\")"
 ($defalias '$pipe-then-exec-in-other-window 'shell-command-on-region
   "Filter a command but pipe the other to other window")
 
-($defalias '$current-point 'point
+($defalias 'current-point 'point
   "Return current position of the keyboard cursor in the
 buffer.")
 

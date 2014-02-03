@@ -347,8 +347,9 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
   - `grep`ing could be done with `ack-and-a-half` via `ack` or `<C-f10>`
   - Ack buffer is edittable and saveable thanks to `wgrep-ack`:
     * To start editting: `C-c C-p`
-    * To save and commit changes: `C-x C-s`
+    * To save changes: `C-x C-s`
     * To discard changes: `C-x C-k`
+    * To commit changes to files: `wgrep-save-all-buffers`
 
 ### With Any Interactive mode ###
 

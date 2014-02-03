@@ -29,7 +29,7 @@
    (list ($read-string
           "URL: "
           :initial-input (cond
-                          (($is-selecting?)
+                          ((is-selecting?)
                            ($get-selection))
                           ((thing-at-point-url-at-point)
                            (thing-at-point-url-at-point))

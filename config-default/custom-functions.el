@@ -743,7 +743,7 @@ A new window is created if there's current only one window."
 (defun $mark-word-backward (times)
   "Mark word backward."
   (interactive "p")
-  (if ($is-selecting?)
+  (if (is-selecting?)
     (kill-region ($selection-start) ($selection-end))
     (progn (if (and (not (eq last-command this-command))
                     (not (eq last-command 'mark-sexp)))

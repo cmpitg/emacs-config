@@ -21,7 +21,7 @@ display result."
   (interactive)
   (let* ((command-str (cond ((not ($string-empty? command))
                              command)
-                            (($is-selecting?)
+                            ((is-selecting?)
                              ($get-selection))
                             (t
                              ($read-string "Shell command: "))))

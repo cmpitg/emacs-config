@@ -50,7 +50,7 @@ E.g.
   (interactive)
   (let* ((preprocessed-sexp (cond ((not ($string-empty? string))
                                    string)
-                                  (($is-selecting?)
+                                  ((is-selecting?)
                                    ($get-selection))
                                   (t
                                    (read-string "Command: "))))

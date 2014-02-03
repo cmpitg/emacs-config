@@ -22,7 +22,7 @@ active, insert `begin-string` and `end-string` and place the
 cursor in-between them."
   (interactive "sStart string: \nsEnd string: ")
   (cond 
-   (($is-selecting?)
+   ((is-selecting?)
     (save-excursion
       (let ((start-point ($selection-start))
             (end-point   ($selection-end)))
@@ -196,13 +196,13 @@ convenient wrapper of `join-line'."
   "Return the position of the end of the current selection."
   (region-end))
 
-(defun $is-selecting? ()
+(defun is-selecting? ()
   "Determine if a selection is being held."
   (region-active-p))
 
 (defun $current-selection ()
   "Return the current selected text."
-  (if ($is-selecting?)
+  (if (is-selecting?)
     (buffer-substring ($selection-start)
                       ($selection-end))
     ""))
@@ -213,7 +213,7 @@ convenient wrapper of `join-line'."
 
 (defun $delete-selected-text ()
   "Delete the selected text, do nothing if none text is selected."
-  (if ($is-selecting?)
+  (if (is-selecting?)
     (delete-region ($selection-start) ($selection-end))))
 
 (defun replace-selection (&optional text)

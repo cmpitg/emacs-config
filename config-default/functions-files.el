@@ -22,7 +22,7 @@ followed."
   (if (require 'fiplr nil nil)
     (let ((path (cond ((not (null dir-path))
                        dir-path)
-                      (($is-selecting?)
+                      ((is-selecting?)
                        ($get-selection))
                       (t
                        (read-directory-name "Directory path: ")))))

@@ -82,7 +82,7 @@
   (interactive)
   (let ((string-to-send (cond ((not ($string-empty? string))
                                string)
-                              (($is-selecting?)
+                              ((is-selecting?)
                                ($get-selection))
                               (t
                                ($read-string "String: ")))))

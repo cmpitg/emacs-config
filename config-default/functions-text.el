@@ -207,7 +207,7 @@ convenient wrapper of `join-line'."
                       ($selection-end))
     ""))
 
-(defun $get-selection ()
+(defun get-selection ()
   "Return the current selected text."
   ($current-selection))
 
@@ -236,5 +236,3 @@ do nothing."
 do nothing."
   (if (is-selecting?)
     (goto-point (selection-end))))
-
-(defalias 'get-selection '$get-selection)

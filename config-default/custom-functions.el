@@ -273,7 +273,7 @@ Default: `~/emacs-config/config-default/`."
 (defun $eval-then-replace ()
   "Eval region then replace region with result."
   (interactive)
-  (let ((value ($eval-string ($get-selection))))
+  (let ((value ($eval-string (get-selection))))
     (kill-region ($selection-start) ($selection-end))
     (insert (format "%s" value))))
 

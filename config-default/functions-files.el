@@ -23,7 +23,7 @@ followed."
     (let ((path (cond ((not (null dir-path))
                        dir-path)
                       ((is-selecting?)
-                       ($get-selection))
+                       (get-selection))
                       (t
                        (read-directory-name "Directory path: ")))))
       (fiplr-find-file-in-directory (file-chase-links path) fiplr-ignored-globs))

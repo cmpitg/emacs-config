@@ -51,7 +51,7 @@ E.g.
   (let* ((preprocessed-sexp (cond ((not ($string-empty? string))
                                    string)
                                   ((is-selecting?)
-                                   ($get-selection))
+                                   (get-selection))
                                   (t
                                    (read-string "Command: "))))
          (sexp (if (not (and (s-starts-with? "(" preprocessed-sexp)

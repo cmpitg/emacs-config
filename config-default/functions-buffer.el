@@ -83,7 +83,7 @@
   (let ((string-to-send (cond ((not ($string-empty? string))
                                string)
                               ((is-selecting?)
-                               ($get-selection))
+                               (get-selection))
                               (t
                                ($read-string "String: ")))))
     (comint-send-string ($geiser-repl-process) string)))

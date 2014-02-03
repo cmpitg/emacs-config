@@ -22,7 +22,7 @@ display result."
   (let* ((command-str (cond ((not ($string-empty? command))
                              command)
                             ((is-selecting?)
-                             ($get-selection))
+                             (get-selection))
                             (t
                              ($read-string "Shell command: "))))
          (output ($exec command-str)))

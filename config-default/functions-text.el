@@ -182,7 +182,7 @@ cursor position."
   "Peek next character, return the string representing it.."
   ($get-text (+ 1 (point)) (+ 2 (point))))
 
-(defun $join-line ()
+(defun join-with-next-line ()
   "Join next line with the current line.  This is just a
 convenient wrapper of `join-line'."
   (interactive)

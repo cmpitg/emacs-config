@@ -274,7 +274,7 @@ Default: `~/emacs-config/config-default/`."
   "Eval region then replace region with result."
   (interactive)
   (let ((value ($eval-string (get-selection))))
-    (kill-region ($selection-start) ($selection-end))
+    (kill-region (selection-start) (selection-end))
     (insert (format "%s" value))))
 
 (defun $server-start (&rest dir)
@@ -744,7 +744,7 @@ A new window is created if there's current only one window."
   "Mark word backward."
   (interactive "p")
   (if (is-selecting?)
-    (kill-region ($selection-start) ($selection-end))
+    (kill-region (selection-start) (selection-end))
     (progn (if (and (not (eq last-command this-command))
                     (not (eq last-command 'mark-sexp)))
              (set-mark (point)))

@@ -24,8 +24,8 @@ cursor in-between them."
   (cond 
    ((is-selecting?)
     (save-excursion
-      (let ((start-point ($selection-start))
-            (end-point   ($selection-end)))
+      (let ((start-point (selection-start))
+            (end-point   (selection-end)))
         (goto-point start-point)
         (insert begin-string)
         (goto-point end-point)
@@ -188,11 +188,11 @@ convenient wrapper of `join-line'."
   (interactive)
   (join-line -1))
 
-(defun $selection-start ()
+(defun selection-start ()
   "Return the position of the start of the current selection."
   (region-beginning))
 
-(defun $selection-end ()
+(defun selection-end ()
   "Return the position of the end of the current selection."
   (region-end))
 
@@ -203,8 +203,8 @@ convenient wrapper of `join-line'."
 (defun $current-selection ()
   "Return the current selected text."
   (if (is-selecting?)
-    (buffer-substring ($selection-start)
-                      ($selection-end))
+    (buffer-substring (selection-start)
+                      (selection-end))
     ""))
 
 (defun get-selection ()
@@ -214,7 +214,7 @@ convenient wrapper of `join-line'."
 (defun $delete-selected-text ()
   "Delete the selected text, do nothing if none text is selected."
   (if (is-selecting?)
-    (delete-region ($selection-start) ($selection-end))))
+    (delete-region (selection-start) (selection-end))))
 
 (defun replace-selection (&optional text)
   "Replace selection with text."

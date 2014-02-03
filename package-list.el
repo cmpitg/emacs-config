@@ -52,6 +52,9 @@
     projectile                          ; Better project management
     helm-projectile                     ; Projectile-Helm integration
     grizzl                              ; Grizzl fuzzy matching method
+
+    ack-and-a-half                      ; Ack - a better grep
+    wgrep-ack                           ; Edittable Ack
     )
   "List of packages using in this Emacs configuration.")
 

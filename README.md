@@ -343,6 +343,13 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
     * Tryout snippet: `C-c C-t`
     * Load snippet: `C-c C-c`
 
+* `grep`ing:
+  - `grep`ing could be done with `ack-and-a-half` via `ack` or `<C-f10>`
+  - Ack buffer is edittable and saveable thanks to `wgrep-ack`:
+    * `wgrep-change-to-wgrep-mode` to start editting
+    * Edit and save
+    * `wgrep-finish-edit` to commit all changes
+
 ### With Any Interactive mode ###
 
 The following keybindings are applied to when you want to interative with a

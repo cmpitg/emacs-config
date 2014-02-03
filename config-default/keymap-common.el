@@ -73,7 +73,7 @@
 
 (global-set-key (kbd "s-&") '$join-line)
 
-(global-set-key (kbd "s-SPC s") '$surround)
+(global-set-key (kbd "s-SPC s") 'surround)
 
 ;; Multiple cursors
 (global-set-key (kbd "s-+") 'mc/edit-lines)

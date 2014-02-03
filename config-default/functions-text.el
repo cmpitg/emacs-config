@@ -15,7 +15,7 @@
 ;; with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
 
-(defun $surround (begin-string end-string)
+(defun surround (begin-string end-string)
   "Surround current selection with `begin-string` at the
 beginning and `end-string` at the end.  If selection is not
 active, insert `begin-string` and `end-string` and place the
@@ -36,20 +36,20 @@ cursor in-between them."
     (insert (concat begin-string end-string))
     (backward-char (length end-string)))))
 
-(defun $markdown-italicize ()
+(defun markdown-italicize ()
   "Italicize selection or adding italic format."
   (interactive)
-  ($surround "*" "*"))
+  (surround "*" "*"))
 
-(defun $markdown-embolden ()
+(defun markdown-embolden ()
   "Embolden selection or adding bold format."
   (interactive)
-  ($surround "**" "**"))
+  (surround "**" "**"))
 
-(defun $markdown-rawify ()
+(defun markdown-rawify ()
   "Rawify selection or adding raw format."
   (interactive)
-  ($surround "`" "`"))
+  (surround "`" "`"))
 
 (defun $move-to-beginning-of-line ()
   "Move point back to indentation of beginning of line.

@@ -26,9 +26,9 @@ cursor in-between them."
     (save-excursion
       (let ((start-point ($selection-start))
             (end-point   ($selection-end)))
-        ($goto-point start-point)
+        (goto-point start-point)
         (insert begin-string)
-        ($goto-point end-point)
+        (goto-point end-point)
         (forward-char (length begin-string))
         (insert end-string))))
 

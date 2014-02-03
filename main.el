@@ -229,6 +229,20 @@
      (setq ido-use-faces nil)))
 
 ;;
+;; Better than grep
+;;
+
+(eval-after-load 'ack-and-a-half
+  '(progn
+     ;; Fix Debian-based distros' executable file
+     (setq ack-and-a-half-executable (or (executable-find "ack-grep")
+                                         (executable-find "ack")))
+     (defalias 'ack 'ack-and-a-half)
+     (defalias 'ack-same 'ack-and-a-half-same)
+     (defalias 'ack-find-file 'ack-and-a-half-find-file)
+     (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)))
+
+;;
 ;; Sunrise commander
 ;;
 

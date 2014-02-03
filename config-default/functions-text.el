@@ -225,4 +225,16 @@ convenient wrapper of `join-line'."
     (call-interactively 'delete-region)
     (insert-string text)))
 
+(defun goto-selection-start ()
+  "Go to the start of current selection.  If selection is not active,
+do nothing."
+  (if (is-selecting?)
+    (goto-point (selection-start))))
+
+(defun goto-selection-end ()
+  "Go to the end of current selection.  If selection is not active,
+do nothing."
+  (if (is-selecting?)
+    (goto-point (selection-end))))
+
 (defalias 'get-selection '$get-selection)

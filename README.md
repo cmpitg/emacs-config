@@ -345,7 +345,8 @@ TODO: Making nice table with: Keybinding - Description - Function - Provided by
 
 * `grep`ing:
   - `grep`ing could be done with `ack-and-a-half` via `ack` or `<C-f10>`
-  - Ack buffer is edittable and saveable thanks to `wgrep-ack`:
+  - Ack buffer is edittable and saveable thanks to
+    [`wgrep-ack`](https://github.com/mhayashi1120/Emacs-wgrep):
     * To start editting: `C-c C-p`
     * To save changes: `C-x C-s`
     * To discard changes: `C-x C-k`

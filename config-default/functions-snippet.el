@@ -33,7 +33,7 @@ doesn't exist yet."
                  ($read-string "Mode: "
                                :initial-input (format "%s" major-mode))
                  mode))
-         (snippet-mode-dir (f-expand (format "~/emacs-config/%s" mode)))
+         (snippet-mode-dir (f-expand (format "~/emacs-config/snippets/%s" mode)))
 
          (abbrev (if (string-empty? abbrev)
                    (read-string "Abbrev: ")
@@ -48,10 +48,9 @@ doesn't exist yet."
          (short-description (if (string-empty? short-description)
                               (read-string "Short description: ")
                               short-description)))
-    (message-box "%s %s" snippet-mode-dir snippet-file)
     ;; Make sure snippet directory exists
     (unless (f-exists? snippet-mode-dir)
-      (apply #'f-mkdir (s-split "/" snippet-mode-dir)))
+      (f-mkdir snippet-mode-dir))
 
     (write-to-file snippet-file
                    (s-concat "# -*- mode: snippet -*-\n"

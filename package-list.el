@@ -53,7 +53,7 @@
     helm-projectile                     ; Projectile-Helm integration
     grizzl                              ; Grizzl fuzzy matching method
 
-    ack-and-a-half                      ; Ack - a better grep
+    ;; ack-and-a-half ; -> Failed to require when installed with Elpa
     wgrep-ack                           ; Edittable Ack
     )
   "List of packages using in this Emacs configuration.")
@@ -74,6 +74,7 @@
     ibus                                ; iBus interface
     rsense                              ; Comprehensive Ruby development
     picolisp
+    ack-and-a-half                      ; Ack - a better grep
     ))
 
 ;;; For user customization

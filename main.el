@@ -87,7 +87,7 @@
 
 ;; Install packages
 
-(apply '$install-packages ($list-packages-to-be-loaded))
+(apply 'install-packages ($list-packages-to-be-loaded))
 ;; (apply 'el-get-install *el-get-package-list*)
 
 ;; Add all the load path

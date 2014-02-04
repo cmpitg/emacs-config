@@ -94,10 +94,15 @@ installed and loaded.")
 ;; `loadpath`
 ;;
 
+;;; TODO: use variable for "~/emacs-config/emacs-local-packages/"
 (let ((local-package-dir "~/emacs-config/emacs-local-packages/"))
   (dolist (dirname (directory-files local-package-dir))
     (add-to-list 'load-path
                  (concat local-package-dir dirname))))
+
+;; Workaround for ack-and-a-half
+(if (memq 'ack-and-a-half ($list-packages-to-be-loaded))
+  (load "~/emacs-config/emacs-local-packages/ack-and-a-half/ack-and-a-half.el"))
 
 (add-to-list 'load-path "~/emacs-config/rsense/etc/")
 

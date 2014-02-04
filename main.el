@@ -294,7 +294,6 @@
 ;; Firefox integration setup
 ;;
 
-;; ($add-load-path "~/emacs-config/emacs-local-packages/moz/")
 (eval-after-load 'moz
   '(progn
      (add-hook 'javascript-mode-hook '$setup-moz-javascript)
@@ -527,8 +526,6 @@
 ;;
 ;; PicoLisp mode
 ;;
-
-;; ($add-load-path "~/emacs-config/emacs-local-packages/picolisp-mode")
 
 (eval-after-load 'picolisp
   '(progn

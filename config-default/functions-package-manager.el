@@ -60,7 +60,7 @@ The vector DESC has the form [VERSION-LIST REQS DOCSTRING].
   DOCSTRING is a brief description of the package."
   package-alist)
 
-(defun $install-packages (&rest packages)
+(defun install-packages (&rest packages)
   "Install a list of package if not installed."
   (dolist (package-name packages)
     (unless (or ($package-installed? package-name)

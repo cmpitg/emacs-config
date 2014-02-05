@@ -87,6 +87,10 @@
 
 ;; Install packages
 
+;; Workaround for ack-and-a-half
+(if (memq 'ack-and-a-half ($list-packages-to-be-loaded))
+  (load "~/emacs-config/emacs-local-packages/ack-and-a-half/ack-and-a-half.el"))
+
 (apply 'install-packages ($list-packages-to-be-loaded))
 ;; (apply 'el-get-install *el-get-package-list*)
 

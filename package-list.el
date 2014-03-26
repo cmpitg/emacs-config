@@ -60,7 +60,7 @@
 
 (defvar *el-get-package-list*
   '(later-do                            ; Async eval
-    powerline                           ; @johnathanchu version, beautiful
+    ;powerline                           ; @johnathanchu version, beautiful
                                         ; modeline
                                         ; https://github.com/jonathanchu/emacs-powerline
     multi-scratch                       ; Multiple scratch buffers
@@ -71,7 +71,7 @@
 
 (defvar *local-package-list*
   '(acme-mouse                          ; Acme-like mouse chords binding
-    ibus                                ; iBus interface
+    ;ibus                                ; iBus interface
     rsense                              ; Comprehensive Ruby development
     picolisp
     ack-and-a-half                      ; Ack - a better grep

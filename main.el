@@ -116,6 +116,10 @@
 
 ($load-custom-el "keymap-common.el")
 
+
+(require 'powerline)
+
+
 ;;
 ;; Load all but disabled packages (defined in `package-list.el`)
 ;;
@@ -496,15 +500,15 @@
 
 ;; (load-file "~/emacs-config/emacs-local-packages/ibus.el/ibus-dev.el")
 
-(eval-after-load 'ibus
-  '(progn
-     ;; Use C-SPC for Set Mark command
-     (ibus-define-common-key ?\C-\s nil)
-     ;; Use C-/ for Undo command
-     (ibus-define-common-key ?\C-/ nil)
-     ;; Change cursor color depending on IBus status
-     (setq ibus-cursor-color '("red" "blue" "limegreen"))
-     (setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus.el/ibus-el-agent")))
+;; (eval-after-load 'ibus
+;;   '(progn
+;;      ;; Use C-SPC for Set Mark command
+;;      (ibus-define-common-key ?\C-\s nil)
+;;      ;; Use C-/ for Undo command
+;;      (ibus-define-common-key ?\C-/ nil)
+;;      ;; Change cursor color depending on IBus status
+;;      (setq ibus-cursor-color '("red" "blue" "limegreen"))
+;;      (setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus.el/ibus-el-agent")))
 
 ;;
 ;; Markdown-mode

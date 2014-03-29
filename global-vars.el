@@ -36,7 +36,7 @@
 (setq *custom-functions-path*  "~/emacs-config/config-default/custom-functions.el"
       *snippet-dir*            "~/emacs-config/snippets"
       *custom-els-dir*         "~/emacs-config/config-default/"
-      *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
+      *default-lisp-repl-path* (expand-file-name "~/.bin/sbcl")
       *elpa-package-dir*       "~/.emacs.d/elpa/")
 
 ;;; Ignore this variable if you don't use Xiki

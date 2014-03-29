@@ -119,6 +119,10 @@
 
 (require 'powerline)
 
+;; (add-to-list 'default-frame-alist '(right . 0))
+;; (add-to-list 'default-frame-alist '(top . 0))
+;; (add-to-list 'default-frame-alist '(height . 48))
+;; (add-to-list 'default-frame-alist '(width . 125))
 
 ;;
 ;; Load all but disabled packages (defined in `package-list.el`)
@@ -279,6 +283,19 @@
 
 (eval-after-load 'openwith
   '(openwith-mode t))
+
+(setq openwith-associations
+      '(("\\.pdf\\'" "okular" (file))
+        ("\\.djvu\\'" "evince" (file))
+        ("\\.mp3\\'" "mplayer" (file))
+        ("\\.avi\\'" "smplayer" (file))
+        ("\\.mp4\\'" "smplayer" (file))
+        ("\\.odt\\'" "libreoffice" (file))
+        ("\\.odp\\'" "libreoffice" (file))
+        ("\\.ppt\\'" "libreoffice" (file))
+        ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
+        ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
+
 
 ;;
 ;; JavaScript
@@ -500,15 +517,19 @@
 
 ;; (load-file "~/emacs-config/emacs-local-packages/ibus.el/ibus-dev.el")
 
-;; (eval-after-load 'ibus
-;;   '(progn
-;;      ;; Use C-SPC for Set Mark command
-;;      (ibus-define-common-key ?\C-\s nil)
-;;      ;; Use C-/ for Undo command
-;;      (ibus-define-common-key ?\C-/ nil)
-;;      ;; Change cursor color depending on IBus status
-;;      (setq ibus-cursor-color '("red" "blue" "limegreen"))
-;;      (setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus.el/ibus-el-agent")))
+;(require 'ibus)
+;(add-hook 'after-init-hook 'ibus-mode-on)
+;(setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus-el-0.3.2/ibus-el-agent")
+
+(eval-after-load 'ibus
+  '(progn
+     ;; Use C-SPC for Set Mark command
+     (ibus-define-common-key ?\C-\s nil)
+     ;; Use C-/ for Undo command
+     (ibus-define-common-key ?\C-/ nil)
+     ;; Change cursor color depending on IBus status
+     (setq ibus-cursor-color '("red" "blue" "limegreen"))
+     (setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus-el-0.3.2/ibus-el-agent")))
 
 ;;
 ;; Markdown-mode

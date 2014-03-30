@@ -333,6 +333,12 @@ increase the opacity."
     (progn (ecb-deactivate)
            (setf *is-ecb-running?* nil))))
 
+
+(defun $comment-lisp ()
+  "Comment keymap in lisp."
+  (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
+  )
+
 (defun $helm-multi-all ()
   "multi-occur in all buffers backed by files."
   (interactive)

@@ -119,11 +119,18 @@
 
 (require 'powerline)
 
-;; (add-to-list 'default-frame-alist '(right . 0))
-;; (add-to-list 'default-frame-alist '(top . 0))
-;; (add-to-list 'default-frame-alist '(height . 48))
-;; (add-to-list 'default-frame-alist '(width . 125))
 
+;; Nice size for the default window
+;; (defun get-default-height ()
+;;   (/ (- (display-pixel-height) 40)
+;;      (frame-char-height)))
+;; (add-to-list 'default-frame-alist '(width . 140))
+;; (add-to-list 'default-frame-alist (cons 'height (get-default-height)))
+;; (add-to-list 'default-frame-alist '(top . 20))
+;; (add-to-list 'default-frame-alist '(left . 230))
+
+;;(require 'fit-frame)
+;;(add-hook 'after-make-frame-functions 'fit-frame)
 ;;
 ;; Load all but disabled packages (defined in `package-list.el`)
 ;;
@@ -324,6 +331,8 @@
      (add-hook 'javascript-mode-hook '$setup-moz-javascript)
      (add-hook 'js3-mode-hook '$setup-moz-javascript)))
 
+
+(add-hook 'emacs-lisp-mode-hook '$comment-lisp)
 ;;
 ;; Predictive abbreviation
 ;;

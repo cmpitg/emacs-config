@@ -204,6 +204,12 @@
 ;;; Custom dired
 (setq dired-listing-switches "-lahF")
 
+;; set font
+;; (set-face-attribute 'default nil
+;;   :height 110
+;;   :family "Monaco")
+
+
 ;;; Custom unique naming method
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)

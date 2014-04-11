@@ -63,6 +63,6 @@
             '(lambda ()
                (interactive)
                (comint-send-string (inferior-moz-process)
-                                   "setTimout(BrowserReload(), '1000');"))
+                                   "setTimeout(BrowserReload(), '1000');"))
             ;; buffer-local
             'append 'local))

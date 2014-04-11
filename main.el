@@ -118,6 +118,11 @@
 
 
 (require 'powerline)
+(require 'jade-mode)
+(require 'sws-mode)
+
+(add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
+(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
 
 ;; Nice size for the default window
@@ -146,6 +151,7 @@
 ;;
 ;; Now config all default packages
 ;;
+
 
 ;;
 ;; File management with dired

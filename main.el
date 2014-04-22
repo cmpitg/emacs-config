@@ -125,17 +125,9 @@
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
 
-;; Nice size for the default window
-;; (defun get-default-height ()
-;;   (/ (- (display-pixel-height) 40)
-;;      (frame-char-height)))
-;; (add-to-list 'default-frame-alist '(width . 140))
-;; (add-to-list 'default-frame-alist (cons 'height (get-default-height)))
-;; (add-to-list 'default-frame-alist '(top . 20))
-;; (add-to-list 'default-frame-alist '(left . 230))
+(add-hook 'find-file-hook 'create-new-file)
 
-;;(require 'fit-frame)
-;;(add-hook 'after-make-frame-functions 'fit-frame)
+
 ;;
 ;; Load all but disabled packages (defined in `package-list.el`)
 ;;

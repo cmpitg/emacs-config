@@ -42,7 +42,7 @@
   (interactive)
   ;; This function can be used when editing HTML/CSS/Web resources, so the
   ;; timeout is there for the file to properly saved.
-  ($send-to-mozrepl "setTimeout(BrowserReload, 300)"))
+  ($send-to-mozrepl "setTimeout(BrowserReload(), 300)"))
 
 (defun $start-mozrepl ()
   "Start MozRepl."

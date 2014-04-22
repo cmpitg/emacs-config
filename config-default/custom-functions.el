@@ -103,6 +103,14 @@
 
 ;;; Others
 
+
+(defun create-new-file ()
+  "Create New file when not exist."
+  (when (not (file-exists-p (buffer-file-name)))
+    (set-buffer-modified-p t)
+    )
+  )
+
 (defun $symbol->string (symbol)
   "Convert a symbol to a string."
   (symbol-name symbol))

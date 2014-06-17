@@ -30,7 +30,7 @@
 ;; (set-cursor-color "gray")
 (set-cursor-color "black")
 ;;(set-background-color "#f2f2f2")
-;; (set-background-color "#efefef")
+(set-background-color "#efefef")
 
 ;;(load "~/emacs-config/themes/color-theme-textmate-modified.el")
 ;;(require 'color-theme-textmate-modified)
@@ -205,9 +205,9 @@
 (setq dired-listing-switches "-lahF")
 
 ;; set font
-;; (set-face-attribute 'default nil
-;;   :height 110
-;;   :family "Monaco")
+(set-face-attribute 'default nil
+  :height 110
+  :family "Monaco")
 
 
 ;;; Custom unique naming method

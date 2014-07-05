@@ -315,6 +315,11 @@
 (eval-after-load 'js2-mode
   '(progn
      (add-hook 'js-mode-hook 'js2-minor-mode)
+     (add-hook 'js-mode-hook
+               (lambda ()
+                 (flycheck-mode t)
+                 )
+               )
      ($auto-load-mode '("\\.js\\'") 'js2-mode)
      (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
      (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
@@ -412,6 +417,9 @@
              ac-source-words-in-same-mode-buffers
              ac-source-dictionary))
 
+     (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
+     (setq ac-ignore-case nil)
+     
      (auto-complete-mode 1)
      (setq ac-fuzzy-enable t)
 

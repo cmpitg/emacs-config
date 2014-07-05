@@ -33,6 +33,7 @@
 (set-background-color "#efefef")
 
 ;;(load "~/emacs-config/themes/color-theme-textmate-modified.el")
+(load "~/emacs-config/themes/base16-emacs/base16-default-theme.el")
 ;;(require 'color-theme-textmate-modified)
 ;;(color-theme-textmate-modified)
 
@@ -206,7 +207,7 @@
 
 ;; set font
 (set-face-attribute 'default nil
-  :height 110
+  :height 90
   :family "Monaco")
 
 

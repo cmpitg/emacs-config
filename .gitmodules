@@ -1,0 +1,6 @@
+[submodule "emacs-local-packages/emacs-powerline"]
+	path = emacs-local-packages/emacs-powerline
+	url = https://github.com/jonathanchu/emacs-powerline
+[submodule "emacs-local-packages/acme-mouse"]
+	path = emacs-local-packages/acme-mouse
+	url = https://github.com/NgaNguyenDuy/acme-mouse

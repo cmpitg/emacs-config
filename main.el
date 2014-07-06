@@ -116,6 +116,19 @@
 
 ($load-custom-el "keymap-common.el")
 
+
+(require 'powerline)
+(require 'jade-mode)
+(require 'sws-mode)
+
+(add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
+(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+
+
+
+(add-hook 'find-file-hook 'create-new-file)
+
+
 ;;
 ;; Load all but disabled packages (defined in `package-list.el`)
 ;;
@@ -131,6 +144,7 @@
 ;;
 ;; Now config all default packages
 ;;
+
 
 ;;
 ;; File management with dired
@@ -276,6 +290,19 @@
 (eval-after-load 'openwith
   '(openwith-mode t))
 
+(setq openwith-associations
+      '(("\\.pdf\\'" "okular" (file))
+        ("\\.djvu\\'" "evince" (file))
+        ("\\.mp3\\'" "mplayer" (file))
+        ("\\.avi\\'" "smplayer" (file))
+        ("\\.mp4\\'" "smplayer" (file))
+        ("\\.odt\\'" "libreoffice" (file))
+        ("\\.odp\\'" "libreoffice" (file))
+        ("\\.ppt\\'" "libreoffice" (file))
+        ("\\.\\(?:mpe?g\\|avi\\|wmv\\|mp4\\|m4v\\)\\'" "smplayer" (file))
+        ("\\.\\(?:jp?g\\|png\\)\\'" "eog" (file))))
+
+
 ;;
 ;; JavaScript
 ;;
@@ -288,11 +315,20 @@
 (eval-after-load 'js2-mode
   '(progn
      (add-hook 'js-mode-hook 'js2-minor-mode)
+     (add-hook 'js-mode-hook
+               (lambda ()
+                 (flycheck-mode t)
+                 )
+               )
      ($auto-load-mode '("\\.js\\'") 'js2-mode)
      (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+     (add-to-list 'auto-mode-alist '("\\.json$" . js-mode))
 
-     (add-hook 'html-mode-hook '$auto-reload-firefox-after-save-hook)
-     (add-hook 'css-mode-hook '$auto-reload-firefox-after-save-hook)))
+;;     (add-hook 'html-mode-hook '$auto-reload-firefox-after-save-hook)
+;;     (add-hook 'css-mode-hook '$auto-reload-firefox-after-save-hook)
+     
+     )
+  )
 
 ;;
 ;; Firefox integration setup
@@ -303,6 +339,8 @@
      (add-hook 'javascript-mode-hook '$setup-moz-javascript)
      (add-hook 'js3-mode-hook '$setup-moz-javascript)))
 
+
+(add-hook 'emacs-lisp-mode-hook '$comment-lisp)
 ;;
 ;; Predictive abbreviation
 ;;
@@ -379,6 +417,9 @@
              ac-source-words-in-same-mode-buffers
              ac-source-dictionary))
 
+     (add-to-list 'ac-dictionary-directories "~/.emacs.d/el-get/auto-complete/dict")
+     (setq ac-ignore-case nil)
+     
      (auto-complete-mode 1)
      (setq ac-fuzzy-enable t)
 
@@ -496,6 +537,10 @@
 
 ;; (load-file "~/emacs-config/emacs-local-packages/ibus.el/ibus-dev.el")
 
+;(require 'ibus)
+;(add-hook 'after-init-hook 'ibus-mode-on)
+;(setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus-el-0.3.2/ibus-el-agent")
+
 (eval-after-load 'ibus
   '(progn
      ;; Use C-SPC for Set Mark command
@@ -504,7 +549,7 @@
      (ibus-define-common-key ?\C-/ nil)
      ;; Change cursor color depending on IBus status
      (setq ibus-cursor-color '("red" "blue" "limegreen"))
-     (setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus.el/ibus-el-agent")))
+     (setq ibus-agent-file-name "~/emacs-config/emacs-local-packages/ibus-el-0.3.2/ibus-el-agent")))
 
 ;;
 ;; Markdown-mode

@@ -36,10 +36,10 @@
 (setq *custom-functions-path*  "~/emacs-config/config-default/custom-functions.el"
       *snippet-dir*            "~/emacs-config/snippets"
       *custom-els-dir*         "~/emacs-config/config-default/"
-      *default-lisp-repl-path* (expand-file-name "~/bin/sbcl")
+      *default-lisp-repl-path* (expand-file-name "~/.bin/sbcl")
       *elpa-package-dir*       "~/.emacs.d/elpa/")
 
 ;;; Ignore this variable if you don't use Xiki
 (defvar *xiki-path*
-  "/home/cmpitg/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.9/data/emacs/site-lisp/"
+  "/usr/share/emacs/site-lisp"
   "Path to Xiki gem's site-lisp directory.")

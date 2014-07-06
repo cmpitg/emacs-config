@@ -664,7 +664,8 @@ class MyTreeView(QTreeView):
 
     def createContextMenu(self):
         menu = QMenu(self)
-
+        
+        menu.separatorsCollapsible()
         gotoDirAction = QAction("&Go to dir", self)
         gotoDirAction.triggered.connect(self.gotoDir)
 
@@ -698,11 +699,14 @@ class MainWindow(QWidget):
 
     def __init__(self):
         super(MainWindow, self).__init__()
-
+        
+#        self.resize(260, 707)
         self.resize(350, 650)
-        self.move(0, 0)
-        self.setWindowTitle("File Browser for Emacs Server")
-
+        self.move(0, 23)
+        self.setWindowTitle("File Browser for Emacs")
+        self.setStyleSheet("background-color: #EFEFEF; font-family: Monaco; font-size: 13px;")
+        
+        #self.setToolTip("Emacs 24")
         self.createChildren()
         self.setWindowIcon(getOpenDirIcon())
         self.show()

@@ -103,6 +103,14 @@
 
 ;;; Others
 
+
+(defun create-new-file ()
+  "Create New file when not exist."
+  (when (not (file-exists-p (buffer-file-name)))
+    (set-buffer-modified-p t)
+    )
+  )
+
 (defun $symbol->string (symbol)
   "Convert a symbol to a string."
   (symbol-name symbol))
@@ -332,6 +340,12 @@ increase the opacity."
            (setf *is-ecb-running?* t))
     (progn (ecb-deactivate)
            (setf *is-ecb-running?* nil))))
+
+
+(defun $comment-lisp ()
+  "Comment keymap in lisp."
+  (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
+  )
 
 (defun $helm-multi-all ()
   "multi-occur in all buffers backed by files."

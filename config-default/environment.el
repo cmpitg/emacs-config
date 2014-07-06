@@ -23,16 +23,17 @@
 
 ;; Comment color
 ;; (set-face-foreground 'font-lock-comment-face "#3a345f")
-(set-face-attribute 'font-lock-comment-face nil :foreground "#3a345f")
+(set-face-attribute 'font-lock-comment-face nil :foreground "#A79B9F")
 
 ;; Set cursor color
 ;; (set-cursor-color "cyan")
 ;; (set-cursor-color "gray")
 (set-cursor-color "black")
-;; (set-background-color "#f2f2f2")
+;;(set-background-color "#f2f2f2")
 (set-background-color "#efefef")
 
 ;;(load "~/emacs-config/themes/color-theme-textmate-modified.el")
+(load "~/emacs-config/themes/base16-emacs/base16-default-theme.el")
 ;;(require 'color-theme-textmate-modified)
 ;;(color-theme-textmate-modified)
 
@@ -203,6 +204,12 @@
 
 ;;; Custom dired
 (setq dired-listing-switches "-lahF")
+
+;; set font
+(set-face-attribute 'default nil
+  :height 90
+  :family "Monaco")
+
 
 ;;; Custom unique naming method
 (require 'uniquify)

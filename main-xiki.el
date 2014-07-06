@@ -20,7 +20,7 @@
 ; Load el4r, which loads Xiki
 (add-to-list 'load-path *xiki-path*)
 (require 'el4r)
-(el4r-boot)
+;(el4r-boot)
 
 ;;; Xiki environment
 
